@@ -497,12 +497,6 @@ while ($list = $db2->next_record())
             </td>
         </tr>
         <tr>
-            <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
-            <td><?=$informe["sua_monto"]?>
-            <br /><span id="div_monto" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
-            </td>
-        </tr>
-        <tr>
             <td width="12%" style="color:#16652f">Ahorro econ&oacute;mico:</td>
             <td><?=$informe["sua_ahorro"]?>
             <br /><span id="div_ahorro" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>

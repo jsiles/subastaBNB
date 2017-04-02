@@ -1,4 +1,4 @@
-<?
+<?php
 /* 
 Powered by logoscomunicaciones.com
 redimencionIMG donde:

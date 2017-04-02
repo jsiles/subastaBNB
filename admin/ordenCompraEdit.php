@@ -48,39 +48,14 @@ admin::initialize($opcionMenu, $opocionSubMenu);
 <!--END BUSCADOR-->
 <!--<script type="text/javascript" src="js/jquery.js"></script>-->
 <script language="javascript" type="text/javascript" src="js/ajaxlib.js?version=<?=VERSION?>"></script>
-<script type="text/javascript" src="js/interface.js"></script>
+<!--<script type="text/javascript" src="js/interface.js"></script>-->
 <!--BEGINIMPROMTU-->
-<link rel="stylesheet" type="text/css" href="css/impromptu.css">
-<script type="text/javascript" src="js/jquery.Impromptu.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="css/impromptu.css">
+<script type="text/javascript" src="js/jquery.Impromptu.js"></script>-->
+<link rel="stylesheet" type="text/css" href="js/impromptu/jquery-impromptu.css">
+<script type="text/javascript" src="js/impromptu/jquery-impromptu.js"></script>
 <!--ENDIMPROMTU--> 
 <script type="text/javascript">      
-// ELIMINA LOS REGISTROS DE LA CATEGORIA PRINCIPAL
-function removeListCat(id){
-	var txt = '<?=admin::labels('delete','sure')?><br><input type="hidden" id="list" name="list" value="'+ id +'" />';
-	$.prompt(txt,{
-		show:'fadeIn' ,
-		opacity:0,
-		buttons:{Eliminar:true, Cancelar:false},
-		callback: function(v,m){
-										   
-			if(v){
-				var uid = m.find('#list').val();
-				  $('#'+id).fadeOut(500, function(){ $(this).remove(); });
-					  $.ajax({
-						url: 'code/execute/subastaCatDel.php',
-						type: 'POST',
-						data: 'uid='+id
-					});
-				 /********BeginResetColorDelete*************/  
-				  resetOrderRemove(id);  
-				 /********EndResetColorDelete*************/ 
-		 
-			}
-			else{}
-			
-		}
-	});
-}
 // ELIMINA LOS REGISTROS DE LA CATEGORIA PRINCIPAL
 function removeList(id){
 	var txt = '<?=admin::labels('delete','sure')?>?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
@@ -88,7 +63,7 @@ function removeList(id){
 		show:'fadeIn' ,
 		opacity:0,
 		buttons:{Eliminar:true, Cancelar:false},
-		callback: function(v,m){
+		submit: function(e,v,m,f){
 										   
 			if(v){
 				var uid = m.find('#list').val();

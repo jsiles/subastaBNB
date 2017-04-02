@@ -114,6 +114,8 @@ if($sub_modalidad=="PRECIO")
 {
 //	$sql="insert into sys_item (ite_sub_uid, ite_wheel, ite_flag) values($sub_uid,1,0)";
 //	$db->query($sql);
+     $sql ="delete from mdl_round where rou_sub_uid=".$sub_uid;
+    $db->query($sql);
 
         for($i=1; $i<=$sub_wheels;$i++)
         {

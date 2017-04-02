@@ -48,7 +48,6 @@ admin::initialize($opcionMenu, $opocionSubMenu);
 <!--END BUSCADOR-->
 
 <script language="javascript" type="text/javascript" src="js/ajaxlib.js?version=<?=VERSION?>"></script>
-<script type="text/javascript" src="js/interface.js"></script>
 
 <!--BEGINIMPROMTU-->
 <link rel="stylesheet" type="text/css" href="css/impromptu.css">

@@ -45,16 +45,12 @@ admin::initialize($opcionMenu, $opocionSubMenu);
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.11.4.custom.js"></script>
 <!--END BUSCADOR-->
-<!--<script language="javascript" type="text/javascript" src="js/jquery-1.3.2.js"></script>-->
 <script language="javascript" type="text/javascript" src="js/ajaxlib.js?version=<?=VERSION?>"></script>
-<script src="js/ui.core.js" type="text/javascript"></script>
-<script src="js/ui.sortable.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/interface.js"></script>
 <script type="text/javascript" src="js/subastas.js?version=<?=VERSION?>"></script>
 
 <!--BEGINIMPROMTU-->
-<link rel="stylesheet" type="text/css" href="css/impromptu.css">
-<script type="text/javascript" src="js/jquery.Impromptu.js"></script>
+<link rel="stylesheet" type="text/css" href="js/impromptu/jquery-impromptu.css">
+<script type="text/javascript" src="js/impromptu/jquery-impromptu.js"></script>
 <!--ENDIMPROMTU--> 
 
 <!-- TOOLTIPS DE ACRONYM -->
@@ -132,6 +128,30 @@ window.onload = init;
  })
 	</script>	
 <!-- FIN -->
+<script type="text/javascript">      
+// ELIMINA LOS REGISTROS DE LA CATEGORIA PRINCIPAL
+function removeList(id){
+	var txt = '<?=admin::labels('delete','sure')?>?<br /><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		submit: function(e,v,m,f){
+			if(v){
+                        	var uid = m.find('#list').val();
+				  $('#'+id).fadeOut(500, function(){ $(this).remove(); });
+					  $.ajax({
+						url: 'code/execute/incotermDel.php',
+						type: 'POST',
+						data: 'uid='+id+'&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>'
+					});
+				   
+				 }
+			else {}
+		}
+	});
+}
+</script>
 
 </head>
 <body>

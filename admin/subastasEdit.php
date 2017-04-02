@@ -49,22 +49,14 @@ admin::initialize($opcionMenu, $opocionSubMenu);
 <!--<script language="javascript" type="text/javascript" src="js/jquery-1.3.2.js"></script>-->
 <script language="javascript" type="text/javascript" src="js/ajaxlib.js?version=<?=VERSION?>"></script>
 <script type="text/javascript" src="js/subastas.js?version=<?=VERSION?>"></script>
-
-<!-- PROMPT -->
-<!--<script language="javascript" type="text/javascript" src="js/jquery.js"></script>-->
-<script language="javascript" type="text/javascript" src="js/jquery.Impromptu.js"></script>
-<script src="js/ui.core.js" type="text/javascript"></script>
-<script src="js/ui.sortable.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/interface.js"></script>
 <!-- TOOLTIPS DE ACRONYM -->
 <script language="javascript" type="text/javascript" src="js/addEvent.js"></script>
 <script language="javascript" type="text/javascript" src="js/sweetTitles.js"></script>
 <link rel="stylesheet" href="css/sweetTitles.css" type="text/css" />
 <!-- FIN -->
 <!--BEGINIMPROMTU-->
-<link rel="stylesheet" type="text/css" href="css/impromptu.css" />
-<script type="text/javascript" src="js/jquery.Impromptu.js"></script>
-
+<link rel="stylesheet" type="text/css" href="js/impromptu/jquery-impromptu.css">
+<script type="text/javascript" src="js/impromptu/jquery-impromptu.js"></script>
 <!--ENDIMPROMTU--> 
 <!-- GROW de los Text areas -->
 <script type="text/javascript">
@@ -74,7 +66,7 @@ function removeDoc(id){
 		show:'fadeIn' ,
 		opacity:0,
 		buttons:{Eliminar:true, Cancelar:false},
-		callback: function(v,m){
+		submit: function(e,v,m,f){
 										   
 			if(v){
 				var uid = id; /* m.find('#list').val(); */
@@ -103,7 +95,7 @@ function removeImg(id){
 		show:'fadeIn' ,
 		opacity:0,
 		buttons:{Eliminar:true, Cancelar:false},
-		callback: function(v,m){
+		submit: function(e,v,m,f){
 										   
 			if(v){
 				var uid = id; /* m.find('#list').val(); */
@@ -133,7 +125,7 @@ function removeList(id){
 		show:'fadeIn' ,
 		opacity:0,
 		buttons:{Eliminar:true, Cancelar:false},
-		callback: function(v,m){
+		submit: function(e,v,m,f){
 										   
 			if(v){
 				var uid = m.find('#list').val();
