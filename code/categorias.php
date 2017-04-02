@@ -144,7 +144,7 @@
                                                                         //echo $urlLink;
 									if($faltante!='Concluido')
 									{
-                                    ?><p class="right"><a href="<?=$urlLink?>" class="addcart">Ir a la puja</a></p>
+                                    ?><p class="right"><a href="<?=$urlLink?>" class="addcart">Ir a la compra</a></p>
                                     <?php
 									}
 									?>

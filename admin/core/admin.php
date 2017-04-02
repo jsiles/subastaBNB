@@ -24,6 +24,41 @@ $array_temporal =array(); // used for getFullUrl
 
 class admin
 	{
+    function  __construct()
+    {
+        $path = PATH_ROOT."/img/banner/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+        $path = PATH_ROOT."/img/client/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+        $path = PATH_ROOT."/img/subasta/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+        $path = PATH_ROOT."/docs/subasta/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+         $path = PATH_ROOT."/admin/upload/users/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+         $path = PATH_ROOT."/admin/upload/sites/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+         $path = PATH_ROOT."/admin/upload/profile/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+         $path = PATH_ROOT."/admin/upload/oc/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+    }
     /***************************************************
      function: splitText                     
      @paramIn:  

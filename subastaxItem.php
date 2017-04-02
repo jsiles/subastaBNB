@@ -111,7 +111,7 @@ $(function () {
 	<?php
 	}elseif($timeInicio==2){
 	?>
-//	bids();
+	bids();
         $(".subastandose").show();
 	$(".tiempoRestante").html('Fecha cierre de la compra:');
 	$('.defCountDown').html('<?=admin::changeFormatDate($details["sub_deadtime"],7)?>');
@@ -133,22 +133,31 @@ $(function () {
 });
 function bids()
 {
-    /*
+    
 	$.ajax({
 	   type: "POST",
 	   url: "<?=$domain?>/code/valBidsIt.php",
-	   data: "deadTime="+'<?=$details["sub_deadtime"]?>'+"&sub_uid="+<?=$details["sub_uid"]?>,
+	   data: "sub_type="+'<?=$details["sub_type"]?>'+"&sub_uid="+<?=$details["sub_uid"]?>,
 	   success: function(valBids){
-		 if(valBids!=1) $("#subastaDetail").html(valBids);
-//		 else subastaOff(); 
+		 if(valBids){
+                     setTimeout(function(){bids();},1000);
+                     var data = valBids.split("|");
+                     //alert(data[0]);
+                     for(i=0;i<data.length;i++){
+                     var datos = data[i].split(";");
+                     $(function() {
+                        var myId = '#p_'+ datos[0];
+                            $(myId).html(datos[1]);
+                          });
+                     
+                 }
+             }
 		}
 	 });
-	*/
-           alert('bids');
 }
 function subastaOn()
 {
-	//bids();
+	bids();
         $(".subastandose").show();
 	$(".tiempoSubasta").show();
 	$(".subastaP").fadeIn('slow');	
@@ -170,7 +179,6 @@ function subastaReload()
 		 else location.reload();
 	   }
 	 });
-  //  alert('subasta reload');
 }
 function subastaOff()
 {
