@@ -1,0 +1,35 @@
+/* CSS Document */
+
+	.suggestionsBox {
+		position: relative;
+/*		left: 30px; */
+		margin: 10px 0px 0px 0px;
+		width: 200px;
+		background-color: #1b3a77;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border: 2px solid #1b3a77;	
+		color: #fff;
+		z-index:1000;
+	}
+	
+	.suggestionList {
+		margin: 0px;
+		padding: 0px;
+		font-size:11px;
+		z-index:1000;
+	}
+	
+	.suggestionList li {
+		
+		margin: 0px 0px 3px 0px;
+		padding: 3px;
+		list-style:none;
+		cursor: pointer;
+		z-index:1000;
+	}
+	
+	.suggestionList li:hover {
+		background-color: #1f4180;
+		z-index:1000;
+	}
