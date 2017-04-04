@@ -2,15 +2,9 @@
 function verifyUsers()
 	{
 	sw=true;
-	document.getElementById('div_usr_login').style.display='none';
 	document.getElementById('div_usr_email').style.display='none';
 	document.getElementById('div_usr_pass').style.display='none';
 	
-	if (document.getElementById('usr_login').value==''){
-		document.getElementById('usr_login').className='inputError';
-		document.getElementById('div_usr_login').style.display='';
-		sw=false;
-	}
 		
 	if(document.getElementById('pass_edit').style.display=='block')
 		if (document.getElementById('usr_pass').value==''){

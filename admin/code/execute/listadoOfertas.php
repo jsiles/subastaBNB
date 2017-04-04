@@ -11,7 +11,7 @@ $prodTpl = $db->next_record();
 $style='style="background-color:yellow;"';
 $subType =$prodTpl["sub_type"];
           if($prodTpl["sub_modalidad"]=="TIEMPO"){
-		 $countBids=admin::getDBvalue("SELECT count(*) FROM mdl_bid where bid_sub_uid='".$prodTpl["sub_uid"]."' and bid_cli_uid!=0 order by bid_uid desc");
+		 $countBids=admin::getDBvalue("SELECT count(*) FROM mdl_bid where bid_sub_uid='".$prodTpl["sub_uid"]."' and bid_cli_uid!=0 group by bid_uid order by bid_uid desc");
 		 if ($countBids>0){
                      		 ?>
          <table width="100%" border="0">
@@ -23,10 +23,10 @@ $subType =$prodTpl["sub_type"];
           </tr>
                 
             <tr>
-				<td width="40%" class="txt11 color2">Nombre de usuario:</td>
-				<td width="30%" class="txt11 color2">Fecha y hora:</td>
-                <td width="30%" class="txt11 color2">Monto:</td>
-                <td width="30%" class="txt11 color2">Monto con factor de ajuste:</td>
+				<td width="25%" class="txt11 color2">Proveedor:</td>
+				<td width="25%" class="txt11 color2">Fecha y hora:</td>
+                <td width="25%" class="txt11 color2">Monto:</td>
+                <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
 			</tr>         
                
                  <?php
@@ -37,10 +37,10 @@ $subType =$prodTpl["sub_type"];
 				{
 				 $clientName=admin::getDBvalue("SELECT cli_socialreason FROM mdl_client where cli_uid='".$content["bid_cli_uid"]."'");
 				 ?><tr>
-				<td width="40%" <?php if($i==0) echo $style;?>><?=$clientName?></td>
-				<td width="30%" <?php if($i==0) echo $style;?>><?=$content["bid_date"]?></td>
-                <td width="30%" <?php if($i==0) echo $style;?>><?=$content["bid_mount"]?></td>
-                <td width="30%" <?php if($i==0) echo $style;?>><?=$content["bid_mountxfac"]?></td>
+				<td width="25%" <?php if($i==0) echo $style;?>><?=$clientName?></td>
+				<td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_date"]?></td>
+                <td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_mount"]?></td>
+                <td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_mountxfac"]?></td>
                                  </tr>
              	<?php
                                     $i++;
@@ -60,12 +60,12 @@ $subType =$prodTpl["sub_type"];
           </tr>
                 
             <tr>
-				<td width="25%" class="txt11 color2">Nombre de usuario:</td>
+				<td width="25%" class="txt11 color2">Proveedor:</td>
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                                 <td width="25%" class="txt11 color2">Monto:</td>
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
                                 <td width="25%" class="txt11 color2">Item:</td>
-                                <!--<td width="25%" class="txt11 color2">Especificaci&oacute;n T&eacute;cnica:</td>-->
+                                <!--<td width="25%" class="txt11 color2">Documento Oferta:</td>-->
                                 
 			</tr>         
                
@@ -116,12 +116,12 @@ $subType =$prodTpl["sub_type"];
           </tr>
                 
             <tr>
-				<td width="25%" class="txt11 color2">Nombre de usuario:</td>
+				<td width="25%" class="txt11 color2">Proveedor:</td>
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                                 <td width="25%" class="txt11 color2">Monto:</td>
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
                                 <td width="25%" class="txt11 color2">Item:</td>
-                                <td width="25%" class="txt11 color2">Especificaci&oacute;n T&eacute;cnica:</td>
+                                <td width="25%" class="txt11 color2">Documento Oferta:</td>
                                 
 			</tr>         
                

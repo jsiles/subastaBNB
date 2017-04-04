@@ -89,7 +89,7 @@ $html.=	'</table>
 	<table width="100%">';
 
 if($sub_modalidad=="TIEMPO"){
-$html.='    	<tr><th>Nombre de usuario:</th>
+$html.='    	<tr><th>Proveedor:</th>
             <th>Fecha y hora:</th>
             <th>Monto:</th>
             <th>Monto con factor de ajuste:</th>
@@ -107,7 +107,7 @@ $html.='  <tr><td width="25%" align="center">'.$clientName.'</td>
  }   
 }else{
            
-    	$html.='<tr><th>Nombre de usuario:</th>
+    	$html.='<tr><th>Proveedor:</th>
             <th>Fecha y hora:</th>
             <th>Monto:</th>
             <th>Monto con factor de ajuste:</th>

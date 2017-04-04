@@ -160,7 +160,7 @@ while ($firstPart = $db->next_record())
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="reporteList2.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a> 
+                                    <a href="reporteList.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a> 
 				</td>
         </tr>
       </table>

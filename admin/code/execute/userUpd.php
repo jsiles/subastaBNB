@@ -16,8 +16,9 @@ $usr_statusA = admin::toSql(safeHtml($_POST["usr_status"]),"String");
 $usr_rolA = admin::toSql(safeHtml($_POST["usr_rol"]),"Number");
 if ($usr_passA!=""){ $changepassA = "usr_pass='" . md5($usr_passA) . "',";}
 
+
+			
 $sql = "update sys_users set
-			usr_login='".$usr_loginA."',
 			usr_firstname='".$usr_firstnameA."', 
 			usr_lastname='".$usr_lastnameA."',";
 if($usr_statusA!='') {$sql .= "usr_status='".$usr_statusA."', ";}
@@ -57,8 +58,8 @@ if ($validFile && $FILES['error']==0)
 	$sql = "update mdl_roles_users set rus_rol_uid=".$usr_rolA." where rus_usr_uid=".$use_uidA;
 	$db->query($sql);
 
-        $token=admin::getParam("token");	
-        if(!admin::verifyModulePermission($sMenu))
+        $token=admin::getParam("token");
+        if(!admin::verifyModulePermission(5))
         {
             $modAccess = admin::getDBvalue("select top 1 a.mus_mod_uid from sys_modules_users a, sys_modules b where a.mus_rol_uid=".$_SESSION["usr_rol"]." and a.mus_mod_uid=b.mod_uid and b.mod_status='ACTIVE' and b.mod_parent=0 order by b.mod_position");
             $urlSite = admin::getDBValue("select mod_index from sys_modules where mod_uid=". $modAccess ." and mod_status='ACTIVE'");
@@ -68,10 +69,14 @@ if ($validFile && $FILES['error']==0)
                                             }else{
                                                 $urlSite.="?token=".$token;
                                             }
+                                           // echo $urlSite;die;
             header("Location: ".PATH_DOMAIN."/admin/".$urlSite);
-            }else header("Location: ".PATH_DOMAIN."/index.php");
+            }else { //echo "@@";die;
+                header("Location: ".PATH_DOMAIN."/index.php");
+            }
         }
         else {
+            //echo "##";die;
             header("Location: ../../userList.php?token=".$token);		
         }
 ?>

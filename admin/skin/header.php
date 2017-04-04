@@ -7,8 +7,9 @@ $ban_name = admin::getDbValue("select top 1 ban_title from mdl_banners_contents,
 		$conParent = isset($_GET["con_parent"]) ? '?con_parent='.$_GET["con_parent"].'&token='.$_GET['token'] : '?token='.$_GET['token'];
 ?>
 <script language="javascript" type="text/javascript">
+    var today = new Date('<?=date("d M Y G:i:s")?>');
 function startTime() {
-    var today = new Date();
+
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
@@ -16,7 +17,8 @@ function startTime() {
     s = checkTime(s);
     document.getElementById('clockSys').innerHTML =
     h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 500);
+    today.setSeconds(today.getSeconds()+1);
+    var t = setTimeout(startTime, 1000);
 }
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10

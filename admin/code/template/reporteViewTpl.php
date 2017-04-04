@@ -191,7 +191,7 @@ while ($secPart = $db2->next_record())
 <?php
 if($sub_modalidad=="TIEMPO"){
 ?>            
-    	<tr><th>Nombre de usuario:</th>
+    	<tr><th>Proveedor:</th>
             <th>Fecha y hora:</th>
             <th>Monto:</th>
             <th>Monto con factor de ajuste:</th>
@@ -213,7 +213,7 @@ while ($secPart = $db2->next_record())
 }else{
 
     ?>            
-    	<tr><th>Nombre de usuario:</th>
+    	<tr><th>Proveedor:</th>
             <th>Fecha y hora:</th>
             <th>Monto:</th>
             <th>Monto con factor de ajuste:</th>
@@ -309,7 +309,7 @@ while ($secPart = $db2->next_record())
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="reporteList.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a> 
+                                    <a href="reporteList2.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a> 
 				</td>
         </tr>
       </table>

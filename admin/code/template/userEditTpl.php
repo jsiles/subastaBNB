@@ -26,7 +26,8 @@ $regusers = $db->next_record();
             <tr>
 			<td width="16%">Usuario:</td>
 			<td width="84%">
-                            <input name="usr_login" type="text" disabled="disabled" class="input" id="usr_login" onfocus="setClassInput(this,'ON');document.getElementById('div_usr_login').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_usr_login').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_usr_login').style.display='none';" value="<?=$regusers["usr_login"]?>" size="60"/><br /><span id="div_usr_login" style="display:none;" class="error"><?=admin::labels('users','nameerror');?></span>
+                            <!--<input name="usr_login" type="text" class="input" id="usr_login" onfocus="setClassInput(this,'ON');document.getElementById('div_usr_login').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_usr_login').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_usr_login').style.display='none';" value="<?=$regusers["usr_login"]?>" size="60"/><br /><span id="div_usr_login" style="display:none;" class="error"><?=admin::labels('users','nameerror');?></span>-->
+                            <?=$regusers["usr_login"]?>
 			</td>
 		</tr>
         <tr>

@@ -82,7 +82,7 @@ if($bidsCompra=='COMPRA')
 	
 		echo '<form name="formBids" enctype="multipart/form-data"  class="formLabel">Su oferta es: '.$orig_monto_ofertado.' + el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br>'
                         . ' <br><br>'
-                        . 'Adjuntar especificaci&oacute;n t&eacute;cnica: '
+                        . 'Adjuntar Documento Oferta: '
                         . '<br /><br /><br /><br /><input name="docTec" id="docTec" type="file" /><br /><br /><br /><br />'
                         . '<p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>'
                         . 'Por favor confirmar los datos de la oferta. <br><br>';
@@ -92,7 +92,7 @@ if($bidsCompra=='COMPRA')
 
 		echo '<form name="formBids" class="formLabel">Su oferta es: '.$orig_monto_ofertado.' - el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br>'
                         . '<br><br>'
-                        . 'Adjuntar especificaci&oacute;n t&eacute;cnica: '
+                        . 'Adjuntar Documento Oferta: '
                         . '<br /><br /><br /><br /><input name="docTec" id="docTec" type="file" /><br /><br /><br /><br />'
                         . '<p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>'
                         . 'Por favor confirmar los datos de la oferta. <br><br>';

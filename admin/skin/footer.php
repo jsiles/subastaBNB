@@ -18,5 +18,6 @@
     <div style="float:right;margin-right:100px"><span style="color: blue;font-size: 14; font-weight: bold; " id="clockSys"></span></div>
 </div>
 <script type="text/javascript">
+   // window.onload=startTime();
   startTime('clockSys');
 </script>
