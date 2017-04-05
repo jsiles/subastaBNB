@@ -298,14 +298,20 @@ $prod = $db->next_record();
 					</td>
 				</tr>  
                 <?php
+                //echo "@@".$prod["sub_wheels"]."##".$prod["sub_modalidad"];
                         if($prod["sub_modalidad"]!="PRECIO")
                         {
                         ?>
+                                
                 <tr id="tr_numeroruedas" style="display:">
 				<td width="29%">N&uacute;mero de ruedas:</td>
 				<td width="64%">
-				<input name="sub_wheels" type="text" class="input" id="sub_wheels" onfocus="setClassInput(this,'ON');document.getElementById('div_sub_wheels').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_sub_wheels').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_sub_wheels').style.display='none';" size="9" value="<?=$prod["sub_wheels"]?>"/>
-                <br /><span id="div_sub_wheels" style="display:none; padding-left:5px; padding-right:5px;" class="error">Número de ruedas requerido</span>
+				<input name="sub_wheels" type="text" class="input" id="sub_wheels" 
+                                       onfocus="setClassInput(this,'ON');document.getElementById('div_sub_wheels').style.display='none';" 
+                                       onblur="setClassInput(this,'OFF');document.getElementById('div_sub_wheels').style.display='none';" 
+                                       onclick="setClassInput(this,'ON');document.getElementById('div_sub_wheels').style.display='none';" 
+                                       size="9" value="<?=$prod["sub_wheels"]?>"/>
+                                <br /><span id="div_sub_wheels" style="display:none; padding-left:5px; padding-right:5px;" class="error">N&uacute;mero de ruedas requerido</span>
 				</td>
 			</tr>
                         <?php } ?>

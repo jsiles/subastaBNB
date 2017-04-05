@@ -133,7 +133,7 @@ $montoAdjudicacion=admin::getDBvalue("SELECT sua_monto FROM mdl_subasta_informe 
     <td align="left"><?=$sub_tiempo?></td>
 </tr>
  <?php
-                        if($sub_modalidad!="PRECIO")
+                        if($sub_modalidad=="TIEMPO")
                         {
                         ?>
 <tr>

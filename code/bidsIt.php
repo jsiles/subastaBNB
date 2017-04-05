@@ -12,7 +12,7 @@ else
 $valBids=admin::getDBvalue("SELECT MAX(bid_mountxfac) FROM mdl_biditem where bid_sub_uid='".$sub_uid."' and bid_xit_uid=$xit_uid");
 
 $mBase=admin::getDBvalue("SELECT xit_price FROM mdl_xitem where xit_sub_uid='".$sub_uid."' and xit_uid=$xit_uid");
-$unidad=admin::getDBvalue("SELECT xit_unidad FROM mdl_xitem where xit_sub_uid='".$sub_uid."' and xit_uid=$xit_uid");
+$unidad=admin::getDBvalue("SELECT xit_unity FROM mdl_xitem where xit_sub_uid='".$sub_uid."' and xit_uid=$xit_uid");
 $sub_tiempo=admin::getDBvalue("SELECT sub_tiempo FROM mdl_subasta where sub_uid='".$sub_uid."'");
 
 $factor = admin::getDbValue("select inc_ajuste from mdl_incoterm where inc_delete=0 and inc_cli_uid=".admin::getSession("uidClient")." and inc_sub_uid=".$sub_uid);

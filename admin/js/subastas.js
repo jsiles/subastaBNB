@@ -33,7 +33,7 @@ switch(valOpcion)
 
 	case 'ITEM':
                                        
-                                        $("#sub_wheels").val('');
+                                       // $("#sub_wheels").val('');
 					
 					$("#tr_numeroruedas").show();
 					$("#tr_montodead").hide();

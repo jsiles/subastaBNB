@@ -100,7 +100,7 @@ $(function () {
     
     setInterval(function(){
    $.get('<?=$domain?>/code/keepalive.php');
-}, 300000);
+}, 30000);
 
 	<?php
 	if($timeInicio==1)

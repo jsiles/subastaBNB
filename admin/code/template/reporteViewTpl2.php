@@ -122,7 +122,7 @@ while ($firstPart = $db->next_record())
     <td align="left"><?=$sub_tiempo?></td>
 </tr>
  <?php
-                        if($sub_modalidad!="PRECIO")
+                        if($sub_modalidad=="TIEMPO")
                         {
                         ?>
 <tr>

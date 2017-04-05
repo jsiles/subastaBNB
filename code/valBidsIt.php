@@ -14,11 +14,13 @@ while($details = $db->next_record())
     }else{
         $montoRef = admin::getDbValue("select min(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details['xit_uid']);
     }
+    if($montoRef){
     if($i==0)
         $dataRef.= $details['xit_uid'].";".$montoRef;
     else 
         $dataRef.="|".$details['xit_uid'].";".$montoRef;
     $i++;
+    }
 }
 echo $dataRef;
 ?>            
