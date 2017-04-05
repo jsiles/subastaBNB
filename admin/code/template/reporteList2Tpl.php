@@ -94,12 +94,12 @@ if ($nroReg>0)
   <td colspan="2">
   <table width="100%" border="0">
 	<tr>
-		<td width="10%"><a href="reporteList2.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+		<td width="5%"><a href="reporteList2.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
         <td width="25%" ><a href="reporteList2.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
         <td width="25%" ><a href="reporteList2.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
-        <!--<td width="25%" ><span class="txt11 color2">Reporte XLS:</span></td>
-        <td width="15%" align="center"><span class="txt11 color2">Reporte PDF:</span></td>		-->
-        <td width="40%"></td>
+        <td width="25%" ><span class="txt11 color2">Unidad Solicitante:</span></td>
+        <!--<td width="15%" align="center"><span class="txt11 color2">Reporte PDF:</span></td>		-->
+        <td width="20%"></td>
 	</tr>
 	</table>
   </td>
@@ -128,6 +128,19 @@ while ($subasta_list = $pagDb->next_record())
 
 	if ($subasta_list["pro_stress"]==1) $dest = 'style=" font-weight:bold;"';
 	else $dest = '';
+        
+        $unidadArray =  admin::dbFillArray("select uni_uid, uni_description from mdl_unidad, mdl_subasta_unidad where suu_uni_uid=uni_uid and suu_sub_uid=$sub_uid group by uni_uid, uni_description");
+        $k=0; 
+        $rav_unidad="";
+        $unidadUid="";
+        if(is_array($unidadArray))
+        foreach($unidadArray as $key => $value)
+        {
+            if($k==0){$rav_unidad.= $value;$unidadUid.=$key;}
+            else {$rav_unidad.= ",".$value;$unidadUid.=",".$key;}
+            $k++;
+        }
+        else $rav_unidad="Sin asignar";
   	?> 
 	<div class="groupItem" id="<?=$pro_uid?>">
     
@@ -135,15 +148,14 @@ while ($subasta_list = $pagDb->next_record())
     
     <table class="list" width="100%" style="">
 	<tr>
-		<td width="10%" ><span <?=$dest?>><?=admin::toHtml($sub_uid)?></span></td>
+		<td width="5%" ><span <?=$dest?>><?=admin::toHtml($sub_uid)?></span></td>
         <td width="25%" ><span <?=$dest?>><?=ucfirst(strtolower(trim(admin::toHtml($pro_name))))?></span></td>
         <td width="25%" ><span <?=$dest?>><?=ucwords(strtolower(trim(admin::toHtml($pca_name))))?></span></td>
-        <!--<td width="25%" ><a href="code/execute/reporteTpl2XlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=xls">
-        <img src="lib/ext/excel.png" border="0" alt="Excel" title="Excel" /></a></td>
-	<td align="center" width="15%" height="5"> <a href="code/execute/reporteTpl2XlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>
+        <td width="25%" ><?=$rav_unidad?></td>
+	<!--<td align="center" width="15%" height="5"> <a href="code/execute/reporteTpl2XlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>
     
 	</td>-->
-        <td width="40%">
+        <td width="20%">
                    <?php
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=27 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){

@@ -225,7 +225,7 @@ $i = 26;
 while ($secPart = $db2->next_record())
 {		
      $clientName=admin::getDBvalue("SELECT cli_socialreason FROM mdl_client where cli_uid='".$secPart["bid_cli_uid"]."'");
-     $itemPr=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$secPart["bid_xit_uid"]." and xit_delte=0");
+     $itemPr=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$secPart["bid_xit_uid"]." and xit_delete=0");
      ?>
 	 <tr><td width="20%" align="center"><?=$clientName?></td>
              <td width="20%" align="center"><?=$secPart['bid_date']?></td>
