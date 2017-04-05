@@ -5,6 +5,76 @@ $db->query($sql);
 $prod = $db->next_record();
 
 ?>
+<script>
+    function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+function valForm(){
+    sw=true;
+        document.getElementById('div_monto').style.display='none';
+        document.getElementById('div_ahorro').style.display='none';
+        document.getElementById('div_elaborado').style.display='none';
+        document.getElementById('div_aprobado').style.display='none';
+        document.getElementById('div_observaciones').style.display='none';
+       
+    if (document.getElementById('monto').value==''){
+		document.getElementById('monto').className='inputError';
+		document.getElementById('div_monto').style.display='';
+		//document.getElementById('div_monto').innerHTML = "* El Monto es necesario!";
+		sw=false;
+	}
+	else
+	{
+            if (!isNumeric(document.getElementById('monto').value)){
+                                document.getElementById('monto').className='inputError';
+                                document.getElementById('div_monto').style.display='';
+                                document.getElementById('div_monto').innerHTML = "Solo Numeros";
+                                sw=false;
+		}
+            }
+    if (document.getElementById('ahorro').value==''){
+		document.getElementById('ahorro').className='inputError';
+		document.getElementById('div_ahorro').style.display='';
+		//document.getElementById('div_ahorro').innerHTML = "El Ahorro es necesario!";
+		sw=false;
+	}
+	else
+	{
+            if (!isNumeric(document.getElementById('ahorro').value)){
+			document.getElementById('ahorro').className='inputError';
+			document.getElementById('div_ahorro').style.display='';
+			document.getElementById('div_ahorro').innerHTML = "Solo Numeros";
+			sw=false;
+		}
+            }
+ 
+        
+	if (document.getElementById('elaborado').value=='')
+		{
+		document.getElementById('elborado').className='inputError';
+		document.getElementById('div_elaborado').style.display='';
+		sw=false;
+		}
+	if (document.getElementById('aprobado').value=='')
+		{
+		document.getElementById('aprobado').className='inputError';
+		document.getElementById('div_aprobado').style.display='';
+		sw=false;
+		}
+        if (document.getElementById('observaciones').value=='')
+		{
+		document.getElementById('observaciones').className='textError';
+		document.getElementById('div_observaciones').style.display='';
+		sw=false;
+		}        
+                                
+	if (sw) 
+		{
+		document.frmsubasta.submit();
+		}
+	
+}
+</script>
 <br />
 <div id="div_wait" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <form name="frmsubasta" method="post" action="code/execute/adjudicarSubastaUpd.php?token=<?=admin::getParam("token")?>&sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
@@ -202,8 +272,12 @@ $prod = $db->next_record();
                 <?=admin::getDbValue("select cur_description from mdl_currency where cur_uid=".$prod["sub_moneda"])?>
 				</td>
 			</tr>
+                        <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
             <tr id="tr_unidadmejora" style="display:">
-				<td>Unidad de mejorar:</td>
+				<td>Unidad de mejora:</td>
 				<td><?=$prod["sub_mount_unidad"]?>
 				</td>
 			</tr>
@@ -211,6 +285,9 @@ $prod = $db->next_record();
                 <td>N&uacute;mero de ruedas:</td>
 				<td><?=$prod["sub_wheels"]?></td>
 			</tr>
+                        <?php
+                        }
+                        ?>
 			<tr>
 				<td>Tiempo l&iacute;mite de mejora en min.:</td>
 				<td><?=$prod["sub_tiempo"]?>
@@ -486,33 +563,31 @@ while ($list = $db2->next_record())
     <table class="list" width="100%">
 	<tr>
             <td width="12%" style="color:#16652f">Elaborado por:</td>
-            <td>
-                <input id="elaborado" name="elaborado" value="<?=$informe["sua_elaborado"]?>">
-                <input id="sua_uid" type="hidden" name="sua_uid" value="<?=$sua_uid?>">
+            <td><input id="elaborado" name="elaborado" value="<?=$_SESSION["usr_firstname"] ." ".$_SESSION["usr_lastname"]?>" onfocus="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_elaborado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';">
             <br /><span id="div_elaborado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Aprobado por:</td>
-            <td><input id="aprobado" name="aprobado" value="<?=$informe["sua_aprobado"]?>">
+            <td><input id="aprobado" name="aprobado" onfocus="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_aprobado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';">
             <br /><span id="div_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
-            <td><input id="monto" name="monto" value="<?=$informe["sua_monto"]?>">
+            <td><input id="monto" name="monto" onfocus="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_monto').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';">
             <br /><span id="div_monto" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Ahorro econ&oacute;mico:</td>
-            <td><input id="ahorro" name="ahorro" value="<?=$informe["sua_ahorro"]?>">
+            <td><input id="ahorro" name="ahorro" onfocus="setClassInput(this,'ON');document.getElementById('div_ahorro').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_ahorro').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_ahorro').style.display='none';">
             <br /><span id="div_ahorro" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Observaciones:</td>
-            <td><textarea id="observaciones" rows="4" cols="45" name="observaciones"><?=$informe["sua_observaciones"]?></textarea>
+            <td><textarea id="observaciones" rows="4" cols="45" name="observaciones"  onfocus="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';" onblur="setClassTextarea(this,'OFF');document.getElementById('div_observaciones').style.display='none';" onclick="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';"></textarea>
             <br /><span id="div_observaciones" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
@@ -527,7 +602,7 @@ while ($list = $db2->next_record())
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="#" class="button" onclick="verifyadjudicar();" >Actualizar</a>
+                                    <a href="#" class="button" onclick="valForm();" >Actualizar</a>
 				</td>
                                 <td width="41%" style="font-size:11px;">
                                     o <a href="informeList.php?token=<?=admin::getParam("token")?>" >Cancelar</a> 

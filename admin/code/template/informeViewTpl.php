@@ -202,12 +202,16 @@ $prod = $db->next_record();
                 <?=admin::getDbValue("select cur_description from mdl_currency where cur_uid=".$prod["sub_moneda"])?>
 				</td>
 			</tr>
+                         <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
             <tr id="tr_unidadmejora" style="display:">
-				<td>Unidad de mejorar:</td>
+				<td>Unidad de mejora:</td>
 				<td><?=$prod["sub_mount_unidad"]?>
 				</td>
 			</tr>
-            
+            <?php } ?>
 			<tr>
 				<td>Tiempo l&iacute;mite de mejora en min.:</td>
 				<td><?=$prod["sub_tiempo"]?>
