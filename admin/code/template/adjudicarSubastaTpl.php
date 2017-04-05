@@ -64,7 +64,7 @@ function valForm(){
 		}
         if (document.getElementById('observaciones').value=='')
 		{
-		document.getElementById('observaciones').className='inputError';
+		document.getElementById('observaciones').className='textError';
 		document.getElementById('div_observaciones').style.display='';
 		sw=false;
 		}        
@@ -273,8 +273,12 @@ function valForm(){
                 <?=admin::getDbValue("select cur_description from mdl_currency where cur_uid=".$prod["sub_moneda"])?>
 				</td>
 			</tr>
+                         <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
             <tr id="tr_unidadmejora" style="display:">
-				<td>Unidad de mejorar:</td>
+				<td>Unidad de mejora:</td>
 				<td><?=$prod["sub_mount_unidad"]?>
 				</td>
 			</tr>
@@ -282,6 +286,9 @@ function valForm(){
                 <td>N&uacute;mero de ruedas:</td>
 				<td><?=$prod["sub_wheels"]?></td>
 			</tr>
+                        <?php
+                        }
+                        ?>
 			<tr>
 				<td>Tiempo l&iacute;mite de mejora en min.:</td>
 				<td><?=$prod["sub_tiempo"]?>
@@ -576,7 +583,7 @@ while ($list = $db2->next_record())
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Observaciones:</td>
-            <td><textarea id="observaciones" rows="4" cols="45" name="observaciones"  onfocus="setClassInput(this,'ON');document.getElementById('div_observaciones').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_observaciones').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_observaciones').style.display='none';"></textarea>
+            <td><textarea id="observaciones" rows="4" cols="45" name="observaciones"  onfocus="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';" onblur="setClassTextarea(this,'OFF');document.getElementById('div_observaciones').style.display='none';" onclick="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';"></textarea>
             <br /><span id="div_observaciones" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>

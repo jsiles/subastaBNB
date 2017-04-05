@@ -50,6 +50,24 @@ $html= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
 <tr><td width="21%">Monto Referencial:</td><td width="21%" align="left">'.$sub_mount_base.'</td><td width="6%"></td><td width="21%">Tiempo límite de mejora en min.:</td><td width="21%" align="left">'.$sub_tiempo.'</td></tr>
 <tr><td width="21%">Unidad de mejora:</td><td width="21%" align="left">'.$sub_mount_unidad.'</td><td width="6%"></td><td width="21%"></td><td width="21%"></td></tr>
 <tr><td><br /><br /></td><td><br /><br a/></td></tr>
+<tr><td colspan="5"><h2>3: Proveedores habilitados</h2></td></tr>
+<tr><td><br /></td><td><br /></td></tr>
+<tr><td colspan="5">
+	<table width="100%">
+    	<tr><th width="20%">Proveedor:</th><th width="20%">Lugar de entrega:</th><th width="20%">Medio de transporte:</th><th width="20%">Incoterm:</th><th width="20%">Factor de ajuste:</th></tr>';
+
+$sql ="select cli_socialreason as nombre, inc_lugar_entrega, tra_name, inl_name, inc_ajuste 
+from mdl_incoterm, mdl_incoterm_language, mdl_transporte, mdl_client 
+where inc_inl_uid=inl_uid and inc_tra_uid=tra_uid and inc_cli_uid=cli_uid and inc_delete=0 and inc_sub_uid='$sub_uid' 
+order by inc_uid desc";
+$db2->query($sql);	
+$i = 26;
+while ($secPart = $db2->next_record())
+{		
+     $html.= '<tr><td width="20%" align="center">'.$secPart['nombre'].'</td><td width="20%" align="center">'.$secPart['inc_lugar_entrega'].'</td><td width="20%" align="center">'.$secPart['tra_name'].'</td><td width="20%" align="center">'.$secPart['inl_name'].'</td><td width="20%" align="center">'.$secPart['inc_ajuste'].'</td></tr>';
+ }   
+$html.=	'</table>
+</td></tr>
 </table>
 </body>
 </html>

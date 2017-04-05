@@ -245,14 +245,20 @@ $prod = $db->next_record();
 					<td><input name="sub_hour_end1" type="text" class="input" id="sub_hour_end1" value="<?=$hour_end1?>" size="9"/>
 					</td>
 				</tr>  
-                
+                 <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
                 <tr id="tr_numeroruedas" style="display:">
 				<td width="29%">N&uacute;mero de ruedas:</td>
 				<td width="64%">
 				<input name="sub_wheels" type="text" class="input" id="sub_wheels" onfocus="setClassInput(this,'ON');document.getElementById('div_sub_wheels').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_sub_wheels').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_sub_wheels').style.display='none';" size="9" value="<?=$prod["sub_wheels"]?>"/>
-                <br /><span id="div_sub_wheels" style="display:none; padding-left:5px; padding-right:5px;" class="error">Número de ruedas requerido</span>
+                                <br /><span id="div_sub_wheels" style="display:none; padding-left:5px; padding-right:5px;" class="error">N&uacute;mero de ruedas requerido</span>
 				</td>
 			</tr>
+                        <?php
+                        }
+                        ?>
                 
               <tr id="tr_montobase" style="display:">
 				<td>Monto Referencial:</td>
@@ -267,7 +273,7 @@ $prod = $db->next_record();
 				foreach($arrayMoneda as $key=>$value)
 				{                
 				?>
-                	<option <? if ($key==$prod["sub_moneda"]) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>
+                	<option <?php if ($key==$prod["sub_moneda"]) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>
 				<?php
 				}
 				?>
@@ -292,15 +298,20 @@ $prod = $db->next_record();
                 <br /><span id="div_sub_mountdead" style="display:none; padding-left:5px; padding-right:5px;" class="error"></span>
 				</td>
 			</tr>
-            
+             <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
             <tr id="tr_unidadmejora" style="display:">
-				<td>Unidad de mejorar:</td>
+				<td>Unidad de mejora:</td>
 				<td>
 				<input name="sub_mount_unidad" type="text" class="input" id="sub_mount_unidad" onfocus="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_sub_mount_unidad').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" size="9" value="<?=$prod["sub_mount_unidad"]?>" />
 				<br /><span id="div_sub_mount_unidad" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('subasta','titleerror');?></span>
 				</td>
 			</tr>
-            
+            <?php
+                        }
+                        ?>
 			<tr>
 				<td>Tiempo l&iacute;mite de mejora en min.:</td>
 				<td>

@@ -24,7 +24,7 @@ $sub_uid=$details["sub_uid"];
         
 $getTimeDead = admin::getDbValue("select top 1 rou_datetime from mdl_round where rou_sub_uid=".$details["sub_uid"]." and rou_flag0=0 order by rou_uid asc");        
 $wheel = admin::getDbValue("select top 1 rou_round from mdl_round where rou_sub_uid=".$details["sub_uid"]." and rou_flag0=0 order by rou_uid asc");  
-if(!$wheel) $wheel=0;
+//if(!$wheel) $wheel=0;
 $timetobe=admin::time_diff($details["sub_hour_end"],date('Y-m-d H:i:s'));
 $timedead=admin::time_diff($getTimeDead,date('Y-m-d H:i:s'));
 $finish=$details["sub_finish"];

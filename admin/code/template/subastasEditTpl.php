@@ -297,7 +297,10 @@ $prod = $db->next_record();
 					<td><input name="sub_hour_end1" type="text" class="input" id="sub_hour_end1" value="<?=$hour_end1?>" size="9"/>
 					</td>
 				</tr>  
-                
+                <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
                 <tr id="tr_numeroruedas" style="display:">
 				<td width="29%">N&uacute;mero de ruedas:</td>
 				<td width="64%">
@@ -305,6 +308,7 @@ $prod = $db->next_record();
                 <br /><span id="div_sub_wheels" style="display:none; padding-left:5px; padding-right:5px;" class="error">Número de ruedas requerido</span>
 				</td>
 			</tr>
+                        <?php } ?>
                 
               <tr id="tr_montobase" style="display:">
 				<td>Monto Referencial:</td>
@@ -348,6 +352,10 @@ $prod = $db->next_record();
                 <br /><span id="div_sub_mountdead" style="display:none; padding-left:5px; padding-right:5px;" class="error"></span>
 				</td>
 			</tr>
+                        <?php
+                        if($prod["sub_modalidad"]!="PRECIO")
+                        {
+                        ?>
             
             <tr id="tr_unidadmejora" style="display:">
 				<td>Unidad de mejora:</td>
@@ -356,7 +364,7 @@ $prod = $db->next_record();
 				<br /><span id="div_sub_mount_unidad" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('subasta','titleerror');?></span>
 				</td>
 			</tr>
-            
+                        <?php } ?>
 			<tr>
 				<td>Tiempo l&iacute;mite de mejora en min.:</td>
 				<td>
