@@ -177,7 +177,7 @@ while ($sol_list = $pagDb->next_record())
     	<td width="5%"><?=$solDate?></td>
     	<td width="5%" align="center"><?=$solUid?></td>
     	<td width="12%"><?=$solUnidad?></td>
-    	<td width="12%"><?=$solMonto." ".$solMoneda?></td>
+    	<td width="12%"><?=admin::numberFormat($solMonto)." ".$solMoneda?></td>
     	<td width="12%"><?=$solObservaciones?></td>
         <td width="12%"><?=$solUsuUid?></td>        
         <td width="12%"><?=$solEstado?></td>        

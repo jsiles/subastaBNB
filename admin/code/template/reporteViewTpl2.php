@@ -117,7 +117,7 @@ while ($firstPart = $db->next_record())
 </tr>
 <tr>
     <td >Monto Referencial:</td>
-    <td align="left"><?=$sub_mount_base?></td>
+    <td align="left"><?=admin::numberFormat($sub_mount_base)?></td>
     <td></td><td width="21%">Tiempo l&iacute;mite de mejora en min.:</td>
     <td align="left"><?=$sub_tiempo?></td>
 </tr>

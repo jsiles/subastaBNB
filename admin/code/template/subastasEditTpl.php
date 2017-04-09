@@ -246,7 +246,7 @@ $prod = $db->next_record();
 
 		<table width="98%" border="0" align="right" cellpadding="5" cellspacing="5" class="box">
           <tr>
-            <td colspan="2" class="titleBox"><?=admin::labels('data');?> subasta:</td>
+            <td colspan="2" class="titleBox"><?=admin::labels('data');?> Adicionales:</td>
           </tr>
                         
             <tr>

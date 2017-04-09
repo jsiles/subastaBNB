@@ -89,7 +89,7 @@ if($db->query($sSQL)) $oc=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Monto:</td>
-            <td width="40%" ><input name="orc_monto" id="orc_monto" disabled="disabled" type="text" value="<?=$oc["orc_monto"]?>" class="input">
+            <td width="40%" ><input name="orc_monto" id="orc_monto" disabled="disabled" type="text" value="<?=admin::numberFormat($oc["orc_monto"])?>" class="input">
                 <?php 
 				$arrayMoneda = admin::dbFillArray("select cur_uid, cur_description from mdl_currency where cur_delete=0");
 				

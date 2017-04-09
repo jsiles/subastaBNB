@@ -53,12 +53,12 @@ $rav = $db->next_record();
         </tr>
         <tr>
             <td width="5%" >Monto inferior:</td>    
-            <td width="20%" ><?=$rav["rav_monto_inf"]?></td>
+            <td width="20%" ><?=admin::numberFormat($rav["rav_monto_inf"])?></td>
             <td width="7%">&nbsp;</td>
         </tr>
         <tr>
             <td width="5%" >Monto superior:</td>
-            <td width="20%" ><?=$rav["rav_monto_sup"]?></td>
+            <td width="20%" ><?=admin::numberFormat($rav["rav_monto_sup"])?></td>
             <td width="7%">&nbsp;</td>
         </tr>
         <tr>

@@ -88,7 +88,7 @@ $solEdit=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Monto:</td>
-            <td width="40%" ><input name="sol_monto" id="sol_monto" disabled="disabled" type="text" value="<?=$solEdit["sol_monto"]?>" class="input">
+            <td width="40%" ><input name="sol_monto" id="sol_monto" disabled="disabled" type="text" value="<?=admin::numberFormat($solEdit["sol_monto"])?>" class="input">
                  <?php 
 				$arrayMoneda = admin::dbFillArray("select cur_uid, cur_description from mdl_currency where cur_delete=0");
 				

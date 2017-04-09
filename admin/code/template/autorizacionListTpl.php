@@ -230,7 +230,7 @@ while ($subasta_list = $pagDb->next_record())
 		<td width="10%" ><span <?=$dest?>><?=admin::toHtml($sub_uid)?></span></td>
         <td width="10%" ><span <?=$dest?>><?=ucfirst(strtolower(trim(admin::toHtml($pro_name))))?></span></td>
         <td width="10%" ><span <?=$dest?>><?=ucwords(strtolower(trim(admin::toHtml($pca_name))))?></span></td>
-        <td width="10%" ><span><?=$sub_monto?></span></td>
+        <td width="10%" ><span><?=admin::numberFormat($sub_monto)?></span></td>
         <td width="10%" ><span><?=$sub_estado?></span></td>
 		<td align="left" width="10%" height="5">
          <?php

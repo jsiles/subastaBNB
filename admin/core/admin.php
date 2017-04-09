@@ -1941,7 +1941,11 @@ public static function doLog($text)
       fwrite($fh, date("d-m-Y, H:i")." - $text\n") or die("Could not write file!");
       fclose($fh);
 }
-
+public static function numberFormat($number)
+{
+    $numero = number_format($number,2,".",",");
+    return $numero;
+}
 
 }// LLAVE FINAL DE LA CLASE	
 ?>

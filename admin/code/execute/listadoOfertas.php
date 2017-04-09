@@ -39,8 +39,8 @@ $subType =$prodTpl["sub_type"];
 				 ?><tr>
 				<td width="25%" <?php if($i==0) echo $style;?>><?=$clientName?></td>
 				<td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_date"]?></td>
-                <td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_mount"]?></td>
-                <td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_mountxfac"]?></td>
+                <td width="25%" <?php if($i==0) echo $style;?>><?=admin::numberFormat($content["bid_mount"])?></td>
+                <td width="25%" <?php if($i==0) echo $style;?>><?=admin::numberFormat($content["bid_mountxfac"])?></td>
                                  </tr>
              	<?php
                                     $i++;
@@ -82,8 +82,8 @@ $subType =$prodTpl["sub_type"];
 				 ?><tr>
 				<td width="25%" <?=$style?> ><?=$clientName?></td>
 				<td width="25%" <?=$style?> ><?=$content["bid_date"]?></td>
-                                <td width="25%" <?=$style?> ><?=$content["bid_mount"]?></td>
-                                <td width="25%" <?=$style?> ><?=$content["bid_mountxfac"]?></td>
+                                <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mount"])?></td>
+                                <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>
                                 <td width="25%" <?=$style?> ><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
                                <!-- <td width="25%" <?=$style?> ><?php
                                 if(file_exists(PATH_ROOT."/docs/subasta/".$content["bid_doc"])){
@@ -138,8 +138,8 @@ $subType =$prodTpl["sub_type"];
 				 ?><tr>
 				<td width="25%" <?=$style?> ><?=$clientName?></td>
 				<td width="25%" <?=$style?> ><?=$content["bid_date"]?></td>
-                                <td width="25%" <?=$style?> ><?=$content["bid_mount"]?></td>
-                                <td width="25%" <?=$style?> ><?=$content["bid_mountxfac"]?></td>
+                                <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mount"])?></td>
+                                <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>
                                 <td width="25%" <?=$style?> ><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
                                 <td width="25%" <?=$style?> ><?php
                                 if(file_exists(PATH_ROOT."/docs/subasta/".$content["bid_doc"])){

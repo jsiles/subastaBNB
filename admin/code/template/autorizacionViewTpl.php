@@ -198,7 +198,7 @@ $prod = $db->next_record();
 				</tr>  
               <tr id="tr_montobase" style="display:">
 				<td>Monto Referencial:</td>
-				<td><?=$prod["sub_mount_base"]?>
+				<td><?=admin::numberFormat($prod["sub_mount_base"])?>
                 <?=admin::getDbValue("select cur_description from mdl_currency where cur_uid=".$prod["sub_moneda"])?>
 				</td>
 			</tr>
@@ -208,7 +208,7 @@ $prod = $db->next_record();
                         ?>
             <tr id="tr_unidadmejora" style="display:">
 				<td>Unidad de mejora:</td>
-				<td><?=$prod["sub_mount_unidad"]?>
+				<td><?=admin::numberFormat($prod["sub_mount_unidad"])?>
 				</td>
 			</tr>
                         <?php } ?>

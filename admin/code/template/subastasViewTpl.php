@@ -200,7 +200,7 @@ $prod = $db->next_record();
 				</tr>  
               <tr id="tr_montobase" style="display:">
 				<td>Monto Referencial:</td>
-				<td><?=$prod["sub_mount_base"]?>
+				<td><?=admin::numberFormat($prod["sub_mount_base"])?>
                 <?=admin::getDbValue("select cur_description from mdl_currency where cur_uid=".$prod["sub_moneda"])?>
 				</td>
 			</tr>
@@ -450,7 +450,7 @@ while ($list = $db2->next_record())
     <td width="12%"><?=utf8_decode($fldproduct)?></td>
     <td width="12%"><?=utf8_decode($flddescription)?></td>
     <td width="12%"><img src="<?=PATH_DOMAIN."/img/subasta/thumb2_".utf8_decode($fldimage)?>"  border="0"> </td>
-    <td width="12%"><?=round($fldprice,2)?></td>
+    <td width="12%"><?=admin::numberFormat($fldprice,2)?></td>
 	 <?php
     if($prod["sub_modalidad"]!="PRECIO"){
     ?><td width="12%" align="center"><?=$fldunidad?></td>

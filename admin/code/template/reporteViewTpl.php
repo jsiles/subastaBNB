@@ -128,7 +128,7 @@ $montoAdjudicacion=admin::getDBvalue("SELECT sua_monto FROM mdl_subasta_informe 
 </tr>
 <tr>
     <td >Monto Referencial:</td>
-    <td align="left"><?=$sub_mount_base?></td>
+    <td align="left"><?=admin::numberFormat($sub_mount_base)?></td>
     <td></td><td width="21%">Tiempo l&iacute;mite para ofertar en min.:</td>
     <td align="left"><?=$sub_tiempo?></td>
 </tr>
@@ -211,8 +211,8 @@ while ($secPart = $db2->next_record())
      ?>
 	 <tr><td width="25%" align="center"><?=$clientName?></td>
              <td width="25%" align="center"><?=$secPart['bid_date']?></td>
-             <td width="25%" align="center"><?=$secPart['bid_mount']?></td>
-             <td width="25%" align="center"><?=$secPart['bid_mountxfac']?></td></tr>
+             <td width="25%" align="center"><?=admin::numberFormat($secPart['bid_mount'])?></td>
+             <td width="25%" align="center"><?=admin::numberFormat($secPart['bid_mountxfac'])?></td></tr>
     <?php         
  }   
 }else{
@@ -234,8 +234,8 @@ while ($secPart = $db2->next_record())
      ?>
 	 <tr><td width="20%" align="center"><?=$clientName?></td>
              <td width="20%" align="center"><?=$secPart['bid_date']?></td>
-             <td width="20%" align="center"><?=$secPart['bid_mount']?></td>
-             <td width="20%" align="center"><?=$secPart['bid_mountxfac']?></td>
+             <td width="20%" align="center"><?=admin::numberFormat($secPart['bid_mount'])?></td>
+             <td width="20%" align="center"><?=admin::numberFormat($secPart['bid_mountxfac'])?></td>
              <td width="20%" align="center"><?=$itemPr?></td></tr>
     <?php 
 }

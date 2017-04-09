@@ -140,7 +140,7 @@ function rechazarSubasta(id){
 	});
 }
 function adjudicarSubasta(id){
-	var txt = '<span style="align="left">Orden de compra <input type="file" id="adjuntarID" name="adjuntarID" value="" /></span><br>(Pdf,Excel, Word)<br><br><br><br> * Sólo para compras con montos <?=$valAdj.$rolMax?> ';
+	var txt = '<span style="align="left">Orden de compra <input type="file" id="adjuntarID" name="adjuntarID" value="" /></span><br>(Pdf,Excel, Word)<br><br><br><br> * Solo para compras con montos <?=$valAdj.$rolMax?> ';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,
