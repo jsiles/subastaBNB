@@ -79,17 +79,21 @@ else $mayVal=$valBids+$unidad;
 
 if($bidsCompra=='COMPRA')
 {
-	
+	if(!$monto_ofertado) echo '<form name="formBids" class="formLabel">Introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	elseif(round($monto_ofertado,2)>round($mayVal,2)) echo '<form name="formBids" class="formLabel">Su oferta '.$orig_monto_ofertado.'+ el factor de ajuste asciende a:'.$monto_ofertado.', introduzca una oferta mejor al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	else {
 		echo '<form name="formBids" enctype="multipart/form-data"  class="formLabel">Su oferta es: '.$orig_monto_ofertado.' + el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br>'
                         . ' <br><br>'
                         . 'Adjuntar Documento Oferta: '
                         . '<br /><br /><br /><br /><input name="docTec" id="docTec" type="file" /><br /><br /><br /><br />'
                         . '<p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>'
                         . 'Por favor confirmar los datos de la oferta. <br><br>';
-	
+        }
 }else
 {
-
+        if(!$monto_ofertado) echo '<form name="formBids" class="formLabel">Introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+        elseif(round($monto_ofertado,2)<round($mayVal,2)) echo '<form name="formBids" class="formLabel">Su oferta '.$orig_monto_ofertado.' - el factor de ajuste asciende a:'.$monto_ofertado.', introduzca una oferta mejor al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	else {
 		echo '<form name="formBids" class="formLabel">Su oferta es: '.$orig_monto_ofertado.' - el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br>'
                         . '<br><br>'
                         . 'Adjuntar Documento Oferta: '
@@ -97,7 +101,7 @@ if($bidsCompra=='COMPRA')
                         . '<p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>'
                         . 'Por favor confirmar los datos de la oferta. <br><br>';
 	
-    
+        }
   
 }
 ?>

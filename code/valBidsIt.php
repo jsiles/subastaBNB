@@ -12,7 +12,7 @@ while($details = $db->next_record())
     if($sub_type=="COMPRA"){
         $montoRef = admin::getDbValue("select min(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details['xit_uid']);
     }else{
-        $montoRef = admin::getDbValue("select min(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details['xit_uid']);
+        $montoRef = admin::getDbValue("select max(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details['xit_uid']);
     }
     if($montoRef){
     if($i==0)

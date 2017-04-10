@@ -35,9 +35,8 @@ if($bidsCompra=='COMPRA') $mayVal=$valBids+$unidad;
 else $mayVal=$valBids-$unidad;
 //echo $mayVal."#".$valBids."#".$bidsCompra."#".$monto_ofertado;
 
-//if($bidsCompra=='COMPRA')
-//{
-	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto m&iscute;nimo:'.$mayVal;
+
+	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto:'.$mayVal;
 	else {
             $valOferta=  admin::getDbValue("select count(*) from mdl_biditem where bid_sub_uid=$sub_uid and bid_cli_uid=$cli_uid and bid_xit_uid=$xit_uid");
             if($valOferta==0)

@@ -20,9 +20,9 @@ $orig_monto_ofertado =$monto_ofertado;
 if(!$factor) $factor=0;
 if($bidsCompra=='COMPRA')
 $monto_ofertado = $monto_ofertado + ($monto_ofertado*$factor/100);
-/*else
+else
 $monto_ofertado = $monto_ofertado - ($monto_ofertado*$factor/100);
-*/
+
 //echo $valBids;
 if(!$valBids) {
 	$mayVal=$mBase; 
@@ -39,9 +39,8 @@ if($bidsCompra=='COMPRA')
 		$maxUid=admin::getDBvalue("SELECT max(bid_uid) FROM mdl_bid");
 		$maxUid++;
 		$sql = "insert into mdl_bid( bid_uid, bid_sub_uid, bid_pro_uid, bid_cli_uid, bid_mount, bid_mountxfac, bid_date, bid_pca_uid)
-						values	($maxUid,$sub_uid, $pro_uid,$cli_uid ,$monto_ofertado, $orig_monto_ofertado,GETDATE(),$catUid)";
+						values	($maxUid,$sub_uid, $pro_uid,$cli_uid ,$orig_monto_ofertado, $monto_ofertado,GETDATE(),$catUid)";
 		$db->query($sql);
-                //echo $sql;
 		$sql = "update mdl_subasta set sub_deadtime='".$newDeadTime."' where sub_uid=".$sub_uid;
 		$db->query($sql);
 		
@@ -53,11 +52,16 @@ if($bidsCompra=='COMPRA')
 	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto minimo:'.$mayVal;
 	elseif(round($monto_ofertado,2)<round($mayVal,2)) echo 'Su oferta ya fue superada, introduzca una mejor oferta al monto minimo:'.$mayVal;
 	else {
-		$maxUid=admin::getDBvalue("SELECT max(bid_uid) FROM mdl_bid");
+                $maxUid=admin::getDBvalue("SELECT max(bid_uid) FROM mdl_bid");
 		$maxUid++;
-		$sql = "insert into mdl_bid( bid_uid, bid_sub_uid, bid_pro_uid, bid_cli_uid, bid_mount, bid_date, bid_pca_uid)
-						values	($maxUid,$sub_uid, $pro_uid,$cli_uid,$monto_ofertado,GETDATE(),$catUid)";
+		
+		$sql = "insert into mdl_bid( bid_uid, bid_sub_uid, bid_pro_uid, bid_cli_uid, bid_mount, bid_mountxfac, bid_date, bid_pca_uid)
+						values	($maxUid,$sub_uid, $pro_uid,$cli_uid,$orig_monto_ofertado,$monto_ofertado,GETDATE(),$catUid)";
 		$db->query($sql);
+                //echo $sql;
+                $sql = "update mdl_subasta set sub_deadtime='".$newDeadTime."' where sub_uid=".$sub_uid;
+		$db->query($sql);
+		
 		echo 'Se acepto su oferta:'.$monto_ofertado.' '.date('d-m-Y H:i:s');	
 	}
 }

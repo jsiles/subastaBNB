@@ -103,14 +103,14 @@
         (Ingrese <?php 
 		if($bidsCompra=='COMPRA')
 		{
-		if($details["sub_mount_base"]<=$valBids) echo '$'.number_format(round(($details["sub_mount_base"]-$details["sub_mount_unidad"]),2),2).' o menos)'; 
-		else echo '$'.($valBids-$details["sub_mount_unidad"]).' o menos)'; 
+		if($details["sub_mount_base"]<=$valBids) echo admin::numberFormat($details["sub_mount_base"]-$details["sub_mount_unidad"]).' o menos)'; 
+		else echo (admin::numberFormat($valBids-$details["sub_mount_unidad"])).' o menos)'; 
 		
 			}
 		else
 		{
-		if($details["sub_mount_base"]>=$valBids) echo '$'.number_format(round(($details["sub_mount_base"]+$details["sub_mount_unidad"]),2),2).' o m&aacute;s)'; 
-		else echo '$'.($valBids+$details["sub_mount_unidad"]).' o m&aacute;s)'; 
+		if($details["sub_mount_base"]>=$valBids) echo admin::numberFormat($details["sub_mount_base"]+$details["sub_mount_unidad"]).' o m&aacute;s)'; 
+		else echo (admin::numberFormat($valBids+$details["sub_mount_unidad"])).' o m&aacute;s)'; 
 			}
 		?></p>
       

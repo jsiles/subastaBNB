@@ -36,39 +36,30 @@ if($bidsCompra=='COMPRA') $mayVal=$valBids+$unidad;
 else $mayVal=$valBids-$unidad;
 //echo $mayVal."#".$valBids."#".$bidsCompra."#".$monto_ofertado;
 
-//if($bidsCompra=='COMPRA')
-//{
+if($bidsCompra=='COMPRA')
+{
 	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto m&iscute;nimo:'.$mayVal;
-//	elseif(round($orig_monto_ofertado,2)>round($mayVal,2)) echo 'Su oferta ya fue superada, introduzca una mejor oferta al monto mínimo:'.$mayVal;
 	else {
             
            	
 		
 		$sql = "insert into mdl_biditem( bid_sub_uid, bid_round, bid_cli_uid, bid_mount, bid_mountxfac, bid_date, bid_xit_uid,bid_flag0,bid_flag1)
-						values	($sub_uid, $round,$cli_uid ,$orig_monto_ofertado, $monto_ofertado, GETDATE(),$xit_uid,0,0)";
-                //echo $sql;//die;
+						values	($sub_uid, $round,$cli_uid ,$orig_monto_ofertado ,$monto_ofertado, GETDATE(),$xit_uid,0,0)";
 		$db->query($sql);
-		//$sql = "update mdl_subasta set sub_finish=1 where sub_uid=".$sub_uid;
-		//$db->query($sql);
-	//	echo '<form name="formBids" class="formLabel">Se acepto su oferta:'.$monto_ofertado.' '.date('d-m-Y H:i:s').'.<br><br> <p> <a href="Cerrar" onclick="$.facebox.close();return false;">Continuar</a></p></form><br>';
+
 		echo 'Se acepto su oferta:'.$monto_ofertado.' fecha: '.date('d-m-Y H:i:s');	
 	}
-//}
-/*else
+}
+else
 {
 
-	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal;
-//	elseif(round($monto_ofertado,2)<round($mayVal,2)) echo 'Su oferta ya fue superada, introduzca una mejor oferta al monto mínimo:'.$mayVal;
+	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto m&aacute;ximo:'.$mayVal;
 	else {
-		$maxUid=admin::getDBvalue("SELECT max(bid_uid) FROM mdl_biditem");
-		if($maxUid == NULL) $maxUid=0;
-		$maxUid++;
-		$sql = "insert into mdl_biditem(bid_uid, bid_sub_uid, bid_round, bid_cli_uid, bid_mount, bid_mountxfac, bid_date, bid_xit_uid,bid_flag0,bid_flag1)
-						values	($maxUid,$sub_uid, $round,$cli_uid,$monto_ofertado,GETDATE(),$xit_id,0,0)";
+		
+		$sql = "insert into mdl_biditem(bid_sub_uid, bid_round, bid_cli_uid, bid_mount, bid_mountxfac, bid_date, bid_xit_uid,bid_flag0,bid_flag1)
+						values	($sub_uid, $round,$cli_uid,$orig_monto_ofertado,$monto_ofertado,GETDATE(),$xit_uid,0,0)";
 		$db->query($sql);
-		//$sql = "update mdl_subasta set sub_finish=1 where sub_uid=".$sub_uid;
-		//$db->query($sql);
 		echo 'Se acepto su oferta:'.$monto_ofertado.' '.date('d-m-Y H:i:s');	
 	}
-}*/
+}
 ?>

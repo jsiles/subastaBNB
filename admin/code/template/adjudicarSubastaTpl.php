@@ -78,7 +78,6 @@ function valForm(){
 </script>
 <br />
 <div id="div_wait" style="display:none;"><img border="0" src="lib/loading.gif"></div>
-<form name="frmsubasta" method="post" action="code/execute/adjudicarSubasta.php?token=<?=admin::getParam("token")?>&sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -546,7 +545,7 @@ while ($list = $db2->next_record())
 </table>
 <br>
 <br>
-
+<form name="frmsubasta" method="post" action="code/execute/adjudicarSubasta.php?token=<?=admin::getParam("token")?>&sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr><td><br /></td></tr>
 <tr>
