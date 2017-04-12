@@ -3,20 +3,6 @@
   require_once "./mail.cfg";
   require_once "./admin.php";
   set_time_limit(310);
-  $mail = new phpmailer();
-  $mail->PluginDir = PLUGINDIR;
-  $mail->Mailer = MAILER;
-  $mail->Host = HOST;
-  $mail->SMTPAuth = SMTPAuth;
-  $mail->Username = USERNAME; 
-  $mail->Password = PASSWORD;
-  $mail->From = FROM;
-  $mail->FromName = FROMNAME;
-  $mail->Timeout=TIMEOUT;
-  $mail->SMTPSecure = SMTPSECURE;
-  $mail->Port=PORT;
-  
-  $mail->SetLanguage("en", '../phpmailer/language/');
   
   $sSQL="select * from mdl_notificacion_envio where noe_status=0 and noe_retry<=2 and noe_email!=''";
   $nroReg=$db->numrows($sSQL);
@@ -24,32 +10,42 @@
     $db->query($sSQL);
     while($noe=$db->next_record())
     {
-        //echo $noe["noe_email"];
-        $mail->AddAddress($noe["noe_email"]);
-        $mail->Subject =admin::getDbValue("select not_subject from mdl_notificacion_template where not_nti_uid=".$noe["noe_tip_uid"]);
-        $mail->Body =admin::getDbValue("select concat(not_template,'\n',not_sign) as body from mdl_notificacion_template where not_nti_uid=".$noe["noe_tip_uid"]);
-        if($noe["noe_attach"]!=""){
+	  $mail = new phpmailer();
+	  $mail->PluginDir = PLUGINDIR;
+	  $mail->Mailer = MAILER;
+	  $mail->Host = HOST;
+	  $mail->SMTPAuth = SMTPAuth;
+	  $mail->Username = USERNAME; 
+	  $mail->Password = PASSWORD;
+	  $mail->From = FROM;
+	  $mail->FromName = FROMNAME;
+	  $mail->Timeout=TIMEOUT;
+	  $mail->SMTPSecure = SMTPSECURE;
+	  $mail->Port=PORT;
+	  
+	  $mail->SetLanguage("en", '../phpmailer/language/');
+
+	  $mail->AddAddress($noe["noe_email"]);
+	  $mail->Subject =admin::getDbValue("select not_subject from mdl_notificacion_template where not_nti_uid=".$noe["noe_tip_uid"]);
+	  $mail->Body =admin::getDbValue("select concat(not_template,'\n',not_sign) as body from mdl_notificacion_template where not_nti_uid=".$noe["noe_tip_uid"]);
+      if($noe["noe_attach"]!=""){
         $mail->addAttachment(PATH_ROOT.$noe["noe_attach"]);
-        }
-      //  $mail->AltBody = "Mensaje de prueba mandado con phpmailer en formato solo texto";
+      }
         $exito = $mail->Send();
         $intentos=1; 
-        while ((!$exito) && ($intentos < 3)) {
+      while ((!$exito) && ($intentos < 3)) {
               sleep(5);
               $exito = $mail->Send();
               $intentos=$intentos+1;	
-         }
-         if(!$exito)
-         {
-             //echo 'falla ';
+      }
+      if(!$exito)
+      {
              admin::getDbValue("update mdl_notificacion_envio set noe_retry=$intentos, noe_response='".$mail->ErrorInfo."' where noe_uid=".$noe["noe_uid"]);
-             //echo "update mdl_notificacion_envio set noe_retry=$intentos, noe_response='".$mail->ErrorInfo."' where noe_uid=".$noe["noe_uid"];
-         }
-         else
-         {
-             //echo 'Ok';
+      }
+      else
+      {
              admin::getDbValue("update mdl_notificacion_envio set noe_retry=$intentos, noe_status=1, noe_response='OK' where noe_uid=".$noe["noe_uid"]);	
-         } 
+      } 
     }
   }
 ?>
