@@ -68,8 +68,9 @@ function checkAll(parent){
 function verifyRoles(){
    
   	x= $('#rol_name').val();
-	valor= /^[a-zA-Z0-9 αινσϊAΙΝΣΪΡρ\.,;:\|)"(Ί_@><#&'\?Ώ‘!/\\%\$=]*$/
+	valor= /^[a-z0-9A-Z \u00C0-\u00ff]+$/
 	  if(!valor.test(x) || x==''){
+              $('#div_rol_name').html('Valores no permitidos en el Nombre del Rol');
 		$('#div_rol_name').fadeIn(600);
 		 return;
     	}

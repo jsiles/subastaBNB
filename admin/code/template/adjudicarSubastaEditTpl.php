@@ -563,33 +563,40 @@ while ($list = $db2->next_record())
     <table class="list" width="100%">
 	<tr>
             <td width="12%" style="color:#16652f">Elaborado por:</td>
-            <td><input id="elaborado" name="elaborado" value="<?=$_SESSION["usr_firstname"] ." ".$_SESSION["usr_lastname"]?>" onfocus="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_elaborado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';">
+            <td><input id="elaborado" name="elaborado" 
+                       value="<?=$informe["sua_elaborado"]?>" 
+                       onfocus="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_elaborado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';">
             <br /><span id="div_elaborado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Aprobado por:</td>
-            <td><input id="aprobado" name="aprobado" onfocus="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_aprobado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';">
+            <td><input id="aprobado" name="aprobado" value="<?=$informe["sua_aprobado"]?>" 
+                       onfocus="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';" 
+                       onblur="setClassInput(this,'OFF');document.getElementById('div_aprobado').style.display='none';" 
+                       onclick="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';">
             <br /><span id="div_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
-            <td><input id="monto" name="monto" onfocus="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_monto').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';">
+            <td><input id="monto" name="monto" value="<?=$informe["sua_monto"]?>"
+                       onfocus="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_monto').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';">
             <br /><span id="div_monto" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Ahorro econ&oacute;mico:</td>
-            <td><input id="ahorro" name="ahorro" onfocus="setClassInput(this,'ON');document.getElementById('div_ahorro').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_ahorro').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_ahorro').style.display='none';">
+            <td><input id="ahorro" name="ahorro" value="<?=$informe["sua_ahorro"]?>"
+                       onfocus="setClassInput(this,'ON');document.getElementById('div_ahorro').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_ahorro').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_ahorro').style.display='none';">
             <br /><span id="div_ahorro" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Observaciones:</td>
-            <td><textarea id="observaciones" rows="4" cols="45" name="observaciones"  onfocus="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';" onblur="setClassTextarea(this,'OFF');document.getElementById('div_observaciones').style.display='none';" onclick="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';"></textarea>
+            <td><textarea id="observaciones" rows="4" cols="45" name="observaciones"  onfocus="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';" onblur="setClassTextarea(this,'OFF');document.getElementById('div_observaciones').style.display='none';" onclick="setClassTextarea(this,'ON');document.getElementById('div_observaciones').style.display='none';"><?=$informe["sua_observaciones"]?></textarea>
             <br /><span id="div_observaciones" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
-            </td>
+            <input name="sua_uid" value="<?=$informe["sua_uid"]?>" type="hidden"></td>
         </tr>
     </table>
     </div>

@@ -127,7 +127,7 @@ while ($firstPart = $db->next_record())
                         ?>
 <tr>
     <td >Unidad de mejora:</td>
-    <td  align="left"><?=$sub_mount_unidad?></td>
+    <td  align="left"><?=admin::numberFormat($sub_mount_unidad)?></td>
     <td ></td><td width="21%"></td>
     <td ></td>
 </tr>

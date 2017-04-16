@@ -11,7 +11,7 @@ function verifyPermit(){
 	}
 
   x= $('#mcc_permit').val();
-  valor= /^[a-zA-Z0-9 áéíóúAÉÍÓÚÑñ]*$/
+  valor= /^[a-z0-9A-Z \u00C0-\u00ff]+$/
 	  
 	if(!valor.test(x) || x==''){
 		$('#div_mcc_permit').fadeIn(600);

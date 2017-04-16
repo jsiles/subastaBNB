@@ -250,14 +250,14 @@ while ($secPart = $db2->next_record())
     <th colspan="5" align="left">Monto de Adjudicaci&oacute;n:</th>
 </tr>
 <tr>
-    <td colspan="5" align="left"><?=$montoAdjudicacion?></td>
+    <td colspan="5" align="left"><?=admin::numberFormat($montoAdjudicacion)?></td>
 </tr>
 
 <tr>
     <th colspan="5" align="left">Monto de Ahorro:</th>
 </tr>
 <tr>
-    <td colspan="5" align="left"><?=$montoAhorro?></td>
+    <td colspan="5" align="left"><?=admin::numberFormat($montoAhorro)?></td>
 </tr>
 
 
