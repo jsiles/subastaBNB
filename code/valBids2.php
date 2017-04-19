@@ -229,7 +229,7 @@ function subastaOff()
 									<p class="left">Precio: <?=$moneda?> <?=$montoGlobal?>.<sup><?=$centavos?></sup></p>
                                     <div class="clear"></div>
                                     <?php
-                                    if($factor)
+                                    if($factor>0)
 									{
 									?>
                                      <p class="left"> Factor de ajuste:<?=$factor?>%

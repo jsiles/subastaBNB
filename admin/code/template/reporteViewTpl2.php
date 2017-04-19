@@ -148,7 +148,12 @@ while ($firstPart = $db->next_record())
             <th width="10%">Lugar de entrega:</th>
             <th width="10%">Medio de transporte:</th>
             <th width="10%">Incoterm:</th>
+                <?php
+    if($sub_type!='VENTA'){
+    ?>
+
             <th width="10%">Factor de ajuste:</th>
+    <?php } ?>
         </tr>
 <?php
 
@@ -166,7 +171,12 @@ while ($secPart = $db2->next_record())
             <td width="20%" align="center"><?=$secPart['inc_lugar_entrega']?></td>
             <td width="20%" align="center"><?=$secPart['tra_name']?></td>
             <td width="20%" align="center"><?=$secPart['inl_name']?></td>
+                <?php
+    if($sub_type!='VENTA'){
+    ?>
+
             <td width="20%" align="center"><?=$secPart['inc_ajuste']?></td>
+    <?php } ?>
         </tr>
         <?php
  } 

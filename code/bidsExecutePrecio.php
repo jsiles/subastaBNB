@@ -36,8 +36,8 @@ else $mayVal=$valBids-$unidad;
 //echo $mayVal."#".$valBids."#".$bidsCompra."#".$monto_ofertado;
 
 
-	if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto:'.$mayVal;
-	else {
+	/*if(!$monto_ofertado) echo 'Introduzca una mejor oferta al monto:'.$mayVal;
+	else {*/
             $valOferta=  admin::getDbValue("select count(*) from mdl_biditem where bid_sub_uid=$sub_uid and bid_cli_uid=$cli_uid and bid_xit_uid=$xit_uid");
             if($valOferta==0)
 		$sql = "insert into mdl_biditem( bid_sub_uid, bid_round, bid_cli_uid, bid_mount, bid_mountxfac, bid_date, bid_xit_uid,bid_flag0,bid_flag1)
@@ -47,5 +47,5 @@ else $mayVal=$valBids-$unidad;
 	
             $db->query($sql);
 		echo 'Se acepto su oferta:'.$monto_ofertado.' fecha: '.date('d-m-Y H:i:s');	
-	}
+	//}
 ?>

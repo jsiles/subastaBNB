@@ -23,8 +23,15 @@ $prod = $db->next_record();
     <td width="12%" style="color:#16652f">Lugar de entrega</td>
     <td width="12%" style="color:#16652f">Medio de transporte</td>
     <td width="12%" style="color:#16652f">Incoterm</td>
+    <?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
+    
     <td width="12%" style="color:#16652f">Factor de ajuste</td>
-	<td align="center" width="12%" height="5">&nbsp;</td>
+    <?php
+    }
+    ?>
+    <td align="center" width="12%" height="5">&nbsp;</td>
     
 	</tr>
 	</table>
@@ -102,10 +109,18 @@ $prod = $db->next_record();
 				<br /><span id="div_other_incoterm_error" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
                 </div>
                 </td>
+    <?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
+                
     <td width="12%"><input name="inc_ajuste" id="inc_ajuste" type="text" size="9" value="0" onfocus="document.getElementById('div_inc_ajuste_error').style.display='none';" onblur="document.getElementById('div_inc_ajuste_error').style.display='none';" onclick="document.getElementById('div_inc_ajuste_error').style.display='none';" />
     %<br /><span id="div_inc_ajuste_error" style="display:none;" class="error">Escriba un monto.</span></td>
+    <?php
+    }
+    ?>
+    
 	<td align="center" width="12%" height="5">
-		<a href="guardar" onclick="verifyIncoterm(); return false;">
+		<a href="#" onclick="document.frmIncoterm.submit();">
 		<img src="lib/save_es.gif" border="0" title="<?=admin::labels('save')?>" alt="<?=admin::labels('save')?>">
 		</a>
 	</td>
@@ -137,7 +152,13 @@ if ($nroReg>0)
     <td width="12%" style="color:#16652f">Lugar de entrega</td>
     <td width="12%" style="color:#16652f">Medio de transporte</td>
     <td width="12%" style="color:#16652f">Incoterm</td>
+    <?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
     <td width="12%" style="color:#16652f">Factor de ajuste</td>
+    <?php
+    }
+    ?>
 	<td align="center" width="12%" height="5">&nbsp;</td>
     <td align="center" width="12%" height="5">&nbsp;</td>
 	</tr>
@@ -173,7 +194,11 @@ while ($list = $db2->next_record())
     <td width="12%"><?=utf8_decode($inc_lugar_entrega)?></td>
     <td width="12%"><?=utf8_decode($tra_name)?></td>
     <td width="12%"><?=utf8_decode($inl_name)?></td>
+        <?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
     <td width="12%"><?=round($inc_ajuste,2)?>%</td>
+    <?php } ?>
 	<td align="center" width="12%" height="5">
 		<!--<a href="#" onclick="showTab('list_<?=$inc_uid?>');showTab('Add_<?=$inc_uid?>'); return false;">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">

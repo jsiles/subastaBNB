@@ -22,7 +22,7 @@
 			</tr>
                         <tr>
 		<td width="29%">Nro de Solicitud:</td>
-                <td width="64%"><input type="text" class="input3" value="" name="sol_uid" id="sol_uid" />
+                <td width="64%"><input type="text" class="input3" value="" name="sol_uid" id="sol_uid" /><input name="tipUid" type="hidden" value="<?=$tipUid?>">
                     <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
                 </td>
                 <td width="7%">&nbsp;</td>

@@ -263,8 +263,12 @@ if ($nroReg>0)
 	<tr><td width="12%" style="color:#16652f">Proveedor</td>
     <td width="12%" style="color:#16652f">Lugar de entrega</td>
     <td width="12%" style="color:#16652f">Medio de transporte</td>
-    <td width="12%" style="color:#16652f">Incoterm</td>
+    <td width="12%" style="color:#16652f">Incoterm</td><?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
+   
     <td width="12%" style="color:#16652f">Factor de ajuste</td>
+    <?php } ?>
 	<td align="center" width="12%" height="5">&nbsp;</td>
     <td align="center" width="12%" height="5">&nbsp;</td>
 	</tr>
@@ -300,7 +304,14 @@ while ($list = $db2->next_record())
     <td width="12%"><?=utf8_decode($inc_lugar_entrega)?></td>
     <td width="12%"><?=utf8_decode($tra_name)?></td>
     <td width="12%"><?=utf8_decode($inl_name)?></td>
+    <?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
+   
     <td width="12%"><?=round($inc_ajuste,2)?>%</td>
+    <?php
+    }
+        ?>
 	<td align="center" width="12%" height="5">
 		<!--<a href="#" onclick="showTab('list_<?=$inc_uid?>');showTab('Add_<?=$inc_uid?>'); return false;">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
@@ -350,12 +361,19 @@ while ($list = $db2->next_record())
                     ?>
 				</select>
                 </td>
+                <?php
+    if($prod["sub_type"]!='VENTA'){
+    ?>
+   
     <td width="12%"><input name="inc_ajuste2" id="inc_ajuste2" type="text" size="9" value="<?=round($inc_ajuste,2)?>"/></td>
+    <?php }
+   ?> 
 	<td align="center" width="12%" height="5">
 		<a href="#" onclick="editListDpf('<?=$inc_uid?>');return false;">
 		<img src="lib/save_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
 	</td>
+        
 	<td align="center" width="12%" height="5">
 		<a href="#" onclick="showTab('list_<?=$inc_uid?>');showTab('Add_<?=$inc_uid?>'); return false;">
 		<img src="lib/cancel_es.gif" border="0" title="<?=admin::labels('delete')?>" alt="<?=admin::labels('delete')?>">

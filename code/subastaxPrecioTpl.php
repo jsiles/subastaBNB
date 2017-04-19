@@ -38,7 +38,7 @@
 					       <?=$montoGlobal?>.<sup><?=$centavos?></sup></p> 
                                                                         <div class="clear"></div>
                                    <?php
-                                   if(isset($factor))
+                                   if($factor>0)
 								   {
 								   ?>
                                     <p class="left"> Factor de ajuste:<?=$factor?>%</p>

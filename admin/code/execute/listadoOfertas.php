@@ -26,7 +26,12 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" class="txt11 color2">Proveedor:</td>
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                 <td width="25%" class="txt11 color2">Monto:</td>
+                    <?php
+    if($sub_type!='VENTA'){
+    ?>
+
                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
+    <?php } ?>
 			</tr>         
                
                  <?php
@@ -40,7 +45,12 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" <?php if($i==0) echo $style;?>><?=$clientName?></td>
 				<td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_date"]?></td>
                 <td width="25%" <?php if($i==0) echo $style;?>><?=admin::numberFormat($content["bid_mount"])?></td>
+                    <?php
+    if($sub_type!='VENTA'){
+    ?>
+
                 <td width="25%" <?php if($i==0) echo $style;?>><?=admin::numberFormat($content["bid_mountxfac"])?></td>
+    <?php } ?>
                                  </tr>
              	<?php
                                     $i++;
@@ -63,7 +73,12 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" class="txt11 color2">Proveedor:</td>
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                                 <td width="25%" class="txt11 color2">Monto:</td>
+                                    <?php
+    if($sub_type!='VENTA'){
+    ?>
+
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
+    <?php } ?>
                                 <td width="25%" class="txt11 color2">Item:</td>
                                 <!--<td width="25%" class="txt11 color2">Documento Oferta:</td>-->
                                 
@@ -83,7 +98,12 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" <?=$style?> ><?=$clientName?></td>
 				<td width="25%" <?=$style?> ><?=$content["bid_date"]?></td>
                                 <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mount"])?></td>
+                                    <?php
+    if($sub_type!='VENTA'){
+    ?>
+
                                 <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>
+    <?php } ?> 
                                 <td width="25%" <?=$style?> ><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
                                <!-- <td width="25%" <?=$style?> ><?php
                                 if(file_exists(PATH_ROOT."/docs/subasta/".$content["bid_doc"])){
@@ -119,7 +139,12 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" class="txt11 color2">Proveedor:</td>
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                                 <td width="25%" class="txt11 color2">Monto:</td>
+                                    <?php
+    if($sub_type!='VENTA'){
+    ?>
+
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
+    <?php } ?>
                                 <td width="25%" class="txt11 color2">Item:</td>
                                 <td width="25%" class="txt11 color2">Documento Oferta:</td>
                                 
@@ -139,7 +164,12 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" <?=$style?> ><?=$clientName?></td>
 				<td width="25%" <?=$style?> ><?=$content["bid_date"]?></td>
                                 <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mount"])?></td>
-                                <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>
+                                    <?php
+    if($sub_type!='VENTA'){
+    ?>
+
+                               <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>
+    <?php } ?>
                                 <td width="25%" <?=$style?> ><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
                                 <td width="25%" <?=$style?> ><?php
                                 if(file_exists(PATH_ROOT."/docs/subasta/".$content["bid_doc"])){

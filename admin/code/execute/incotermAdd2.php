@@ -7,8 +7,9 @@ $sub_uid=admin::getParam("sub_uid");
 $inc_lugar_entrega=admin::getParam("inc_lugar_entrega");
 $inc_tra_uid=admin::getParam("inc_tra_uid");
 $inc_inl_uid=admin::getParam("inc_inl_uid");
-$inc_ajuste=admin::getParam("inc_ajuste");
 
+$inc_ajuste=admin::getParam("inc_ajuste");
+if (!isset($inc_ajuste)) $inc_ajuste=0;
 $maxUid=admin::getDBvalue("SELECT max(inc_uid) FROM mdl_incoterm");
 $maxUid++;
 // REGISTRANDO LENGUAJE DE LAS CATEGORIAS

@@ -58,7 +58,7 @@
                             <p class="left">Precio: <?=$moneda?>&nbsp;</p>
                             <div id="p_<?=$xitem["xit_uid"]?>" class="left"><?=$montoGlobal?>.<?=$centavos?></div> <div class="clear"></div>
                                    <?php
-                                   if(isset($factor))
+                                   if($factor>0)
 								   {
 								   ?>
                                     <p class="left"> Factor de ajuste:<?=$factor?>%</p>

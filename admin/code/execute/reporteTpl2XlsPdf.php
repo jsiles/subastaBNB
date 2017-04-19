@@ -47,7 +47,7 @@ $html= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
 <tr><td><br /></td><td><br /></td></tr>
 <tr><td width="26%">Modalidad del proceso de compra:</td><td width="21%" align="left">'.$sub_modalidad.'</td><td width="6%"></td><td width="26%">Fecha de subasta:</td><td width="21%" align="left">'.$sub_hour_end[0].'</td></tr>
 <tr><td width="21%">Tipo:</td><td width="21%" align="left">'.$sub_type.'</td><td width="6%"></td><td width="21%">Hora de subasta:</td><td width="21%" align="left">'.$sub_hour_end[1].'</td></tr>
-<tr><td width="21%">Monto Referencial:</td><td width="21%" align="left">'.$sub_mount_base.'</td><td width="6%"></td><td width="21%">Tiempo límite de mejora en min.:</td><td width="21%" align="left">'.$sub_tiempo.'</td></tr>';
+<tr><td width="21%">Monto Referencial:</td><td width="21%" align="left">'.$sub_mount_base.'</td><td width="6%"></td><td width="21%">Tiempo l&iacute;mite de mejora en min.:</td><td width="21%" align="left">'.$sub_tiempo.'</td></tr>';
                         if($sub_modalidad=="TIEMPO")
                         {
 $html.='<tr><td width="21%">Unidad de mejora:</td><td width="21%" align="left">'.$sub_mount_unidad.'</td><td width="6%"></td><td width="21%"></td><td width="21%"></td></tr>';
@@ -57,7 +57,14 @@ $html.='<tr><td><br /><br /></td><td><br /><br a/></td></tr>
 <tr><td><br /></td><td><br /></td></tr>
 <tr><td colspan="5">
 	<table width="100%">
-    	<tr><th width="20%">Proveedor:</th><th width="20%">Lugar de entrega:</th><th width="20%">Medio de transporte:</th><th width="20%">Incoterm:</th><th width="20%">Factor de ajuste:</th></tr>';
+    	<tr><th width="20%">Proveedor:</th>
+        <th width="20%">Lugar de entrega:</th>
+        <th width="20%">Medio de transporte:</th>
+        <th width="20%">Incoterm:</th>';
+if($sub_type!='VENTA'){
+        $html.='<th width="20%">Factor de ajuste:</th>';
+}
+        $html.='</tr>';
 
 $sql ="select cli_socialreason as nombre, inc_lugar_entrega, tra_name, inl_name, inc_ajuste 
 from mdl_incoterm, mdl_incoterm_language, mdl_transporte, mdl_client 
@@ -67,7 +74,15 @@ $db2->query($sql);
 $i = 26;
 while ($secPart = $db2->next_record())
 {		
-     $html.= '<tr><td width="20%" align="center">'.$secPart['nombre'].'</td><td width="20%" align="center">'.$secPart['inc_lugar_entrega'].'</td><td width="20%" align="center">'.$secPart['tra_name'].'</td><td width="20%" align="center">'.$secPart['inl_name'].'</td><td width="20%" align="center">'.$secPart['inc_ajuste'].'</td></tr>';
+     $html.= '<tr><td width="20%" align="center">'.$secPart['nombre'].'</td>'
+             . '<td width="20%" align="center">'.$secPart['inc_lugar_entrega'].'</td>'
+             . '<td width="20%" align="center">'.$secPart['tra_name'].'</td>'
+             . '<td width="20%" align="center">'.$secPart['inl_name'].'</td>';
+    if($sub_type!='VENTA'){
+
+     $html.= '<td width="20%" align="center">'.$secPart['inc_ajuste'].'</td>';
+    }
+    $html.='</tr>';
  }   
 $html.=	'</table>
 </td></tr>

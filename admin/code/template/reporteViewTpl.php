@@ -159,7 +159,12 @@ $montoAdjudicacion=admin::getDBvalue("SELECT sua_monto FROM mdl_subasta_informe 
             <th width="10%">Lugar de entrega:</th>
             <th width="10%">Medio de transporte:</th>
             <th width="10%">Incoterm:</th>
+    <?php
+    if($sub_type!='VENTA'){
+    ?>
+   
             <th width="10%">Factor de ajuste:</th>
+    <?php } ?>
         </tr>
 <?php
 
@@ -177,7 +182,12 @@ while ($secPart = $db2->next_record())
             <td width="20%" align="center"><?=$secPart['inc_lugar_entrega']?></td>
             <td width="20%" align="center"><?=$secPart['tra_name']?></td>
             <td width="20%" align="center"><?=$secPart['inl_name']?></td>
+                <?php
+    if($sub_type!='VENTA'){
+    ?>
+
             <td width="20%" align="center"><?=$secPart['inc_ajuste']?></td>
+    <?php } ?>
         </tr>
         <?php
  } 
@@ -199,7 +209,12 @@ if($sub_modalidad=="TIEMPO"){
     	<tr><th>Proveedor:</th>
             <th>Fecha y hora:</th>
             <th>Monto:</th>
+                <?php
+    if($sub_type!='VENTA'){
+    ?>
+
             <th>Monto con factor de ajuste:</th>
+    <?php } ?>
         </tr>
 <?php
 $sql ="SELECT * FROM mdl_bid where bid_sub_uid='".$sub_uid."'";
@@ -212,7 +227,12 @@ while ($secPart = $db2->next_record())
 	 <tr><td width="25%" align="center"><?=$clientName?></td>
              <td width="25%" align="center"><?=$secPart['bid_date']?></td>
              <td width="25%" align="center"><?=admin::numberFormat($secPart['bid_mount'])?></td>
+                 <?php
+    if($sub_type!='VENTA'){
+    ?>
+
              <td width="25%" align="center"><?=admin::numberFormat($secPart['bid_mountxfac'])?></td></tr>
+    <?php } ?>
     <?php         
  }   
 }else{
@@ -221,7 +241,12 @@ while ($secPart = $db2->next_record())
     	<tr><th>Proveedor:</th>
             <th>Fecha y hora:</th>
             <th>Monto:</th>
+                <?php
+    if($sub_type!='VENTA'){
+    ?>
+
             <th>Monto con factor de ajuste:</th>
+    <?php } ?>
             <th>Item:</th></tr>
 <?php
 $sql ="SELECT * FROM mdl_biditem where bid_sub_uid='".$sub_uid."'";
@@ -235,7 +260,12 @@ while ($secPart = $db2->next_record())
 	 <tr><td width="20%" align="center"><?=$clientName?></td>
              <td width="20%" align="center"><?=$secPart['bid_date']?></td>
              <td width="20%" align="center"><?=admin::numberFormat($secPart['bid_mount'])?></td>
+                 <?php
+    if($sub_type!='VENTA'){
+    ?>
+
              <td width="20%" align="center"><?=admin::numberFormat($secPart['bid_mountxfac'])?></td>
+    <?php } ?>
              <td width="20%" align="center"><?=$itemPr?></td></tr>
     <?php 
 }
