@@ -65,6 +65,23 @@ function bidsLoad()
 	//$.facebox.close();		
 return false;
 }
+
+function validate_fileupload(fileName)
+{
+    //var allowed_extensions = new Array("jpg","png","gif");
+    var allowed_extensions = new Array("pdf");
+    var file_extension = fileName.split('.').pop(); // split function will split the filename by dot(.), and pop function will pop the last element from the array which will give you the extension as well. If there will be no extension then it will return the filename.
+
+    for(var i = 0; i <= allowed_extensions.length; i++)
+    {
+        if(allowed_extensions[i]==file_extension)
+        {
+            return true; // valid file extension
+        }
+    }
+
+    return false;
+}
 </script>
 
 <?php
@@ -85,7 +102,7 @@ if($bidsCompra=='COMPRA')
 		echo '<form name="formBids" enctype="multipart/form-data"  class="formLabel">Su oferta es: '.$orig_monto_ofertado.' + el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br>'
                         . ' <br><br>'
                         . 'Adjuntar Documento Oferta: '
-                        . '<br /><br /><br /><br /><input name="docTec" id="docTec" type="file" /><br /><br /><br /><br />'
+                        . '<br /><br /><br /><br /><input name="docTec" onchange="validate_fileupload(this.value);" id="docTec" type="file" /><br /><br /><br /><br />'
                         . '<p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>'
                         . 'Por favor confirmar los datos de la oferta. <br><br>';
        //}
@@ -97,7 +114,7 @@ if($bidsCompra=='COMPRA')
 		echo '<form name="formBids" class="formLabel">Su oferta es: '.$orig_monto_ofertado.' - el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br>'
                         . '<br><br>'
                         . 'Adjuntar Documento Oferta: '
-                        . '<br /><br /><br /><br /><input name="docTec" id="docTec" type="file" /><br /><br /><br /><br />'
+                        . '<br /><br /><br /><br /><input name="docTec" onchange="validate_fileupload(this.value);" id="docTec" type="file" /><br /><br /><br /><br />'
                         . '<p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>'
                         . 'Por favor confirmar los datos de la oferta. <br><br>';
 	

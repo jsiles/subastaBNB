@@ -31,7 +31,7 @@ $rol = $_SESSION["usr_rol"];
 <tr><td valign="top"><?php include_once("skin/header.php");?>
 </td></tr>
   <tr>
-    <td valign="top" id="content"><?php include_once("code/template/reporteViewTpl.php"); ?></td>
+    <td valign="top" id="content"><?php include_once("code/template/reporteView2Tpl.php"); ?></td>
   </tr>
 <tr><td>
   <?php include("skin/footer.php"); ?>

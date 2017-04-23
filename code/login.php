@@ -8,12 +8,13 @@ function onSubmit(){
 <div id="content">
 				<div id="box6" class="box-style">
 					<div class="title">
-						<!--<h1><span>BANCO NACIONAL DE BOLIVIA S.A. </span></h1><br />-->
-                        <h2><span>Sistema de Compras </span></h2>
+				
+                        <h1><span>SISTEMA ELECTR&Oacute;NICO DE ADQUISICIONES Y REGISTRO DE PROVEEDORES</span></h1>
+                        <h3><span>M&oacute;dulo: PROVEEDORES </span></h3>
 					</div>
 					<div class="content">
                                             <p>&nbsp;</p>
-						<p>Para ingresar al sitio de Subastas Online, requiere del usuario y contraseña.</p>
+						<!--<p>Para ingresar al sitio de Subastas Online, requiere del usuario y contrase&ntilde;a.</p>-->
 						<p>&nbsp;</p>
 						<form name="formLabel" id="formLabel" class="formLabel" autocomplete="off" method="post" action="<?=$domain.'/code/session.php'?>">
 						<p>
