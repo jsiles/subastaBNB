@@ -207,6 +207,23 @@ $solEdit=$db->next_record();
 			<span id="div_sol_status" style="display:none;" class="error"></span></td>
                        <td width="7%">&nbsp;</td>
         </tr>
+        <?php
+        $elaborado= admin::getDbValue("select concat(a.usr_firstname, ' ', a.usr_lastname) FROM sys_users a, mdl_solicitud_compra b where a.usr_uid=b.sol_usu_uid and b.sol_uid=".$solEdit["sol_uid"]);
+        
+        $aprobado = admin::getDbValue("select concat(a.usr_firstname, ' ', a.usr_lastname) FROM sys_users a, mdl_solicitud_aprobar b where a.usr_uid=b.soa_usr_uid and b.soa_sol_uid=".$solEdit["sol_uid"]);
+        ?>
+        
+        <tr>
+            <td valign="top">Solicitud elaborado por:</td>
+            <td><?=$elaborado?></td>
+                       <td width="7%">&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td valign="top">Solicitud aprobado por:</td>
+            <td><?=$aprobado?></td>
+                       <td width="7%">&nbsp;</td>
+        </tr>
         
         
     </table>

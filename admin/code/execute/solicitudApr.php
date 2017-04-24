@@ -2,8 +2,10 @@
 include_once("../../core/admin.php");
 //admin::initialize('autorizacion','autorizacionList',false);
 $sol_uid = $_POST["uid"];
+$sql = "insert into mdl_solicitud_aprobar (soa_sol_uid, soa_usr_uid, soa_date, soa_status) values($sol_uid, ".admin::getSession("usr_uid").", GETDATE(), 'ACTIVE')";
+$db->query($sql);
+
 $sql = "update mdl_solicitud_compra set sol_estado=1, sol_status='ACTIVE', sol_apr_uid=".admin::getSession("usr_uid").", sol_apr_date=GETDATE() where sol_uid=".$sol_uid;
-//admin::doLog($sql);
 $db->query($sql);
 /*
  * Mandar solicitudes a los proveedores

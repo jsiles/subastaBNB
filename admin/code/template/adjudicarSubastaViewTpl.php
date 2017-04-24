@@ -143,6 +143,25 @@ $prod = $db->next_record();
             <td valign="top"><?=admin::labels('status');?></td>
             <td><?php if ('ACTIVE'==$prod["sub_status"]) echo "Activo"; else echo "Inactivo";?></td>
           </tr>
+            <?php
+        $elaborado= admin::getDbValue("select concat(a.usr_firstname, ' ', a.usr_lastname) FROM sys_users a, mdl_subasta b where a.usr_uid=b.sub_usr_uid and b.sub_uid=".$prod["sub_uid"]);
+        
+        $aprobado = admin::getDbValue("select concat(a.usr_firstname, ' ', a.usr_lastname) FROM sys_users a, mdl_subasta_aprobar b where a.usr_uid=b.sup_user_uid and b.sup_sub_uid=".$prod["sub_uid"]);
+        ?>
+        
+        <tr>
+            <td valign="top">Proceso de compra elaborado por:</td>
+            <td><?=$elaborado?></td>
+                       <td width="7%">&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td valign="top">Proceso de compra aprobado por:</td>
+            <td><?=$aprobado?></td>
+                       <td width="7%">&nbsp;</td>
+        </tr>
+        
+          
         </table>
 
 		<!--TABLA IZQUIERDA END-->
@@ -509,7 +528,7 @@ while ($list = $db2->next_record())
         $informe = $db2->next_record();
         ?>
     <table class="list" width="100%">
-	<tr>
+	<!--<tr>
             <td width="12%" style="color:#16652f">Elaborado por:</td>
             <td><?=$informe["sua_elaborado"]?>
             <br /><span id="div_elaborado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
@@ -520,7 +539,7 @@ while ($list = $db2->next_record())
             <td><?=$informe["sua_aprobado"]?>
             <br /><span id="div_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
-        </tr>
+        </tr>-->
         <tr>
             <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
             <td><?=admin::numberFormat($informe["sua_monto"])?>
@@ -529,7 +548,7 @@ while ($list = $db2->next_record())
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Ahorro econ&oacute;mico:</td>
-            <td><?=$informe["sua_ahorro"]?>
+            <td><?=admin::numberFormat($informe["sua_ahorro"])?>
             <br /><span id="div_ahorro" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>

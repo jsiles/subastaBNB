@@ -31,10 +31,10 @@ function checkTime(i) {
         <tr><td height="10px" colspan="3"></td></tr>
       <tr>
           <td width="15%" height="135px"  rowspan="3" align="center"><div style="alignment-adjust: central"><img src="lib/logo.png"></div></td>
-        <td width="60%" align="center"><? if($imgs){?>
+        <td width="60%" align="center"><?php if($imgs){?>
 
 					<img src="<?=$domain?>/img/banner/img_<?=$imgs?>?<?=time()?>" alt="<?=$ban_name?>" title="<?=$ban_name?>" border="0"/>
-                    <? }?></td>
+                    <?php }?></td>
 		<td width="25%" rowspan="2">
 		<div id="changeDiv" style="display:none;">
 		<form id="change_language" method="post" action="code/execute/langChange.php<?=$conParent;?>?token=<?=admin::getParam('token')?>" > 
@@ -62,21 +62,16 @@ function checkTime(i) {
 		<div id="exit">
 		<a title="<?=admin::labelsSystem('logout')?>" href="<?=admin::labelsSystem('logout','link')?>?token=<?=admin::getParam('token')?>"><img src="lib/buttons/logout.gif" alt="<?=admin::labelsSystem('logout')?>" width="21" height="21" border="0" /></a>
 		</div>			
-		<div id="userDat">
-		<a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&amp;token=<?=admin::getParam('token')?>" class="small" title="<?=admin::labelsSystem('myProfile');?>"><?=$_SESSION["usr_firstname"] . " ". $_SESSION["usr_lastname"];?></a> <a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&amp;token=<?=admin::getParam('token')?>" class="link3" title="<?=admin::labelsSystem('myProfile');?>"><?=admin::labelsSystem('change');?></a><br />
-		<?php if ($numlanguages>1) { ?>
-		<a href="javascript:changeLanguageHeader('on')" class="small"><?=$language_name?></a> <a href="javascript:changeLanguageHeader('on')" class="link3"><?=admin::labelsSystem('change');?></a><br />
-		<?php } ?>
-		<?php if ($numsites>1) { ?><!--
-		<a href="javascript:changeSiteHeader('on');"  class='small'><?=$site_name;?></a> <a href="javascript:changeSiteHeader('on');" class="link3"><?=admin::labelsSystem('change');?></a>
-		-->
-		<?php } ?>
+                    <div id="userDat">
+                    <a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&amp;token=<?=admin::getParam('token')?>" class="link3" title="<?=admin::labelsSystem('myProfile');?>"><img width="30" src="../lib/pencil.png" alt="Cambiar Contrase&ntilde;a" title="Cambiar Contrase&ntilde;a" /></a><br />
+                    <a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&amp;token=<?=admin::getParam('token')?>" class="small" title="<?=admin::labelsSystem('myProfile');?>">&nbsp;&nbsp;Cambiar<br />Contrase&ntilde;a</a> <br />
+		
 		</div>
 		<div id="userImg">
 		<?php
 		$usr_photo = admin::getDBValue('select usr_photo from sys_users where usr_uid='.$_SESSION['usr_uid']);
 		$imgProfile = "upload/profile/thumb_" . $usr_photo;
-		if (file_exists($imgProfile) && $usr_photo!="") { ?>
+	        if (file_exists($imgProfile) && $usr_photo!="") { ?>
 		<a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&amp;token=<?=admin::getParam('token')?>" title="<?=admin::labelsSystem('myProfile');?>">
 			<img border="0" src="<?=$imgProfile?>?<?=time()?>" title="<?=admin::labelsSystem('myProfile');?>" alt="<?=admin::labelsSystem('myProfile');?>"/>
 			</a>

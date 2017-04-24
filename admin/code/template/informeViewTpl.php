@@ -175,7 +175,7 @@ $prod = $db->next_record();
             
        
 <tr>
-			<td>Fecha de subasta:</td>
+			<td>Fecha del proceso de compra:</td>
 			<td valign="top">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr><td width="28%" valign="middle"> 
@@ -192,7 +192,7 @@ $prod = $db->next_record();
 				</td>
 				</tr>          
                 	<tr>
-					<td>Hora de subasta:</td>
+					<td>Hora:</td>
 					<td><?=$hour_end1?>
 					</td>
 				</tr>  
