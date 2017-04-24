@@ -32,14 +32,14 @@
             <td>
             <div id="div_cli_lec_uid_select">
             <select name="cli_lec_uid" class="txt10" id="cli_lec_uid">
-                <?php
+                <? 
 				$sql = "select lec_uid, lec_name from mdl_legalclassification where lec_delete=0";
 					$db2->query($sql);
 					while ($content=$db2->next_record())
 					{
 				?>
             	    <option value="<?=$content["lec_uid"]?>"><?=$content["lec_name"]?></option>	
-              	<?php 
+              	<? 
 					}
 				?>
 			</select>
@@ -58,7 +58,7 @@
             <td>
             <div id="div_cli_cov_uid_select">
             <select name="cli_cov_uid" class="txt10" id="cli_cov_uid">
-                <?phps
+                <? 
 				$sql = "select cov_uid, cov_name from mdl_coverage where cov_delete=0";
 					$db2->query($sql);
 					while ($content=$db2->next_record())

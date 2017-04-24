@@ -1,4 +1,9 @@
-RewriteEngine Off
+#RewriteEngine Off
+RewriteEngine On
+Options +FollowSymlinks -Indexes
+RewriteCond %{SERVER_PORT} ^8181$
+RewriteRule ^ http://%{HTTP_HOST}%{REQUEST_URI} [R]
+
 Options -Indexes
 Options -ExecCGI
 <filesMatch "\.(js|js?version=1.2|css)$">

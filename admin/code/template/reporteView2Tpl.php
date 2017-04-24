@@ -131,14 +131,14 @@ $montoAdjudicacion=admin::getDBvalue("SELECT sua_monto FROM mdl_subasta_informe 
     <td>Modalidad del proceso de compra:</td>
     <td align="left"><?=$sub_modalidad?></td>
     <td></td>
-    <td>Fecha de subasta:</td>
+    <td>Fecha del proceso de compra:</td>
     <td align="left"><?=$sub_hour_end[0]?></td>
 </tr>
 <tr>
     <td>Tipo:</td>
     <td align="left"><?=$sub_type?></td>
     <td></td>
-    <td>Hora de subasta:</td>
+    <td>Hora:</td>
     <td align="left"><?=$sub_hour_end[1]?></td>
 </tr>
 <tr>

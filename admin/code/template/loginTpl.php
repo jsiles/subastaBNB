@@ -22,16 +22,9 @@ function onSubmit(){
 </script>
 <form name="formulario" method="POST" enctype="multipart/form-data" action="code/execute/login.php">
 <input type="hidden" name="message" value="<?=$message?>" />
-<table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
- <tr>
-     <td width="99%" height="40"  align="center"><span class="title">SISTEMA ELECTR&Oacute;NICO DE ADQUISICIONES Y REGISTRO DE PROVEEDORES</span></td>
-  </tr>
-  <tr><td>
-      
 <table width="400" border="0" cellspacing="0" cellpadding="0" align="center">
- 
   <tr>
-      <td width="77%" height="40"><span>M&oacute;dulo: USUARIOS</span></td>
+    <td width="77%" height="40"><span class="title"><?=admin::labels('login');?></span></td>
   </tr>
   <tr>
     <td colspan="2" id="contentListing">
@@ -63,8 +56,6 @@ function onSubmit(){
     </table></td>
     </tr>
 </table>
-      </td>
-  </tr></table>
 </form><br />
 <?php 
 if ($message!=0) 

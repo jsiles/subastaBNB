@@ -509,7 +509,7 @@ while ($list = $db2->next_record())
         $informe = $db2->next_record();
         ?>
     <table class="list" width="100%">
-	<!--<tr>
+	<tr>
             <td width="12%" style="color:#16652f">Elaborado por:</td>
             <td><?=$informe["sua_elaborado"]?>
             <br /><span id="div_elaborado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
@@ -520,7 +520,7 @@ while ($list = $db2->next_record())
             <td><?=$informe["sua_aprobado"]?>
             <br /><span id="div_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
-        </tr>-->
+        </tr>
         <tr>
             <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
             <td><?=admin::numberFormat($informe["sua_monto"])?>
@@ -529,7 +529,7 @@ while ($list = $db2->next_record())
         </tr>
         <tr>
             <td width="12%" style="color:#16652f">Ahorro econ&oacute;mico:</td>
-            <td><?=admin::numberFormat($informe["sua_ahorro"])?>
+            <td><?=$informe["sua_ahorro"]?>
             <br /><span id="div_ahorro" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
         </tr>

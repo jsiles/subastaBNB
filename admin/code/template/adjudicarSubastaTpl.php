@@ -556,7 +556,7 @@ while ($list = $db2->next_record())
     <td colspan="2" id="contentListing">
     <div class="row0">
     <table class="list" width="100%">
-	<!--<tr>
+	<tr>
             <td width="12%" style="color:#16652f">Elaborado por:</td>
             <td><input id="elaborado" name="elaborado" value="<?=$_SESSION["usr_firstname"] ." ".$_SESSION["usr_lastname"]?>" onfocus="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_elaborado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_elaborado').style.display='none';">
             <br /><span id="div_elaborado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
@@ -567,7 +567,7 @@ while ($list = $db2->next_record())
             <td><input id="aprobado" name="aprobado" onfocus="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_aprobado').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';">
             <br /><span id="div_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
-        </tr>-->
+        </tr>
         <tr>
             <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
             <td><input id="monto" name="monto" onfocus="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_monto').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_monto').style.display='none';">

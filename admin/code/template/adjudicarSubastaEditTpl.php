@@ -571,7 +571,7 @@ while ($list = $db2->next_record())
         $informe = $db2->next_record();
         ?>
     <table class="list" width="100%">
-	<!--<tr>
+	<tr>
             <td width="12%" style="color:#16652f">Elaborado por:</td>
             <td><input id="elaborado" name="elaborado" 
                        value="<?=$informe["sua_elaborado"]?>" 
@@ -587,7 +587,7 @@ while ($list = $db2->next_record())
                        onclick="setClassInput(this,'ON');document.getElementById('div_aprobado').style.display='none';">
             <br /><span id="div_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error">* Campo requerido</span>
             </td>
-        </tr>-->
+        </tr>
         <tr>
             <td width="12%" style="color:#16652f">Monto total adjudicar:</td>
             <td><input id="monto" name="monto" value="<?=$informe["sua_monto"]?>"
