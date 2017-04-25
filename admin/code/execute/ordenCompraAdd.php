@@ -55,14 +55,14 @@ $sql = "insert into mdl_orden_compra
 $db->query($sql);
 
 $rav_uni_uid=  admin::getParam("rav_uni_uid");
-if(is_array($rav_uni_uid)){
+//if(is_array($rav_uni_uid)){
    admin::getDbValue("delete from mdl_orden_unidad where oru_orc_uid=$orc_uid");
-   foreach($rav_uni_uid as $value)
-   {
-       $sql="insert into mdl_orden_unidad (oru_orc_uid, oru_uni_uid) values($orc_uid, $value)";
+//   foreach($rav_uni_uid as $value)
+//   {
+       $sql="insert into mdl_orden_unidad (oru_orc_uid, oru_uni_uid) values($orc_uid, $rav_uni_uid)";
        $db->query($sql);
-   }
-}
+//   }
+//}
         
 $FILES2 = $_FILES ['orc_document'];
 if ($FILES2["name"] != '')

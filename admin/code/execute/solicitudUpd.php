@@ -33,14 +33,14 @@ if ($FILES2["name"] != '')
 	$sql = "UPDATE mdl_solicitud_compra SET sol_doc='".$nomDOC."' WHERE sol_uid=$solUid";
 	$db->query($sql);
 	}
-if(is_array($rav_uni_uid)){
+//if(is_array($rav_uni_uid)){
        admin::getDbValue("delete from mdl_solicitud_unidad where sou_sol_uid=$solUid");
-   foreach($rav_uni_uid as $value)
-   {
-       $sql="insert into mdl_solicitud_unidad (sou_sol_uid, sou_uni_uid) values($solUid, $value)";
+//   foreach($rav_uni_uid as $value)
+//   {
+       $sql="insert into mdl_solicitud_unidad (sou_sol_uid, sou_uni_uid) values($solUid, $rav_uni_uid)";
        $db->query($sql);
-   }
-}
+//   }
+//}
 //print_r($cli_uid);
 if(is_array($cli_uid)){
        admin::getDbValue("delete from mdl_solicitud_proveedor where sop_sol_uid=$solUid");

@@ -171,15 +171,15 @@ if($sub_modalidad=="PRECIO")
         }
 }
 $rav_uni_uid=  admin::getParam("rav_uni_uid");
-if(is_array($rav_uni_uid)){
+//if(is_array($rav_uni_uid)){
        admin::getDbValue("delete from mdl_subasta_unidad where suu_sub_uid=$sub_uid");
-   foreach($rav_uni_uid as $value)
-   {
-       $sql="insert into mdl_subasta_unidad (suu_sub_uid, suu_uni_uid) values($sub_uid, $value)";
+//   foreach($rav_uni_uid as $value)
+//   {
+       $sql="insert into mdl_subasta_unidad (suu_sub_uid, suu_uni_uid) values($sub_uid, $rav_uni_uid)";
       // echo $rav_tipo."#".$sql;
        $db->query($sql);
-   }
-}
+//   }
+//}
 // SUBIENDO LA IMAGEN PRODUCTOS
 $FILES = $_FILES ['pro_image'];
 if ($FILES["name"] != '')

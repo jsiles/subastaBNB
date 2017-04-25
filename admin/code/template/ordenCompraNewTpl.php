@@ -40,27 +40,21 @@ $usuario =  admin::getDbValue("select concat(usr_firstname,' ',usr_lastname) fro
             <td width="5%" >Unidad Solicitante:</td>
              <td width="20%">
                   <span id="div_sub_unidad">
+                <select name="rav_uni_uid" id="rav_uni_uid" class="input" >
                 <?php
-                  $uUnidad = admin::getDbValue("select max(uni_uid) from mdl_unidad where uni_delete=0");
+                  $uUnidad = admin::getDbValue("select TOP 1 uni_uid from mdl_subasta_unidad where suu_sub_uid=".$prod["sub_uid"]);
                   $arrayUnidad = admin::dbFillArray("select uni_uid, uni_description from mdl_unidad where uni_delete=0 order by uni_uid");
                   if(is_array($arrayUnidad)){
                       $unidades=true;
                   foreach($arrayUnidad as $key=>$value)
                    {            
-                        if($key==$uUnidad) $nuevaLinea = "";
-                        else $nuevaLinea = "<br>";
-                         
                         ?>
-                      <input name="rav_uni_uid[]" value="<?=$key?>" class="input" type="checkbox">&nbsp;<span class="txt10"><?=$value?></span>&nbsp;<?=$nuevaLinea?>
+                      <option <?php if ($key==$uUnidad) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>				
                         <?php
                    }
-                  } else{
-                        $unidades=false;
-		?>
-                        <span class="txt10">No existen unidades.</span>&nbsp;
-                <?php
-                    }
-                ?>
+                  } 
+                  ?>
+                      </select>
                   </span>
                          
                <!-- <a href="javascript:addUnidad();" class="small2">agregar</a> | 

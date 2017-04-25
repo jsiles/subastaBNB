@@ -48,30 +48,21 @@ if($db->query($sSQL)) $oc=$db->next_record();
                 <input name="tipUid" id="tipUid" value="<?=$tipUid?>" type="hidden" />
 
                   <span id="div_sub_unidad">
+                <select name="rav_uni_uid" id="rav_uni_uid" class="input" >
                 <?php
-                  $uUnidad = admin::getDbValue("select max(uni_uid) from mdl_unidad where uni_delete=0");
+                  $uUnidad = admin::getDbValue("select TOP 1 uni_uid from mdl_subasta_unidad where suu_sub_uid=".$prod["sub_uid"]);
                   $arrayUnidad = admin::dbFillArray("select uni_uid, uni_description from mdl_unidad where uni_delete=0 order by uni_uid");
                   if(is_array($arrayUnidad)){
                       $unidades=true;
                   foreach($arrayUnidad as $key=>$value)
                    {            
-                      
-                        if($key==$uUnidad) $nuevaLinea = "";
-                        else $nuevaLinea = "<br>";
-                        $valChecked=admin::getDbValue("select count(oru_uni_uid) from mdl_orden_unidad where oru_uni_uid=$key and oru_orc_uid=$orc_uid");
-                        if($valChecked>0)$selectUni ='checked="checked"';
-                        else $selectUni ="";
                         ?>
-                      <input name="rav_uni_uid[]" disabled="disabled" value="<?=$key?>" class="input" type="checkbox" <?=$selectUni?>>&nbsp;<span class="txt10"><?=$value?></span>&nbsp;<?=$nuevaLinea?>
+                      <option <?php if ($key==$uUnidad) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>				
                         <?php
                    }
-                  } else{
-                        $unidades=false;
-		?>
-                        <span class="txt10">No existen unidades.</span>&nbsp;
-                <?php
-                    }
-                ?>
+                  } 
+                  ?>
+                      </select>
                   </span>
                          
                <!-- <a href="javascript:addUnidad();" class="small2">agregar</a> | 
