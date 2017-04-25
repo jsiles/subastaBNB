@@ -2,7 +2,7 @@ ErrorDocument 500 "<html><head><title>Error 500</title></head><body>Error del si
 RewriteEngine On
 Options +FollowSymlinks -Indexes
 RewriteCond %{SERVER_PORT} ^80$
-RewriteRule ^ http://%{HTTP_HOST}:8181%{REQUEST_URI} [R]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R]
 RewriteRule ^404/$ ./index.php?cod404=y [L]
 RewriteRule ^(.+)/$ ./contentView.php?uid=$1 [L]
 
