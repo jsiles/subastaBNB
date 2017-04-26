@@ -58,7 +58,7 @@ $prod = $db->next_record();
 			</tr>
             <tr>
 				<td><?=admin::labels('labels','quantity');?>:</td>
-				<td><?=$prod["pro_quantity"]?>
+				<td><?=admin::numberFormat($prod["pro_quantity"])?>
 				</td>
 			</tr>
              <tr>
@@ -156,11 +156,11 @@ $prod = $db->next_record();
 
 		<table width="98%" border="0" align="right" cellpadding="5" cellspacing="5" class="box">
           <tr>
-            <td colspan="2" class="titleBox"><?=admin::labels('data');?> subasta:</td>
+            <td colspan="2" class="titleBox"><?=admin::labels('data');?> compra:</td>
           </tr>
                         
             <tr>
-				<td width="29%">Modalidad de subasta:</td>
+				<td width="29%">Modalidad de compra:</td>
 				<td width="64%">
 				<?php if ('TIEMPO'==$prod["sub_modalidad"]) echo "Por tiempo"; else echo "";?>
 				</td>
@@ -168,7 +168,7 @@ $prod = $db->next_record();
                 
                 
                 <tr>
-				<td width="29%">Tipo de subasta:</td>
+				<td width="29%">Tipo:</td>
 				<td width="64%">
 				<?php if ('COMPRA'==$prod["sub_type"]) echo "Compra"; else echo "Venta";?></td>
 			</tr>

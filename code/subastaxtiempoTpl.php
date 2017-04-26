@@ -27,19 +27,16 @@
 									
 									if(!$valBids) 
 								    {
-										$centavos=substr($details["sub_mount_base"],-3);
-										$montoGlobal=str_replace($centavos,'',$details["sub_mount_base"]);
+										$montoGlobal=$details["sub_mount_base"];
 										$valBids=$details["sub_mount_base"];
 										}
 									else
 									{
-										$centavos=substr($valBids,-3);
-										$montoGlobal=str_replace($centavos,'',$valBids);
+										$montoGlobal=$valBids;
 										}
-									$centavos=str_replace('.','',$centavos);
 									
 								?>
-									<p class="left">Precio: <?=$moneda?>	<?=$montoGlobal?>.<sup><?=$centavos?></sup></p> <div class="clear"></div>
+                            <p class="left">Precio: <?=$moneda?>	<?=admin::numberFormat($montoGlobal)?></p> <div class="clear"></div>
                                    <?php
                                    if($factor>0)
 								   {
@@ -52,7 +49,7 @@
 									if($regBids>0)
 									{
 									?><p class="left">
-                                    Listado de pujas:<a href="<?=$domain?>/code/listBids.php?_keycode=<?=SymmetricCrypt::encrypt(base64_encode($details["sub_uid"]))?>" rel="facebox"><label><?=$regBids?></label> puja(s)</a>
+                                    Listado de ofertas:<a href="<?=$domain?>/code/listBids.php?_keycode=<?=SymmetricCrypt::encrypt(base64_encode($details["sub_uid"]))?>" rel="facebox"><label><?=$regBids?></label> puja(s)</a>
                                     <div class="clear"></div>
                                    <?php
 								   if(isset($regBidsWin))
@@ -114,7 +111,7 @@
 			}
 		?></p>
       
-									  <p id="unidadmejora"><label class="bold">Unidad de Mejora:</label> <?=$moneda?> <?=$details["sub_mount_unidad"]?></p>
+                <p id="unidadmejora"><label class="bold">Unidad de Mejora:</label> <?=$moneda?> <?=admin::numberFormat($details["sub_mount_unidad"])?></p>
                                     
            <input type="hidden" name="hOk" id="hOk" value="" />
             <input type="hidden" name="domain" id="domain" value="<?=$domain?>" />
