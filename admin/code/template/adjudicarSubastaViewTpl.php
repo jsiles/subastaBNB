@@ -26,6 +26,19 @@ $prod = $db->next_record();
 			<tr>
 			<td colspan="2" class="titleBox"><?=admin::labels('data');?> B&aacute;sicos:</td>
 			</tr>
+                         <tr>
+                            <td width="29%">Nro de Solicitud:</td>
+                            <td width="64%"><?=$prod["sub_sol_uid"]?>
+                                <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td width="29%">Nro de proceso:</td>
+                            <td width="64%"><?=$prod["sub_uid"]?>
+                                <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
+                            </td>
+                        </tr>
+                        
             <tr>
 				<td><?=admin::labels('name');?>:</td>
 				<td><?=$prod["pro_name"]?>

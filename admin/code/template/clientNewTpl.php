@@ -58,14 +58,14 @@
             <td>
             <div id="div_cli_cov_uid_select">
             <select name="cli_cov_uid" class="txt10" id="cli_cov_uid">
-                <?phps
+                <?php
 				$sql = "select cov_uid, cov_name from mdl_coverage where cov_delete=0";
 					$db2->query($sql);
 					while ($content=$db2->next_record())
 					{
 				?>
             	    <option value="<?=$content["cov_uid"]?>"><?=$content["cov_name"]?></option>	
-              	<? 
+              	<?php 
 					}
 				?>
 			</select>
