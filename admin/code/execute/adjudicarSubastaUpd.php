@@ -12,7 +12,7 @@ $ahorro = admin::getParam("ahorro");
 $sua_uid = admin::getParam("sua_uid");
 $token = admin::getParam("token");
 $sql = "update mdl_subasta_informe set "
-        . "sua_user_uid=$userUID, sua_sub_uid=$sub_uid, sua_elaborado='".admin::toSql($elaborado, "Text")."', sua_aprobado='".admin::toSql($aprobado, "Text")."',"
+        . "sua_user_uid=$userUID, sua_elaborado='".admin::toSql($elaborado, "Text")."', sua_aprobado='".admin::toSql($aprobado, "Text")."',"
         . " sua_observaciones='".admin::toSql($observaciones, "Text")."', sua_date=GETDATE(), sua_ahorro=$ahorro"
         . " where sua_uid=$sua_uid";
 //echo $sql;die;        
