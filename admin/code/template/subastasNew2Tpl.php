@@ -6,7 +6,7 @@ $sql = "SELECT * FROM mdl_product, mdl_subasta, mdl_pro_category WHERE sub_uid=p
 //echo $sql;
 $db->query($sql);
 $prod = $db->next_record();
-
+$tipUid=admin::getParam("tipUid");
 ?>
 <div id="DIV_WAIT1" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <br />
@@ -63,7 +63,9 @@ $prod = $db->next_record();
                 <br><br>
                 </div>
                 <input name="sub_uid" id="sub_uid" value="<?=$sub_uid?>" type="hidden" />
-                <input name="pro_uid" id="pro_uid" value="<?=$pro_uid?>" type="hidden" /></td>
+                <input name="pro_uid" id="pro_uid" value="<?=$pro_uid?>" type="hidden" />
+            <input name="tipUid" id="pro_uid" value="<?=$tipUid?>" type="hidden" />
+            </td>
     <td width="12%"><input name="inc_lugar_entrega" id="inc_lugar_entrega" type="text"  size="15" autocomplete='off'/></td>
     <td width="12%">
     <div id="div_inc_tra_uid_select">
@@ -310,7 +312,7 @@ else
       <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tbl_subasta" >
 			<tr>
 				<td width="59%" align="center">
-				<a href="subastasList.php?token=<?=admin::getParam("token")?>" class="button">Finalizar</a></td>
+				<a href="subastasList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="button">Finalizar</a></td>
 		
 		</td>
           
@@ -326,9 +328,9 @@ else
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tbl_subastaxitem">
 			<tr>
 				<td width="59%" align="center">
-				<a href="subastasEdit2.php?token=<?=admin::getParam("token")?>&pro_uid=<?=admin::getParam("pro_uid")?>&sub_uid=<?=admin::getParam("sub_uid")?>" class="button" >Siguiente</a></td>
+				<a href="subastasEdit2.php?token=<?=admin::getParam("token")?>&pro_uid=<?=admin::getParam("pro_uid")?>&sub_uid=<?=admin::getParam("sub_uid")?>&tipUid=<?=admin::getParam("tipUid")?>" class="button" >Siguiente</a></td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="subastasList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="subastasList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" ><?=admin::labels('cancel');?></a> 
 		</td>
           
         </tr>

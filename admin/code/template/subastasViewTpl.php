@@ -235,7 +235,7 @@ $prod = $db->next_record();
                         ?>
                         <tr id="tr_unidadmejora" style="display:">
 				<td>Unidad de mejora:</td>
-				<td><?=$prod["sub_mount_unidad"]?>
+                                <td><?=admin::numberFormat($prod["sub_mount_unidad"])?>
 				</td>
 			</tr>
             <tr id="tr_numeroruedas" style="display:">

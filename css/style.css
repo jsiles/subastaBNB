@@ -187,7 +187,7 @@ span, label, p, td, h2 {
 }
 
 #top-banner #colA {
-	float: left;
+	float: right;
 	width: 75%;
 	height:150px;
 	alignment-adjust:central;

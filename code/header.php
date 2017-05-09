@@ -35,13 +35,14 @@ function checkTime(i) {
 			</div>
 				
 			<div id="top-banner">
-				<div id="colA">
+                            <div id="colC">&nbsp;</div>
+                            <div id="colA" style="float:center">
                     <?php if($imgs){?>
 					<img src="<?=$domain?>/img/banner/img_<?=$imgs?>?<?=time()?>" alt="<?=$ban_name?>" title="<?=$ban_name?>" border="0"/>
                     <?php }?>
 				</div>
 				<?php if($uidClient){?>
-                <div id="colB">
+                <div id="colB" style="float:right">
                     <table align="right" width="50%" border="0">
                         <tr>
                             <td></td>
