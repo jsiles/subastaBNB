@@ -130,7 +130,7 @@
 					?>
                     <?php
 					 if ((strlen($imgextension)>0)&&(strlen($details["pro_document"])>0)) { ?>
-                    <p>Reglamento espec&iacute;fico de la compra:
+                    <p>Reglamento espec&iacute;fico del proceso:
 				  <a href="<?=$domain?>/docs/subasta/<?=$details["pro_document"]?>" target="_blank"><img border="0" src="<?=$domain."/admin/".$imgextension?>" width="16" height="16"/><!-- <?=$details["pro_document"]?>--></a></p><?php } ?>	
 						<p><?=utf8_encode($details["pro_description"])?></p>
 					</div>

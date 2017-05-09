@@ -59,14 +59,14 @@ while ($firstPart = $db->next_record())
 <tr>
     <td ><img src="<?=$domain?>/lib/logo.png" width="100" />
     </td>
-    <td colspan="4"><h1>Parametrizaci&oacute;n del proceso de compra</h1><br /><span>Fecha: <?=date("d/m/Y")?></span></td>
+    <td colspan="4"><h1>Parametrizaci&oacute;n del Proceso</h1><br /><span>Fecha: <?=date("d/m/Y")?></span></td>
 </tr>
 <tr>
     <td colspan="5"><br /><br /></td>
     
 </tr>
 <tr>
-    <td colspan="5"><h2>1: Datos generales del proceso de compra</h2></td>
+    <td colspan="5"><h2>1: Datos generales del Proceso</h2></td>
 </tr>
 <tr>
     <td colspan="5"><br /></td>
@@ -96,16 +96,16 @@ while ($firstPart = $db->next_record())
     <td colspan="5"><br /><br /></td>
 </tr>
 <tr>
-    <td colspan="5"><h2>2: Datos particulares del proceso de compra</h2></td>
+    <td colspan="5"><h2>2: Datos particulares del Proceso</h2></td>
 </tr>
 <tr>
     <td colspan="5"><br /></td>
 </tr>
 <tr>
-    <td>Modalidad del proceso de compra:</td>
+    <td>Modalidad del Proceso:</td>
     <td align="left"><?=$sub_modalidad?></td>
     <td></td>
-    <td>Fecha del proceso de compra:</td>
+    <td>Fecha del Proceso:</td>
     <td align="left"><?=$sub_hour_end[0]?></td>
 </tr>
 <tr>

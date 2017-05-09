@@ -175,7 +175,7 @@ $prod = $db->next_record();
             
        
 <tr>
-			<td>Fecha del proceso de compra:</td>
+			<td>Fecha del Proceso:</td>
 			<td valign="top">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr><td width="28%" valign="middle"> 

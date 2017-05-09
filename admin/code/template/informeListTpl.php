@@ -317,8 +317,9 @@ while ($subasta_list = $pagDb->next_record())
         
 	<td align="center" width="5%" height="5">
 	<?php
-         
-        $rolAplica =admin::validaRav($sub_uid,admin::getSession("usr_rol"),2,$sub_moneda, $sub_monto, $unidadUid);
+         if(strlen(admin::getParam("debug"))>0) $debug=true; else $debug=false;
+         //echo "DEBUG:".$debug;
+        $rolAplica =admin::validaRav($sub_uid,admin::getSession("usr_rol"),2,$sub_moneda, $sub_monto, $unidadUid, $debug);
          
             if($rolAplica)
             {

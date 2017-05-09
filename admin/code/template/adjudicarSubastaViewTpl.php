@@ -163,13 +163,13 @@ $prod = $db->next_record();
         ?>
         
         <tr>
-            <td valign="top">Proceso de compra elaborado por:</td>
+            <td valign="top">Proceso elaborado por:</td>
             <td><?=$elaborado?></td>
                        <td width="7%">&nbsp;</td>
         </tr>
         
         <tr>
-            <td valign="top">Proceso de compra aprobado por:</td>
+            <td valign="top">Proceso aprobado por:</td>
             <td><?=$aprobado?></td>
                        <td width="7%">&nbsp;</td>
         </tr>
