@@ -157,7 +157,7 @@ function subastaOff()
 		 if($details["sub_finish"]==0)
 		 {
 		 ?>
-		  jQuery.facebox('<form name="formBids" class="formLabel">El proceso de compra fue concluido, '+ message+' gracias por participar!!<br><br><a href="Cerrar" onclick="$.facebox.close();return false;" class="addcart">Cerrar</a></p></form><br>');
+		  jQuery.facebox('<form name="formBids" class="formLabel">El Proceso fue concluido, '+ message+' gracias por participar!!<br><br><a href="Cerrar" onclick="$.facebox.close();return false;" class="addcart">Cerrar</a></p></form><br>');
 		  <?php
 		 }
 		  ?>

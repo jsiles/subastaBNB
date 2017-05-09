@@ -1,3 +1,5 @@
+USE [subastaBNB]
+GO
 ALTER TABLE [mdl_product] ALTER COLUMN [pro_description] VARCHAR(150)
 GO
 ALTER TABLE [mdl_users] ALTER COLUMN [mus_address] VARCHAR(150)

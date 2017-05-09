@@ -121,7 +121,7 @@ function subastaOff()
 		 if($details["sub_finish"]==0)
 		 {
 		 ?>
-		  jQuery.facebox('<form name="formBids" class="formLabel">El proceso de compra fue concluido, '+ message+' gracias por participar!!<br><br><a href="Cerrar" onclick="$.facebox.close();return false;" class="addcart">Cerrar</a></p></form><br>');
+		  jQuery.facebox('<form name="formBids" class="formLabel">El Proceso fue concluido, '+ message+' gracias por participar!!<br><br><a href="Cerrar" onclick="$.facebox.close();return false;" class="addcart">Cerrar</a></p></form><br>');
 		  <?php
 		 }
 		  ?>
@@ -141,26 +141,23 @@ function subastaOff()
                                 <?php
 								    $bidsCompra=admin::getDBvalue("SELECT sub_type FROM mdl_subasta where sub_uid='".$details["sub_uid"]."'");
 									if($bidsCompra=='COMPRA') 
-									$valBids=admin::getDBvalue("SELECT min(bid_mount) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
+									$valBids=admin::getDBvalue("SELECT min(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
 									else
-									$valBids=admin::getDBvalue("SELECT max(bid_mount) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
+									$valBids=admin::getDBvalue("SELECT max(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
 									$factor = admin::getDbValue("select inc_ajuste from mdl_incoterm where inc_delete=0 and inc_cli_uid=".admin::getSession("uidClient")." and inc_sub_uid=".$details["sub_uid"]);
 									
 									if(!$valBids) 
 								    {
-										$centavos=substr($details["sub_mount_base"],-3);
-										$montoGlobal=str_replace($centavos,'',$details["sub_mount_base"]);
+										$montoGlobal=$details["sub_mount_base"];
 										$valBids=$details["sub_mount_base"];
 										}
 									else
 									{
-										$centavos=substr($valBids,-3);
-										$montoGlobal=str_replace($centavos,'',$valBids);
+										$montoGlobal=$valBids;
 										}
-									$centavos=str_replace('.','',$centavos);
 									
 								?>
-									<p class="left">Precio: <?=$moneda?> <?=$montoGlobal?>.<sup><?=$centavos?></sup></p>
+									<p class="left">Precio: <?=$moneda?> <?=admin::numberFormat($montoGlobal)?></p>
                                     <div class="clear"></div>
                                     <?php
                                     if($factor>0)
@@ -224,7 +221,7 @@ function subastaOff()
 		if($bidsCompra=='COMPRA')
 		{
 		if($details["sub_mount_base"]<=$valBids) echo admin::numberFormat($details["sub_mount_base"]-$details["sub_mount_unidad"]).' o menos)'; 
-		else echo (admin::numberFormat ($valBids-$details["sub_mount_unidad"])).' o menos)'; 
+		else echo (admin::numberFormat($valBids-$details["sub_mount_unidad"])).' o menos)'; 
 		
 			}
 		else
@@ -234,7 +231,7 @@ function subastaOff()
 			}
 		?></p>
       
-									  <p id="unidadmejora"><label class="bold">Unidad de Mejora:</label> <?=$moneda?> <?=$details["sub_mount_unidad"]?></p>
+									  <p id="unidadmejora"><label class="bold">Unidad de Mejora:</label> <?=$moneda?> <?=admin::numberFormat($details["sub_mount_unidad"])?></p>
                                     
            <input type="hidden" name="hOk" id="hOk" value="" />
             <input type="hidden" name="domain" id="domain" value="<?=$domain?>" />

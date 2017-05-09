@@ -187,9 +187,9 @@ function subastaOff()
 	   url: "<?=$domain?>/code/finish2.php",
 	   data: "sub_uid="+<?=$details["sub_uid"]?>,
 	      success: function(finish){
-                  $(".tiempoSubasta").html('Proceso de compra ha terminado');
+                  $(".tiempoSubasta").html('Proceso ha terminado');
                   $(".mensaje").show();
-		  jQuery.facebox('<form name="formBids" class="formLabel">El proceso de compra fue concluido, gracias por participar!!<br><br><a href="Cerrar" onclick="$.facebox.close();return false;" class="addcart">Cerrar</a></p></form><br>');
+		  jQuery.facebox('<form name="formBids" class="formLabel">El Proceso fue concluido, gracias por participar!!<br><br><a href="Cerrar" onclick="$.facebox.close();return false;" class="addcart">Cerrar</a></p></form><br>');
 	   }
 	 });
 }

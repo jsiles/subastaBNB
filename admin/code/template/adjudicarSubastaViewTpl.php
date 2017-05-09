@@ -26,19 +26,6 @@ $prod = $db->next_record();
 			<tr>
 			<td colspan="2" class="titleBox"><?=admin::labels('data');?> B&aacute;sicos:</td>
 			</tr>
-                         <tr>
-                            <td width="29%">Nro de Solicitud:</td>
-                            <td width="64%"><?=$prod["sub_sol_uid"]?>
-                                <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td width="29%">Nro de proceso:</td>
-                            <td width="64%"><?=$prod["sub_uid"]?>
-                                <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
-                            </td>
-                        </tr>
-                        
             <tr>
 				<td><?=admin::labels('name');?>:</td>
 				<td><?=$prod["pro_name"]?>
@@ -68,7 +55,7 @@ $prod = $db->next_record();
 			</tr>
             <tr>
 				<td><?=admin::labels('labels','quantity');?>:</td>
-                                <td><?=admin::numberFormat($prod["pro_quantity"])?>
+				<td><?=$prod["pro_quantity"]?>
 				</td>
 			</tr>
              <tr>
@@ -163,13 +150,13 @@ $prod = $db->next_record();
         ?>
         
         <tr>
-            <td valign="top">Proceso de compra elaborado por:</td>
+            <td valign="top">Proceso elaborado por:</td>
             <td><?=$elaborado?></td>
                        <td width="7%">&nbsp;</td>
         </tr>
         
         <tr>
-            <td valign="top">Proceso de compra aprobado por:</td>
+            <td valign="top">Proceso aprobado por:</td>
             <td><?=$aprobado?></td>
                        <td width="7%">&nbsp;</td>
         </tr>

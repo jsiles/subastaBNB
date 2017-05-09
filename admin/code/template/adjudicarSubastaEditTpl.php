@@ -13,8 +13,6 @@ function valForm(){
     sw=true;
         document.getElementById('div_monto').style.display='none';
         document.getElementById('div_ahorro').style.display='none';
-        document.getElementById('div_elaborado').style.display='none';
-        document.getElementById('div_aprobado').style.display='none';
         document.getElementById('div_observaciones').style.display='none';
        
     if (document.getElementById('monto').value==''){
@@ -49,18 +47,6 @@ function valForm(){
             }
  
         
-	if (document.getElementById('elaborado').value=='')
-		{
-		document.getElementById('elborado').className='inputError';
-		document.getElementById('div_elaborado').style.display='';
-		sw=false;
-		}
-	if (document.getElementById('aprobado').value=='')
-		{
-		document.getElementById('aprobado').className='inputError';
-		document.getElementById('div_aprobado').style.display='';
-		sw=false;
-		}
         if (document.getElementById('observaciones').value=='')
 		{
 		document.getElementById('observaciones').className='textError';
@@ -96,19 +82,6 @@ function valForm(){
 			<tr>
 			<td colspan="2" class="titleBox"><?=admin::labels('data');?> B&aacute;sicos:</td>
 			</tr>
-                          <tr>
-                            <td width="29%">Nro de Solicitud:</td>
-                            <td width="64%"><?=$prod["sub_sol_uid"]?>
-                                <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td width="29%">Nro de proceso:</td>
-                            <td width="64%"><?=$prod["sub_uid"]?>
-                                <br /><span id="div_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo requerido</span>
-                            </td>
-                        </tr>
-                        
             <tr>
 				<td><?=admin::labels('name');?>:</td>
 				<td><?=$prod["pro_name"]?>

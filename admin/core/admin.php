@@ -58,6 +58,10 @@ class admin
         if(!is_dir($path)){
             mkdir($path);
         }
+        $path = PATH_ROOT."/admin/log/";
+        if(!is_dir($path)){
+            mkdir($path);
+        }
     }
     /***************************************************
      function: splitText                     
@@ -1877,9 +1881,8 @@ public static function updateSubastaItem()
 
     }
   }
-public static function validaRav($uid, $rol, $tipologia, $moneda, $monto, $unidadUid)
+public static function validaRav($uid, $rol, $tipologia, $moneda, $monto, $unidadUid, $debug=false)
 {
-//   self::doLog("UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." monto:".$monto." Unidad:".$unidadUid);
     $rolAplica = 0;
             $sql =  "select count(*) from mdl_rav,mdl_rav_access where rav_uid=raa_rav_uid and rav_tipologia=$tipologia and rav_delete=0 and rav_rol_uid=$rol and rav_cur_uid=".$moneda." and ($monto between rav_monto_inf and rav_monto_sup) and raa_uni_uid in ($unidadUid)";
             //echo $sql;
@@ -1915,9 +1918,12 @@ public static function validaRav($uid, $rol, $tipologia, $moneda, $monto, $unida
                 $montoMenor = $montoL["rav_monto_inf"];
                 $montoMayor = $montoL["rav_monto_sup"];
                 //echo $monto."##".$montoMenor.">>".$montoMayor;
+                self::doLog("OK- UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." MONTO:".$monto." UNIDAD:".$unidadUid." MONTO MENOR:".$montoMenor." MONTO MAYOR:".$montoMayor, "RAV", $debug);
                 if(($montoMayor!=0)&&(is_numeric($montoMayor))){
                     if(($montoBase>=$montoMenor)&&($montoBase<=$montoMayor)) {$rolAplica=1;}
                 }else{if(($montoBase>=$montoMenor)&&(is_numeric($montoMenor))) {$rolAplica=1;}}                
+            }else {
+                   self::doLog("FAILED- UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." MONTO:".$monto." UNIDAD:".$unidadUid,"RAV",$debug);
             }
             return $rolAplica;
 }
@@ -1932,14 +1938,17 @@ public static function insertMail($cli_uid,$nti_uid, $attach, $cli_email, $sol_u
     //self::doLog($sSQL);
     $mailDB->query($sSQL);    
 }
-public static function doLog($text)
+public static function doLog($text, $file="ULOG", $debug=false)
 {
       // open log file
-      $filename = PATH_ROOT."/admin/log/users.log";
+    if($debug){
+      $fecha= date("Ymd");
+      $filename = PATH_ROOT."/admin/log/".$file.$fecha.".log";
       
       $fh = fopen($filename, "a") or die("Could not open log file.");
       fwrite($fh, date("d-m-Y, H:i")." - $text\n") or die("Could not write file!");
       fclose($fh);
+    }
 }
 public static function numberFormat($number)
 {

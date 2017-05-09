@@ -139,12 +139,12 @@
                                 	<br />
                                     <p style="font-weight:bold">Fecha de la subasta: <?=$content["sub_hour_end"]?></p><div class="clear"></div>
                                     <p class="left">Tiempo restante: <?=$faltante?></p><div class="clear"></div>
-                                    <p class="left">Precio: <?=$moneda." ".admin::numberFormat($montoGlobal)?>.<sup><?=$centavos?></sup></p>
+									<p class="left">Precio: <?=$moneda." ".$montoGlobal?>.<sup><?=$centavos?></sup></p>
 									<?php
                                                                         //echo $urlLink;
 									if($faltante!='Concluido')
 									{
-                                    ?><p class="right"><a href="<?=$urlLink?>" class="addcart">Ir al proceso</a></p>
+                                    ?><p class="right"><a href="<?=$urlLink?>" class="addcart">Ir a la compra</a></p>
                                     <?php
 									}
 									?>

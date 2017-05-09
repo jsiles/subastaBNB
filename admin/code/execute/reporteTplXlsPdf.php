@@ -30,14 +30,14 @@ $html= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Reporte del proceso de compra</title>
+<title>Reporte del Proceso</title>
 </head>
 
 <body>
 <table width="100%">
-<tr><td ><img src="'.$domain.'/lib/logo.png" width="100" /></td><td colspan="4"><h1> Parametrizaci&oacute;n del proceso de compra</h1><br /><span>Fecha: '.date("d/m/Y").'</span></td></tr>
+<tr><td ><img src="'.$domain.'/lib/logo.png" width="100" /></td><td colspan="4"><h1> Parametrizaci&oacute;n del Proceso</h1><br /><span>Fecha: '.date("d/m/Y").'</span></td></tr>
 <tr><td><br /><br /></td><td><br /><br /></td></tr>
-<tr><td colspan="5"><h2>1: Datos generales del proceso de compra</h2></td></tr>
+<tr><td colspan="5"><h2>1: Datos generales del Proceso</h2></td></tr>
 <tr><td><br /></td><td><br /></td></tr>
 <tr><td width="21%">Nro Solicitud:</td><td width="21%" align="left">'.$sub_sol_uid.'</td><td width="6%"></td><td width="21%"></td><td width="21%" align="left"></td></tr>
 <tr><td width="21%">Nro Proceso:</td><td width="21%" align="left">'.$sub_uid.'</td><td width="6%"></td><td width="21%"></td><td width="21%" align="left"></td></tr>
@@ -46,9 +46,9 @@ $html= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://w
 <tr><td width="21%">Descripcion:</td><td width="21%"></td><td width="6%"></td><td width="21%"></td><td width="21%"></td></tr>
 <tr><td colspan="5" align="left">'.$pro_description.'</td></tr>
 <tr><td><br /><br /></td><td><br /><br /></td></tr>
-<tr><td colspan="5"><h2>2: Datos particulares del proceso de compra</h2></td></tr>
+<tr><td colspan="5"><h2>2: Datos particulares del Proceso</h2></td></tr>
 <tr><td><br /></td><td><br /></td></tr>
-<tr><td width="26%">Modalidad del proceso de compra:</td><td width="21%" align="left">'.$sub_modalidad.'</td><td width="6%"></td><td width="26%">Fecha del proceso de compra:</td><td width="21%" align="left">'.$sub_hour_end[0].'</td></tr>
+<tr><td width="26%">Modalidad del Proceso:</td><td width="21%" align="left">'.$sub_modalidad.'</td><td width="6%"></td><td width="26%">Fecha del Proceso:</td><td width="21%" align="left">'.$sub_hour_end[0].'</td></tr>
 <tr><td width="21%">Tipo:</td><td width="21%" align="left">'.$sub_type.'</td><td width="6%"></td><td width="21%">Hora:</td><td width="21%" align="left">'.$sub_hour_end[1].'</td></tr>
 <tr><td width="21%">Monto Referencial:</td><td width="21%" align="left">'.$sub_mount_base.'</td><td width="6%"></td><td width="21%">Tiempo l&iacute;mite de mejora en min.:</td><td width="21%" align="left">'.$sub_tiempo.'</td></tr>';
                         if($sub_modalidad=="TIEMPO")

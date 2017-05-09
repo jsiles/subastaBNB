@@ -172,8 +172,7 @@ $subType =$prodTpl["sub_type"];
     <?php } ?>
                                 <td width="25%" <?=$style?> ><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
                                 <td width="25%" <?=$style?> ><?php
-                                
-                                if((file_exists(PATH_ROOT."/docs/subasta/".$content["bid_doc"]))&&(strlen($content["bid_doc"])>0)){
+                                if(file_exists(PATH_ROOT."/docs/subasta/".$content["bid_doc"])){
                                     
                                    ?>
                                     <a href="<?=PATH_DOMAIN."/docs/subasta/".$content["bid_doc"]?>" target="blank"><img src="<?=PATH_DOMAIN."/admin/lib/ext/doc-txt.png"?>" border="0" /></a>

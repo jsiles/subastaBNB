@@ -63,7 +63,7 @@ $prod = $db->next_record();
 			</tr>
             <tr>
 				<td><?=admin::labels('labels','quantity');?>:</td>
-                                <td><?=admin::numberFormat($prod["pro_quantity"])?>
+				<td><?=$prod["pro_quantity"]?>
 				</td>
 			</tr>
              <tr>
@@ -159,13 +159,13 @@ $prod = $db->next_record();
         ?>
         
         <tr>
-            <td valign="top">Proceso de compra elaborado por:</td>
+            <td valign="top">Proceso elaborado por:</td>
             <td><?=$elaborado?></td>
                        <td width="7%">&nbsp;</td>
         </tr>
         
         <tr>
-            <td valign="top">Proceso de compra aprobado por:</td>
+            <td valign="top">Proceso aprobado por:</td>
             <td><?=$aprobado?></td>
                        <td width="7%">&nbsp;</td>
         </tr>

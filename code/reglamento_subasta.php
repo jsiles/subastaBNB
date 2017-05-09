@@ -45,7 +45,7 @@ Para poder ingresar a la compra debe estar de acuerdo con el siguiente reglament
 					$extension = admin::getExtension($details["pro_document"]);
 					$imgextension = admin::getExtensionImage($extension);
 					if ((strlen($imgextension)>0)&&(strlen($details["pro_document"])>0)) { ?>
-                    <p>Reglamento espec&iacute;fico de la compra <?=$details["pro_name"]?>:
+                    <p>Reglamento espec&iacute;fico del proceso <?=$details["pro_name"]?>:
 				  <a href="<?=$domain?>/docs/subasta/<?=$details["pro_document"]?>" target="_blank"><img border="0" src="<?=$domain."/admin/".$imgextension?>" width="16" height="16"/><!-- <?=$details["pro_document"]?>--></a></p><?php } ?><br><br>
 </td>
 </tr>
