@@ -58,7 +58,7 @@ $prod = $db->next_record();
 			</tr>
             <tr>
 				<td><?=admin::labels('labels','quantity');?>:</td>
-				<td><?=$prod["pro_quantity"]?>
+				<td><?=admin::numberFormat($prod["pro_quantity"])?>
 				</td>
 			</tr>
              <tr>

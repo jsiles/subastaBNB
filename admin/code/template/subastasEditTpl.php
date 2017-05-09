@@ -148,15 +148,33 @@ $prod = $db->next_record();
 				<a href="<?=$imgSaveddomain2?>" target="_blank"><img src="<?=$imgSaveddomain1?>?<?=time();?>" border="0" /></a>				</td>
 				<td width="75%" style="font-size:11px;">
 				<?=$prod["pro_name"];?><br />
+                                  
+                                 <?php
+                        if($tipUid==1){                            
+                            ?>
 				<a href="javascript:viewInputFile('on')" title="<?=admin::labels('change');?>" class="small2"><?=admin::labels('change');?></a>
-				<span class="pipe">|</span> <a href="#" onclick="removeImg(<?=$prod["pro_uid"]?>);return false;" title="<?=admin::labels('del')?>" class="small3"><?=admin::labels('del')?></a>				</td>
+				<span class="pipe">|</span> <a href="#" onclick="removeImg(<?=$prod["pro_uid"]?>);return false;" title="<?=admin::labels('del')?>" class="small3"><?=admin::labels('del')?></a>				
+                                  
+                                 <?php
+                        }
+                            ?>
+                                </td>
 			</tr>
 			<tr>
 				<td height="24">
+                                      
+                                 <?php
+                        if($tipUid==1){                            
+                            ?>
 				<div id="imageChange1" style="display:none">
 			<input type="file" name="pro_image" id="pro_image" size="14" style="font-size:11px;"  >  <a href="javascript:viewInputFile('off')" onclick="document.getElementById('pro_image').value='';document.getElementById('button_next').innerHTML='<?=admin::labels('public');?>';"><img border="0" src="lib/close.gif" align="top"/></a>
 			
-			<span id="div_pro_image" class="error" style="display:none">Solo archivos jpg bmp gif png</span></div></td>
+			<span id="div_pro_image" class="error" style="display:none">Solo archivos jpg bmp gif png</span></div>
+                                
+                                 <?php
+                        }
+                            ?>  
+                                </td>
 			</tr>
 			</table>
 			</div>
@@ -192,19 +210,33 @@ $prod = $db->next_record();
 				<td width="88%" style="font-size:11px;">
 				<span class="nameFile"><?=substr($prod["pro_document"],0,20);?>...</span>
 			<br />
+                        <?php
+                        if($tipUid==1){                            
+                            ?>
 			<a href="javascript:changeInputFile('on')" class="small2">
 			<?=admin::labels('change');?>
-				</a> <span class="pipe">|</span> <a href="#" onclick="removeDoc(<?=$prod["pro_uid"]?>);return false;" title="<?=admin::labels('del')?>" class="small3"><?=admin::labels('del')?></a>				
+				</a> 
+                        <span class="pipe">|</span> <a href="#" onclick="removeDoc(<?=$prod["pro_uid"]?>);return false;" title="<?=admin::labels('del')?>" class="small3"><?=admin::labels('del')?></a>				
+                               <?php
+                        }
+                               ?>
                                 </td>
 			</tr>
 			<tr>
                             <td width="88%">
+                                  
+                                 <?php
+                        if($tipUid==1){                            
+                            ?>
                                 <div id="div_adjunt_file_change" style="display:none;">
 				<input type="file" name="pro_document" id="pro_document" size="13" style="font-size:11px;" >
+                              
                                 <a href="javascript:changeInputFile('off')" onclick="document.getElementById('pro_document').value='';">
                                     <img border="0" src="lib/close.gif" align="top"/></a>
                                 </div>
-                                <span id="div_adjunt_file" class="error" style="display:none">Solo archivos jpg bmp gif png doc pdf xls</span></div>
+                                <span id="div_adjunt_file" class="error" style="display:none">Solo archivos jpg bmp gif png doc pdf xls</span>
+                        <?php } ?>
+                                
                             </td>
 			</tr>
 			</table>

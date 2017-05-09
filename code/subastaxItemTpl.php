@@ -47,14 +47,18 @@
                                                                                 }
 									else
 									{
-                                                                            	$montoGlobal=$valBid;
+										$montoGlobal=$valBids;
                                                                                 }
 								
 									
 									
 								?>
                             <p class="left">Precio: <?=$moneda?>&nbsp;</p>
+<<<<<<< HEAD
                             <div id="p_<?=$xitem["xit_uid"]?>" class="left"><?= admin::numberFormat($montoGlobal)?></div> <div class="clear"></div>
+=======
+                            <div id="p_<?=$xitem["xit_uid"]?>" class="left"><?=  admin::numberFormat($montoGlobal)?></div> <div class="clear"></div>
+>>>>>>> 36106b826862d404b41a34cb6f24269fda75ebda
                                    <?php
                                    if($factor>0)
 								   {
@@ -102,7 +106,7 @@
 		?>
         </div>
       
-	  <p class="unidadmejora"><label class="bold">Unidad de Mejora:</label> <?=$moneda?> <?=$xitem["xit_unity"]?></p>
+            <p class="unidadmejora"><label class="bold">Unidad de Mejora:</label> <?=$moneda?> <?=admin::numberFormat($xitem["xit_unity"])?></p>
                                 
            <input type="hidden" name="hOk_<?=$xitem["xit_uid"]?>" id="hOk_<?=$xitem["xit_uid"]?>" value="" />
            <input type="hidden" name="cli_uid_<?=$xitem["xit_uid"]?>" id="cli_uid_<?=$xitem["xit_uid"]?>" value="<?=$cli_uid?>" />

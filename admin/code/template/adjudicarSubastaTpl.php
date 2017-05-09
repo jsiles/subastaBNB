@@ -48,18 +48,6 @@ function valForm(){
             }
  
         
-	if (document.getElementById('elaborado').value=='')
-		{
-		document.getElementById('elborado').className='inputError';
-		document.getElementById('div_elaborado').style.display='';
-		sw=false;
-		}
-	if (document.getElementById('aprobado').value=='')
-		{
-		document.getElementById('aprobado').className='inputError';
-		document.getElementById('div_aprobado').style.display='';
-		sw=false;
-		}
         if (document.getElementById('observaciones').value=='')
 		{
 		document.getElementById('observaciones').className='textError';

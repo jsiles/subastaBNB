@@ -27,16 +27,13 @@
 									
 									if(!$valBids) 
 								    {
-										//$centavos=substr($details["sub_mount_base"],-3);
 										$montoGlobal=$details["sub_mount_base"];
 										$valBids=$details["sub_mount_base"];
 										}
 									else
 									{
-										//$centavos=substr($valBids,-3);
 										$montoGlobal=$valBids;
 										}
-									//$centavos=str_replace('.','',$centavos);
 									
 								?>
                             <p class="left">Precio: <?=$moneda?>	<?=admin::numberFormat($montoGlobal)?></p> <div class="clear"></div>

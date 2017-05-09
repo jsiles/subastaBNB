@@ -100,7 +100,7 @@ $montoAdjudicacion=admin::getDBvalue("SELECT sua_monto FROM mdl_subasta_informe 
     <td align="left"><?=$pro_name?></td>
     <td></td>
     <td>Cantidad:</td>
-    <td align="left"><?=$pro_quantity?></td>
+    <td align="left"><?=admin::numberFormat($pro_quantity)?></td>
 </tr>
 <tr>
     <td>Categor&iacute;a:</td>

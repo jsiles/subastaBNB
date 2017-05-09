@@ -29,10 +29,8 @@
                                 <?php
 
 								   $bidsCompra=admin::getDBvalue("SELECT sub_type FROM mdl_subasta where sub_uid=".$xitem["xit_sub_uid"]);
-                                                                        //  $centavos=substr($xitem["xit_price"],-3);
-										$montoGlobal=$xitem["xit_price"];
-									//$centavos=str_replace('.','',$centavos);
-									
+                                                                          	$montoGlobal=$xitem["xit_price"];
+																	
 								?>
 									<p class="left">Precio Referencial:
 					       <?=admin::numberFormat($montoGlobal)?></p> 
@@ -105,4 +103,3 @@
 				</div>`
                 
 			</div>
-            </script>

@@ -56,31 +56,17 @@ if($bidsCompra=='COMPRA') $mayVal=$valBids-$unidad;
 else $mayVal=$valBids+$unidad;
 if($bidsCompra=='COMPRA')
 {
-	if(!$monto_ofertado) echo '<form name="formBids" class="formLabel">Introduzca una mejor oferta al monto mínimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
-	elseif(round($monto_ofertado,2)>round($mayVal,2)) echo '<form name="formBids" class="formLabel">Su oferta '.$orig_monto_ofertado.'+ el factor de ajuste '.$monto_ofertado.', ya fue superada, introduzca una mejor oferta al monto mínimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	if(!$monto_ofertado) echo '<form name="formBids" class="formLabel">Introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	elseif(round($monto_ofertado,2)>round($mayVal,2)) echo '<form name="formBids" class="formLabel">Su oferta '.$orig_monto_ofertado.'+ el factor de ajuste '.$monto_ofertado.', ya fue superada, introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
 	else {
 		echo '<form name="formBids" class="formLabel">Su oferta es: '.$orig_monto_ofertado.' + el factor de ajuste asciende a: '.$monto_ofertado.', oferta realizada en fecha y a horas:'.date('d-m-Y H:i:s').'.<br><br> Por favor confirmar los datos de la misma. <br><br><p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>';
-		/*$maxUid=admin::getDBvalue("SELECT max(bid_uid) FROM mdl_bid");
-		$maxUid++;
-		$sql = "insert into mdl_bid( bid_uid, bid_sub_uid, bid_pro_uid, bid_cli_uid, bid_mount, bid_date, bid_pca_uid)
-						values	($maxUid,$sub_uid, $pro_uid,0,$monto_ofertado,now(),$catUid)";
-		$db->query($sql);
-		$sql = "update mdl_subasta set sub_deadtime='".$newDeadTime."' where sub_uid=".$sub_uid;
-		$db->query($sql);
-		
-		echo 'Se acepto su oferta:'.$monto_ofertado.' '.date('d-m-Y H:i:s');*/	
 	}
 }else
 {
 
-	if(!$monto_ofertado) echo '<form name="formBids" class="formLabel">Introduzca una mejor oferta al monto mínimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
-	elseif(round($monto_ofertado,2)<round($mayVal,2)) echo '<form name="formBids" class="formLabel">Su oferta ya fue superada, introduzca una mejor oferta al monto mínimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	if(!$monto_ofertado) echo '<form name="formBids" class="formLabel">Introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
+	elseif(round($monto_ofertado,2)<round($mayVal,2)) echo '<form name="formBids" class="formLabel">Su oferta ya fue superada, introduzca una mejor oferta al monto m&iacute;nimo:'.$mayVal.'<br><br><a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></form>';
 	else {
-	/*	$maxUid=admin::getDBvalue("SELECT max(bid_uid) FROM mdl_bid");
-		$maxUid++;
-		$sql = "insert into mdl_bid( bid_uid, bid_sub_uid, bid_pro_uid, bid_cli_uid, bid_mount, bid_date, bid_pca_uid)
-						values	($maxUid,$sub_uid, $pro_uid,0,$monto_ofertado,now(),$catUid)";
-		$db->query($sql);*/
 		echo '<form name="formBids" class="formLabel">Su oferta es: '.$monto_ofertado.', realizado en fecha y horas:'.date('d-m-Y H:i:s').'.<br><br> Por favor confirmar los datos de la misma. <br><br><p><a href="#" onclick="return bidsLoad();" class="addcart">Confirmar</a> o <a href="Cerrar" onclick="$.facebox.close();return false;">Cancelar</a></p></form><br>';
 	}
 }
