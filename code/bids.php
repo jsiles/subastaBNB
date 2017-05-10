@@ -18,9 +18,8 @@ if(!$factor) $factor=0;
 $orig_monto_ofertado =$monto_ofertado;
 if($bidsCompra=='COMPRA')
 $monto_ofertado = $monto_ofertado + ($monto_ofertado*$factor/100);
-/*else
+else
 $monto_ofertado = $monto_ofertado - ($monto_ofertado*$factor/100);
-*/
 
 $newDeadTime = date("Y-m-d H:i:s", mktime(date("H"),date("i")+$sub_tiempo,date("s"),date("m"),date("d"),date("Y")));
 //echo $valBids;

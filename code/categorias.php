@@ -126,20 +126,18 @@
 									$valBids=admin::getDBvalue("SELECT max(bid_mount) FROM mdl_bid where bid_pro_uid='".$content["pro_uid"]."'");
 									if(!$valBids) 
 								    {
-										$centavos=substr($content["sub_mount_base"],-3);
-										$montoGlobal=str_replace($centavos,'',$content["sub_mount_base"]);
+										$montoGlobal=$content["sub_mount_base"];
 										}
 									else
 									{
-										$centavos=substr($valBids,-3);
-										$montoGlobal=str_replace($centavos,'',$valBids);
+										$montoGlobal=$valBids;
 										}
 								 	$centavos=str_replace('.','',$centavos);
 								?>
                                 	<br />
                                     <p style="font-weight:bold">Fecha de la subasta: <?=$content["sub_hour_end"]?></p><div class="clear"></div>
                                     <p class="left">Tiempo restante: <?=$faltante?></p><div class="clear"></div>
-                                    <p class="left">Precio: <?=$moneda." ".admin::numberFormat($montoGlobal)?>.<sup><?=$centavos?></sup></p>
+                                    <p class="left">Precio: <?=$moneda." ".admin::numberFormat($montoGlobal)?></p>
 									<?php
                                                                         //echo $urlLink;
 									if($faltante!='Concluido')

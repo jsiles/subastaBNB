@@ -215,7 +215,7 @@ while ($subasta_list = $pagDb->next_record())
     		$sub_estado  ='SUBASTANDOSE';
     		break;
     	case  3:
-    		$sub_estado  ='CONCLUIDO';
+    		$sub_estado  ='PENDIENTE INFORME';
     		break;
     	case  4:
     		$sub_estado  ='INFORME';
