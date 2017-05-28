@@ -189,6 +189,7 @@ span, label, p, td, h2 {
 
 #top-banner #colA {
 	float: center;
+        text-align: center;
 	width: 60%;
 }
 
