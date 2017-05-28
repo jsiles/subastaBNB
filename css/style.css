@@ -190,12 +190,12 @@ span, label, p, td, h2 {
 #top-banner #colA {
 	float: center;
         text-align: center;
-	width: 60%;
+	width: 90%;
 }
 
 #top-banner #colA h2 {
 	margin: 0px;
-	padding: 40px 0px 0px 200px;
+	padding: 40px 0px 0px 0px;
 	letter-spacing: -1px;
 }
 
