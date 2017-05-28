@@ -76,17 +76,20 @@ function strip_attributes ($html, $attrs) {
   return $html;
 }
 
-function js_and_entity_check( $html ) {
+function js_and_entity_check( $html="" ) {
   // anything with ="javascript: is right out -- strip all tags if found
   $pattern= "/=[\S\s]*s\s*c\s*r\s*i\s*p\s*t\s*:\s*\S+/Ui";
+ if($html!=""){
   if (preg_match($pattern, $html)) {
     return TRUE;
-  }
+ }
   
   // anything with encoded entites inside of tags is out, too
   $pattern= "/<[\S\s]*&#[x0-9]*[\S\s]*>/Ui";
   if (preg_match($pattern, $html)) {
     return TRUE;
+  }
+ 
   }
   
   return FALSE;

@@ -3,6 +3,7 @@
 unset($_GET['PHPSESSID']);*/
 include_once ("path.php");
 require_once("safeHtml.php");
+//require_once (PATH_DOMAIN.'/admin/csrf-magic/csrf-magic.php');
 define("VERSION","1.2");
 $app_path = ".";
 $labels = array(); 
@@ -20,7 +21,7 @@ $indexSubMenuClient='';
 $ar = array();
 $nivel=0;
 
-$array_temporal =array(); // used for getFullUrl
+$array_temporal =array(); // used for getFullUr
 
 class admin
 	{
@@ -475,7 +476,7 @@ class admin
 		
 	public static function initialize($sMenu, $sSubMenu,$redirect=true){
 	
-		@session_start();
+		//@session_start();
 //		Verifying token
 		global $basedatos, $host, $user,$pass,$domain;
         $rs = new DBmysql();
@@ -813,7 +814,7 @@ class admin
 		$param_value = $_POST[$param_name];
 		else if(isset($_GET[$param_name]))
 		$param_value = $_GET[$param_name];
-		return $param_value;
+		return self::strip($param_value);
 		}
     /*********************************
      function: getSession                     
@@ -940,6 +941,10 @@ public static function setSession($param_name, $param_value)
     ***********************************/         
   public static function strip($value)
 	{
+                $value = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
+                $value = filter_var($value, FILTER_SANITIZE_STRIPPED);
+                
+                
 	if(get_magic_quotes_gpc() == 0)
 		return $value;
 	else
@@ -1955,6 +1960,37 @@ public static function numberFormat($number)
     $numero = number_format($number,2,".",",");
     return $numero;
 }
+public static function checkPassword($pwd, &$errors) {
+    $errors_init = $errors;
 
+    if (strlen($pwd) < 8) {
+        $errors[] = "Password too short!";
+    }
+
+    if (!preg_match("#[0-9]+#", $pwd)) {
+        $errors[] = "Password must include at least one number!";
+    }
+
+    if (!preg_match("#[a-zA-Z]+#", $pwd)) {
+        $errors[] = "Password must include at least one letter!";
+    }     
+
+    return ($errors == $errors_init);
+}
+public static function generateToken( $formName ) 
+{
+    $secretKey = 'gsfhs154aergz2#33';
+    /*if ( !session_id() ) {
+        session_start();
+    }*/
+    $sessionId = session_id();
+ 
+    return sha1( $formName.$sessionId.$secretKey );
+ 
+}
+public static function checkToken( $token, $formName ) 
+{
+    return $token === self::generateToken( $formName );
+}
 }// LLAVE FINAL DE LA CLASE	
 ?>

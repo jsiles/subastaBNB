@@ -1,6 +1,5 @@
 <?php
 include_once("admin/core/admin.php");
-@session_start();
 admin::initializeClient();
 $sql = "SELECT * FROM mdl_product, mdl_subasta, mdl_pro_category WHERE sub_uid=pro_sub_uid and sub_pca_uid=pca_uid and sub_delete=0 and sub_finish in(1,2) and pro_url='".$urlSubTitle2."'";
 //echo $sql;

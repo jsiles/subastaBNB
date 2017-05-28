@@ -1,6 +1,8 @@
 <?php
- //include_once("database/connection.php"); 
- include ("core/admin.php"); ?>
+include ("core/admin.php");
+$code=rand(10000,99999);
+admin::setSession("code", $code);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,13 +12,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Sistema de Subastas</title>
 <META NAME="author" CONTENT="DEVZONE">
-<META NAME="reply-to" CONTENT="info@devzone.xyz">
-<META NAME="copyright" CONTENT="Software propietario de DEVZONE">
+<META NAME="copyright" CONTENT="Software propietario de DEVZONE" />
 <META NAME="rating" CONTENT="General">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/dhtml_horiz.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/sweetTitles.css">
+<link rel="stylesheet" href="<?=$domain?>/admin/css/style.css" type="text/css" />
+<link rel="stylesheet" href="<?=$domain?>/admin/css/dhtml_horiz.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<?=$domain?>/admin/css/sweetTitles.css" />
 <script language="javascript" type="text/javascript" src="js/addEvent.js"></script>
 <script language="javascript" type="text/javascript" src="js/sweetTitles.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>

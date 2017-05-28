@@ -1,15 +1,19 @@
 <?php 
-$get_msg = (!isset($_REQUEST["message"]))?"":$_REQUEST["message"];
+$get_msg = admin::getParam("message");
 if ($get_msg!="") $message=$get_msg; else $message=0; 
-//if ($message>3) setcookie("admin",1,time() + 30*60);
-//isset($_COOKIE["admin"])
+/*if ($message>3)  
+setcookie("lockout","1",time() + 10*60,"/");
+print_r($_COOKIE);
+echo "Cookie:".$_COOKIE["lockout"].admin::getCookie("lockout");
+if(admin::getCookie("lockout")!=1)
+{   */ 
 $error=admin::getParam("error");
-if ($message>3) {
-    ?>
-<script language="javascript" type="text/javascript">
-document.location.href='../';
-</script>
-<?php } ?>
+/*if ($message>3) {
+    header('HTTP/1.1 403 Forbidden');
+    header("Refresh:2; url=index.php");
+}*/
+  ?>
+
 <br />
 <br />
 <br />
@@ -28,7 +32,7 @@ function onSubmit(){
   </tr>
   <tr><td>
       
-<table width="400" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="500" border="0" cellspacing="0" cellpadding="0" align="center">
  
   <tr>
       <td width="77%" height="40"><span>M&oacute;dulo: USUARIOS</span></td>
@@ -49,8 +53,18 @@ function onSubmit(){
 		  <tr><td></td><td colspan="2"><div class="error" style="display:none;">Ingrese nombre de usuario</div></td></tr>
           <tr>
             <td><?=admin::labels('login','password');?>: </td>
-            <td><input name="contrasena" id="contrasena" autocomplete="off" type="password" class="inputl" size="30"  onclick="setClassInputLogin(this,'ON');"  onfocus="setClassInputLogin(this,'ON');" onblur="setClassInputLogin(this,'OFF');" tabindex="2" onkeyup="if (event.keyCode==13) onSubmit();"/></td>
+            <td><input name="contrasena" id="contrasena" autocomplete="off" type="password" class="inputl" size="30"  onclick="setClassInputLogin(this,'ON');"  onfocus="setClassInputLogin(this,'ON');" onblur="setClassInputLogin(this,'OFF');" tabindex="2" onkeyup="if (event.keyCode==13) document.getElementById('captcha').focus();"/></td>
             <td>&nbsp;</td>
+          </tr>
+          <tr>
+              <td>&nbsp;</td>
+            <td><img src="core/captcha.php?t=<?=$code?>" alt="CAPTCHA" /></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+              <td>C&oacute;digo de verificaci&oacute;n:&nbsp;</td>
+            <td><input name="captcha" id="captcha" autocomplete="off" type="captcha" class="inputl" size="30"  onclick="setClassInputLogin(this,'ON');"  onfocus="setClassInputLogin(this,'ON');" onblur="setClassInputLogin(this,'OFF');" tabindex="2" onkeyup="if (event.keyCode==13) onSubmit();"/>&nbsp;</td>
+            <td><input type="hidden" name="csrf_token" value="<?=admin::generateToken('protectedForm')?>"/>&nbsp;</td>
           </tr>
 		   <tr><td></td><td colspan="2"><div class="error" style="display:none;">Ingrese nombre de usuario</div></td></tr>
           <tr>
@@ -89,7 +103,22 @@ if($error==1)
     </tr>
 </table>
 <?php
+}else if($error==2)
+{
+?>
+<table width="400" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <td colspan="2" align="center" >
+        <div class="error">No coincide el C&oacute;digo de verificaci&oacute;n</div>
+	</td>
+    </tr>
+</table>
+<?php
 }
+/*}else{
+    
+    header("Location: 404.php");
+}*/
 ?>
 <br />
 <br />

@@ -1,7 +1,18 @@
 <?php
 include_once("../admin/core/admin.php");
-$usernameClient = $_REQUEST["usernameClient"];
-$passwordClient = $_REQUEST["passwordClient"];
+$usernameClient = admin::getParam("usernameClient");
+$passwordClient = admin::getParam("passwordClient");
+$captcha = admin::getParam("captcha");
+$sCaptcha=  admin::getSession("code");
+
+$sTokenCSRF=admin::getParam('csrf_token');
+
+if ( !empty( $sTokenCSRF ) ) {
+ 
+    if(admin::checkToken($sTokenCSRF, 'protectedFormClient' ) ) {
+if(isset($captcha)&&$captcha!=""&&$captcha==$sCaptcha)
+{
+
 $usernameClient = trim($usernameClient);
 $passwordClient = trim($passwordClient);
 $uidClient = admin::getDBValue("SELECT cli_uid FROM mdl_client WHERE (cli_mainemail='".admin::toSql($usernameClient,"Text")."' or cli_user='".admin::toSql($usernameClient,"Text")."') and cli_password='".admin::toSql($passwordClient,"Text")."' and cli_delete=0 and cli_status=0 and cli_status_main=1");
@@ -45,5 +56,15 @@ if (strlen($uidClient)>0)
 }else
 { 
 	header("Location:".$domain."/session/1/");
+}
+}else{
+    
+    	header("Location:".$domain."/session/3/");
+}
+}
+
+}else{
+   header("HTTP/1.0 403 Forbidden");
+    //echo "Tok:".$sTokenCSRF;
 }
 ?>

@@ -49,6 +49,7 @@ $urlSearch2=substr($urlTitle,0,$countWord);
 if ($urlSearch.'='==$urlSearch2) {$varSearch=str_replace($urlSearch.'=',"",$urlTitle);  $urlTitle=$urlSearch;} 
 //////////////////// ***************************fin busqueda variable************************************/////////////////////////////////////
 //print_r($urlTitle);
+$urlTitle = admin::strip($urlTitle);
 if ($urlTitle!='')
     {
   	if ($urlTitle!='session') 
@@ -59,7 +60,7 @@ if ($urlTitle!='')
 				WHERE con_delete<>1 and 
 					  col_status='ACTIVE' and 
 					  col_language='".$lang."' and 
-					  col_url='".$urlTitle."' 
+					  col_url='".admin::toSql($urlTitle,"Text")."' 
 				";
 		$db->query($sql);
 
@@ -74,11 +75,11 @@ if ($urlTitle!='')
 				WHERE con_delete<>1 and 
 					  col_status='ACTIVE' and 
 					  col_language='".$lang."' and 
-					  col_url='".$urlTitle."' 
+					  col_url='".admin::toSql($urlTitle,"Text")."' 
 				";
 		$numpress = $db->numrows($sql1);		
 
-//echo $uid;
+if(!isset($uid)) $uid=6;
 		}
 		else $uid=0;
 	   //echo $uid."####";die;
@@ -142,7 +143,8 @@ if ($urlTitle!='')
 			$con_uid=$uid; 
 			break;		
 		default: 
-				$con_uid=$uid;
+                    header("HTTP/1.0 403 Forbidden");
+				/*$con_uid=$uid;
 				$page="session.php";
 				if ($urlSubTitle) 
 					{
@@ -174,7 +176,7 @@ if ($urlTitle!='')
 						}
 					$_GET['_pagi_pg']=$page_list;
 					}
-				$con_uid=$uid;
+				$con_uid=$uid;*/
 				break;
 	}
  	include_once($page);        

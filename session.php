@@ -1,3 +1,6 @@
+<?php
+include_once("admin/core/admin.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,7 +10,8 @@
 <meta name="description" content="" />
 <link href="<?=$domain?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="shortcut icon" href="<?=$domain?>/lib/favicon.ico" />
-<link rel="stylesheet" href="<?=$domain?>/css/thickbox.css" type="text/css" media="screen" /> 
+<link rel="stylesheet" href="<?=$domain?>/css/thickbox.css" type="text/css" media="screen" />
+</head>
 <script type="text/javascript">var SERVER='<?=$domain?>'; </script>
 <script type="text/javascript" src="<?=$domain?>/js/jquery.js"></script>
 <script type="text/javascript" src="<?=$domain?>/js/thickbox.js"></script>

@@ -1,7 +1,8 @@
-RewriteEngine Off
+RewriteEngine On
 Options -Indexes
 Options -ExecCGI
-AddHandler cgi_script .php .php3 .php4 .phtml .pl .jsp .asp. htm . shtml .sh .cgi
+Options -FollowSymlinks
+#AddHandler cgi_script .php .php3 .php4 .phtml .pl .jsp .asp. htm . shtml .sh .cgi
 <Files ^(*.jpeg|*.jpg|*.png|*.gif)>
 order deny,allow
 deny from all

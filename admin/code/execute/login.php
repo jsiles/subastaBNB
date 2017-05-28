@@ -1,24 +1,37 @@
 <?php 
-//include_once("../../database/connection.php");  
 include_once("../../core/admin.php");
-$form = $_POST;
-
-
-$usuario    = strtolower( trim(safeHtml(trim($form['usuario'])) ) );
-$contrasena = trim( safeHtml($form['contrasena']) );
-
-//admin::doLog("LogUsuario:".$usuario."|Pass:".$contrasena."|");
+//print_r($_SESSION);
+$usuario    = admin::getParam('usuario');
+$contrasena = admin::getParam('contrasena');
+$captcha = admin::getParam('captcha');
+$sCaptcha= admin::getSession("code");
+$sTokenCSRF=admin::getParam('csrf_token');
+//echo $captcha ."/".$sCaptcha;die;
+if(is_numeric(safeHtml(admin::getParam("message"))))
+$message = safeHtml(admin::getParam("message")) + 1;
+else $message = 1;
+//echo "Tok:".$sTokenCSRF;
+if ( !empty( $sTokenCSRF ) ) {
+ 
+    if(admin::checkToken($sTokenCSRF, 'protectedForm' ) ) {
+        // valid form, continue
+//echo "Tok:".$sTokenCSRF;
+    
+if(isset($captcha)&&$captcha!=""&&$captcha==$sCaptcha)
+{
 if ($usuario=="" || $contrasena==""){
-	header('Location: ../../index.php');	
+	header('Location: ../../index.php?&message=$message');	
 	die;
 	}
+        
+
 $sql = "SELECT * FROM sys_users " .
         "		WHERE usr_login='".admin::toSql($usuario,'text')."' and ".
-        " usr_pass ='".$contrasena."' ";
+        " usr_pass ='".admin::toSql($contrasena)."' ";
 
 $numfiles = admin::getDbValue("SELECT count(*) FROM sys_users " .
         "		WHERE usr_login='".admin::toSql($usuario,'text')."' and ".
-        " usr_pass ='".$contrasena."' ");
+        " usr_pass ='".admin::toSql($contrasena)."' ");
 //if($usuario=="director4") admin::doLog("SQL:".$sql.":cantidad:".$numfiles);        
 			  //usr_pass=LOWER(CONVERT(VARCHAR(32),HashBytes('MD5','".admin::toSql($contrasena,'text')."'),2))";
 
@@ -26,9 +39,8 @@ $db->query($sql);
 
 
 //echo " numfiles ". $numfiles ." ". $sql;die;
-
-if($numfiles==0) {	
-	$message = safeHtml($_REQUEST["message"]) + 1;
+//echo $captcha. "@@".$sCaptcha["code"];die;
+if(($numfiles==0)) {	
 	header('Location: ../../index.php?message='.$message);
 	}
 else
@@ -39,8 +51,8 @@ else
 //        echo $rol;die;
 		$rol=admin::getDBvalue("SELECT rus_rol_uid FROM mdl_roles_users where rus_usr_uid=".$Datos["usr_uid"]);
                 //if($usuario=="director4") admin::doLog("Rol:".$rol);
-		session_set_cookie_params(100*100);
-		@session_start();
+		//session_set_cookie_params(100*100);
+//		@session_start();
 		$_SESSION["authenticated"]=true; // identificador si se encuentra logueado
 		$_SESSION["usr_uid"]=$Datos["usr_uid"];
 		$_SESSION["usr_rol"]=$rol;	
@@ -74,7 +86,6 @@ else
                 //if($usuario=="director4") admin::doLog("ModACCess:".$modAccess);
 		$urlSite = admin::getDBValue("select mod_index from sys_modules where mod_uid=". $modAccess ." and mod_status='ACTIVE'");
 		
-		$_POST = NULL;
 		//echo "ROl:".$rolDesc."-". $modAccess."-".$urlSite;die;
                 if($urlSite){
                      if(strpos($urlSite, '?')!==FALSE){
@@ -88,5 +99,15 @@ else
                 }else{
                     header("Location: ../../index.php?error=1");
                 }
-	}	
+	}
+}else{
+             header("Location: ../../index.php?error=2&message=$message");
+             die;
+        }
+
+        }
+ 
+}  else {
+header("HTTP/1.0 403 Forbidden");    
+}
 ?>

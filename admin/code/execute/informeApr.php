@@ -1,7 +1,7 @@
 <?php
 include_once("../../core/admin.php");
 //admin::initialize('informe','informeList',false);
-@session_start();
+//@session_start();
 $sub_uid = $_POST["uid"];
 
 $sql = "update mdl_subasta set sub_finish=4 where sub_uid=".$sub_uid;

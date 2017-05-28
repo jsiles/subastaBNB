@@ -22,8 +22,8 @@ if (SpawVars::getGetVar('charset') != '')
   $lang->setOutputCharset($charset);
 }
 
-if (SpawVars::getGetVar("scid") != '' && session_id() == '')
-  session_start();
+/*if (SpawVars::getGetVar("scid") != '' && session_id() == '')
+  session_start();*/
 $config = new SpawConfig();
 $config->restoreSecureConfig(SpawVars::getGetVar("scid"));
 

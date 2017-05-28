@@ -1,6 +1,6 @@
 <?php
 include_once("admin/core/admin.php");
-@session_start();
+//@session_start();
 admin::initializeClient();
 $uidClient = admin::getSession("uidClient");
 $arrayURL = admin::urlArray();

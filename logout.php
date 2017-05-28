@@ -1,6 +1,5 @@
 <?php 
 include_once("admin/core/path.php");
-@session_start();
 $sSQL = "delete from sys_session where ses_user_uid=" . $_SESSION["uidClient"];
 $db->query($sSQL);
 //echo $sSQL; die;
