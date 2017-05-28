@@ -4,7 +4,7 @@ unset($_GET['PHPSESSID']);*/
 include_once ("path.php");
 require_once("safeHtml.php");
 //require_once (PATH_DOMAIN.'/admin/csrf-magic/csrf-magic.php');
-define("VERSION","1.2");
+define("VERSION","1.0.1");
 $app_path = ".";
 $labels = array(); 
 $linksLabels = array();

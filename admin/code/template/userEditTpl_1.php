@@ -1,6 +1,5 @@
 <?php
-  
-$use_uidA=admin::toSql($_REQUEST["usr_uidA"],"String");
+$use_uidA=admin::getSession("usr_uid");
 $sql = "select * from sys_users where usr_uid=" . $use_uidA;
 $db->query($sql);
 $regusers = $db->next_record();
@@ -8,7 +7,7 @@ $regusers = $db->next_record();
         
 ?>
 <br />
-<form name="frmUsers" method="post" action="code/execute/userUpd.php?token=<?=admin::getParam("token");?>" enctype="multipart/form-data" onsubmit="return false;">
+<form name="frmUsers" method="post" action="code/execute/userUpd_1.php?token=<?=admin::getParam("token");?>" enctype="multipart/form-data" onsubmit="return false;">
 <input type="hidden" id="use_uidA" name="use_uidA" value="<?=$use_uidA?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -107,7 +106,7 @@ $regusers = $db->next_record();
           <tr>
             <td><?=admin::labels('user','userrol');?>:</td>
             <td>
-            <select name="usr_rol" class="txt10" id="usr_rol">
+                <select name="usr_rol" disabled="disabled" class="txt10" id="usr_rol">
             <?php
 			$sql2="select rol_uid, rol_description from mdl_roles where rol_delete=0 and rol_status='ACTIVE' ";	
 			//die($sql2);
@@ -124,19 +123,6 @@ $regusers = $db->next_record();
 			<span id="div_col_status" style="display:none;" class="error"></span>			</td>
             <td>&nbsp;</td>
           </tr>
-          <?php 
-		  if($_SESSION['usr_uid']!=$use_uidA){?>
-          <tr>
-            <td><?=admin::labels('status');?>:</td>
-            <td>
-			<select name="usr_status" class="txt10" id="usr_status">
-            	<option <? if ($regusers["usr_status"]=='ACTIVE') echo "selected"; ?> value="ACTIVE"><?=admin::labels('active');?></option>
-              	<option <? if ($regusers["usr_status"]=='INACTIVE') echo "selected"; ?> value="INACTIVE"><?=admin::labels('inactive');?></option>
-			</select>
-			<span id="div_col_status" style="display:none;" class="error"></span>
-			</td>
-          </tr>
-          <?php } ?>
         </table></td>
         
       </tr>

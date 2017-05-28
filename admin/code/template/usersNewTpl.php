@@ -91,7 +91,7 @@
 <input name="use_password" type="password" class="input" id="use_password" onfocus="setClassInput(this,'ON');document.getElementById('div_use_password').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_use_password').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_use_password').style.display='none';" size="20" />
 <br /><span id="div_use_password" style="display:none;" class="error"><?=admin::labels('users','passreq');?></span>
 			</td>
-            <td width="7%"><a href="pass" onClick="return generarPassword(this.form,'use_password',5);">Generar</a>&nbsp;</td>                        
+            <td width="7%"><a href="pass" onClick="return generarPassword(this.form,'use_password',10);">Generar</a>&nbsp;</td>                        
           <tr>
             <td width="16%"><?=admin::labels('photo');?>:</td>
             <td width="84%">

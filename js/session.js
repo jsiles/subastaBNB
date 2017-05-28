@@ -19,8 +19,18 @@ function altas(ruta)
 	pass2 = $("#pass2").val();
 	pass = $("#pass").val();
 	idUser = $("#idUser").val();
-	msg='Usuario, contrase&ntilde;a y/o correo electr&oacute;nico requeridos.';
-	if((idUser.length>0)&&(pass.length>0)&&(pass2.length>0))
+	msg='Usuario y contrase&ntilde;a requeridos.';
+        sw=true;
+        if(pass.length<8){
+         msg='Contrase&ntilde;a debe tener m&iacute;nimo 8 caracteres.';
+         sw=false;
+        }
+        if(pass==pass2){
+         msg='La Nueva Contrase&ntilde;a debe ser la misma.';
+         sw=false;
+        }
+
+	if((idUser.length>0)&&(pass.length>0)&&(pass2.length>0)&&(sw))
 	{
 		$.ajax({
    			type: "POST",

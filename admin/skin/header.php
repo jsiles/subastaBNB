@@ -64,8 +64,8 @@ function checkTime(i) {
 		<a title="<?=admin::labelsSystem('logout')?>" href="<?=admin::labelsSystem('logout','link')?>?token=<?=admin::getParam('token')?>"><img src="lib/buttons/logout.gif" alt="<?=admin::labelsSystem('logout')?>" width="21" height="21" border="0" /></a>
 		</div>			
                     <div id="userDat">
-                    <a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&token=<?=admin::getParam('token')?>" class="link3" title="<?=admin::labelsSystem('myProfile');?>"><img width="30" src="<?=$domain?>/admin/lib/pencil.png" alt="Cambiar Contrase&ntilde;a" title="Cambiar Contrase&ntilde;a" /></a><br />
-                    <a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&token=<?=admin::getParam('token')?>" class="small" title="<?=admin::labelsSystem('myProfile');?>">&nbsp;&nbsp;Cambiar<br />Contrase&ntilde;a</a> <br />
+                    <a href="userEdit_1.php?token=<?=admin::getParam('token')?>" class="link3" title="<?=admin::labelsSystem('myProfile');?>"><img width="30" src="<?=$domain?>/admin/lib/pencil.png" alt="Cambiar Contrase&ntilde;a" title="Cambiar Contrase&ntilde;a" /></a><br />
+                    <a href="userEdit_1.php?token=<?=admin::getParam('token')?>" class="small" title="<?=admin::labelsSystem('myProfile');?>">&nbsp;&nbsp;Cambiar<br />Contrase&ntilde;a</a> <br />
 		
 		</div>
 		<div id="userImg">
@@ -73,7 +73,7 @@ function checkTime(i) {
 		$usr_photo = admin::getDBValue('select usr_photo from sys_users where usr_uid='.$_SESSION['usr_uid']);
 		$imgProfile = "upload/profile/thumb_" . $usr_photo;
 	        if (file_exists($imgProfile) && $usr_photo!="") { ?>
-		<a href="userEdit.php?usr_uidA=<?=$_SESSION['usr_uid']?>&amp;token=<?=admin::getParam('token')?>" title="<?=admin::labelsSystem('myProfile');?>">
+		<a href="userEdit_1.php?token=<?=admin::getParam('token')?>" title="<?=admin::labelsSystem('myProfile');?>">
 			<img border="0" src="<?=$imgProfile?>?<?=time()?>" title="<?=admin::labelsSystem('myProfile');?>" alt="<?=admin::labelsSystem('myProfile');?>"/>
 			</a>
 		<?php } ?>		

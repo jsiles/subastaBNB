@@ -1,11 +1,10 @@
 <?php
-
 include_once("../../core/admin.php");
 include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('users','usersEdit',false);
 
-$use_uidA = admin::toSql(admin::getParam("use_uidA"),"Text");
+$use_uidA = admin::getSession("usr_uid");
 $usr_loginA = admin::toSql(admin::getParam("usr_login"),"String");
 $usr_passA = admin::toSql(admin::getParam("usr_pass"),"Text");
 $usr_firstnameA = admin::toSql(admin::getParam("usr_firstname"),"String");
@@ -55,28 +54,6 @@ if ($validFile && $FILES['error']==0)
 	$db->query($sql);
 	}
 	
-	$sql = "update mdl_roles_users set rus_rol_uid=".$usr_rolA." where rus_usr_uid=".$use_uidA;
-	$db->query($sql);
-
+	
         $token=admin::getParam("token");
-        if(!admin::verifyModulePermission(5))
-        {
-            $modAccess = admin::getDBvalue("select top 1 a.mus_mod_uid from sys_modules_users a, sys_modules b where a.mus_rol_uid=".$_SESSION["usr_rol"]." and a.mus_mod_uid=b.mod_uid and b.mod_status='ACTIVE' and b.mod_parent=0 order by b.mod_position");
-            $urlSite = admin::getDBValue("select mod_index from sys_modules where mod_uid=". $modAccess ." and mod_status='ACTIVE'");
-            if($urlSite){
-                 if(strpos($urlSite, '?')!==FALSE){
-                                                $urlSite.="&token=".$token;
-                                            }else{
-                                                $urlSite.="?token=".$token;
-                                            }
-                                           // echo $urlSite;die;
-            header("Location: ".PATH_DOMAIN."/admin/".$urlSite);
-            }else { //echo "@@";die;
                 header("Location: ".PATH_DOMAIN."/index.php");
-            }
-        }
-        else {
-            //echo "##";die;
-            header("Location: ../../userList.php?token=".$token);		
-        }
-?>

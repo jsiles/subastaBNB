@@ -26,11 +26,11 @@ else  $msgP='';
 						<p><?=$msgP?></p>
 						<form name="formLabel" id="formLabel" class="formLabel" autocomplete="off" method="post">
                         <p>
-                            <label>Contrase&ntilde;a:</label><input name="pass" id="pass" type="password" value="" /> 
+                            <label>Nueva Contrase&ntilde;a:</label><input name="pass" id="pass" type="password" value="" /> 
                         </p>
                         
                         <p>
-                            <label>Re-escriba la contrase&ntilde;a:</label><input name="pass2" id="pass2" type="password" value="" /> 
+                            <label>Re-escriba la nueva contrase&ntilde;a:</label><input name="pass2" id="pass2" type="password" value="" /> 
                         </p>
                         
                         <div class="clear"></div>

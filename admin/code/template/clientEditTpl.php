@@ -236,7 +236,7 @@ $regusers = $db->next_record();
             <td width="29%"><?=admin::labels('login','password');?>:</td>
             <td width="64%"><span id="deltag">************ &nbsp;<a href="#" onclick="removePass();return false;" title="Cambiar" class="small3">Cambiar</a></span>
 <input name="cli_pass" style="display:none" type="text" class="input" id="cli_pass" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_pass').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_pass').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_pass').style.display='none';" value="" /><br /><span id="div_cli_pass" style="display:none;" class="error">Password es necesario</span></td>
-            <td width="7%"><a href="pass" id="linkpass" style="display:none;" onClick="return generarPassword(this.form,'cli_pass',5);">Generar</a>&nbsp;</td>
+            <td width="7%"><a href="pass" id="linkpass" style="display:none;" onClick="return generarPassword(this.form,'cli_pass',10);">Generar</a>&nbsp;</td>
           </tr>
           
           <tr>

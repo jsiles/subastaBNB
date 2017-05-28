@@ -4,15 +4,62 @@ function verifyUsers()
 	sw=true;
 	document.getElementById('div_usr_email').style.display='none';
 	document.getElementById('div_usr_pass').style.display='none';
+	document.getElementById('div_usr_login').style.display='none';
 	
-		
-	if(document.getElementById('pass_edit').style.display=='block')
-		if (document.getElementById('usr_pass').value==''){
+        if (document.getElementById('usr_login').value==''){
+		document.getElementById('usr_login').className='inputError';
+		document.getElementById('div_usr_login').style.display='';
+		sw=false;
+                }
+	
+		var pass = document.getElementById('usr_pass').value;
+                if (pass.length<8){
+                    document.getElementById('usr_pass').className='inputError';
+                    document.getElementById('div_usr_pass').innerHTML="Cantidad de caracteres minimo es de 8"
+			document.getElementById('div_usr_pass').style.display='';
+			sw=false;
+		} 
+       	if (document.getElementById('usr_pass').value==''){
 			document.getElementById('usr_pass').className='inputError';
 			document.getElementById('div_usr_pass').style.display='';
 			sw=false;
 		}
+        
+	if (document.getElementById('usr_email').value==''){
+		document.getElementById('usr_email').className='inputError';
+		document.getElementById('div_usr_email').style.display='';
+		sw=false;
+	}
+	
+	if (sw){
+		document.frmUsers.submit();
+	}
+	else{
+		scroll(0,0);
+	}
+}
+function verifyUsersEdit()
+	{
+	sw=true;
+	document.getElementById('div_usr_email').style.display='none';
+	document.getElementById('div_usr_pass').style.display='none';
+	
 		
+	if(document.getElementById('pass_edit').style.display!='none'){
+           	if (document.getElementById('usr_pass').value==''){
+			document.getElementById('usr_pass').className='inputError';
+			document.getElementById('div_usr_pass').style.display='';
+			sw=false;
+		}
+                var pass = document.getElementById('usr_pass').value;
+                if (pass.length<8){
+                    document.getElementById('usr_pass').className='inputError';
+                    document.getElementById('div_usr_pass').innerHTML="Cantidad de caracteres minimo es de 8"
+			document.getElementById('div_usr_pass').style.display='';
+			sw=false;
+		}         
+            }
+        
 	if (document.getElementById('usr_email').value==''){
 		document.getElementById('usr_email').className='inputError';
 		document.getElementById('div_usr_email').style.display='';

@@ -23,7 +23,7 @@
             <td width="29%"><?=admin::labels('login','password');?>:</td>
             <td width="64%">
 <input name="usr_pass" type="text" class="input" id="usr_pass" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_usr_pass').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_usr_pass').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_usr_pass').style.display='none';" /><br /><span id="div_usr_pass" style="display:none;" class="error">Password es necesario</span>			</td>
-            <td width="7%"><a href="pass" onClick="return generarPassword(this.form,'usr_pass',5);">Generar</a>&nbsp;</td>                        
+            <td width="7%"><a href="pass" onClick="return generarPassword(this.form,'usr_pass',10);">Generar</a>&nbsp;</td>                        
             </div>
           </tr>
 		  <tr>

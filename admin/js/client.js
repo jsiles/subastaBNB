@@ -43,7 +43,15 @@ function verifyClient()
 		document.getElementById('div_cli_pass').style.display='';
 		sw=false;
 	}
-	
+	var pass = document.getElementById('cli_pass').value;
+                if (pass.length<8){
+                    document.getElementById('cli_pass').className='inputError';
+                    document.getElementById('div_cli_pass').innerHTML="Cantidad de caracteres minimo es de 8";
+                    document.getElementById('div_cli_pass').style.display='';
+                   
+			
+			sw=false;
+		} 
 	if (document.getElementById('cli_socialreason').value==''){
 		document.getElementById('cli_socialreason').className='inputError';
 		document.getElementById('div_cli_socialreason').style.display='';
@@ -107,6 +115,22 @@ function verifyClientEdit()
 	document.getElementById('div_cli_legalname').style.display='none';
 	document.getElementById('div_cli_legallastname').style.display='none';
 	
+        if (document.getElementById('cli_pass').style.display!='none'){
+        if (document.getElementById('cli_pass').value==''){
+		document.getElementById('cli_pass').className='inputError';
+		document.getElementById('div_cli_pass').style.display='';
+		sw=false;
+	}
+	var pass = document.getElementById('cli_pass').value;
+                if (pass.length<8){
+                    document.getElementById('cli_pass').className='inputError';
+                    document.getElementById('div_cli_pass').innerHTML="Cantidad de caracteres minimo es de 8";
+                    document.getElementById('div_cli_pass').style.display='';
+                   
+			
+			sw=false;
+		} 
+            }
 	if(document.getElementById('cli_pts_uid').value==4){
 		document.getElementById('div_cli_pts_description8').style.display='none';
 		document.getElementById('div_cli_pts_description9').style.display='none';
