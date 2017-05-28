@@ -72,7 +72,7 @@ if ($validFile && $FILES['error']==0)
                                            // echo $urlSite;die;
             header("Location: ".PATH_DOMAIN."/admin/".$urlSite);
             }else { //echo "@@";die;
-                header("Location: ".PATH_DOMAIN."/index.php");
+                header("Location: ".PATH_DOMAIN."/admin/index.php?token=".$token);
             }
         }
         else {

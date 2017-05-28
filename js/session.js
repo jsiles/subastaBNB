@@ -25,7 +25,7 @@ function altas(ruta)
          msg='Contrase&ntilde;a debe tener m&iacute;nimo 8 caracteres.';
          sw=false;
         }
-        if(pass==pass2){
+        if(pass!=pass2){
          msg='La Nueva Contrase&ntilde;a debe ser la misma.';
          sw=false;
         }
@@ -44,12 +44,12 @@ function altas(ruta)
 				if (msg.substring(0,3)=='Act'){
 					setTimeout(function () {
 					   window.location.href = ruta;
-					}, 4000);
+					}, 100);
 				}
 				else{
 					setTimeout(function () {
 					   $("#message").show();
-					}, 3000);
+					}, 1000);
 				}
         	}
  		});

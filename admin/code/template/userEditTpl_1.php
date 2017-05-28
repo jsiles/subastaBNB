@@ -46,19 +46,19 @@ $regusers = $db->next_record();
 			<tr>
 			<td width="16%"><?=admin::labels('firstname');?>:</td>
 			<td width="84%">
-			<input name="usr_firstname" type="text" class="input" id="usr_firstname" onfocus="setClassInput(this,'ON');document.getElementById('div_usr_firstname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_usr_firstname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_usr_firstname').style.display='none';" value="<?=$regusers["usr_firstname"]?>" size="60"/><br /><span id="div_usr_firstname" style="display:none;" class="error"><?=admin::labels('users','nameerror');?></span>
+			<?=$regusers["usr_firstname"]?><br /><span id="div_usr_firstname" style="display:none;" class="error"><?=admin::labels('users','nameerror');?></span>
 			</td>
 		</tr>
 		<tr>
 			<td width="16%"><?=admin::labels('lastname');?>:</td>
 			<td width="84%">
-			<input name="usr_lastname" type="text" class="input" id="usr_lastname" onfocus="setClassInput(this,'ON');document.getElementById('div_usr_lastname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_usr_lastname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_usr_lastname').style.display='none';" value="<?=$regusers["usr_lastname"]?>" size="60"/><br /><span id="div_usr_lastname" style="display:none;" class="error"><?=admin::labels('users','lasterror');?></span>
+			<?=$regusers["usr_lastname"]?><br /><span id="div_usr_lastname" style="display:none;" class="error"><?=admin::labels('users','lasterror');?></span>
 			</td>
 			</tr>	
 <tr>
 		  <td width="16%"><?=admin::labels('email');?>:</td>
             <td width="84%">
-<input name="usr_email" type="text" class="input3" id="usr_email" onfocus="setClassInput3(this,'ON');document.getElementById('div_usr_email').style.display='none';" onblur="setClassInput3(this,'OFF');document.getElementById('div_usr_email').style.display='none';" onclick="setClassInput3(this,'ON');document.getElementById('div_usr_email').style.display='none';" size="60" value="<?=$regusers["usr_email"]?>" />
+            <?=$regusers["usr_email"]?>s
 <br />
 <span id="div_usr_email" style="display:none;" class="error"><?=admin::labels('users','mailerror');?></span>			
 			</td>
@@ -82,24 +82,18 @@ $regusers = $db->next_record();
 				<a href="<?=$imgSaveddomain2?>" target="_blank"><img src="<?=$imgSaveddomain1?>?<?=time();?>" border="0" /></a>				</td>
 				<td width="75%" style="font-size:11px;">
 				<?=$regusers["usr_photo"]?> <br />
-				<a href="javascript:viewInputFile('on')" title="<?=admin::labels('change');?>" class="small2"><?=admin::labels('change');?></a>
+				
 				<span class="pipe">|</span> <a href="#" onclick="removeImg(<?=$regusers["usr_uid"]?>);return false;" title="<?=admin::labels('del')?>" class="small3"><?=admin::labels('del')?></a>				</td>
 			</tr>
 			<tr>
 				<td height="24">
-				<div id="imageChange1" style="display:none">
-				<input type="file" name="usr_photo" id="usr_photo" size="14" style="font-size:11px;">  <a href="javascript:viewInputFile('off')" onclick="document.getElementById('usr_photo').value='';"><img border="0" src="lib/close.gif" align="top"/></a>
-				</div>
 				</td>
 			</tr>
 			</table>
 			</div>
 			<div id="image_add_<?=$regusers["usr_uid"]?>" style="display:none;">			</div>
 			<?php	}
-			else
-				{ ?>
-				<input type="file" name="usr_photo" id="usr_photo" size="32" class="input">
-			<?php	} ?>
+			 ?>
 			</td>
           </tr>
           

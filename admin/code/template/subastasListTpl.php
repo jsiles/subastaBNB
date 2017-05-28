@@ -7,7 +7,7 @@ $timeNow= date("Y-m-d H:i:s");//sub_finish<>0
 //echo $timeNow;
 if ($search2!='')
 {
-	$Where="and (sub_description like '%".$search2."%' or pro_name like '%".$search2."%')";
+	$Where=" and (sub_description like '%".$search2."%' or pro_name like '%".$search2."%')";
 }
 
 

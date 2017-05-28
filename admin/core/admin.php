@@ -941,10 +941,10 @@ public static function setSession($param_name, $param_value)
     ***********************************/         
   public static function strip($value)
 	{
-                $value = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
+              /*  $value = filter_var($value, FILTER_SANITIZE_SPECIAL_CHARS);
                 $value = filter_var($value, FILTER_SANITIZE_STRIPPED);
                 
-                
+                */
 	if(get_magic_quotes_gpc() == 0)
 		return $value;
 	else

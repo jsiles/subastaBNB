@@ -41,7 +41,7 @@ function verifyUsers()
 function verifyUsersEdit()
 	{
 	sw=true;
-	document.getElementById('div_usr_email').style.display='none';
+
 	document.getElementById('div_usr_pass').style.display='none';
 	
 		
@@ -59,13 +59,7 @@ function verifyUsersEdit()
 			sw=false;
 		}         
             }
-        
-	if (document.getElementById('usr_email').value==''){
-		document.getElementById('usr_email').className='inputError';
-		document.getElementById('div_usr_email').style.display='';
-		sw=false;
-	}
-	
+       
 	if (sw){
 		document.frmUsers.submit();
 	}

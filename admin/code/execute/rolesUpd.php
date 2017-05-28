@@ -40,11 +40,13 @@ if(is_array($modId)){
     }
 }
 */
+$modId = admin::getParam("mod_uid");
+/*echo "Sal";
+print_r($modId);die;*/
 admin::getDBvalue("delete from sys_modules_users where mus_rol_uid=".$rol_uid." and mus_place='MODULE'");
 admin::getDbValue("delete from sys_modules_access where moa_rol_uid=$rol_uid");
                         
-$modId = admin::getParam("mod_uid");
-//print_r($modId);die;
+
 if(is_array($modId)){
     foreach ($modId as $key => $value) {
         $sql = "insert into sys_modules_users (mus_rol_uid,mus_mod_uid,mus_place,mus_delete) values (".$rol_uid.", ".$key.", 'MODULE', 0)";

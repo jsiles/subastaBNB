@@ -32,7 +32,7 @@ $rol=admin::getSession("usr_rol");
     }
 
 
-$_pagi_sql= "select * from mdl_orden_compra,mdl_client, mdl_orden_unidad where orc_uid=oru_orc_uid and orc_cli_uid=cli_uid and  orc_delete=0 $Where $aprSel order by orc_uid asc ";
+$_pagi_sql= "select * from mdl_orden_compra,mdl_client, mdl_orden_unidad where orc_uid=oru_orc_uid and orc_cli_uid=cli_uid and  orc_delete=0 $Where $aprSel order by orc_uid desc ";
 //echo $_pagi_sql;
 
 $_pagi_cuantos = 20;//Elegí un número pequeño para que se generen varias páginas

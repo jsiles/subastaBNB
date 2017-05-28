@@ -44,7 +44,7 @@ if($tipUid==2) {
         if($tipUid==2) $where .=" and sou_uni_uid=-1 ";
     }
 
-$_pagi_sql= "select * from mdl_solicitud_compra, mdl_solicitud_unidad where sol_uid=sou_sol_uid and sol_delete=0 $where order by sol_uid asc ";
+$_pagi_sql= "select * from mdl_solicitud_compra, mdl_solicitud_unidad where sol_uid=sou_sol_uid and sol_delete=0 $where order by sol_uid desc ";
 $nroReg=$db->numrows($_pagi_sql);
 
 //echo $_pagi_sql;
