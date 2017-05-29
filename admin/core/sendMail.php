@@ -6,6 +6,7 @@
   
   $sSQL="select * from mdl_notificacion_envio where noe_status=0 and noe_retry<=2 and noe_email!=''";
   $nroReg=$db->numrows($sSQL);
+  echo "Inicio de envio";
   if($nroReg>0){
     $db->query($sSQL);
     while($noe=$db->next_record())
@@ -48,4 +49,5 @@
       } 
     }
   }
+  echo "Fin de envio";
 ?>

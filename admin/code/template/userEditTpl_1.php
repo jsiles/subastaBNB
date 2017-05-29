@@ -82,8 +82,7 @@ $regusers = $db->next_record();
 				<a href="<?=$imgSaveddomain2?>" target="_blank"><img src="<?=$imgSaveddomain1?>?<?=time();?>" border="0" /></a>				</td>
 				<td width="75%" style="font-size:11px;">
 				<?=$regusers["usr_photo"]?> <br />
-				
-				<span class="pipe">|</span> <a href="#" onclick="removeImg(<?=$regusers["usr_uid"]?>);return false;" title="<?=admin::labels('del')?>" class="small3"><?=admin::labels('del')?></a>				</td>
+                                </td>
 			</tr>
 			<tr>
 				<td height="24">
