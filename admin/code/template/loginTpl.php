@@ -1,5 +1,9 @@
 <?php 
 $get_msg = admin::getParam("message");
+$get_msg = filter_var($get_msg,FILTER_SANITIZE_STRING);
+$get_msg = filter_var($get_msg,FILTER_SANITIZE_SPECIAL_CHARS);
+$get_msg = filter_var($get_msg,FILTER_SANITIZE_STRIPPED);
+
 if ($get_msg!="") $message=$get_msg; else $message=0; 
 /*if ($message>3)  
 setcookie("lockout","1",time() + 10*60,"/");
@@ -8,6 +12,9 @@ echo "Cookie:".$_COOKIE["lockout"].admin::getCookie("lockout");
 if(admin::getCookie("lockout")!=1)
 {   */ 
 $error=admin::getParam("error");
+$error= filter_var($error,FILTER_SANITIZE_SPECIAL_CHARS);
+$error= filter_var($error,FILTER_SANITIZE_STRING);
+$error= filter_var($error,FILTER_SANITIZE_STRIPPED);
 /*if ($message>3) {
     header('HTTP/1.1 403 Forbidden');
     header("Refresh:2; url=index.php");
