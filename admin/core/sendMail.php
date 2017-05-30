@@ -23,12 +23,12 @@
 	  $mail->Timeout=TIMEOUT;
 	  $mail->SMTPSecure = SMTPSECURE;
 	  $mail->Port=PORT;
-	  
-	  $mail->SetLanguage("en", '../phpmailer/language/');
+
+	  $mail->SetLanguage("es", '../phpmailer/language/');
 
 	  $mail->AddAddress($noe["noe_email"]);
-	  $mail->Subject =admin::getDbValue("select not_subject from mdl_notificacion_template where not_nti_uid=".$noe["noe_tip_uid"]);
-	  $mail->Body =admin::getDbValue("select concat(not_template,'\n',not_sign) as body from mdl_notificacion_template where not_nti_uid=".$noe["noe_tip_uid"]);
+	  $mail->Subject =admin::getDbValue("select not_subject from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
+	  $mail->Body =admin::getDbValue("select concat(not_template,'\n',not_sign) as body from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
      /* if($noe["noe_attach"]!=""){
         $mail->addAttachment(PATH_ROOT.$noe["noe_attach"]);
       }*/
