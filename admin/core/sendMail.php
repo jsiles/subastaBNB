@@ -32,6 +32,7 @@
      /* if($noe["noe_attach"]!=""){
         $mail->addAttachment(PATH_ROOT.$noe["noe_attach"]);
       }*/
+	  $mail->CharSet = 'UTF-8';
         $exito = $mail->Send();
         $intentos=1; 
       while ((!$exito) && ($intentos < 3)) {

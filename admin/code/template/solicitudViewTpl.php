@@ -47,9 +47,9 @@ $solEdit=$db->next_record();
                 <input name="tipUid" id="tipUid" value="<?=$tipUid?>" type="hidden" />
 
                   <span id="div_sub_unidad">
-                <select name="rav_uni_uid" id="rav_uni_uid" class="input" >
+                      <select disabled="disabled" name="rav_uni_uid" id="rav_uni_uid" class="input" >
                 <?php
-                  $uUnidad = admin::getDbValue("select TOP 1 uni_uid from mdl_subasta_unidad where suu_sub_uid=".$prod["sub_uid"]);
+                  $uUnidad = admin::getDbValue("select TOP 1 sou_uni_uid from mdl_solicitud_unidad where sou_sol_uid=".$sol_uid);
                   $arrayUnidad = admin::dbFillArray("select uni_uid, uni_description from mdl_unidad where uni_delete=0 order by uni_uid");
                   if(is_array($arrayUnidad)){
                       $unidades=true;
@@ -191,7 +191,7 @@ $solEdit=$db->next_record();
 
         <tr>
             <td valign="top"><?=admin::labels('status');?></td>
-            <td><select name="sol_status" class="listMenu" id="sol_status">
+            <td><select disabled="disabled" name="sol_status" class="listMenu" id="sol_status">
                     <option selected="selected" disabled="disabled" value="ACTIVE"><?=admin::labels('active');?></option>
               	<option value="INACTIVE"><?=admin::labels('inactive');?></option>
 			</select>

@@ -58,7 +58,7 @@ $regusers = $db->next_record();
 <tr>
 		  <td width="16%"><?=admin::labels('email');?>:</td>
             <td width="84%">
-            <?=$regusers["usr_email"]?>s
+            <?=$regusers["usr_email"]?>
 <br />
 <span id="div_usr_email" style="display:none;" class="error"><?=admin::labels('users','mailerror');?></span>			
 			</td>
