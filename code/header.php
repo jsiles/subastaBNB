@@ -29,19 +29,13 @@ function checkTime(i) {
 }
 </script>
 <div id="top-header" class="container">
-			
-				
-			<div id="top-banner">
+    <div id="top-banner">
                             <div id="logo" style="float:left">
 				<h1><a href="<?=$domain?>" >SISTEMA ELECTR&Oacute;NICO DE ADQUISICIONES Y REGISTRO DE PROVEEDORES</a></h1>
 				<p></p>
 			</div>
-                            <div id="colA" style="float:center">
-                    <?php if($imgs){?>
-					<img src="<?=$domain?>/img/banner/img_<?=$imgs?>?<?=time()?>" alt="<?=$ban_name?>" title="<?=$ban_name?>" border="0"/>
-                    <?php }?>
-				</div>
-				<?php if($uidClient){?>
+                            
+					<?php if($uidClient){?>
                 <div id="colB" style="float:right">
                     <p><a href="<?=$domain?>/logout.php"></a></p>
                     <a href="<?=$domain."/registro/".$uidClient."/"?>" alt="Cambiar Contrase&ntilde;a" title="Cambiar Contrase&ntilde;a"><img width="30" src="<?=$domain."/lib/pencil.png"?>" alt="Cambiar Contrase&ntilde;a" title="Cambiar Contrase&ntilde;a" /></a>
@@ -49,6 +43,13 @@ function checkTime(i) {
                     
                                    </div>
                 <?php } ?>
-			</div>
-		</div>
+    <div id="colA" style="float:center">
+                    <?php if($imgs){?>
+					<img src="<?=$domain?>/img/banner/img_<?=$imgs?>?<?=time()?>" alt="<?=$ban_name?>" title="<?=$ban_name?>" border="0"/>
+                    <?php }?>
+				</div>
+				
+			
 		
+</div>
+</div>		

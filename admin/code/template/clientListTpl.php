@@ -4,6 +4,8 @@ if ($lang!='es') $urlLangAux=$lang.'/';
 else $urlLangAux='';
 
 $order = admin::toSql(admin::getParam("order"),"Number");
+if(!isset($order)) $order=0;
+
 if ($order==0) {$orderCode=' order by cli_uid desc'; $titClass='up'; $nameClass='up'; $dateClass='up';}
 elseif ($order==1) {$orderCode='  order by cli_nit_ci asc'; $titClass='up'; $nameClass='up'; $dateClass='up';}
 elseif ($order==2) {$orderCode='  order by cli_nit_ci desc'; $titClass='down'; $nameClass='up'; $dateClass='up';}
@@ -83,8 +85,8 @@ if ($nroReg>0)
     <td colspan="2" width="98%">
   <table width="98%" border="0"  style="padding-left:17px;">
 	<tr>
-    	<td width="15%" class="list1a" style="color:#16652f;">NIT o CI:</td>
-	    <td width="15%" class="list1a" style="color:#16652f;">Raz&oacute;n social:</td>
+            <td width="15%" class="list1a" style="color:#16652f;"><a href="clientList.php?order=<?=$titOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$titClass;?>">NIT o CI:</a></td>
+            <td width="15%" class="list1a" style="color:#16652f;"><a href="clientList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>">Raz&oacute;n social:</a></td>
 	    <td width="15%" style="color:#16652f">Correo electr&oacute;nico:</td>
         <td width="15%" style="color:#16652f">Usuario:</td>
         <td width="10%" style="color:#16652f">Estado:</td>
@@ -157,7 +159,7 @@ while ($user_list = $pagDb->next_record())
 	<td align="center" width="5%" height="5">
             <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if($valuePermit=='ACTIVE'){
+            if(($valuePermit=='ACTIVE')&&($cli_status_main==0)){
             ?>
     	<a href="clientEdit.php?cli_uid=<?=$cli_uid?>&token=<?=admin::getParam("token");?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
@@ -174,7 +176,7 @@ while ($user_list = $pagDb->next_record())
 	<td align="center" width="5%" height="5">
             <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Eliminar' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if($valuePermit=='ACTIVE'){
+            if(($valuePermit=='ACTIVE')&&($cli_status_main==0)){
             ?>
                 <a href="" onclick="removeList(<?=$cli_uid?>); return false;">
 		<img src="lib/delete_es.gif" border="0" title="<?=admin::labels('delete')?>" alt="<?=admin::labels('delete')?>">
@@ -192,7 +194,7 @@ while ($user_list = $pagDb->next_record())
     <div id="status_<?=$cli_uid?>">
         <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Estado' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if($valuePermit=='ACTIVE'){
+            if(($valuePermit=='ACTIVE')&&($cli_status_main==0)){
             ?>
 	   <a href=""  onclick="clientCS('<?=$cli_uid?>','<?=$cli_status?>'); return false;">
 		<img src="<?=admin::labels($labels_content,'linkImage')?>" border="0" title="<?=admin::labels($labels_content)?>" alt="<?=admin::labels($labels_content)?>">

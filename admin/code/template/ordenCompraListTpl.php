@@ -32,7 +32,38 @@ $rol=admin::getSession("usr_rol");
     }
 
 
-$_pagi_sql= "select * from mdl_orden_compra,mdl_client, mdl_orden_unidad where orc_uid=oru_orc_uid and orc_cli_uid=cli_uid and  orc_delete=0 $Where $aprSel order by orc_uid desc ";
+$_pagi_sql= "select * from mdl_orden_compra,mdl_client, mdl_orden_unidad where orc_uid=oru_orc_uid and orc_cli_uid=cli_uid and  orc_delete=0 $Where $aprSel ";
+
+
+$order= admin::toSql(admin::getParam("order"),"Number");
+if(!isset($order)) $order=0;
+/*if ($order) admin::setSession("order",$order);
+else $order=admin::getSession("order");
+*/
+if ($order==0) {$orderCode=' order by orc_fecha desc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up'; $orcClass='up';}
+elseif ($order==1) {$orderCode=' order by orc_fecha asc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='up';$orcClass='down';}
+elseif ($order==2) {$orderCode='  order by orc_sol_uid desc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';$orcClass='up';}
+elseif ($order==3) {$orderCode='  order by orc_sol_uid asc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='down';$orcClass='down';}
+elseif ($order==4) {$orderCode='  order by orc_nro_oc desc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';$orcClass='up';}
+elseif ($order==5) {$orderCode='  order by orc_nro_oc asc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='down';$orcClass='down';}
+elseif ($order==6) {$orderCode='  order by orc_cli_uid asc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';$orcClass='up';}
+elseif ($order==7) {$orderCode='  order by orc_cli_uid desc'; $uidClass='up'; $fecClass='up'; $uniClass='down';$estClass='down';$orcClass='down';}
+elseif ($order==8) {$orderCode='  order by orc_estado asc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';$orcClass='up';}
+elseif ($order==9) {$orderCode='  order by orc_estado desc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='down';$orcClass='down';}
+
+if ($uidClass=='up') $uidOrder=2;
+else $uidOrder=3;
+if ($fecClass=='up') $fecOrder=0;
+else $fecOrder=1;
+if ($uniClass=='up') $uniOrder=6;
+else $uniOrder=7;
+if ($estClass=='up') $estOrder=9;
+else $estOrder=8;
+if ($orcClass=='up') $orcOrder=5;
+else $orcOrder=4;
+$_pagi_sql.=$orderCode;
+
+
 //echo $_pagi_sql;
 
 $_pagi_cuantos = 20;//Elegí un número pequeño para que se generen varias páginas
@@ -90,12 +121,12 @@ if ($nroReg>0)
     <td colspan="2" width="98%">
   <table width="98%" border="0"  style="padding-left:17px;">
 	<tr>
-            <td width="12%" class="list1a" style="color:#16652f;">Fecha:</td>
-            <td width="12%" class="list1a" style="color:#16652f;">Nro Solicitud:</td>
-            <td width="12%" style="color:#16652f">Nro Orden de Compra:</td>
-            <td width="12%" style="color:#16652f">Proveedor:</td>
+            <td width="12%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$fecOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$fecClass;?>">Fecha:</a></td>
+            <td width="12%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>">Nro Solicitud:</a></td>
+            <td width="12%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$orcOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$orcClass;?>">Nro Orden de Compra:</a></td>
+            <td width="12%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$uniOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uniClass;?>">Proveedor:</a></td>
             <td width="12%" style="color:#16652f">Unidad Solicitante:</td>
-            <td width="12%" style="color:#16652f">Estado:</td>
+            <td width="12%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$estOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$estClass;?>">Estado:</a></td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>

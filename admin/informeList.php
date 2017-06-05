@@ -87,7 +87,7 @@ function removeList(id){
 
 
 function aprobarInf(id){
-	var txt = 'Esta seguro de Aprobar este Informe?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	var txt = '&iquest;Est&aacute; seguro de Aprobar este Informe?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,
@@ -114,7 +114,7 @@ function aprobarInf(id){
 }
 
 function rechazarInf(id){
-	var txt = 'Esta seguro de Rechazar este Informe?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	var txt = '&iquest;Est&aacute; seguro de Rechazar este Informe?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,

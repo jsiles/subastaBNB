@@ -26,7 +26,16 @@
 
 	  $mail->SetLanguage("es", '../phpmailer/language/');
 
-	  $mail->AddAddress($noe["noe_email"]);
+          if(strpos($noe["noe_email"], ";")!==false){
+           
+              $emailsArray = explode(";",$noe["noe_email"]);
+              foreach ($emailsArray as $emails)
+              {
+                  $mail->AddAddress($emails);
+              }
+          }else{
+              $mail->AddAddress($noe["noe_email"]);
+          }
 	  $mail->Subject =admin::getDbValue("select not_subject from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
 	  $mail->Body =admin::getDbValue("select concat(not_template,'\n',not_sign) as body from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
      /* if($noe["noe_attach"]!=""){

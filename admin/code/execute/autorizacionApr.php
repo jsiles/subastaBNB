@@ -24,7 +24,11 @@ if($nroReg>0){
         $nti_uid=1;
         $attach="/docs/subasta/".admin::getDbValue("select pro_document from mdl_product where pro_sub_uid=$sub_uid");
         //if (strlen($attach)>0)
+        admin::insertMail($cli_uid, $nti_uid, $attach, $cli_email, $sub_uid);
+        $cli_email=admin::getDbValue("select cli_commercialemail from mdl_client where cli_uid=$cli_uid");
+        if(strlen($cli_email)>0){
             admin::insertMail($cli_uid, $nti_uid, $attach, $cli_email, $sub_uid);
+        }
     }
 }
 echo 'OK';

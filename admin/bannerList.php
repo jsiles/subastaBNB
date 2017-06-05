@@ -29,7 +29,7 @@ admin::initialize('banners','bannerList');
 
 <script type="text/javascript">        
 function removeList(id){
-	var txt = 'Está seguro de eliminar el registro?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	var txt = '&iquest;Est&aacute; seguro de eliminar el registro?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,

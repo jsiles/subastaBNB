@@ -58,8 +58,9 @@ $GroupBy =" GROUP BY sub_mount_base, sub_modalidad, sub_moneda, pro_uid, pro_nam
 //echo $qsearch;
 
 $order= admin::toSql(admin::getParam("order"),"Number");
-if ($order) admin::setSession("order",$order);
-else $order=admin::getSession("order");
+if(!isset($order)) $order=0;
+/*if ($order) admin::setSession("order",$order);
+else $order=admin::getSession("order");*/
 
 if ($order==0) {$orderCode=' order by pro_uid desc'; $uidClass='down'; $nameClass='up'; $linClass='up';}
 elseif ($order==1) {$orderCode='  order by pro_uid asc'; $uidClass='up'; $nameClass='up'; $linClass='up';}
@@ -137,9 +138,9 @@ if ($nroReg>0)
       <td colspan="2" width="100%">
   <table width="100%" border="0">
 	<tr>
-	<td width="10%"><a href="subastasList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
-        <td width="10%"><a href="subastasList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
-        <td width="10%"><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
+            <td width="10%"><a href="subastasList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+        <td width="10%"><a href="subastasList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
+        <td width="10%"><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <td width="10%"><span class="txt11 color2">Estado:</span></td>
         <td width="10%"><span class="txt11 color2">Unidad Solicitante</span></td>
         <td width="5%">&nbsp;</td>		

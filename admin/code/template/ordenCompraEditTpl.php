@@ -96,8 +96,8 @@ if($db->query($sSQL)) $oc=$db->next_record();
 				}
 				?>
                 </select>
-                                &nbsp;<a href="javascript:addCurrency();" class="small2">agregar</a> | 
-                <a href="javascript:delCurrency();" class="small3"><?=admin::labels('del');?></a></span>
+                                &nbsp;<!--<a href="javascript:addCurrency();" class="small2">agregar</a> | 
+                <a href="javascript:delCurrency();" class="small3"><?=admin::labels('del');?></a>--></span>
 
                  <div id="div_add_currency" style="display:none;">
 		<input type="text" name="add_currency" id="add_currency" class="input3" onfocus="setClassInput3(this,'ON');document.getElementById('div_add_currency_error').style.display='none';" onblur="setClassInput3(this,'OFF');document.getElementById('div_add_currency_error').style.display='none';" onclick="setClassInput3(this,'ON');document.getElementById('div_add_currency_error').style.display='none';"/>		

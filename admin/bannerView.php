@@ -30,7 +30,7 @@ admin::initialize('banners','bannerView');
 <!-- FIN PROMPT -->
 <script type="text/javascript">
 function removeImg(id){
-	var txt = 'Está seguro de eliminar la imágen?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	var txt = '&iquest;Est&aacute; seguro de eliminar la imágen?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,

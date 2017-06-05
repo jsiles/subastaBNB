@@ -1076,29 +1076,50 @@ function cagetogyDocsAdd()
 
 function deleteOtherCategory()
 	{
-	token = $.getUrlVar('token');
-	var sub_pca_uid = document.getElementById('sub_pca_uid').value;
-	if (sub_pca_uid!="")
-		{
-		divx = document.getElementById('div_doc_dca_uid_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		
-			$.ajax({
-				url: 'code/execute/delCatSubasta.php',
-				data: "pca_uid="+sub_pca_uid+"&token="+token,
-			 			error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-						success: function(datos){
-									divx.innerHTML=datos;
-            						/*	document.getElementById('div_other_category_error').style.display='none';
-										document.getElementById('div_other_category').style.display='none';
-										document.getElementById('div_doc_dca_uid').style.display='none';						
-										document.getElementById('other_category').className='input3';	*/
-        						 }	
-				});
-		
+
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+			
+                                token = $.getUrlVar('token');
+                                var sub_pca_uid = document.getElementById('sub_pca_uid').value;
+                                if (sub_pca_uid!="")
+                                        {
+                                        divx = document.getElementById('div_doc_dca_uid_select');
+                                        divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+
+                                                $.ajax({
+                                                        url: 'code/execute/delCatSubasta.php',
+                                                        data: "pca_uid="+sub_pca_uid+"&token="+token,
+                                                                        error: function(objeto){
+                                                                                alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                                },
+                                                                        success: function(datos){
+                                                                                                divx.innerHTML=datos;
+                                                                                /*	document.getElementById('div_other_category_error').style.display='none';
+                                                                                                        document.getElementById('div_other_category').style.display='none';
+                                                                                                        document.getElementById('div_doc_dca_uid').style.display='none';						
+                                                                                                        document.getElementById('other_category').className='input3';	*/
+                                                                                 }	
+                                                        });
+
+                                                }
+			
+			/////FIN
+			
+			
 			}
+			else{}
+		}
+	});
+
+            
 	}
 	
 function changeOtherTransporte()
@@ -1236,94 +1257,164 @@ function nivel3Add()
 	}
 }
 function deleteOtherTransporte()
-	{
-	token = $.getUrlVar('token');
-	var sub_uid = document.getElementById('sub_uid').value;
-	var inc_tra_uid = document.getElementById('inc_tra_uid').value;
-	if (inc_tra_uid!="")
-		{
-		divx = document.getElementById('div_inc_tra_uid_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		$.ajax({
-				url: 'code/execute/delCatTransporte.php',
-				data: 'tra_uid='+inc_tra_uid+'&token='+token,
-			 	error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-				success: function(datos){
-									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
-        						 }	
-	 });
-	}	
+{
+    
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                            token = $.getUrlVar('token');
+                            var sub_uid = document.getElementById('sub_uid').value;
+                            var inc_tra_uid = document.getElementById('inc_tra_uid').value;
+                            if (inc_tra_uid!="")
+                                    {
+                                    divx = document.getElementById('div_inc_tra_uid_select');
+                                    divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+                                    $.ajax({
+                                                    url: 'code/execute/delCatTransporte.php',
+                                                    data: 'tra_uid='+inc_tra_uid+'&token='+token,
+                                                    error: function(objeto){
+                                                                            alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                            },
+                                                    success: function(datos){
+                                                                                            divx.innerHTML=datos;
+                                                                            //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                             }	
+                             });
+                            }	
+			
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }
 
 function deleteNivel1()
-	{
-            
-	token = $.getUrlVar('token');
-	var nivel1_uid = document.getElementById('nivel1_uid').value;
-        //alert(nivel1_uid);
-	if (nivel1_uid!="")
-		{
-		divx = document.getElementById('div_nivel1_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		$.ajax({
-				url: 'code/execute/delNivel1.php',
-				data: 'ca1_uid='+nivel1_uid+'&token='+token,
-			 	error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-				success: function(datos){
-									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
-        						 }	
-	 });
-	}	
+{
+        var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+                                    token = $.getUrlVar('token');
+                                    var nivel1_uid = document.getElementById('nivel1_uid').value;
+                                    //alert(nivel1_uid);
+                                    if (nivel1_uid!="")
+                                            {
+                                            divx = document.getElementById('div_nivel1_select');
+                                            divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+                                            $.ajax({
+                                                            url: 'code/execute/delNivel1.php',
+                                                            data: 'ca1_uid='+nivel1_uid+'&token='+token,
+                                                            error: function(objeto){
+                                                                                    alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                                    },
+                                                            success: function(datos){
+                                                                                                    divx.innerHTML=datos;
+                                                                                    //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                                     }	
+                                     });
+                                    }	
+
+			}
+			else{}
+		}
+	});
+
 }
 function deleteNivel2()
-	{
-	token = $.getUrlVar('token');
-	var sol_ca2_uid = document.getElementById('nivel2_uid').value;
-	var sol_ca1_uid = document.getElementById('nivel1_uid').value;
-	if (sol_ca2_uid!="")
-		{
-		divx = document.getElementById('div_nivel2_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		$.ajax({
-				url: 'code/execute/delNivel2.php',
-				data: 'ca1_uid='+sol_ca1_uid+'&ca2_uid='+sol_ca2_uid+'&token='+token,
-			 	error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-				success: function(datos){
-									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
-        						 }	
-	 });
-	}	
+{
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                                token = $.getUrlVar('token');
+                                var sol_ca2_uid = document.getElementById('nivel2_uid').value;
+                                var sol_ca1_uid = document.getElementById('nivel1_uid').value;
+                                if (sol_ca2_uid!="")
+                                        {
+                                        divx = document.getElementById('div_nivel2_select');
+                                        divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+                                        $.ajax({
+                                                        url: 'code/execute/delNivel2.php',
+                                                        data: 'ca1_uid='+sol_ca1_uid+'&ca2_uid='+sol_ca2_uid+'&token='+token,
+                                                        error: function(objeto){
+                                                                                alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                                },
+                                                        success: function(datos){
+                                                                                                divx.innerHTML=datos;
+                                                                                //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                                 }	
+                                 });
+                                }	
+			
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }
 function deleteNivel3()
-	{
-	token = $.getUrlVar('token');
-	var sol_ca2_uid = document.getElementById('nivel2_uid').value;
-	var sol_ca3_uid = document.getElementById('nivel3_uid').value;
-	if (sol_ca3_uid!="")
-		{
-		divx = document.getElementById('div_nivel3_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		$.ajax({
-				url: 'code/execute/delNivel3.php',
-				data: 'ca2_uid='+sol_ca2_uid+'&ca3_uid='+sol_ca3_uid+'&token='+token,
-			 	error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-				success: function(datos){
-									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
-        						 }	
-	 });
-	}	
+{
+        var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                                token = $.getUrlVar('token');
+                                var sol_ca2_uid = document.getElementById('nivel2_uid').value;
+                                var sol_ca3_uid = document.getElementById('nivel3_uid').value;
+                                if (sol_ca3_uid!="")
+                                        {
+                                        divx = document.getElementById('div_nivel3_select');
+                                        divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+                                        $.ajax({
+                                                        url: 'code/execute/delNivel3.php',
+                                                        data: 'ca2_uid='+sol_ca2_uid+'&ca3_uid='+sol_ca3_uid+'&token='+token,
+                                                        error: function(objeto){
+                                                                                alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                                },
+                                                        success: function(datos){
+                                                                                                divx.innerHTML=datos;
+                                                                                //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                                 }	
+                                 });
+                                }	
+			
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }
 function changeOtherIncoterm()
 {
@@ -1361,7 +1452,17 @@ function incotermAdd()
 }
 
 function deleteOtherIncoterm()
-	{
+{
+        var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+			
 	token = $.getUrlVar('token');
 	var inc_inl_uid = document.getElementById('inc_inl_uid').value;
 	var sub_uid = document.getElementById('sub_uid').value;
@@ -1381,6 +1482,15 @@ function deleteOtherIncoterm()
         						 }	
 	 });
 	}
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }	
 	
 // PUBLICACIONES
@@ -2491,12 +2601,13 @@ function addUnidad(){
 	
 	} 
 function addNivel1(){
-	if($("#div_nivel1").css('display')=='none')
-	$("#div_nivel1").show();
-	else
-	$("#div_nivel1").hide();
-	
-	} 
+                            	if($("#div_nivel1").css('display')=='none')
+                                $("#div_nivel1").show();
+                                else
+                                $("#div_nivel1").hide();
+
+}
+
 function addNivel2(){
     var nivel1 = document.getElementById('nivel1_uid').value;
     if(nivel1=='')
@@ -2639,78 +2750,135 @@ function addCurrencyOption1()
 
 function delCurrency()
 {
-	var token = $.getUrlVar('token');
-	$("#div_add_currency").hide();	
-	$("#div_add_currency_error").hide();
-	var sub_moneda = $("#sub_moneda").val();	
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
 
-	if(sub_moneda!="")
-	{
-	$("#div_sub_moneda").html('<img border="0" src="'+SERVER+'/admin/lib/loading.gif">');
-		$.ajax({
-		   type: "POST",
-		   url: "code/execute/delCurrency.php",
-		   data: "sub_moneda="+sub_moneda+"&token="+token,
-		   success: function(msg){
-			 $("#div_sub_moneda").html(msg);
-			 $("#div_add_currency").hide();			 
-		   }
-		 });	
-	}
-	else $("#div_add_currency_error").show();
+			/////ACA viene el CODIGO
+                            var token = $.getUrlVar('token');
+                            $("#div_add_currency").hide();	
+                            $("#div_add_currency_error").hide();
+                            var sub_moneda = $("#sub_moneda").val();	
+
+                            if(sub_moneda!="")
+                            {
+                            $("#div_sub_moneda").html('<img border="0" src="'+SERVER+'/admin/lib/loading.gif">');
+                                    $.ajax({
+                                       type: "POST",
+                                       url: "code/execute/delCurrency.php",
+                                       data: "sub_moneda="+sub_moneda+"&token="+token,
+                                       success: function(msg){
+                                             $("#div_sub_moneda").html(msg);
+                                             $("#div_add_currency").hide();			 
+                                       }
+                                     });	
+                            }
+                            else $("#div_add_currency_error").show();
+			
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }
 function delUnidad()
 {
-   	var token = $.getUrlVar('token');
-	$("#div_add_unidad").hide();	
-	$("#div_add_unidad_error").hide();
-        var collection = document.getElementsByName('rav_uni_uid[]');
-       var lista='';
-       j=0;
-       for(i=0 ; i<collection.length;i++){
-           if(collection.item(i).checked)
-           {
-                if(j==0) lista += collection.item(i).value;
-                else lista += "," + collection.item(i).value;
-                j++;
-            }
-        }
-	if(lista!="")
-	{
-	$("#div_sub_unidad").html('<img border="0" src="'+SERVER+'/admin/lib/loading.gif">');
-		$.ajax({
-		   type: "POST",
-		   url: "code/execute/delUnidad.php",
-		   data: "lista="+lista+"&token="+token,
-		   success: function(msg){
-			 $("#div_sub_unidad").html(msg);
-			 $("#div_add_unidad").hide();			 
-		   }
-		 });	
-	}
-	else $("#div_add_unidad_error").show();
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                            var token = $.getUrlVar('token');
+                                $("#div_add_unidad").hide();	
+                                $("#div_add_unidad_error").hide();
+                                var collection = document.getElementsByName('rav_uni_uid[]');
+                               var lista='';
+                               j=0;
+                               for(i=0 ; i<collection.length;i++){
+                                   if(collection.item(i).checked)
+                                   {
+                                        if(j==0) lista += collection.item(i).value;
+                                        else lista += "," + collection.item(i).value;
+                                        j++;
+                                    }
+                                }
+                                if(lista!="")
+                                {
+                                $("#div_sub_unidad").html('<img border="0" src="'+SERVER+'/admin/lib/loading.gif">');
+                                        $.ajax({
+                                           type: "POST",
+                                           url: "code/execute/delUnidad.php",
+                                           data: "lista="+lista+"&token="+token,
+                                           success: function(msg){
+                                                 $("#div_sub_unidad").html(msg);
+                                                 $("#div_add_unidad").hide();			 
+                                           }
+                                         });	
+                                }
+                                else $("#div_add_unidad_error").show();
+			
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }
 function delCurrency1()
 {
-	var token = $.getUrlVar('token');
-	$("#div_add_currency1").hide();	
-	$("#div_add_currency_error1").hide();
-	var sub_moneda = $("#sub_moneda1").val();	
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
 
-	if(sub_moneda!="")
-	{
-	$("#div_sub_moneda1").html('<img border="0" src="'+SERVER+'/admin/lib/loading.gif">');
-		$.ajax({
-		   type: "POST",
-		   url: "code/execute/delCurrency1.php",
-		   data: "sub_moneda="+sub_moneda+"&token="+token,
-		   success: function(msg){
-			 $("#div_sub_moneda1").html(msg);
-			 $("#div_add_currency1").hide();			 
-		   }
-		 });	
-	}
-	else $("#div_add_currency_error1").show();
+			/////ACA viene el CODIGO
+                            var token = $.getUrlVar('token');
+                            $("#div_add_currency1").hide();	
+                            $("#div_add_currency_error1").hide();
+                            var sub_moneda = $("#sub_moneda1").val();	
+
+                            if(sub_moneda!="")
+                            {
+                            $("#div_sub_moneda1").html('<img border="0" src="'+SERVER+'/admin/lib/loading.gif">');
+                                    $.ajax({
+                                       type: "POST",
+                                       url: "code/execute/delCurrency1.php",
+                                       data: "sub_moneda="+sub_moneda+"&token="+token,
+                                       success: function(msg){
+                                             $("#div_sub_moneda1").html(msg);
+                                             $("#div_add_currency1").hide();			 
+                                       }
+                                     });	
+                            }
+                            else $("#div_add_currency_error1").show();
+			
+			
+			/////FIN
+			
+			
+			}
+			else{}
+		}
+	});
+
 }
 
 
@@ -2749,27 +2917,45 @@ function cagetogyClientAdd()
 	}
 
 function deleteClientCategory()
-	{
-	token = $.getUrlVar('token');
-	var sub_lec_uid = document.getElementById('cli_lec_uid').value;
-	if (sub_lec_uid!="")
-		{
-		divx = document.getElementById('div_cli_lec_uid_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		
-			$.ajax({
-				url: 'code/execute/delCatClient.php',
-				data: "lec_uid="+sub_lec_uid+"&token="+token,
-			 			error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-						success: function(datos){
-									divx.innerHTML=datos;
-        						 }	
-				});
-		
+{
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                            token = $.getUrlVar('token');
+                                var sub_lec_uid = document.getElementById('cli_lec_uid').value;
+                                if (sub_lec_uid!="")
+                                        {
+                                        divx = document.getElementById('div_cli_lec_uid_select');
+                                        divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+
+                                                $.ajax({
+                                                        url: 'code/execute/delCatClient.php',
+                                                        data: "lec_uid="+sub_lec_uid+"&token="+token,
+                                                                        error: function(objeto){
+                                                                                alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                                },
+                                                                        success: function(datos){
+                                                                                                divx.innerHTML=datos;
+                                                                                 }	
+                                                        });
+
+                                                }
+			
+			/////FIN
+			
+			
 			}
-	}
+			else{}
+		}
+	});
+
+}
 
 // Client type
 function changeClientType()
@@ -2805,27 +2991,46 @@ function typeClientAdd()
 	}
 
 function deleteClientType()
-	{
-	token = $.getUrlVar('token');
-	var sub_pts_uid = document.getElementById('cli_pts_uid').value;
-	if (sub_pts_uid!="")
-		{
-		divx = document.getElementById('div_cli_pts_uid_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		
-			$.ajax({
-				url: 'code/execute/delTypeClient.php',
-				data: "pts_uid="+sub_pts_uid+"&token="+token,
-			 			error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-						success: function(datos){
-									divx.innerHTML=datos;
-        						 }	
-				});
-		
+{
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                        token = $.getUrlVar('token');
+                            var sub_pts_uid = document.getElementById('cli_pts_uid').value;
+                            if (sub_pts_uid!="")
+                                    {
+                                    divx = document.getElementById('div_cli_pts_uid_select');
+                                    divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+
+                                            $.ajax({
+                                                    url: 'code/execute/delTypeClient.php',
+                                                    data: "pts_uid="+sub_pts_uid+"&token="+token,
+                                                                    error: function(objeto){
+                                                                            alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                            },
+                                                                    success: function(datos){
+                                                                                            divx.innerHTML=datos;
+                                                                             }	
+                                                    });
+
+                                            }
+			
+			
+			/////FIN
+			
+			
 			}
-	}
+			else{}
+		}
+	});
+
+}
 	
 // Client coverage
 function changeClientCoverage()
@@ -2862,26 +3067,45 @@ function coverageClientAdd()
 
 function deleteClientCoverage()
 	{
-	token = $.getUrlVar('token');
-	var sub_cov_uid = document.getElementById('cli_cov_uid').value;
-	if (sub_cov_uid!="")
-		{
-		divx = document.getElementById('div_cli_cov_uid_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		
-			$.ajax({
-				url: 'code/execute/delCovClient.php',
-				data: "cov_uid="+sub_cov_uid+"&token="+token,
-			 			error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-						success: function(datos){
-									divx.innerHTML=datos;
-        						 }	
-				});
-		
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                            token = $.getUrlVar('token');
+                            var sub_cov_uid = document.getElementById('cli_cov_uid').value;
+                            if (sub_cov_uid!="")
+                                    {
+                                    divx = document.getElementById('div_cli_cov_uid_select');
+                                    divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+
+                                            $.ajax({
+                                                    url: 'code/execute/delCovClient.php',
+                                                    data: "cov_uid="+sub_cov_uid+"&token="+token,
+                                                                    error: function(objeto){
+                                                                            alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                            },
+                                                                    success: function(datos){
+                                                                                            divx.innerHTML=datos;
+                                                                             }	
+                                                    });
+
+                                            }
+			
+			
+			/////FIN
+			
+			
 			}
-	}
+			else{}
+		}
+	});
+            
+}
 
 
 // Client item
@@ -2919,28 +3143,48 @@ function itemClientAdd()
 	}
 
 function deleteClientItem()
-	{
-	token = $.getUrlVar('token');
-	var sub_ite_uid = document.getElementById('cli_ite_uid').value;
-	var item_uid = document.getElementById('item_uid').value;
-	if (sub_ite_uid!="" && item_uid!="")
-		{
-		divx = document.getElementById('div_cli_ite_uid_select');
-		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
-		
-			$.ajax({
-				url: 'code/execute/delIteClient.php',
-				data: "ite_uid="+sub_ite_uid+"&item_uid="+item_uid+"&token="+token,
-			 			error: function(objeto){
-            						alert("Pasó lo siguiente: "+objeto.responseText);
-        						},
-						success: function(datos){
-									divx.innerHTML=datos;
-        						 }	
-				});
-		
+{
+
+    var txt = '&iquest;Est&aacute; seguro de eliminar el registro?';
+	$.prompt(txt,{
+		show:'fadeIn' ,
+		opacity:0,
+		buttons:{Eliminar:true, Cancelar:false},
+		callback: function(v,m){
+			if(v){
+
+			/////ACA viene el CODIGO
+                            token = $.getUrlVar('token');
+                            var sub_ite_uid = document.getElementById('cli_ite_uid').value;
+                            var item_uid = document.getElementById('item_uid').value;
+                            if (sub_ite_uid!="" && item_uid!="")
+                                    {
+                                    divx = document.getElementById('div_cli_ite_uid_select');
+                                    divx.innerHTML = '<img border="0" src="lib/loading.gif">';
+
+                                            $.ajax({
+                                                    url: 'code/execute/delIteClient.php',
+                                                    data: "ite_uid="+sub_ite_uid+"&item_uid="+item_uid+"&token="+token,
+                                                                    error: function(objeto){
+                                                                            alert("Pasó lo siguiente: "+objeto.responseText);
+                                                                            },
+                                                                    success: function(datos){
+                                                                                            divx.innerHTML=datos;
+                                                                             }	
+                                                    });
+
+                                            }
+			
+			
+			/////FIN
+			
+			
 			}
-	}
+			else{}
+		}
+	});
+
+}
         
 function solicitudCS(uid,status)
   {

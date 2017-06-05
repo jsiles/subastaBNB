@@ -4,6 +4,7 @@ if ($lang!='es') $urlLangAux=$lang.'/';
 else $urlLangAux='';
 
 $search = admin::toSql(admin::getParam("search"),"String");
+
 if ($search || $search!='')
 {
     $where = " and (sol_observaciones like '%$search%' ";
@@ -44,7 +45,37 @@ if($tipUid==2) {
         if($tipUid==2) $where .=" and sou_uni_uid=-1 ";
     }
 
-$_pagi_sql= "select * from mdl_solicitud_compra, mdl_solicitud_unidad where sol_uid=sou_sol_uid and sol_delete=0 $where order by sol_uid desc ";
+$order= admin::toSql(admin::getParam("order"),"Number");
+if(!isset($order)) $order=0;
+/*if ($order) admin::setSession("order",$order);
+else $order=admin::getSession("order");*/
+
+if ($order==0) {$orderCode=' order by sol_uid desc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';}
+elseif ($order==1) {$orderCode=' order by sol_uid asc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='up';}
+elseif ($order==2) {$orderCode='  order by sol_date desc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';}
+elseif ($order==3) {$orderCode='  order by sol_date asc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='down';}
+elseif ($order==4) {$orderCode='  order by sou_uni_uid asc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';}
+elseif ($order==5) {$orderCode='  order by sou_uni_uid desc'; $uidClass='up'; $fecClass='up'; $uniClass='down';$estClass='down';}
+elseif ($order==6) {$orderCode='  order by sol_estado asc'; $uidClass='down'; $fecClass='down'; $uniClass='up';$estClass='up';}
+elseif ($order==7) {$orderCode='  order by sol_estado desc'; $uidClass='up'; $fecClass='up'; $uniClass='up';$estClass='down';}
+
+if ($uidClass=='up') $uidOrder=0;
+else $uidOrder=1;
+if ($fecClass=='up') $fecOrder=2;
+else $fecOrder=3;
+if ($uniClass=='up') $uniOrder=5;
+else $uniOrder=4;
+if ($estClass=='up') $estOrder=7;
+else $estOrder=6;
+
+    
+    
+    
+$_pagi_sql= "select * from mdl_solicitud_compra, mdl_solicitud_unidad where sol_uid=sou_sol_uid and sol_delete=0 ". $where;
+
+$_pagi_sql.=$orderCode;
+
+//echo $_pagi_sql;
 $nroReg=$db->numrows($_pagi_sql);
 
 //echo $_pagi_sql;
@@ -103,13 +134,13 @@ if ($nroReg>0)
     <td colspan="2" width="98%">
   <table width="98%" border="0"  style="padding-left:17px;">
 	<tr>
-            <td width="5%" class="list1a" style="color:#16652f;">Fecha:</td>
-            <td width="5%" align="center" class="list1a" style="color:#16652f;">Nro Solicitud:</td>
-            <td width="12%" style="color:#16652f">Unidad Solicitante:</td>
+            <td width="5%" class="list1a" style="color:#16652f;"><a href="solicitudList.php?order=<?=$fecOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$fecClass;?>">Fecha:</a></td>
+            <td width="5%" class="list1a" style="color:#16652f;"><a href="solicitudList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>">Nro Solicitud:</a></td>
+            <td width="12%" style="color:#16652f"><a href="solicitudList.php?order=<?=$uniOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uniClass;?>">Unidad Solicitante:</a></td>
             <td width="12%" style="color:#16652f">Monto:</td>
             <td width="12%" style="color:#16652f">Observaciones:</td>
             <td width="12%" style="color:#16652f">Usuario:</td>
-            <td width="12%" style="color:#16652f">Estado:</td>
+            <td width="12%" style="color:#16652f"><a href="solicitudList.php?order=<?=$estOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$estClass;?>">Estado:</a></td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>
@@ -218,7 +249,7 @@ while ($sol_list = $pagDb->next_record())
 	<td align="center" width="5%" height="5">
             <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Eliminar' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if(($valuePermit=='ACTIVE')){
+            if(($valuePermit=='ACTIVE')&&($solEstadoUid==0)){
             ?>
                 <a href="" onclick="removeList(<?=$solUid?>); return false;">
 		<img src="lib/delete_es.gif" border="0" title="<?=admin::labels('delete')?>" alt="<?=admin::labels('delete')?>">
@@ -236,7 +267,7 @@ while ($sol_list = $pagDb->next_record())
     <div id="status_<?=$solUid?>">
         <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Estado' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if(($valuePermit=='ACTIVE')){
+            if(($valuePermit=='ACTIVE')&&($solEstadoUid==0)){
             ?>
 	   <a href="#"  onclick="solicitudCS('<?=$solUid?>','<?=$solStatus?>'); return false;">
 		<img src="<?=admin::labels($labels_content,'linkImage')?>" border="0" title="<?=admin::labels($labels_content)?>" alt="<?=admin::labels($labels_content)?>">

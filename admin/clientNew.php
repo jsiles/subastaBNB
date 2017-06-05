@@ -27,6 +27,10 @@ admin::initialize('client','clientNew');
 <script language="javascript" type="text/javascript" src="js/client.js"></script>
 <link rel="stylesheet" href="css/sweetTitles.css" type="text/css" />
 <!-- FIN -->
+<!--BEGINIMPROMTU-->
+<link rel="stylesheet" type="text/css" href="css/impromptu.css">
+<script type="text/javascript" src="js/jquery.Impromptu.js"></script>
+<!--ENDIMPROMTU--> 
 
 </head>
 <body>

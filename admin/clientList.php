@@ -78,7 +78,7 @@ function removeListCat(id){
 	});
 }
 function aprobarSubasta(id){
-	var txt = 'Esta seguro de Aprobar esta Solicitud?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	var txt = '&iquest;Est&aacute; seguro de Aprobar esta Solicitud?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,
@@ -105,7 +105,7 @@ function aprobarSubasta(id){
 }
 
 function rechazarSubasta(id){
-	var txt = 'Esta seguro de Rechazar esta Solicitud?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
+	var txt = '&iquest;Est&aacute; seguro de Rechazar esta Solicitud?<br><input type="hidden" id="list" name="list" value="'+ id +'" />';
 	$.prompt(txt,{
 		show:'fadeIn' ,
 		opacity:0,

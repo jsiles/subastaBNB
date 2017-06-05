@@ -17,6 +17,13 @@ if(is_array($list)){
         $nro_oc=$list["orc_nro_oc"];
         $attach="/admin/upload/oc/".$list["orc_document"];
         //if (strlen($attach)>0)
-         admin::insertMail($cli_uid, $nti_uid, $attach, $cli_email, 'NULL','NULL',$nro_oc);
+        admin::insertMail($cli_uid, $nti_uid, $attach, $cli_email, 'NULL','NULL',$nro_oc);
+        $cli_email=admin::getDbValue("select cli_commercialemail from mdl_client where cli_uid=$cli_uid");
+        if(strlen($cli_email)>0){
+            admin::insertMail($cli_uid, $nti_uid, $attach, $cli_email, 'NULL','NULL',$nro_oc);
+        }
+            
+         
+         
 }
 ?>
