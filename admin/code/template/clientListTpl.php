@@ -159,7 +159,7 @@ while ($user_list = $pagDb->next_record())
 	<td align="center" width="5%" height="5">
             <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if(($valuePermit=='ACTIVE')&&($cli_status_main==0)){
+            if(($valuePermit=='ACTIVE')){
             ?>
     	<a href="clientEdit.php?cli_uid=<?=$cli_uid?>&token=<?=admin::getParam("token");?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
@@ -176,7 +176,7 @@ while ($user_list = $pagDb->next_record())
 	<td align="center" width="5%" height="5">
             <?php
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Eliminar' and moa_rol_uid=".$_SESSION['usr_rol']."");
-            if(($valuePermit=='ACTIVE')&&($cli_status_main==0)){
+            if(($valuePermit=='ACTIVE')){
             ?>
                 <a href="" onclick="removeList(<?=$cli_uid?>); return false;">
 		<img src="lib/delete_es.gif" border="0" title="<?=admin::labels('delete')?>" alt="<?=admin::labels('delete')?>">

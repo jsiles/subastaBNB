@@ -9,16 +9,25 @@ $dataRef="";
 $i=0;
 while($details = $db->next_record())
 {
+    
     if($sub_type=="COMPRA"){
         $montoRef = admin::getDbValue("select min(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details['xit_uid']);
+        $regBidsWin = admin::getDbValue("select min(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details["xit_uid"]." and bid_cli_uid=".admin::getSession("uidClient"));
+    
     }else{
         $montoRef = admin::getDbValue("select max(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details['xit_uid']);
+        $regBidsWin = admin::getDbValue("select max(bid_mountxfac) from mdl_biditem where bid_xit_uid=".$details["xit_uid"]." and bid_cli_uid=".admin::getSession("uidClient"));
     }
     if($montoRef){
+        if(!isset($regBidsWin)) {$winStatus=2;}
+        else{
+             if($regBidsWin==$montoRef) $winStatus=1;
+             else $winStatus=0;
+        }
     if($i==0)
-        $dataRef.= $details['xit_uid'].";".$montoRef;
+        $dataRef.= $details['xit_uid'].";".$montoRef.";".$winStatus;
     else 
-        $dataRef.="|".$details['xit_uid'].";".$montoRef;
+        $dataRef.="|".$details['xit_uid'].";".$montoRef.";".$winStatus;
     $i++;
     }
 }

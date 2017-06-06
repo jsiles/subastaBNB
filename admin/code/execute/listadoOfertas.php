@@ -27,7 +27,7 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                 <td width="25%" class="txt11 color2">Monto:</td>
                     <?php
-    if($sub_type!='VENTA'){
+    if($subType!='VENTA'){
     ?>
 
                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
@@ -46,7 +46,7 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" <?php if($i==0) echo $style;?>><?=$content["bid_date"]?></td>
                 <td width="25%" <?php if($i==0) echo $style;?>><?=admin::numberFormat($content["bid_mount"])?></td>
                     <?php
-    if($sub_type!='VENTA'){
+    if($subType!='VENTA'){
     ?>
 
                 <td width="25%" <?php if($i==0) echo $style;?>><?=admin::numberFormat($content["bid_mountxfac"])?></td>
@@ -74,7 +74,8 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                                 <td width="25%" class="txt11 color2">Monto:</td>
                                     <?php
-    if($sub_type!='VENTA'){
+                                  
+    if($subType!='VENTA'){  echo "VENTA:".$subType;
     ?>
 
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
@@ -86,7 +87,7 @@ $subType =$prodTpl["sub_type"];
                
                  <?php
                                 
-				$sql2 = "SELECT * FROM mdl_biditem where bid_sub_uid='".$prod["sub_uid"]."' and bid_cli_uid!=0 order by bid_uid desc";
+				$sql2 = "SELECT * FROM mdl_biditem where bid_sub_uid='".$prod["sub_uid"]."' and bid_cli_uid!=0 order by bid_xit_uid asc,bid_uid desc";
 				$db2->query($sql2);
 				while ($content=$db2->next_record())
 				{
@@ -99,7 +100,7 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" <?=$style?> ><?=$content["bid_date"]?></td>
                                 <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mount"])?></td>
                                     <?php
-    if($sub_type!='VENTA'){
+    if($subType!='VENTA'){
     ?>
 
                                 <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>
@@ -140,7 +141,7 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" class="txt11 color2">Fecha y hora:</td>
                                 <td width="25%" class="txt11 color2">Monto:</td>
                                     <?php
-    if($sub_type!='VENTA'){
+    if($subType!='VENTA'){
     ?>
 
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
@@ -151,7 +152,7 @@ $subType =$prodTpl["sub_type"];
 			</tr>         
                
                  <?php
-				$sql2 = "SELECT * FROM mdl_biditem where bid_sub_uid='".$prod["sub_uid"]."' and bid_cli_uid!=0 order by bid_uid desc";
+				$sql2 = "SELECT * FROM mdl_biditem where bid_sub_uid='".$prod["sub_uid"]."' and bid_cli_uid!=0 order by bid_xit_uid asc,bid_uid desc";
 				$db2->query($sql2);
 				while ($content=$db2->next_record())
 				{
@@ -165,7 +166,7 @@ $subType =$prodTpl["sub_type"];
 				<td width="25%" <?=$style?> ><?=$content["bid_date"]?></td>
                                 <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mount"])?></td>
                                     <?php
-    if($sub_type!='VENTA'){
+    if($subType!='VENTA'){
     ?>
 
                                <td width="25%" <?=$style?> ><?=admin::numberFormat($content["bid_mountxfac"])?></td>

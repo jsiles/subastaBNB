@@ -179,8 +179,8 @@ $solEdit=$db->next_record();
                         }
 			else
 				{ ?>
-				<input type="file" name="sol_document" id="cli_photo" size="32" class="input" onchange="verifyFileUpload();">
-				<span id="div_sol_document" class="error" style="display:none">Solo archivos jpg bmp gif png </span>	
+				<!--<input type="file" name="sol_document" id="cli_photo" size="32" class="input" onchange="verifyFileUpload();">
+				<span id="div_sol_document" class="error" style="display:none">Solo archivos jpg bmp gif png </span>	-->
 			<?php
                         } 
                         ?>

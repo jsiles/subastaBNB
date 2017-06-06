@@ -24,7 +24,7 @@ $usuario =  admin::getDbValue("select concat(usr_firstname,' ',usr_lastname) fro
 	<tr>
             <td width="5%" >Nro de Solicitud:</td>
              <td width="20%"><input name="orc_sol_uid" id="orc_sol_uid" value="" class="input">
-             <br /><span id="div_orc_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
+             <br /><span id="div_orc_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo Obligatorio</span>
              </td>
             <td width="7%">&nbsp;</td>
             
@@ -32,7 +32,7 @@ $usuario =  admin::getDbValue("select concat(usr_firstname,' ',usr_lastname) fro
         <tr>
             <td width="5%" >Nro Orden de Compra:</td>    
             <td width="20%" ><input name="orc_nro_oc" id="orc_nro_oc" value="" class="input">
-            <br /><span id="div_orc_nro_oc" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
+            <br /><span id="div_orc_nro_oc" style="display:none; padding-left:5px; padding-right:5px;" class="error">Campo Obligatorio</span>
             </td>
             <td width="7%">&nbsp;</td>
         </tr>

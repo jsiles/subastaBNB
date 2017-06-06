@@ -28,7 +28,7 @@
                     	<div id="subastaDetail" class="details">
                                 <?php
 //echo $timeSubasta;
-								   $bidsCompra=admin::getDBvalue("SELECT sub_type FROM mdl_subasta where sub_uid=".$xitem["xit_sub_uid"]);
+								        $bidsCompra=admin::getDBvalue("SELECT sub_type FROM mdl_subasta where sub_uid=".$xitem["xit_sub_uid"]);
 									if($bidsCompra=='COMPRA') 
                                                                         {
 									$valBids=admin::getDBvalue("SELECT min(bid_mountxfac) FROM mdl_biditem where bid_xit_uid='".$xitem["xit_uid"]."'");
@@ -39,7 +39,7 @@
 									$valBidsCli=admin::getDBvalue("SELECT max(bid_mountxfac) FROM mdl_biditem where bid_xit_uid='".$xitem["xit_uid"]."' and bid_cli_uid=$cli_uid");
                                                                         }								
 									$factor = admin::getDbValue("select inc_ajuste from mdl_incoterm where inc_delete=0 and inc_cli_uid=".admin::getSession("uidClient")." and inc_sub_uid=".$xitem["xit_sub_uid"]);
-									
+                                                                        
 									if(!$valBids) 
 								    {
 										$montoGlobal=$xitem["xit_price"];
@@ -64,8 +64,12 @@
                                     <div class="clear"></div>
                                     <?php
 								    }
-				                    ?>
-                                    
+                                                                    
+                                    				   ?>
+                                   <p class="left" style="color:#00F" id="mensajeWin_<?=$xitem["xit_uid"]?>">
+                                    </p>
+                                    <br />
+                                    <div class="clear"></div>
                                     <p class="left ronda">Ronda:&nbsp;<?=$wheel?>
                                     </p>
                                     <br>

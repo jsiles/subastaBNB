@@ -16,14 +16,16 @@
            <tr>
                <td width="29%">NIT o CI:</td>
             <td width="54%">
-<input name="cli_nit_ci" type="text" class="input" id="cli_nit_ci" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_nit_ci').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_nit_ci').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_nit_ci').style.display='none';" /><br /><span id="div_cli_nit_ci" style="display:none;" class="error">NIT o CI es necesario</span>			</td>
+<input name="cli_nit_ci" type="text" class="input" id="cli_nit_ci" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_nit_ci').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_nit_ci').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_nit_ci').style.display='none';" /><br />
+<span id="div_cli_nit_ci" style="" class="error">NIT o CI es obligatorio</span>			</td>
             <td width="17%">&nbsp;</td>
           </tr>
           
           <tr>
             <td >Codigo interno:</td>
             <td>
-<input name="cli_interno" type="text" class="input" id="cli_interno" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_interno').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_interno').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_interno').style.display='none';" /><br /><span id="div_cli_interno" style="display:none;" class="error">Codigo interno es necesario</span>			</td>
+<input name="cli_interno" type="text" class="input" id="cli_interno" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_interno').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_interno').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_interno').style.display='none';" /><br />
+<span id="div_cli_interno" style="" class="error">Codigo interno es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
@@ -74,7 +76,7 @@
                 <div id="div_client_coverage" style="display:none;">
 		<input type="text" name="client_coverage" id="client_coverage" class="input3" onfocus="setClassInput3(this,'ON');document.getElementById('div_cli_cov_uid').style.display='none';" onblur="setClassInput3(this,'OFF');document.getElementById('div_cli_cov_uid').style.display='none';" onclick="setClassInput3(this,'ON');document.getElementById('div_cli_cov_uid').style.display='none';"/>		
 		<a href="javascript:coverageClientAdd()" class="button3"><?=admin::labels('add');?></a><a href="javascript:changeClientCoverage();" class="link2">Cerrar</a>		</div>
-				<br /><span id="div_cli_cov_uid" style="display:none;" class="error">Covertura es necesaria</span>	</div>
+				<br /><span id="div_cli_cov_uid" style="display:none;" class="error">Cobertura es necesaria</span>	</div>
                 </td>
             <td>&nbsp;</td>
           </tr>
@@ -82,56 +84,60 @@
           <tr>
             <td>Razon social:</td>
             <td>
-<input name="cli_socialreason" type="text" class="input" id="cli_socialreason" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_socialreason').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_socialreason').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_socialreason').style.display='none';" /><br /><span id="div_cli_socialreason" style="display:none;" class="error">Razon social es necesario</span>			</td>
+<input name="cli_socialreason" type="text" class="input" id="cli_socialreason" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_socialreason').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_socialreason').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_socialreason').style.display='none';" /><br />
+<span id="div_cli_socialreason" style="" class="error">Razon social es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Direccion legal:</td>
             <td>
-<input name="cli_legaldirection" type="text" class="input" id="cli_legaldirection" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legaldirection').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legaldirection').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legaldirection').style.display='none';" /><br /><span id="div_cli_legaldirection" style="display:none;" class="error">Direccion legal es necesario</span>			</td>
+<input name="cli_legaldirection" type="text" class="input" id="cli_legaldirection" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legaldirection').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legaldirection').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legaldirection').style.display='none';" /><br /><span id="div_cli_legaldirection" style="display:none;" class="error">Direccion legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Telefono fijo:</td>
             <td>
-<input name="cli_phone" type="text" class="input" id="cli_phone" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_phone').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_phone').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_phone').style.display='none';" /><br /><span id="div_cli_phone" style="display:none;" class="error">Telefono fijo es necesario</span>			</td>
+<input name="cli_phone" type="text" class="input" id="cli_phone" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_phone').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_phone').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_phone').style.display='none';" /><br /><span id="div_cli_phone" style="display:none;" class="error">Telefono fijo es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Email administrativo:</td>
             <td>
-<input name="cli_mainemail" type="text" class="input" id="cli_mainemail" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_mainemail').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_mainemail').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_mainemail').style.display='none';" /><br /><span id="div_cli_mainemail" style="display:none;" class="error">Email administrativo es necesario</span>			</td>
+<input name="cli_mainemail" type="text" class="input" id="cli_mainemail" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_mainemail').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_mainemail').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_mainemail').style.display='none';" /><br />
+<span id="div_cli_mainemail" style="" class="error">Email administrativo es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Email comercial:</td>
             <td>
-<input name="cli_commercialemail" type="text" class="input" id="cli_commercialemail" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_commercialemail').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_commercialemail').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_commercialemail').style.display='none';" /><br /><span id="div_cli_commercialemail" style="display:none;" class="error">Email comercial es necesario</span>			</td>
+<input name="cli_commercialemail" type="text" class="input" id="cli_commercialemail" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_commercialemail').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_commercialemail').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_commercialemail').style.display='none';" /><br /><span id="div_cli_commercialemail" style="display:none;" class="error">Email comercial es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>CI Adm/legal:</td>
             <td>
-<input name="cli_legal_ci" type="text" class="input" id="cli_legal_ci" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legal_ci').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci').style.display='none';" /><br /><span id="div_cli_legal_ci" style="display:none;" class="error">CI Adm/legal es necesario</span>			</td>
+<input name="cli_legal_ci" type="text" class="input" id="cli_legal_ci" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legal_ci').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci').style.display='none';" /><br /><span id="div_cli_legal_ci" style="display:none;" class="error">CI Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Nombre Adm/legal:</td>
             <td>
-<input name="cli_legalname" type="text" class="input" id="cli_legalname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legalname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legalname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legalname').style.display='none';" /><br /><span id="div_cli_legalname" style="display:none;" class="error">Nombre Adm/legal es necesario</span>			</td>
+<input name="cli_legalname" type="text" class="input" id="cli_legalname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legalname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legalname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legalname').style.display='none';" /><br />
+<span id="div_cli_legalname" style="" class="error">Nombre Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Apellido Adm/legal:</td>
             <td>
-<input name="cli_legallastname" type="text" class="input" id="cli_legallastname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legallastname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legallastname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legallastname').style.display='none';" /><br /><span id="div_cli_legallastname" style="display:none;" class="error">Apellido Adm/legal es necesario</span>	</td>
+<input name="cli_legallastname" type="text" class="input" id="cli_legallastname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legallastname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legallastname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legallastname').style.display='none';" /><br />
+<span id="div_cli_legallastname" style="" class="error">Apellido Adm/legal es obligatorio</span>	</td>
             <td><a id="l2a" href="#" class="small2" onclick="nal2(1);return false;">+ agregar Adm/legal (2)</a>
             <a id="l2b" class="small3" style="display:none" href="#" class="small2" onclick="nal2(0);return false;">+ quitar Adm/legal (2)</a></td>
           </tr>
@@ -139,21 +145,21 @@
           <tr id="cal2" style="display:none">
             <td>CI Adm/legal (2):</td>
             <td>
-<input name="cli_legal_ci2" type="text" class="input" id="cli_legal_ci2" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci2').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legal_ci2').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci2').style.display='none';" /><br /><span id="div_cli_legal_ci2" style="display:none;" class="error">CI Adm/legal es necesario</span>			</td>
+<input name="cli_legal_ci2" type="text" class="input" id="cli_legal_ci2" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci2').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legal_ci2').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci2').style.display='none';" /><br /><span id="div_cli_legal_ci2" style="display:none;" class="error">CI Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr id="nal2" style="display:none">
             <td>Nombre Adm/legal (2):</td>
             <td>
-<input name="cli_legalname2" type="text" class="input" id="cli_legalname2" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legalname2').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legalname2').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legalname2').style.display='none';" /><br /><span id="div_cli_legalname2" style="display:none;" class="error">Nombre Adm/legal es necesario</span>			</td>
+<input name="cli_legalname2" type="text" class="input" id="cli_legalname2" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legalname2').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legalname2').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legalname2').style.display='none';" /><br /><span id="div_cli_legalname2" style="display:none;" class="error">Nombre Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr id="aal2" style="display:none">
             <td>Apellido Adm/legal (2):</td>
             <td>
-<input name="cli_legallastname2" type="text" class="input" id="cli_legallastname2" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legallastname2').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legallastname2').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legallastname2').style.display='none';" /><br /><span id="div_cli_legallastname2" style="display:none;" class="error">Apellido Adm/legal es necesario</span>			</td>
+<input name="cli_legallastname2" type="text" class="input" id="cli_legallastname2" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legallastname2').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legallastname2').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legallastname2').style.display='none';" /><br /><span id="div_cli_legallastname2" style="display:none;" class="error">Apellido Adm/legal es obligatorio</span>			</td>
             <td><a id="l3a" href="#" class="small2" onclick="nal3(1);return false;">+ agregar Adm/legal (3)</a>
             <a id="l3b" class="small3" style="display:none" href="#" class="small2" onclick="nal3(0);return false;">+ quitar Adm/legal (3)</a></td>
           </tr>
@@ -161,35 +167,35 @@
           <tr id="cal3" style="display:none">
             <td>CI Adm/legal (3):</td>
             <td>
-<input name="cli_legal_ci3" type="text" class="input" id="cli_legal_ci3" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci3').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legal_ci3').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci3').style.display='none';" /><br /><span id="div_cli_legal_ci3" style="display:none;" class="error">CI Adm/legal es necesario</span>			</td>
+<input name="cli_legal_ci3" type="text" class="input" id="cli_legal_ci3" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci3').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legal_ci3').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legal_ci3').style.display='none';" /><br /><span id="div_cli_legal_ci3" style="display:none;" class="error">CI Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr id="nal3" style="display:none">
             <td>Nombre Adm/legal (3):</td>
             <td>
-<input name="cli_legalname3" type="text" class="input" id="cli_legalname3" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legalname3').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legalname3').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legalname3').style.display='none';" /><br /><span id="div_cli_legalname3" style="display:none;" class="error">Nombre Adm/legal es necesario</span>			</td>
+<input name="cli_legalname3" type="text" class="input" id="cli_legalname3" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legalname3').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legalname3').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legalname3').style.display='none';" /><br /><span id="div_cli_legalname3" style="display:none;" class="error">Nombre Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr id="aal3" style="display:none">
             <td>Apellido Adm/legal (3):</td>
             <td>
-<input name="cli_legallastname3" type="text" class="input" id="cli_legallastname3" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legallastname3').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legallastname3').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legallastname3').style.display='none';" /><br /><span id="div_cli_legallastname3" style="display:none;" class="error">Apellido Adm/legal es necesario</span>			</td>
+<input name="cli_legallastname3" type="text" class="input" id="cli_legallastname3" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_legallastname3').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_legallastname3').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_legallastname3').style.display='none';" /><br /><span id="div_cli_legallastname3" style="display:none;" class="error">Apellido Adm/legal es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Nombre comercial:</td>
             <td>
-<input name="cli_commercialname" type="text" class="input" id="cli_commercialname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_commercialname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_commercialname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_commercialname').style.display='none';" /><br /><span id="div_cli_commercialname" style="display:none;" class="error">Nombre comercial es necesario</span>			</td>
+<input name="cli_commercialname" type="text" class="input" id="cli_commercialname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_commercialname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_commercialname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_commercialname').style.display='none';" /><br /><span id="div_cli_commercialname" style="display:none;" class="error">Nombre comercial es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
           <tr>
             <td>Apellido comercial:</td>
             <td>
-<input name="cli_commerciallastname" type="text" class="input" id="cli_commerciallastname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_commerciallastname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_commerciallastname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_commerciallastname').style.display='none';" /><br /><span id="div_cli_commerciallastname" style="display:none;" class="error">Apellido comercial es necesario</span>			</td>
+<input name="cli_commerciallastname" type="text" class="input" id="cli_commerciallastname" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_commerciallastname').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_commerciallastname').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_commerciallastname').style.display='none';" /><br /><span id="div_cli_commerciallastname" style="display:none;" class="error">Apellido comercial es obligatorio</span>			</td>
             <td>&nbsp;</td>
           </tr>
           
@@ -201,14 +207,16 @@
           <tr>
             <td width="29%">Usuario:</td>
             <td width="64%">
-<input name="cli_user" type="text" class="input" id="cli_user" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_user').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_user').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_user').style.display='none';" /><br /><span id="div_cli_user" style="display:none;" class="error">Usuario es necesario</span>			</td>
+<input name="cli_user" type="text" class="input" id="cli_user" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_user').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_user').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_user').style.display='none';" /><br />
+<span id="div_cli_user" style="" class="error">Usuario es obligatorio</span>			</td>
             <td width="7%">&nbsp;</td>
           </tr>
           
           <tr>
             <td width="29%">Contrase&ntilde;a:</td>
             <td width="64%">
-<input name="cli_pass" type="text" class="input" id="cli_pass" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_pass').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_pass').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_pass').style.display='none';" /><br /><span id="div_cli_pass" style="display:none;" class="error">Contrase&ntilde;a es necesario</span>			</td>
+<input name="cli_pass" type="text" class="input" id="cli_pass" size="60" onfocus="setClassInput(this,'ON');document.getElementById('div_cli_pass').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_cli_pass').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_cli_pass').style.display='none';" /><br />
+<span id="div_cli_pass" style="" class="error">Contrase&ntilde;a es obligatorio</span>			</td>
             <td width="7%"><a href="pass" onClick="return generarPassword(this.form,'cli_pass',10);">Generar</a>&nbsp;</td>
           </tr>
           
@@ -333,7 +341,7 @@
             <td width="84%">
 			<input name="cli_logo" type="file" id="cli_logo" class="txt10" size="31" />
 			<br />
-			<span id="div_cli_logo" style="display:none;" class="error">Nombre del contenido es necesario</span>
+			<span id="div_cli_logo" style="display:none;" class="error">Foto es obligatorio</span>
 			</td>
           </tr>
           

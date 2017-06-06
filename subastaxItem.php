@@ -147,7 +147,19 @@ function bids()
                      var datos = data[i].split(";");
                      $(function() {
                         var myId = '#p_'+ datos[0];
+                        var myIdMessage = '#mensajeWin_'+ datos[0];
+                        
                             $(myId).html(datos[1]);
+                            if(datos[2]==0){
+                                $(myIdMessage).html("Su oferta est&aacute; perdiendo");
+                            }else if(datos[2]==1){
+                                $(myIdMessage).html("Su oferta est&aacute; ganado");
+                            }
+                            else{
+                                $(myIdMessage).html("");
+                            }
+                            
+                            
                           });
                      
                  }

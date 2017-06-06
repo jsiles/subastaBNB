@@ -726,7 +726,10 @@ function subastatatus(uid,status)
   ajax.send("uid="+uid+"&status="+status+"&token="+token)
   }
   
-// SALA DE PRENSA
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 function verifysubasta()
 	{
 	sw=true;
@@ -743,7 +746,12 @@ function verifysubasta()
 		document.getElementById('sol_uid').className='inputError';
 		document.getElementById('div_sol_uid').style.display='';
 		sw=false;
-		}
+		}else{
+                    
+                    if(!isNumeric(document.getElementById('sol_uid').value)) { sw=false;document.getElementById('sol_uid').className='inputError';
+		document.getElementById('div_sol_uid').style.display=''; document.getElementById('div_sol_uid').innerHTML="Dato debe ser n&uacute;merico"}
+                }
+                
 	if (sw) 
 		{
 		document.frmsubasta.submit();
@@ -3237,7 +3245,7 @@ function verifyOC()
     $("#div_orc_hora").hide();
     $("#div_orc_aprobado").hide();
     $("#div_orc_document").hide();
-    if($("#orc_sol_uid").val()=='') { sw=false; $("#div_orc_sol_uid").show();}
+    if($("#orc_sol_uid").val()=='') { sw=false; $("#div_orc_sol_uid").show();}else{if(!isNumeric($("#orc_sol_uid").val())) {sw=false;$("#div_orc_sol_uid").html("El Dato debe ser n&uacute;merico"); $("#div_orc_sol_uid").show();}}
     if($("#orc_nro_oc").val()=='') { sw=false; $("#div_orc_nro_oc").show();}
     if($("#orc_fecha").val()=='') { sw=false; $("#div_orc_orc_fecha").show();}
     if($("#orc_hora").val()=='') { sw=false; $("#div_orc_hora").show();}

@@ -49,7 +49,7 @@
 									if($regBids>0)
 									{
 									?><p class="left">
-                                    Listado de ofertas:<a href="<?=$domain?>/code/listBids.php?_keycode=<?=SymmetricCrypt::encrypt(base64_encode($details["sub_uid"]))?>" rel="facebox"><label><?=$regBids?></label> puja(s)</a>
+                                    Listado de ofertas:<a href="<?=$domain?>/code/listBids.php?_keycode=<?=SymmetricCrypt::encrypt(base64_encode($details["sub_uid"]))?>" rel="facebox"><label><?=$regBids?></label> oferta(s)</a>
                                     <div class="clear"></div>
                                    <?php
 								   if(isset($regBidsWin))
