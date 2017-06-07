@@ -47,7 +47,7 @@ $solEdit=$db->next_record();
                 <input name="tipUid" id="tipUid" value="<?=$tipUid?>" type="hidden" />
 
                   <span id="div_sub_unidad">
-                      <select disabled="disabled" name="rav_uni_uid" id="rav_uni_uid" class="input" >
+                      
                 <?php
                   $uUnidad = admin::getDbValue("select TOP 1 sou_uni_uid from mdl_solicitud_unidad where sou_sol_uid=".$sol_uid);
                   $arrayUnidad = admin::dbFillArray("select uni_uid, uni_description from mdl_unidad where uni_delete=0 order by uni_uid");
@@ -55,13 +55,11 @@ $solEdit=$db->next_record();
                       $unidades=true;
                   foreach($arrayUnidad as $key=>$value)
                    {            
-                        ?>
-                      <option <?php if ($key==$uUnidad) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>				
-                        <?php
+                      if ($key==$uUnidad) echo $value;
                    }
                   } 
                   ?>
-                      </select>
+                      
                   </span>
                          
                 <!--<a href="javascript:addUnidad();" class="small2">agregar</a> | 
@@ -79,22 +77,18 @@ $solEdit=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Monto:</td>
-            <td width="40%" ><input name="sol_monto" id="sol_monto" disabled="disabled" type="text" value="<?=admin::numberFormat($solEdit["sol_monto"])?>" class="input">
+            <td width="40%" ><?=admin::numberFormat($solEdit["sol_monto"])?>
                  <?php 
 				$arrayMoneda = admin::dbFillArray("select cur_uid, cur_description from mdl_currency where cur_delete=0");
 				
 				?>
                 <span id="div_sol_moneda">
-                <select name="sol_moneda" id="sol_moneda" class="input" disabled="disabled">
                 <?php
 				foreach($arrayMoneda as $key=>$value)
 				{                
-				?>
-                	<option <?php if ($key==$solEdit["sol_moneda"]) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>
-				<?php
+                                     if ($key==$solEdit["sol_moneda"]) echo $value;
 				}
 				?>
-                </select>
                                 &nbsp;<!--<a href="javascript:addCurrency();" class="small2">agregar</a> | 
                 <a href="javascript:delCurrency();" class="small3"><?=admin::labels('del');?></a>--></span>
 
@@ -109,7 +103,7 @@ $solEdit=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Observaciones:</td>    
-            <td width="20%" ><textarea id="sol_observaciones" name="sol_observaciones" disabled="disabled" col="200" rows="5" class="textarea"><?=$solEdit["sol_observaciones"]?></textarea>
+            <td width="20%" ><?=$solEdit["sol_observaciones"]?>
             <td width="7%">&nbsp;</td>
         </tr>
         <tr>
@@ -164,13 +158,7 @@ $solEdit=$db->next_record();
 			</tr>
 			<tr>
 				<td height="24">
-				<div id="imageChange1" style="display:none">
-                                    <input type="file" name="sol_document" id="sol_document" size="14" style="font-size:11px;" onclick="verifyFileUpload()" >  
-                        <a href="javascript:viewInputFile('off')" 
-                           onclick="document.getElementById('sol_document').value='';document.getElementById('button_next').innerHTML='<?=admin::labels('public');?>';">
-                            <img border="0" src="lib/close.gif" align="top"/></a>
-			
-			<span id="div_sol_document" class="error" style="display:none">Solo archivos jpg bmp gif png doc pdf xls</span></div></td>
+				</td>
 			</tr>
 			</table>
 			</div>
@@ -194,10 +182,7 @@ $solEdit=$db->next_record();
 
         <tr>
             <td valign="top"><?=admin::labels('status');?></td>
-            <td><select disabled="disabled" name="sol_status" class="listMenu" id="sol_status">
-                    <option selected="selected" disabled="disabled" value="ACTIVE"><?=admin::labels('active');?></option>
-              	<option value="INACTIVE"><?=admin::labels('inactive');?></option>
-			</select>
+            <td><?php if($solEdit["sol_status"]=='ACTIVE') echo "Activo";else echo "Inactivo";?>
 			<span id="div_sol_status" style="display:none;" class="error"></span></td>
                        <td width="7%">&nbsp;</td>
         </tr>

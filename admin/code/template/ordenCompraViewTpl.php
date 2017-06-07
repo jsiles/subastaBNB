@@ -28,7 +28,7 @@ if($db->query($sSQL)) $oc=$db->next_record();
           
 	<tr>
             <td width="5%" >Nro de Solicitud:</td>
-            <td width="20%"><input name="orc_sol_uid" id="orc_sol_uid" disabled="disabled" value="<?=$oc["orc_sol_uid"]?>" class="input">
+            <td width="20%"><?=$oc["orc_sol_uid"]?>
              <br /><span id="div_orc_sol_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
              </td>
             <td width="7%">&nbsp;</td>
@@ -36,7 +36,7 @@ if($db->query($sSQL)) $oc=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Nro Orden de Compra:</td>    
-            <td width="20%" ><input name="orc_nro_oc" disabled="disabled" id="orc_nro_oc" value="<?=$oc["orc_nro_oc"]?>" class="input">
+            <td width="20%" ><?=$oc["orc_nro_oc"]?>
             <br /><span id="div_orc_nro_oc" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
             </td>
             <td width="7%">&nbsp;</td>
@@ -48,21 +48,17 @@ if($db->query($sSQL)) $oc=$db->next_record();
                 <input name="tipUid" id="tipUid" value="<?=$tipUid?>" type="hidden" />
 
                   <span id="div_sub_unidad">
-                <select name="rav_uni_uid" id="rav_uni_uid" class="input" >
                 <?php
-                  $uUnidad = admin::getDbValue("select TOP 1 uni_uid from mdl_subasta_unidad where suu_sub_uid=".$prod["sub_uid"]);
+                  $uUnidad = admin::getDbValue("select TOP 1 oru_uni_uid from mdl_orden_unidad where oru_orc_uid=".$oc["orc_uid"]);
                   $arrayUnidad = admin::dbFillArray("select uni_uid, uni_description from mdl_unidad where uni_delete=0 order by uni_uid");
                   if(is_array($arrayUnidad)){
                       $unidades=true;
                   foreach($arrayUnidad as $key=>$value)
                    {            
-                        ?>
-                      <option <?php if ($key==$uUnidad) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>				
-                        <?php
+                      if ($key==$uUnidad) echo $value;
                    }
                   } 
                   ?>
-                      </select>
                   </span>
                          
                <!-- <a href="javascript:addUnidad();" class="small2">agregar</a> | 
@@ -80,22 +76,20 @@ if($db->query($sSQL)) $oc=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Monto:</td>
-            <td width="40%" ><input name="orc_monto" id="orc_monto" disabled="disabled" type="text" value="<?=admin::numberFormat($oc["orc_monto"])?>" class="input">
+            <td width="40%" ><?=admin::numberFormat($oc["orc_monto"])?>
                 <?php 
 				$arrayMoneda = admin::dbFillArray("select cur_uid, cur_description from mdl_currency where cur_delete=0");
-				
+				 
 				?>
                 <span id="div_sub_moneda">
-                    <select name="sub_moneda" id="sub_moneda" disabled="disabled" class="input" >
+                       
                 <?php
 				foreach($arrayMoneda as $key=>$value)
 				{                
-				?>
-                	<option <?php if ($key==$orc["orc_moneda"]) echo 'selected="selected"';?> value="<?=$key?>"><?=$value?></option>
-				<?php
+                                    if ($key==$oc["orc_moneda"]) echo $value;
 				}
 				?>
-                </select>
+                
 
                  <div id="div_add_currency" style="display:none;">
 		<input type="text" name="add_currency" id="add_currency" class="input3" onfocus="setClassInput3(this,'ON');document.getElementById('div_add_currency_error').style.display='none';" onblur="setClassInput3(this,'OFF');document.getElementById('div_add_currency_error').style.display='none';" onclick="setClassInput3(this,'ON');document.getElementById('div_add_currency_error').style.display='none';"/>		
@@ -111,7 +105,7 @@ if($db->query($sSQL)) $oc=$db->next_record();
             <td width="20%" valign="top">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr><td width="28%" valign="middle"> 
-				<input name="orc_fecha" type="text" class="input" disabled="disabled"  id="orc_fecha" value="<?=$oc["orc_fecha"]?>" size="15" >
+				<?=$oc["orc_fecha"]?>
 				</td>
 				</tr>
                 </table>
@@ -121,7 +115,7 @@ if($db->query($sSQL)) $oc=$db->next_record();
         </tr>
         <tr>
             <td width="5%" >Hora:</td>
-            <td width="20%" ><input name="orc_hora" disabled="disabled" type="text" value="<?=substr($oc["orc_hora"],0,5)?>" class="input">
+            <td width="20%" ><?=substr($oc["orc_hora"],0,5)?>
              <br /><span id="div_orc_hora" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
             </td>
             <td width="7%">&nbsp;</td>
@@ -129,30 +123,26 @@ if($db->query($sSQL)) $oc=$db->next_record();
 
         <tr>
             <td width="5%" >Proveedores:</td>
-            <td width="20%"><select name="orc_cli_uid" id="orc_cli_uid" disabled="disabled" class="input">
+            <td width="20%">
          <?php
         $arrayClient = admin::dbFillArray("select cli_uid, cli_socialreason as name from mdl_client where cli_delete=0 ");
         if(is_array($arrayClient))
         {
             foreach($arrayClient as $value=>$name)
             {
-                if($value==$oc["orc_cli_uid"]) {$selected = "selected='selected'";}
-                else {$selected = "";}
-            ?>
-                    <option value="<?=$value?>" <?=$selected?>><?=$name?></option>>
-        <?php
+                if($value==$oc["orc_cli_uid"]) echo $name;
             }
         }
         
         ?>
-                </select>
+              
                 <br /><span id="div_orc_cli_uid" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
             </td>
                        <td width="7%">&nbsp;</td>
         </tr>
         <tr>
             <td width="5%" >Elaborado por:</td>
-            <td width="20%" ><input name="orc_aprobado" type="text" disabled="disabled" value="<?=$oc["orc_aprobado"]?>" class="input">
+            <td width="20%" ><?=$oc["orc_aprobado"]?>
             <br /><span id="div_orc_aprobado" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
             </td>
             <td width="7%">&nbsp;</td>
@@ -206,25 +196,13 @@ if($db->query($sSQL)) $oc=$db->next_record();
 			</tr>
 			<tr>
 				<td height="24">
-				<div id="imageChange1" style="display:none">
-                                    <input type="file" name="orc_document" id="sol_document" size="14" style="font-size:11px;" onclick="verifyFileUpload()" >  
-                        <a href="javascript:viewInputFile('off')" 
-                           onclick="document.getElementById('orc_document').value='';document.getElementById('button_next').innerHTML='<?=admin::labels('public');?>';">
-                            <img border="0" src="lib/close.gif" align="top"/></a>
-			
-			<span id="div_orc_document" class="error" style="display:none">Solo archivos jpg bmp gif png doc pdf xls</span></div></td>
+				</td>
 			</tr>
 			</table>
 			</div>
 			<div id="image_add_<?=$oc["orc_uid"]?>" style="display:none;"></div>
 			<?php
                         }
-			else
-				{ ?>
-				<input name="orc_document" type="file" value="" class="input">
-                            <br /><span id="div_orc_document" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('required');?></span>
-			<?php
-                        } 
                         ?>
                 
                 
@@ -235,10 +213,7 @@ if($db->query($sSQL)) $oc=$db->next_record();
         </tr>
         <tr>
             <td valign="top"><?=admin::labels('status');?></td>
-            <td><select name="orc_status" class="listMenu" id="sol_status">
-            	<option selected="selected" disabled="disabled" value="ACTIVE"><?=admin::labels('active');?></option>
-              	<option value="INACTIVE"><?=admin::labels('inactive');?></option>
-			</select>
+            <td><?php if($oc["orc_status"]=='ACTIVE') echo "Activo";else echo "Inactivo";?>
 			<span id="div_sol_status" style="display:none;" class="error"></span></td>
                        <td width="7%">&nbsp;</td>
         </tr>
