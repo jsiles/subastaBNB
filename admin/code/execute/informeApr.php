@@ -7,7 +7,7 @@ $sub_uid = $_POST["uid"];
 $sql = "update mdl_subasta set sub_finish=4 where sub_uid=".$sub_uid;
 $db->query($sql);
 
-$sql = "update mdl_subasta_informe set sua_usr_apr=".admin::getSession("usr_uid")." where sua_sub_uid=".$sub_uid;
+$sql = "update mdl_subasta_informe set sua_usr_apr=".admin::getSession("usr_uid").", sua_dateApr=GETDATE() where sua_sub_uid=".$sub_uid;
 
 //echo $sql;die;
 $db->query($sql);

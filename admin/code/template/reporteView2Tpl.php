@@ -262,7 +262,7 @@ while ($secPart = $db2->next_record())
     <?php } ?>
             <th>Item:</th></tr>
 <?php
-$sql ="SELECT * FROM mdl_biditem where bid_sub_uid='".$sub_uid."'";
+$sql ="SELECT * FROM mdl_biditem where bid_sub_uid='".$sub_uid."' order by bid_xit_uid asc,bid_uid desc";
 $db2->query($sql);	
 $i = 26;
 while ($secPart = $db2->next_record())
@@ -289,6 +289,56 @@ while ($secPart = $db2->next_record())
 <tr>
     <td colspan="5"><br /><br /><br /></td>
 </tr>
+<?php
+if($sub_modalidad!="TIEMPO"){
+?>
+<tr>
+    <td colspan="5"><h2>5: Cuadro Resumen</h2></td>
+</tr>
+<tr>
+    <td colspan="5"><br /></td>
+</tr>
+<tr><td colspan="5">
+	<table width="100%">
+                        <tr>
+				<th>Item:</th>
+				<th>Precio Base:</th>
+                                <th>Precio Ofertado:</th>
+                                <th>Beneficio Obtenido:</th>
+                        </tr>         
+               
+                 <?php
+                                
+				$sql2 = "SELECT bid_xit_uid FROM mdl_biditem where bid_sub_uid='".$sub_uid."' and bid_cli_uid!=0 group by bid_xit_uid";
+				$db2->query($sql2);
+                                //echo $sql2;
+				while ($content=$db2->next_record())
+				{
+
+                                 if($subType=="COMPRA") $sqlType="min(bid_mountxfac)";else $sqlType="max(bid_mountxfac)"; 
+                                    $montoWin = admin::getDbValue("select ".$sqlType." from mdl_biditem where bid_xit_uid =". $content["bid_xit_uid"]." group by bid_xit_uid");
+                                    if(!isset($montoWin)) $montoWin=0;
+                                    $montoBase = admin::getDBvalue("SELECT xit_price from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");
+				 ?>
+                            <tr>
+				<td width="20%" align="center"><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
+                                <td width="20%" align="center"><?=admin::numberFormat($montoBase)?></td>
+                                <td width="20%" align="center"><?=admin::numberFormat($montoWin)?></td>
+                                <td width="20%" align="center"><?php if(($subType=="COMPRA")) echo (admin::numberFormat($montoBase-$montoWin)); else echo(admin::numberFormat($montoWin-$montoBase))?></td>
+                            </tr>
+             	<?php
+				 }
+				 ?>  
+        </table>
+</td></tr>
+<tr>
+    <td colspan="5"><br /><br /><br /></td>
+</tr>            
+<?php } ?>
+<tr>
+    <td colspan="5"><h2>6: Informe Proceso de Compra</h2></td>
+</tr>
+            
 <tr>
     <th colspan="5" align="left">Monto de Adjudicaci&oacute;n:</th>
 </tr>
@@ -319,12 +369,13 @@ while ($secPart = $db2->next_record())
           <tr>
          <?php
         $elaborado= admin::getDbValue("select concat(a.usr_firstname, ' ', a.usr_lastname) FROM sys_users a, mdl_subasta_informe b where a.usr_uid=b.sua_user_uid and b.sua_sub_uid=".$sub_uid);
+        $elaboradoDate= admin::getDbValue("select top 1 sua_date FROM sys_users a, mdl_subasta_informe b where a.usr_uid=b.sua_user_uid and b.sua_sub_uid=".$sub_uid);
         $aprobado = admin::getDbValue("select concat(a.usr_firstname, ' ', a.usr_lastname) FROM sys_users a, mdl_subasta_informe b where a.usr_uid=b.sua_usr_apr and b.sua_sub_uid=".$sub_uid);
+        $aprobadoDate = admin::getDbValue("select top 1 sua_dateApr FROM sys_users a, mdl_subasta_informe b where a.usr_uid=b.sua_usr_apr and b.sua_sub_uid=".$sub_uid);
         ?>
         
-            <th align="center"><?=$elaborado?><br />Elaborado</th>
-    <th align="center" ><?=$aprobado?><br />Aprobado</th>
-    <!--<th align="center" ><?=$adjudicado?><br />Adjudicado</th>-->
+              <th align="center"><?=$elaborado?><br />Elaborado<br/><?=$elaboradoDate?></th>
+    <th align="center" ><?=$aprobado?><br />Aprobado<br/><?=$aprobadoDate?></th>
           </tr>
           
         </table>
