@@ -28,6 +28,10 @@ $sub_tiempo = admin::toSql($_POST["sub_tiempo"],"Number");
 $sub_status = admin::toSql($_POST["sub_status"],"String");
 $sub_mountdead = admin::toSql($_POST["sub_mountdead"],"Number");
 $sub_wheels = admin::toSql($_POST["sub_wheels"],"Number");
+$xhoras = admin::getParam("xhoras");
+if(!is_numeric($xhoras)) $xhoras=0;
+if(!isset($xhoras)) $xhoras=0;
+
 if(!$sub_mountdead) $sub_mountdead=0;
 if(!$sub_wheels) $sub_wheels=0;
 if($sub_modalidad=='PRECIO') $sub_wheels=1;
@@ -42,11 +46,12 @@ $tmp_sec = substr($sub_hour_end,17,2);
 if($sub_modalidad!="TIEMPO")
 {
 $dead_time = date("Y-m-d H:i:s",mktime($tmp_hour,$tmp_min+($sub_tiempo*$sub_wheels),$tmp_sec,$tmp_month,$tmp_day,$tmp_year));
-
 }else
 {
 $dead_time = date("Y-m-d H:i:s",mktime($tmp_hour,$tmp_min+$sub_tiempo,$tmp_sec,$tmp_month,$tmp_day,$tmp_year));
-} 
+}
+$timePrevio = date("Y-m-d H:i:s",mktime($tmp_hour - $xhoras, $tmp_min, $tmp_sec,$tmp_month,$tmp_day,$tmp_year));
+
 $pro_uid = admin::getDBvalue("select max(pro_uid) FROM mdl_product");
 $pro_uid++;
 
@@ -60,6 +65,9 @@ $sub_uid = admin::getDBvalue("select max(sub_uid) FROM mdl_subasta");
 if(!$sub_uid) $sub_uid=0;
 $sub_uid++;
 $sub_sol_uid=  admin::getParam("sol_uid");
+if(!is_numeric($sub_sol_uid)) $sub_sol_uid=0;
+if(!isset($sub_sol_uid)) $sub_sol_uid=0;
+
 $sql = "insert into mdl_subasta
 					(
 					sub_uid,
@@ -136,13 +144,20 @@ $sql = "insert into mdl_product
 //echo $sql;die;
 					$db->query($sql);
 //ingresando ronda en caso de ser item
+$sql ="delete from mdl_notificacion_previa where nop_sub_uid=".$sub_uid;
+$db->query($sql);
+
+if($xhoras>0){
+    $sql="insert into mdl_notificacion_previa (nop_sub_uid, nop_tiempo, nop_datetime, nop_estado) values($sub_uid, $xhoras, '$timePrevio',0)";
+    $db->query($sql);
+}
 
 if($sub_modalidad=="ITEM")
 {
 //	$sql="insert into sys_item (ite_sub_uid, ite_wheel, ite_flag) values($sub_uid,1,0)";
 //	$db->query($sql);
      $sql ="delete from mdl_round where rou_sub_uid=".$sub_uid;
-    $db->query($sql);
+     $db->query($sql);
         for($i=1; $i<=$sub_wheels;$i++)
         {
             if ($i==1) $flag0=0;

@@ -271,6 +271,14 @@
 				<br /><span id="div_sub_tiempo" style="display:none; padding-left:5px; padding-right:5px;" class="error"></span>
 				</td>
 			</tr>
+                        
+                        <tr>
+				<td>Notificaci&oacute;n N horas antes:</td>
+				<td>
+				<input name="xhoras" type="text" class="input" id="xhoras" onfocus="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_sub_mount_unidad').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" size="3" />
+				<br /><span id="div_xhoras" style="display:none; padding-left:5px; padding-right:5px;" class="error"></span>
+				</td>
+			</tr>
             
                     </table>
 		</td>

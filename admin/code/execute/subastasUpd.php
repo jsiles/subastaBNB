@@ -27,6 +27,10 @@ $sub_tiempo = admin::toSql($_POST["sub_tiempo"],"Number");
 $sub_status = admin::toSql($_POST["sub_status"],"String");
 $sub_mountdead = admin::toSql($_POST["sub_mountdead"],"Number");
 $sub_wheels = admin::toSql($_POST["sub_wheels"],"Number");
+$xhoras = admin::getParam("xhoras");
+if(!is_numeric($xhoras)) $xhoras=0;
+if(!isset($xhoras)) $xhoras=0;
+
 if(!$sub_mountdead) $sub_mountdead=0;
 if(!$sub_wheels) $sub_wheels=0;
 if($sub_modalidad=='PRECIO') $sub_wheels=1;
@@ -52,7 +56,9 @@ $dead_time = date("Y-m-d H:i:s",mktime($tmp_hour,$tmp_min+($sub_tiempo*$sub_whee
 }else
 {
 $dead_time = date("Y-m-d H:i:s",mktime($tmp_hour,$tmp_min+$sub_tiempo,$tmp_sec,$tmp_month,$tmp_day,$tmp_year));
-} 
+}
+$timePrevio = date("Y-m-d H:i:s",mktime($tmp_hour - $xhoras, $tmp_min, $tmp_sec,$tmp_month,$tmp_day,$tmp_year));
+
 $sub_sol_uid=admin::getParam("sol_uid");
 $sql = "update mdl_subasta set
 				sub_pca_uid='".$sub_pca_uid."',
@@ -87,6 +93,15 @@ $sql = "update mdl_product set
 				pro_description='".$pro_description."'
 		where pro_uid='".$pro_uid."'";
 $db->query($sql);
+
+$sql ="delete from mdl_notificacion_previa where nop_sub_uid=".$sub_uid;
+$db->query($sql);
+
+if($xhoras>0){
+    $sql="insert into mdl_notificacion_previa (nop_sub_uid, nop_tiempo, nop_datetime, nop_estado) values($sub_uid, $xhoras, '$timePrevio',0)";
+    //echo $sql;die;
+    $db->query($sql);
+}
 
 //ingresando ronda en caso de ser item
 

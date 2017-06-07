@@ -400,7 +400,18 @@ $prod = $db->next_record();
 				<input name="sub_tiempo" type="text" class="input" id="sub_sub_tiempo" onfocus="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_sub_mount_unidad').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" size="9" value="<?=$prod["sub_tiempo"]?>"/>
 				<br /><span id="div_sub_tiempo" style="display:none; padding-left:5px; padding-right:5px;" class="error"></span>
 				</td>
-			</tr>	
+			</tr>
+                        <?php
+                        $xhoras =  admin::getDbValue("select nop_tiempo from mdl_notificacion_previa where nop_sub_uid=".$prod["sub_uid"]);
+                        ?>
+                        <tr>
+				<td>Notificaci&oacute;n N horas antes:</td>
+				<td>
+				<input name="xhoras" type="text" class="input" id="xhoras" onfocus="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_sub_mount_unidad').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_sub_mount_unidad').style.display='none';" size="3"  value="<?=$xhoras?>"/>
+				<br /><span id="div_xhoras" style="display:none; padding-left:5px; padding-right:5px;" class="error"></span>
+				</td>
+			</tr>
+
 		<tr><td colspan="2">
                                   <?php $uidTpl=$prod["sub_uid"];
                                   include("./code/execute/listadoOfertas.php");

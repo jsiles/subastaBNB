@@ -248,6 +248,13 @@ $prod = $db->next_record();
 				<td><?=$prod["sub_tiempo"]?>
 				</td>
 			</tr>	
+                        <tr>
+				<td>Notificaci&oacute;n N horas antes:</td>
+				<td>
+				
+				</td>
+			</tr>
+
 		<tr><td colspan="2">
          <?php $uidTpl=$prod["sub_uid"];
                                   include("./code/execute/listadoOfertas.php");
