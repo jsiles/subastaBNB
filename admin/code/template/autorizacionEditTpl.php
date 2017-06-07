@@ -321,7 +321,9 @@ $prod = $db->next_record();
 			</tr>	
 		<tr><td colspan="2">
          <?php $uidTpl=$prod["sub_uid"];
-                                  include("./code/execute/listadoOfertas.php");?>
+                                  include("./code/execute/listadoOfertas.php");
+                                  include("./code/execute/cuadroResumen.php");
+                                  ?>
         </td></tr>	
    </table>
 		<!--TABLA DERECHA END-->

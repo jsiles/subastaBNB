@@ -16,7 +16,7 @@ $subType =$prodTpl["sub_type"];
                      		 ?>
          <table width="100%" border="0">
          <tr>
-            <td colspan="2" class="titleBox">Listado de ofertas:</td>
+            <td colspan="2" class="titleBox">Cuadro de ofertas:</td>
             <td><!--<a href="excel" onclick="document.location.href='ficheroExcel.php?subasta=<?=$prod["sub_uid"]?>'; return false;" class="xls">
 				<img border="0" src="lib/ext/excel.png" alt="Excel" title="Excel" />
 					</a>--></td>
@@ -75,7 +75,7 @@ $subType =$prodTpl["sub_type"];
                                 <td width="25%" class="txt11 color2">Monto:</td>
                                     <?php
                                   
-    if($subType!='VENTA'){  echo "VENTA:".$subType;
+    if($subType!='VENTA'){  
     ?>
 
                                 <td width="25%" class="txt11 color2">Monto con factor de ajuste:</td>
