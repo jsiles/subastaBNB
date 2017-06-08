@@ -176,6 +176,10 @@ $html.='
                
 				$sql2 = "SELECT bid_xit_uid FROM mdl_biditem where bid_sub_uid='".$sub_uid."' and bid_cli_uid!=0 group by bid_xit_uid";
 				$db2->query($sql2);
+                                $subTotalMontoBase=0;
+                                $subTotalMontoWin=0;
+                                $subTotalMontoBeneficio=0;
+                                $montoBen=0;
 				while ($content=$db2->next_record())
 				{
 
@@ -184,14 +188,23 @@ $html.='
                                     if(!isset($montoWin)) $montoWin=0;
                                     $montoBase =  admin::getDBvalue("SELECT xit_price from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");
                                     $descrip = admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");
-                                    if(($subType=="COMPRA")) { $obtenido = admin::numberFormat($montoBase-$montoWin);} else {$obtenido =admin::numberFormat($montoWin-$montoBase);}
+                                    if(($subType=="COMPRA")) { $montoBen = $montoBase-$montoWin;} else {$montoBen =$montoWin-$montoBase;}
+                                    $subTotalMontoBase+=$montoBase;
+                                    $subTotalMontoWin+=$montoWin;
+                                    $subTotalMontoBeneficio+=$montoBen;
 $html.='                    <tr>
-				<td width="20%" align="center">'.$descrip.'</td>
-                                <td width="20%" align="center">'.admin::numberFormat($montoBase).'</td>
-                                <td width="20%" align="center">'.admin::numberFormat($montoWin).'</td>
-                                <td width="20%" align="center">'.$obtenido.'</td>
+				<td width="20%" align="left">'.$descrip.'</td>
+                                <td width="20%" align="right">'.admin::numberFormat($montoBase).'</td>
+                                <td width="20%" align="right">'.admin::numberFormat($montoWin).'</td>
+                                <td width="20%" align="right">'.admin::numberFormat($montoBen).'</td>
                             </tr>';
              			 }
+$html.='                    <tr>
+				<td width="20%" align="left" style="font-weight: bold">Total</td>
+                                <td width="20%" align="right" style="font-weight: bold">'.admin::numberFormat($subTotalMontoBase).'</td>
+                                <td width="20%" align="right" style="font-weight: bold">'.admin::numberFormat($subTotalMontoWin).'</td>
+                                <td width="20%" align="right" style="font-weight: bold">'.admin::numberFormat($subTotalMontoBeneficio).'</td>
+                            </tr>';
 $html.='		
         </table>
 </td></tr>

@@ -121,9 +121,9 @@ function subastaOff()
 								
 								   $bidsCompra=admin::getDBvalue("SELECT a.sub_type FROM mdl_subasta a, mdl_bid b where b.bid_pro_uid='".$details["pro_uid"]."' and b.bid_sub_uid=a.sub_uid");
 									if($bidsCompra=='COMPRA') 
-									$valBids=admin::getDBvalue("SELECT min(bid_mount) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
+									$valBids=admin::getDBvalue("SELECT min(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
 									else
-									$valBids=admin::getDBvalue("SELECT max(bid_mount) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
+									$valBids=admin::getDBvalue("SELECT max(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$details["pro_uid"]."'");
 									if(!$valBids) 
 								    {
 										$centavos=substr($details["sub_mount_base"],-3);

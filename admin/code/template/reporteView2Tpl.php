@@ -311,7 +311,10 @@ if($sub_modalidad!="TIEMPO"){
                                 
 				$sql2 = "SELECT bid_xit_uid FROM mdl_biditem where bid_sub_uid='".$sub_uid."' and bid_cli_uid!=0 group by bid_xit_uid";
 				$db2->query($sql2);
-                                //echo $sql2;
+                                $subTotalMontoBase=0;
+                                $subTotalMontoWin=0;
+                                $subTotalMontoBeneficio=0;
+                                $montoBen=0;
 				while ($content=$db2->next_record())
 				{
 
@@ -319,16 +322,26 @@ if($sub_modalidad!="TIEMPO"){
                                     $montoWin = admin::getDbValue("select ".$sqlType." from mdl_biditem where bid_xit_uid =". $content["bid_xit_uid"]." group by bid_xit_uid");
                                     if(!isset($montoWin)) $montoWin=0;
                                     $montoBase = admin::getDBvalue("SELECT xit_price from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");
+                                    if(($subType=="COMPRA")) $montoBen=$montoBase-$montoWin; else $montoBen=$montoWin-$montoBase;
+                                    $subTotalMontoBase+=$montoBase;
+                                    $subTotalMontoWin+=$montoWin;
+                                    $subTotalMontoBeneficio+=$montoBen;
 				 ?>
                             <tr>
-				<td width="20%" align="center"><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
-                                <td width="20%" align="center"><?=admin::numberFormat($montoBase)?></td>
-                                <td width="20%" align="center"><?=admin::numberFormat($montoWin)?></td>
-                                <td width="20%" align="center"><?php if(($subType=="COMPRA")) echo (admin::numberFormat($montoBase-$montoWin)); else echo(admin::numberFormat($montoWin-$montoBase))?></td>
+				<td width="20%" align="left"><?=admin::getDBvalue("SELECT xit_description from mdl_xitem where xit_uid=".$content["bid_xit_uid"]." and xit_delete=0");?></td>
+                                <td width="20%" align="right"><?=admin::numberFormat($montoBase)?></td>
+                                <td width="20%" align="right"><?=admin::numberFormat($montoWin)?></td>
+                                <td width="20%" align="right"><?=admin::numberFormat($montoBen)?></td>
                             </tr>
              	<?php
 				 }
 				 ?>  
+                            <tr>
+				<td width="20%" align="left" style="font-weight: bold">Total</td>
+                                <td width="20%" align="right" style="font-weight: bold"><?=admin::numberFormat($subTotalMontoBase)?></td>
+                                <td width="20%" align="right" style="font-weight: bold"><?=admin::numberFormat($subTotalMontoWin)?></td>
+                                <td width="20%" align="right" style="font-weight: bold"><?=admin::numberFormat($subTotalMontoBeneficio)?></td>
+                            </tr>
         </table>
 </td></tr>
 <tr>

@@ -18,9 +18,9 @@ $unidadMejora=admin::getDBvalue("SELECT sub_mount_unidad FROM mdl_subasta where 
 
 $bidsCompra=admin::getDBvalue("SELECT sub_type FROM mdl_subasta where sub_uid=$sub_uid");
 									if($bidsCompra=='COMPRA') 
-									$valBids=admin::getDBvalue("SELECT min(bid_mount) FROM mdl_bid where bid_pro_uid=$pro_uid and bid_cli_uid!=0");
+									$valBids=admin::getDBvalue("SELECT min(bid_mountxfac) FROM mdl_bid where bid_pro_uid=$pro_uid and bid_cli_uid!=0");
 									else
-									$valBids=admin::getDBvalue("SELECT max(bid_mount) FROM mdl_bid where bid_pro_uid=$pro_uid and bid_cli_uid!=0");
+									$valBids=admin::getDBvalue("SELECT max(bid_mountxfac) FROM mdl_bid where bid_pro_uid=$pro_uid and bid_cli_uid!=0");
 
 	
 									if(!$valBids) 

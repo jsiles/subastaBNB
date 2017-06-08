@@ -121,9 +121,9 @@
                                 <?php
 								$bidsCompra=admin::getDBvalue("SELECT a.sub_type FROM mdl_subasta a, mdl_bid b where b.bid_pro_uid='".$content["pro_uid"]."' and b.bid_sub_uid=a.sub_uid");
 									if($bidsCompra=='COMPRA') 
-									$valBids=admin::getDBvalue("SELECT min(bid_mount) FROM mdl_bid where bid_pro_uid='".$content["pro_uid"]."'");
+									$valBids=admin::getDBvalue("SELECT min(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$content["pro_uid"]."'");
 									else
-									$valBids=admin::getDBvalue("SELECT max(bid_mount) FROM mdl_bid where bid_pro_uid='".$content["pro_uid"]."'");
+									$valBids=admin::getDBvalue("SELECT max(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$content["pro_uid"]."'");
 									if(!$valBids) 
 								    {
 										$montoGlobal=$content["sub_mount_base"];

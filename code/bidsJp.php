@@ -6,9 +6,9 @@ $sub_uid=admin::getParam("uid");
 $pro_uid=admin::getDBvalue("SELECT pro_uid FROM mdl_product where pro_sub_uid='".$sub_uid."'");
 $bidsCompra=admin::getDBvalue("SELECT sub_type FROM mdl_subasta where sub_uid='".$sub_uid."'");
 if($bidsCompra=='COMPRA')
-$valBids=admin::getDBvalue("SELECT MAX(bid_mount) FROM mdl_bid where bid_pro_uid='".$pro_uid."'");
+$valBids=admin::getDBvalue("SELECT MAX(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$pro_uid."'");
 else
-$valBids=admin::getDBvalue("SELECT MIN(bid_mount) FROM mdl_bid where bid_pro_uid='".$pro_uid."'");
+$valBids=admin::getDBvalue("SELECT MIN(bid_mountxfac) FROM mdl_bid where bid_pro_uid='".$pro_uid."'");
 
 $mBase=admin::getDBvalue("SELECT sub_mount_base FROM mdl_subasta where sub_uid='".$sub_uid."'");
 $unidad=admin::getDBvalue("SELECT sub_mount_unidad FROM mdl_subasta where sub_uid='".$sub_uid."'");
