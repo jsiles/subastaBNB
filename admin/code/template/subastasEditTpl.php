@@ -613,9 +613,9 @@ while ($list = $db2->next_record())
 <table class="list" width="100%">
 	<tr>
     <td width="12%"><?=$cli_name?></td>
-    <td width="12%"><?=utf8_decode($inc_lugar_entrega)?></td>
-    <td width="12%"><?=utf8_decode($tra_name)?></td>
-    <td width="12%"><?=utf8_decode($inl_name)?></td>
+    <td width="12%"><?=$inc_lugar_entrega?></td>
+    <td width="12%"><?=$tra_name?></td>
+    <td width="12%"><?=$inl_name?></td>
     <?php
     if($prod["sub_type"]!='VENTA'){
     ?>
