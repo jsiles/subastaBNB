@@ -152,7 +152,7 @@ if ($nroReg>0){
         {
             ?>
         
-        <img src="<?=PATH_DOMAIN."/admin/upload/profile/thumb_".utf8_decode($usr_photoA)?>"  border="0">
+        <img src="<?=PATH_DOMAIN."/admin/upload/profile/thumb_".($usr_photoA)?>"  border="0">
 <?php
         }
 ?>

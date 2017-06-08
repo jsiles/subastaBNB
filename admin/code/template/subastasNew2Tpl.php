@@ -193,9 +193,9 @@ while ($list = $db2->next_record())
 <table class="list" width="100%">
 	<tr>
     <td width="12%"><?=$cli_name?></td>
-    <td width="12%"><?=utf8_decode($inc_lugar_entrega)?></td>
-    <td width="12%"><?=utf8_decode($tra_name)?></td>
-    <td width="12%"><?=utf8_decode($inl_name)?></td>
+    <td width="12%"><?=($inc_lugar_entrega)?></td>
+    <td width="12%"><?=($tra_name)?></td>
+    <td width="12%"><?=($inl_name)?></td>
         <?php
     if($prod["sub_type"]!='VENTA'){
     ?>
@@ -225,7 +225,7 @@ while ($list = $db2->next_record())
                 
                 
                 <input name="sub_uid2" id="sub_uid2" value="<?=$sub_uid?>" type="hidden" /></td>
-    <td width="12%"><input name="inc_lugar_entrega" id="inc_lugar_entrega" type="text"  size="15" value="<?=utf8_decode($inc_lugar_entrega)?>" /></td>
+    <td width="12%"><input name="inc_lugar_entrega" id="inc_lugar_entrega" type="text"  size="15" value="<?=($inc_lugar_entrega)?>" /></td>
     <td width="12%">
     				<select name="inc_tra_uid<?=$tra_uid?>" id="inc_tra_uid<?=$tra_uid?>" class="input"  >
                 	<?php
@@ -234,7 +234,7 @@ while ($list = $db2->next_record())
 					while ($content=$db3->next_record())
 					{	
 					?>
-					<option <? if($content["tra_name"]==$tra_name) echo 'selected="selected"';?> value="<?=$content["tra_uid"]?>"><?=utf8_decode($content["tra_name"])?></option>					
+					<option <? if($content["tra_name"]==$tra_name) echo 'selected="selected"';?> value="<?=$content["tra_uid"]?>"><?=($content["tra_name"])?></option>					
 					<?php
 					}
                     ?>
