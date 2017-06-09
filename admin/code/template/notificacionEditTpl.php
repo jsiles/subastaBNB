@@ -35,7 +35,7 @@ $notEdit=$db->next_record();
   <tr>
     <td colspan="2" id="contentListing"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="50%" valign="top"><table width="50%" border="0" cellpadding="5" cellspacing="5" class="box">
+        <td width="50%" valign="top"><table width="100%" border="0" cellpadding="5" cellspacing="5" class="box">
          <tr>
             <td colspan="3" class="titleBox">Datos Plantilla</td>
          </tr>
@@ -52,14 +52,22 @@ $notEdit=$db->next_record();
         </tr>
       	<tr>
             <td width="5%" >Cuerpo:</td>
-            <td width="20%"><textarea cols="100" class="textarea" rows="20" name="not_template"><?=admin::toHtml($notEdit["not_template"])?></textarea></td>
+            <td width="20%"><textarea name="not_template" id="not_template" rows="10" cols="50">
+                <?=$notEdit["not_template"]?>
+            </textarea>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'not_template' );
+            </script>
+            </td>
             <td width="7%">&nbsp;</td>
         </tr>
-      	<tr>
+      <!--	<tr>
             <td width="5%" >Firma:</td>
             <td width="20%"><textarea cols="100" class="textarea" rows="5" name="not_sign"><?=$notEdit["not_sign"]?></textarea></td>
             <td width="7%">&nbsp;</td>
-        </tr>
+        </tr>-->
 
         
         

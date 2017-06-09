@@ -37,7 +37,7 @@
               $mail->AddAddress($noe["noe_email"]);
           }
 	  $mail->Subject =admin::getDbValue("select not_subject from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
-	  $mail->Body =admin::getDbValue("select concat(not_template,'\n',not_sign) as body from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
+	  $mail->Body =admin::getDbValue("select not_template from mdl_notificacion_template where not_tip_uid=".$noe["noe_nti_uid"]);
             if($noe["noe_nti_uid"]==2){    
               if($noe["noe_attach"]!=""){
                 $mail->addAttachment(PATH_ROOT.$noe["noe_attach"]);
