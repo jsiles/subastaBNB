@@ -121,12 +121,13 @@ if ($nroReg>0)
     <td colspan="2" width="98%">
   <table width="98%" border="0"  style="padding-left:17px;">
 	<tr>
-            <td width="12%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$fecOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$fecClass;?>">Fecha:</a></td>
-            <td width="12%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>">Nro Solicitud:</a></td>
-            <td width="12%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$orcOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$orcClass;?>">Nro Orden de Compra:</a></td>
-            <td width="12%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$uniOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uniClass;?>">Proveedor:</a></td>
-            <td width="12%" style="color:#16652f">Unidad Solicitante:</td>
-            <td width="12%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$estOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$estClass;?>">Estado:</a></td>
+            <td width="10%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$fecOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$fecClass;?>">Fecha:</a></td>
+            <td width="10%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>">Nro Solicitud:</a></td>
+            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$orcOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$orcClass;?>">Nro Orden de Compra:</a></td>
+            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$uniOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uniClass;?>">Proveedor:</a></td>
+            <td width="10%" style="color:#16652f">Unidad Solicitante:</td>
+            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$estOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$estClass;?>">Estado:</a></td>
+            <td width="5%" align="center" style="color:#16652f">Monto:</td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>
@@ -154,6 +155,8 @@ while ($orden_list = $pagDb->next_record())
         $orc_moneda = $orden_list["orc_moneda"];
         $orc_monto = $orden_list["orc_monto"];
         $unidadArray =  admin::dbFillArray("select uni_uid, uni_description from mdl_unidad, mdl_orden_unidad where oru_uni_uid=uni_uid and oru_orc_uid=$orc_uid group by uni_uid, uni_description");
+        $monedaLit =admin::getDbValue("select cur_description from mdl_currency where cur_uid=$orc_moneda");
+
         $k=0; 
         $solUnidad="";
         $orc_uni_uidList="";
@@ -190,12 +193,13 @@ while ($orden_list = $pagDb->next_record())
   	<div id="sub_<?=$orc_uid?>" class="<?=$class?>">
 <table class="list" width="100%" border="0">
 	<tr>
-    	<td width="12%"><?=$orc_fecha?></td>
-    	<td width="12%"><?=$orc_sol_uid?></td>
-    	<td width="12%"><?=$orc_nro_oc?></td>
-    	<td width="12%"><?=$orc_proveedor?></td>
-    	<td width="12%"><?=$solUnidad?></td>
-        <td width="12%"><?=$orc_estado?></td>        
+    	<td width="10%"><?=$orc_fecha?></td>
+    	<td width="10%"><?=$orc_sol_uid?></td>
+    	<td width="10%"><?=$orc_nro_oc?></td>
+    	<td width="10%"><?=$orc_proveedor?></td>
+    	<td width="10%"><?=$solUnidad?></td>
+        <td width="10%"><?=$orc_estado?></td>        
+        <td width="5%" align="right"><?=$orc_monto." ".$monedaLit?></td>        
         <td align="center" width="5%" height="5">
             <?php
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");

@@ -142,8 +142,8 @@ while ($subasta_list = $pagDb->next_record())
     <table class="list" width="100%" style="">
 	<tr>
 		<td width="10%" ><span <?=$dest?>><?=admin::toHtml($sub_uid)?></span></td>
-        <td width="25%" ><span <?=$dest?>><?=ucfirst(strtolower(trim(admin::toHtml($pro_name))))?></span></td>
-        <td width="25%" ><span <?=$dest?>><?=ucwords(strtolower(trim(admin::toHtml($pca_name))))?></span></td>
+        <td width="25%" ><span <?=$dest?>><?=$pro_name?></span></td>
+        <td width="25%" ><span <?=$dest?>><?=$pca_name?></span></td>
     <!--    <td width="25%" ><a href="code/execute/reporteTplXlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=xls">
         <img src="lib/ext/excel.png" border="0" alt="Excel" title="Excel" /></a></td>
 	<td align="center" width="15%" height="5"> <a href="code/execute/reporteTplXlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>

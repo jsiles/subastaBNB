@@ -147,8 +147,8 @@ while ($subasta_list = $pagDb->next_record())
     <table class="list" width="100%" style="">
 	<tr>
 		<td width="5%" ><span <?=$dest?>><?=admin::toHtml($pro_uid)?></span></td>
-        <td width="15%" ><span <?=$dest?>><?=ucfirst(strtolower(trim(admin::toHtml($pro_name))))?></span></td>
-        <td width="10%" ><span <?=$dest?>><?=ucwords(strtolower(trim(admin::toHtml($pca_name))))?></span></td>
+        <td width="15%" ><span <?=$dest?>><?=$pro_name?></span></td>
+        <td width="10%" ><span <?=$dest?>><?=$pca_name?></span></td>
         <td width="15%" ><span><?=$deadtime?></span></td>
 		<td align="left" width="10%" height="5">
          <?php

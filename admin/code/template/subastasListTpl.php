@@ -143,6 +143,7 @@ if ($nroReg>0)
         <td width="10%"><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <td width="10%"><span class="txt11 color2">Estado:</span></td>
         <td width="10%"><span class="txt11 color2">Unidad Solicitante</span></td>
+        <td width="5%" align="center"><span class="txt11 color2">Monto</span></td>
         <td width="5%">&nbsp;</td>		
 	<td width="5%">&nbsp;</td>
 	<td width="5%">&nbsp;</td>
@@ -186,7 +187,7 @@ while ($subasta_list = $pagDb->next_record())
             $countBids=admin::getDBvalue("SELECT count(*) FROM mdl_bid where bid_sub_uid='".$sub_uid."' and bid_cli_uid!=0");
         
         }
-       
+       $monedaLit =admin::getDbValue("select cur_description from mdl_currency where cur_uid=$sub_moneda");
         
         if(($deadtime=='subastandose')&&($sub_finish==1)) $sub_finish=2;
         if(($countBids==0)&&($sub_finish==3)) $sub_finish=7;
@@ -265,10 +266,11 @@ while ($subasta_list = $pagDb->next_record())
     <table class="list" width="100%" style="">
 	<tr>
 		<td width="10%" ><span <?=$dest?>><?=admin::toHtml($sub_uid)?></span></td>
-        <td width="10%" ><span <?=$dest?>><?=ucfirst(strtolower(trim(admin::toHtml($pro_name))))?></span></td>
-        <td width="10%" ><span <?=$dest?>><?=ucwords(strtolower(trim(admin::toHtml($pca_name))))?></span></td>
+        <td width="10%" ><span <?=$dest?>><?=$pro_name?></span></td>
+        <td width="10%" ><span <?=$dest?>><?=$pca_name?></span></td>
         <td width="10%" ><span><?=$sub_estado?></span></td>
 	<td align="left" width="10%" height="5"><span><?=$rav_unidad?></span>
+        <td width="5%" align="right"><span><?=$sub_monto." ".$monedaLit?></span></td>
          <?php
 		 
 		/* if ($countBids>0){

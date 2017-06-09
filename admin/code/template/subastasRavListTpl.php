@@ -116,7 +116,7 @@ while ($subasta_list = $pagDb->next_record())
     <table class="list" width="100%" border="0" style="">
 	<tr>
 		<td width="5%" ><span <?=$dest?>><?=admin::toHtml($rav_uid)?></span></td>
-        <td width="15%" ><span <?=$dest?>><?=ucfirst(strtolower(trim(admin::toHtml($rav_rol))))?></span></td>
+        <td width="15%" ><span <?=$dest?>><?=$rav_rol?></span></td>
         <td width="11%" ><span ><?=admin::numberFormat($rav_monto)?></span></td>
         <td width="11%" ><span><?=admin::numberFormat($rav_monto1)?></span></td>
         <td width="11%" ><span><?=$rav_unidad?></span></td>
