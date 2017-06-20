@@ -1,7 +1,7 @@
 <?php
 include_once ("../../core/admin.php"); 
 admin::initialize('users','usersList',false);
-$ite_item = admin::toSql(admin::getParam("uid"),"String");
+$ite_item = admin::toSql(admin::getParam("uid"),"Text");
 $Exists = admin::getDbValue("SELECT count(ite_uid) FROM mdl_item where ite_item='".$ite_item."'");
 
 if ($Exists>0)

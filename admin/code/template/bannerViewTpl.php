@@ -14,7 +14,7 @@ function verifyImageUpload(){
 }
 </script>
 <?php 
-$sql =  "select distinct mdl_banners.*, mbc_place, mbc_status from mdl_banners, mdl_banners_contents where mbc_ban_uid=ban_uid and ban_uid=".$_REQUEST["ban_uid"]." and mbc_delete=0";
+$sql =  "select distinct mdl_banners.*, mbc_place, mbc_status from mdl_banners, mdl_banners_contents where mbc_ban_uid=ban_uid and ban_uid=".admin::toSql(admin::getParam("ban_uid"),"Number")." and mbc_delete=0";
 $bannerexist = $db->numrows($sql);  
 $db->query($sql);
 $banner = $db->next_record();

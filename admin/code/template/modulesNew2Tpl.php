@@ -1,6 +1,6 @@
 <?php
 
-$team_uid = $_REQUEST["team_uid"];
+$team_uid = admin::getParam("team_uid");
 if ($team_uid=="")
  	header('Location: teamList.php');
 	

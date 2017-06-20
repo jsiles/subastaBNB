@@ -2,7 +2,7 @@
 define (SYS_LANG,$lang);
 $maxLine=20;
 $order=0; 
-$search2 = admin::toSql(admin::getParam("search2"),"String");
+$search2 = admin::toSql(admin::getParam("search2"),"Text");
 $timeNow= date("Y-m-d H:i:s");//sub_finish<>0
 //echo $timeNow;
 if ($search2!='')

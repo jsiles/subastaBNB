@@ -2,7 +2,7 @@
 include_once("../../core/admin.php");
 admin::initialize('reportes','reporteList',false);
 $pro_uid =admin::toSql(admin::getParam("pro"),"Number");
-$formato =admin::toSql(admin::getParam("type"),"String");
+$formato =admin::toSql(admin::getParam("type"),"Text");
 
 $sql ="SELECT pro_name,pca_name,pro_description,pro_quantity,pro_unidad,sub_status, sub_modalidad, sub_type, sub_hour_end, sub_mount_base, sub_mount_unidad, sub_tiempo, sub_uid 
 FROM mdl_subasta, mdl_product,mdl_pro_category

@@ -10,7 +10,7 @@ $catPosition = $db->next_record();
 $position =  $catPosition["POSITION"] + 1;
 
 // REGISTRAMOS LA CATEGORIA
-	$categoryName = admin::toSql(utf8_decode(admin::getParam("other_category")),"String");
+	$categoryName = admin::toSql(utf8_decode(admin::getParam("other_category")),"Text");
 $sql = "insert into mdl_team_category(
 							tca_position, 
 							tca_delete ,

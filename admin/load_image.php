@@ -20,7 +20,7 @@ function verifyImageUpload()
 	}
 </script>
 <?php 
-$displayImage = $_REQUEST["wys"]=="off" ? "none" : "";
+$displayImage = admin::getParam("wys")=="off" ? "none" : "";
 ?>
 <tr id="load_image" style="display:<?=$displayImage;?>">
             <td valign="top"><?=admin::labels('news','image');?>:</td>

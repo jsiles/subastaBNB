@@ -3,7 +3,7 @@ $categoria = " and cli_delete=0 ";
 if ($lang!='es') $urlLangAux=$lang.'/';
 else $urlLangAux='';
 
-$search = admin::toSql(admin::getParam("search"),"String");
+$search = admin::toSql(admin::getParam("search"),"Text");
 if ($tipUid==2) $aprSel=" and orc_estado=0 ";
 if ($search!='')
 {

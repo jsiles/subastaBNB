@@ -5,7 +5,7 @@ include_once("../../core/images.php");
 admin::initialize('users','createRoles',false);
  
 $rol_uid =admin::toSql(admin::getParam("rol_uid"),"Number");
-$rol_name = admin::toSql(safeHtml(admin::getParam("rol_name")),"String");
+$rol_name = admin::toSql(safeHtml(admin::getParam("rol_name")),"Text");
 
 $maxRol= admin::getDBvalue("select max(rol_uid) from mdl_roles");
 $rol_uid= ++$maxRol;

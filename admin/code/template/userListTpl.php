@@ -23,7 +23,7 @@ if ($dateClass=='up') $dateOrder=6;
 else $dateOrder=5;
 
 $noRoot=" ";
-$search = admin::toSql(admin::getParam("search"),"String");
+$search = admin::toSql(admin::getParam("search"),"Text");
 
 if (!$search || $search==''){
 	$_pagi_sql= "select usr_uid,usr_lastname,usr_firstname,usr_status, usr_email,rol_description, usr_login, usr_pass, usr_photo from sys_users,mdl_roles, mdl_roles_users where rus_rol_uid=rol_uid and usr_delete=0 and rus_usr_uid=usr_uid ".$noRoot.$orderCode;

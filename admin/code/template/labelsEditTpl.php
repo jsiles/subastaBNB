@@ -1,8 +1,8 @@
 <?php
 
-$label_table = admin::toSql(safeHtml($_REQUEST["label_table"]),"String"); 
-$_label_uid = admin::toSql(safeHtml($_REQUEST["label_uid"]),"String"); 
-$_label_category = admin::toSql(safeHtml($_REQUEST["label_category"]),"String"); 
+$label_table = admin::toSql(safeHtml(admin::getParam("label_table")),"Text"); 
+$_label_uid = admin::toSql(safeHtml(admin::getParam("label_uid")),"Text"); 
+$_label_category = admin::toSql(safeHtml(admin::getParam("label_category")),"Text"); 
 switch($label_table){
 	case 'tbl_labels' : $label_uid = $_label_uid; $label_category = $_label_category; break;
 	case 'sys_labels' : $label_uid = $_label_category; $label_category = $_label_uid; break;

@@ -1,6 +1,6 @@
 <?php
   
-$use_uidA=admin::toSql($_REQUEST["usr_uidA"],"String");
+$use_uidA=admin::toSql(admin::getParam("usr_uidA"),"Text");
 $sql = "select * from sys_users where usr_uid=" . $use_uidA;
 $db->query($sql);
 $regusers = $db->next_record();

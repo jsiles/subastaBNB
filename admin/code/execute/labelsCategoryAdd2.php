@@ -3,7 +3,7 @@ include_once("../../core/admin.php");
 include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('subastas','subastasList');
-$shotAction = admin::toSql(admin::getParam("action"),"String");
+$shotAction = admin::toSql(admin::getParam("action"),"Text");
 
 $shotAction();
 
@@ -15,7 +15,7 @@ function addCat(){
 }
 
 function listCat(){
-	$label_table = admin::toSql(admin::getParam("label_table"),"String");
+	$label_table = admin::toSql(admin::getParam("label_table"),"Text");
 
 ?>
 	<select name="lab_category" class="listMenu" id="lab_category" onfocus="this.className='listMenu';document.getElementById('div_lab_category').style.display='none';">
@@ -41,10 +41,10 @@ function listCat(){
 }
 
 function labelsSave(){
-		$label_table = admin::toSql(admin::getParam("label_table"),"String");
-			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"String");
-			$lab_category = admin::toSql(admin::getParam("lab_category"),"String");
-			$new_value = admin::toSql(admin::getParam("new_value"),"String");
+		$label_table = admin::toSql(admin::getParam("label_table"),"Text");
+			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"Text");
+			$lab_category = admin::toSql(admin::getParam("lab_category"),"Text");
+			$new_value = admin::toSql(admin::getParam("new_value"),"Text");
 		
 		global $basedatos, $host, $user, $pass,$lang;
 		$dset=new DBmysql;
@@ -59,9 +59,9 @@ function labelsSave(){
 <?php
 }
 function labelsEdit(){
-		$label_table = admin::toSql(admin::getParam("label_table"),"String");
-			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"String");
-			$lab_category = admin::toSql(admin::getParam("lab_category"),"String");
+		$label_table = admin::toSql(admin::getParam("label_table"),"Text");
+			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"Text");
+			$lab_category = admin::toSql(admin::getParam("lab_category"),"Text");
 		global $basedatos, $host, $user, $pass,$lang;
 		$dset=new DBmysql;
 		//$dset->connect($basedatos, $host, $user, $pass);
@@ -85,9 +85,9 @@ function labelsEdit(){
 
 function labelsShow(){
 
-		$label_table = admin::toSql(admin::getParam("label_table"),"String");
-			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"String");
-			$lab_category = admin::toSql(admin::getParam("lab_category"),"String");
+		$label_table = admin::toSql(admin::getParam("label_table"),"Text");
+			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"Text");
+			$lab_category = admin::toSql(admin::getParam("lab_category"),"Text");
 
 		global $basedatos, $host, $user, $pass,$lang;
 		$dset=new DBmysql;
@@ -110,10 +110,10 @@ global $basedatos, $host, $user, $pass,$lang;
 		$dset=new DBmysql;
 		//$dset->connect($basedatos, $host, $user, $pass);
 		
-			$label_table = admin::toSql(admin::getParam("label_table"),"String");
-			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"String");
-			$lab_category = admin::toSql(admin::getParam("lab_category"),"String");
-			$status = admin::toSql(admin::getParam("status"),"String");
+			$label_table = admin::toSql(admin::getParam("label_table"),"Text");
+			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"Text");
+			$lab_category = admin::toSql(admin::getParam("lab_category"),"Text");
+			$status = admin::toSql(admin::getParam("status"),"Text");
 			
 
 if ($status=='ACTIVE'){
@@ -142,10 +142,10 @@ global $basedatos, $host, $user, $pass,$lang;
 		$dset=new DBmysql;
 		//$dset->connect($basedatos, $host, $user, $pass);
 		
-			$label_table = admin::toSql(admin::getParam("label_table"),"String");
-			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"String");
-			$lab_category = admin::toSql(admin::getParam("lab_category"),"String");
-			$status = admin::toSql(admin::getParam("status"),"String");
+			$label_table = admin::toSql(admin::getParam("label_table"),"Text");
+			$lab_uid = admin::toSql(admin::getParam("lab_uid"),"Text");
+			$lab_category = admin::toSql(admin::getParam("lab_category"),"Text");
+			$status = admin::toSql(admin::getParam("status"),"Text");
 			
 
 		if($label_table=="tbl_labels")

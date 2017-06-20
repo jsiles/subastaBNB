@@ -15,7 +15,7 @@ function verifyImageUpload()
 	}
 </script>	
 <?php
-$cli_uid=admin::toSql($_REQUEST["cli_uid"],"String");
+$cli_uid=admin::toSql(admin::getParam("cli_uid"),"Text");
 $sql = "select * from mdl_client where cli_uid=".$cli_uid;
 $db->query($sql);
 $regusers = $db->next_record();

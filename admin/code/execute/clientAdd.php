@@ -6,36 +6,36 @@ include_once("../../core/safeHtml.php");
 include_once("../../../classes/class.SymmetricCrypt.inc.php");
 admin::initialize('client','clientNew',false);
 
-$cli_nit_ci = admin::toSql(safeHtml(admin::getParam("cli_nit_ci")),"String");
-$cli_interno = admin::toSql(safeHtml(admin::getParam("cli_interno")),"String");
-$cli_lec_uid = admin::toSql(safeHtml(admin::getParam("cli_lec_uid")),"String");
-$cli_cov_uid = admin::toSql(safeHtml(admin::getParam("cli_cov_uid")),"String");
-$cli_socialreason = admin::toSql(safeHtml(admin::getParam("cli_socialreason")),"String");
-$cli_legaldirection = admin::toSql(safeHtml(admin::getParam("cli_legaldirection")),"String");
-$cli_phone = admin::toSql(safeHtml(admin::getParam("cli_phone")),"String");
-$cli_mainemail = admin::toSql(safeHtml(admin::getParam("cli_mainemail")),"String");
-$cli_commercialemail = admin::toSql(safeHtml(admin::getParam("cli_commercialemail")),"String");
-$cli_legal_ci = admin::toSql(safeHtml(admin::getParam("cli_legal_ci")),"String");
-$cli_legalname = admin::toSql(safeHtml(admin::getParam("cli_legalname")),"String");
-$cli_legallastname = admin::toSql(safeHtml(admin::getParam("cli_legallastname")),"String");
-$cli_legal_ci2 = admin::toSql(safeHtml(admin::getParam("cli_legal_ci2")),"String");
-$cli_legalname2 = admin::toSql(safeHtml(admin::getParam("cli_legalname2")),"String");
-$cli_legallastname2 = admin::toSql(safeHtml(admin::getParam("cli_legallastname2")),"String");
-$cli_legal_ci3 = admin::toSql(safeHtml(admin::getParam("cli_legal_ci3")),"String");
-$cli_legalname3 = admin::toSql(safeHtml(admin::getParam("cli_legalname3")),"String");
-$cli_legallastname3 = admin::toSql(safeHtml(admin::getParam("cli_legallastname3")),"String");
-$cli_commercialname = admin::toSql(safeHtml(admin::getParam("cli_commercialname")),"String");
-$cli_commerciallastname = admin::toSql(safeHtml(admin::getParam("cli_commerciallastname")),"String");
-$cli_user = admin::toSql(safeHtml(admin::getParam("cli_user")),"String");
-$cli_pass = admin::toSql(safeHtml(admin::getParam("cli_pass")),"String");
+$cli_nit_ci = admin::toSql(safeHtml(admin::getParam("cli_nit_ci")),"Text");
+$cli_interno = admin::toSql(safeHtml(admin::getParam("cli_interno")),"Text");
+$cli_lec_uid = admin::toSql(safeHtml(admin::getParam("cli_lec_uid")),"Text");
+$cli_cov_uid = admin::toSql(safeHtml(admin::getParam("cli_cov_uid")),"Text");
+$cli_socialreason = admin::toSql(safeHtml(admin::getParam("cli_socialreason")),"Text");
+$cli_legaldirection = admin::toSql(safeHtml(admin::getParam("cli_legaldirection")),"Text");
+$cli_phone = admin::toSql(safeHtml(admin::getParam("cli_phone")),"Text");
+$cli_mainemail = admin::toSql(safeHtml(admin::getParam("cli_mainemail")),"Text");
+$cli_commercialemail = admin::toSql(safeHtml(admin::getParam("cli_commercialemail")),"Text");
+$cli_legal_ci = admin::toSql(safeHtml(admin::getParam("cli_legal_ci")),"Text");
+$cli_legalname = admin::toSql(safeHtml(admin::getParam("cli_legalname")),"Text");
+$cli_legallastname = admin::toSql(safeHtml(admin::getParam("cli_legallastname")),"Text");
+$cli_legal_ci2 = admin::toSql(safeHtml(admin::getParam("cli_legal_ci2")),"Text");
+$cli_legalname2 = admin::toSql(safeHtml(admin::getParam("cli_legalname2")),"Text");
+$cli_legallastname2 = admin::toSql(safeHtml(admin::getParam("cli_legallastname2")),"Text");
+$cli_legal_ci3 = admin::toSql(safeHtml(admin::getParam("cli_legal_ci3")),"Text");
+$cli_legalname3 = admin::toSql(safeHtml(admin::getParam("cli_legalname3")),"Text");
+$cli_legallastname3 = admin::toSql(safeHtml(admin::getParam("cli_legallastname3")),"Text");
+$cli_commercialname = admin::toSql(safeHtml(admin::getParam("cli_commercialname")),"Text");
+$cli_commerciallastname = admin::toSql(safeHtml(admin::getParam("cli_commerciallastname")),"Text");
+$cli_user = admin::toSql(safeHtml(admin::getParam("cli_user")),"Text");
+$cli_pass = admin::toSql(safeHtml(admin::getParam("cli_pass")),"Text");
 $cli_pass = md5($cli_pass);
 //$cli_pass = $cli_pass;
-$cli_pts_uid = admin::toSql(safeHtml(admin::getParam("cli_pts_uid")),"String");
+$cli_pts_uid = admin::toSql(safeHtml(admin::getParam("cli_pts_uid")),"Text");
 $item_uid = admin::getParam("nivel1_uid");
 $cli_ite_uid =  admin::getParam("nivel2_uid");
 /*
-$cli_pts_description = admin::toSql(safeHtml(admin::getParam("cli_pts_description"]),"String");*/
-$cli_status = admin::toSql(safeHtml(admin::getParam("cli_status")),"String");
+$cli_pts_description = admin::toSql(safeHtml(admin::getParam("cli_pts_description"]),"Text");*/
+$cli_status = admin::toSql(safeHtml(admin::getParam("cli_status")),"Text");
 
 $cli_exist = admin::getDBvalue("select count(cli_user) FROM mdl_client where cli_user='".$cli_user."' and cli_delete=0");
 

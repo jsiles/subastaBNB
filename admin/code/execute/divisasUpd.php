@@ -8,37 +8,37 @@ admin::initialize('subasta','subastaAdd');
 $mythumb = new thumb(); 
 
 // DATOS QUE EVITAN EL SQL INJECTION
-$sub_uid = admin::toSql(admin::getParam("sub_uid"),"String");
+$sub_uid = admin::toSql(admin::getParam("sub_uid"),"Text");
 $sub_pca_uid = 6;
-$sub_description = admin::toSql(admin::getParam("sub_description"),"String");
-$sub_type = admin::toSql(admin::getParam("sub_type"),"String");
-$sub_modalidad = admin::toSql(admin::getParam("sub_modalidad"),"String");
+$sub_description = admin::toSql(admin::getParam("sub_description"),"Text");
+$sub_type = admin::toSql(admin::getParam("sub_type"),"Text");
+$sub_modalidad = admin::toSql(admin::getParam("sub_modalidad"),"Text");
 
-//$sub_date = admin::changeFormatDate(admin::toSql(admin::getParam("sub_date"],"String"),1);
-//$sub_hour = admin::toSql(admin::getParam("sub_hour"],"String");
-$sub_mount_base = admin::toSql(admin::getParam("sub_mount_base"),"String");
-$sub_moneda = admin::toSql(admin::getParam("sub_moneda"),"String");
-$sub_moneda1 = admin::toSql(admin::getParam("sub_moneda1"),"String");
+//$sub_date = admin::changeFormatDate(admin::toSql(admin::getParam("sub_date"],"Text"),1);
+//$sub_hour = admin::toSql(admin::getParam("sub_hour"],"Text");
+$sub_mount_base = admin::toSql(admin::getParam("sub_mount_base"),"Text");
+$sub_moneda = admin::toSql(admin::getParam("sub_moneda"),"Text");
+$sub_moneda1 = admin::toSql(admin::getParam("sub_moneda1"),"Text");
 
-$sub_mount_unidad = admin::toSql(admin::getParam("sub_mount_unidad"),"String");
-$sub_hour_end0 = admin::changeFormatDate(admin::toSql(admin::getParam("sub_hour_end0"),"String"),1);
-$sub_hour_end1 = admin::toSql(admin::getParam("sub_hour_end1"),"String");
+$sub_mount_unidad = admin::toSql(admin::getParam("sub_mount_unidad"),"Text");
+$sub_hour_end0 = admin::changeFormatDate(admin::toSql(admin::getParam("sub_hour_end0"),"Text"),1);
+$sub_hour_end1 = admin::toSql(admin::getParam("sub_hour_end1"),"Text");
 $sub_hour_end=$sub_hour_end0.' '.$sub_hour_end1;
 $sub_tiempo = admin::toSql(admin::getParam("sub_tiempo"),"Number");
 
-$sub_status = admin::toSql(admin::getParam("sub_status"),"String");
+$sub_status = admin::toSql(admin::getParam("sub_status"),"Text");
 
 $sub_mountdead = admin::toSql(admin::getParam("sub_mountdead"),"Number");
 $sub_wheels = admin::toSql(admin::getParam("sub_wheels"),"Number");
 if(!$sub_mountdead) $sub_mountdead=0;
 if(!$sub_wheels) $sub_wheels=0;
 
-$pro_uid = admin::toSql(admin::getParam("pro_uid"),"String");
-$pro_name = admin::toSql(admin::getParam("pro_name"),"String");
+$pro_uid = admin::toSql(admin::getParam("pro_uid"),"Text");
+$pro_name = admin::toSql(admin::getParam("pro_name"),"Text");
 $pro_url = admin::urlsFriendly(trim($pro_name.'-'.$pro_uid));
-$pro_quantity = admin::toSql(admin::getParam("pro_quantity"),"String");
-$pro_unidad = admin::toSql(admin::getParam("pro_unidad"),"String");
-$pro_description = admin::toSql(admin::getParam("pro_description"),"String");
+$pro_quantity = admin::toSql(admin::getParam("pro_quantity"),"Text");
+$pro_unidad = admin::toSql(admin::getParam("pro_unidad"),"Text");
+$pro_description = admin::toSql(admin::getParam("pro_description"),"Text");
 
 $tmp_year = substr($sub_hour_end,0,4);
 $tmp_month = substr($sub_hour_end,5,2);

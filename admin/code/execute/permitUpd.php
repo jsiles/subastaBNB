@@ -5,11 +5,11 @@ include_once("../../core/images.php");
 admin::initialize('users','createRoles',false);
  
 $mcc_uid =admin::toSql(admin::getParam("mcc_uid"),"Number");
-$mcc_permit = admin::toSql(safeHtml(admin::getParam("mcc_permit")),"String");
-$mcc_mensual = admin::toSql(safeHtml(admin::getParam("mcc_mensual")),"String");
-$mcc_trimestral = admin::toSql(safeHtml(admin::getParam("mcc_trimestral")),"String");
-$mcc_semestral = admin::toSql(safeHtml(admin::getParam("mcc_semestral")),"String");
-$mcc_anual = admin::toSql(safeHtml(admin::getParam("mcc_anual")),"String");
+$mcc_permit = admin::toSql(safeHtml(admin::getParam("mcc_permit")),"Text");
+$mcc_mensual = admin::toSql(safeHtml(admin::getParam("mcc_mensual")),"Text");
+$mcc_trimestral = admin::toSql(safeHtml(admin::getParam("mcc_trimestral")),"Text");
+$mcc_semestral = admin::toSql(safeHtml(admin::getParam("mcc_semestral")),"Text");
+$mcc_anual = admin::toSql(safeHtml(admin::getParam("mcc_anual")),"Text");
 
 //***********************************************update del nombre de rol***************************************************
 $sqldat = "update mdl_client_category set mcc_permit='".$mcc_permit."', mcc_mensual='".$mcc_mensual."', mcc_trimestral='".$mcc_trimestral."', mcc_semestral='".$mcc_semestral."', mcc_anual='".$mcc_anual."' where mcc_uid=".$mcc_uid;

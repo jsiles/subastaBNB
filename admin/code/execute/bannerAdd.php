@@ -20,7 +20,7 @@ $sql = "insert into mdl_banners(
 								ban_file
 								)
 						values (							
-							'".admin::toSql(admin::getParam("ban_title"),"String")."',
+							'".admin::toSql(admin::getParam("ban_title"),"Text")."',
 							'',  
 							'".$randomString."',
 							''
@@ -39,7 +39,7 @@ if ($FILES["name"] != '')
 {
 	// DATOS DE ARCHIVO EN SU FORMATO ORIGINAL
 	$extensionFile = admin::getExtension($FILES["name"]);
-	$fileName = admin::imageName(admin::toSql(admin::getParam("ban_title"),"String"))."_".$ban_uid.".".$extensionFile;
+	$fileName = admin::imageName(admin::toSql(admin::getParam("ban_title"),"Text"))."_".$ban_uid.".".$extensionFile;
 
 	// DATOS DE ARCHIVO EN SU FORMATO ORIGINAL
 	$image1 = PATH_ROOT.'/img/banner/Original_'.$fileName;
@@ -49,7 +49,7 @@ if ($FILES["name"] != '')
 	$db->query($sql);
 
 	// Subimos el archivo con el nombre original
-	$gifCode='<img src="'.$domain.'/img/banner/'.$fileName.'" alt="'.admin::toSql(admin::getParam("ban_title"),"String").'" title="'.admin::toSql(admin::getParam("ban_title"),"String").'" />';
+	$gifCode='<img src="'.$domain.'/img/banner/'.$fileName.'" alt="'.admin::toSql(admin::getParam("ban_title"),"Text").'" title="'.admin::toSql(admin::getParam("ban_title"),"Text").'" />';
 	
 	$sql = "UPDATE mdl_banners SET ban_content='".$gifCode."' WHERE ban_uid=".$ban_uid;
 	$db->query($sql);
@@ -81,7 +81,7 @@ if ($FILES["name"] != '')
 									2,  
 									'".$mbc_position."',
 									0,
-									'".admin::toSql(admin::getParam("ban_status"),"String")."' 
+									'".admin::toSql(admin::getParam("ban_status"),"Text")."' 
 									)";
 		$db2->query($sql);
 		

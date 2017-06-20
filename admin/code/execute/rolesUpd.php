@@ -5,7 +5,7 @@ include_once("../../core/images.php");
 admin::initialize('users','createRoles',false);
  
 $rol_uid =admin::toSql(admin::getParam("rol_uid"),"Number");
-$rol_name = admin::toSql(safeHtml(admin::getParam("rol_name")),"String");
+$rol_name = admin::toSql(safeHtml(admin::getParam("rol_name")),"Text");
 $sqldat = "update mdl_roles set rol_description='".$rol_name."' where rol_uid= ".$rol_uid;
 //echo $sqldat;
 $db->query($sqldat);

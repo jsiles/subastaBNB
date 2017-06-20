@@ -1,7 +1,7 @@
 <?php
 include ("../../core/admin.php"); 
 admin::initialize('subastas','subastasList');
-$lin_family = admin::toSql(admin::getParam("lin_family"),"String");
+$lin_family = admin::toSql(admin::getParam("lin_family"),"Text");
 
 $Exists = admin::getDbValue("SELECT count(DISTINCT prc_level) FROM mdl_subasta_categories WHERE prc_family = '".$lin_family."' and prc_level!=''");
 if ($Exists>0)

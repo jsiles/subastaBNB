@@ -19,7 +19,7 @@ else $nameOrder=3;
 if ($dateClass=='up') $dateOrder=6;
 else $dateOrder=5;
 
-$search = admin::toSql(admin::getParam("search"),"String");
+$search = admin::toSql(admin::getParam("search"),"Text");
 if (!$search || $search=='')
 {
 $_pagi_sql= "select cli_uid, cli_nit_ci, cli_socialreason, cli_user, cli_mainemail, cli_status, cli_phone, cli_status_main from mdl_client where 1=1 ".$categoria.$orderCode;

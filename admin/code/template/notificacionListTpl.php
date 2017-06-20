@@ -3,7 +3,7 @@ $categoria = " and cli_delete=0 ";
 if ($lang!='es') $urlLangAux=$lang.'/';
 else $urlLangAux='';
 
-//$search = admin::toSql(admin::getParam("search"),"String");
+//$search = admin::toSql(admin::getParam("search"),"Text");
 
 $_pagi_sql= "select * from mdl_notificacion_template where not_delete=0 order by not_uid asc ";
 $nroReg=admin::getDBvalue("select count(*) from mdl_notificacion_template where not_delete=0");

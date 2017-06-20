@@ -2,18 +2,18 @@
 include_once("../../core/admin.php");
 admin::initialize('labels','labelsNew');
 global $lang;
-$label_table = admin::toSql(admin::getParam("label_table"),"String");
+$label_table = admin::toSql(admin::getParam("label_table"),"Text");
 if($label_table=='tbl_labels'){
-	$lab_uid = admin::toSql(admin::getParam("lab_uid"),"String");
-	$lab_category = admin::toSql(admin::getParam("lab_category"),"String");
+	$lab_uid = admin::toSql(admin::getParam("lab_uid"),"Text");
+	$lab_category = admin::toSql(admin::getParam("lab_category"),"Text");
 }
 else{
-	$lab_uid = admin::toSql(admin::getParam("lab_category"),"String");
-	$lab_category = admin::toSql(admin::getParam("lab_uid"),"String");
+	$lab_uid = admin::toSql(admin::getParam("lab_category"),"Text");
+	$lab_category = admin::toSql(admin::getParam("lab_uid"),"Text");
 }
 
-$lab_label = admin::toSql(admin::getParam("lab_label"),"String");
-$ofl_status = admin::toSql(admin::getParam("ofl_status"),"String");
+$lab_label = admin::toSql(admin::getParam("lab_label"),"Text");
+$ofl_status = admin::toSql(admin::getParam("ofl_status"),"Text");
 
 $lab_uid = str_replace(" ","",strtolower(trim($lab_uid)));
 $lab_category = str_replace(" ","",strtolower(trim($lab_category)));

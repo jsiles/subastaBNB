@@ -1,5 +1,5 @@
 <?php
-$mcc_uid=admin::toSql($_REQUEST["mcc_uid"],"Number");
+$mcc_uid=admin::toSql(admin::getParam("mcc_uid"),"Number");
 $sql = "select mcc_permit, mcc_mensual, mcc_trimestral, mcc_semestral, mcc_anual from mdl_client_category where mcc_uid=".$mcc_uid." and mcc_delete=0";
 $db->query($sql);
 $regusers = $db->next_record();

@@ -5,13 +5,13 @@ include_once("../../core/images.php");
 admin::initialize('users','usersEdit',false);
 
 $use_uidA = admin::toSql(admin::getParam("use_uidA"),"Text");
-$usr_loginA = admin::toSql(admin::getParam("usr_login"),"String");
+$usr_loginA = admin::toSql(admin::getParam("usr_login"),"Text");
 $usr_passA = admin::toSql(admin::getParam("usr_pass"),"Text");
-$usr_firstnameA = admin::toSql(admin::getParam("usr_firstname"),"String");
-$usr_lastnameA = admin::toSql(admin::getParam("usr_lastname"),"String");
-$usr_emailA = admin::toSql(admin::getParam("usr_email"),"String");
-$usr_photoA = admin::toSql(admin::getParam("usr_photo"),"String");
-$usr_statusA = admin::toSql(admin::getParam("usr_status"),"String");
+$usr_firstnameA = admin::toSql(admin::getParam("usr_firstname"),"Text");
+$usr_lastnameA = admin::toSql(admin::getParam("usr_lastname"),"Text");
+$usr_emailA = admin::toSql(admin::getParam("usr_email"),"Text");
+$usr_photoA = admin::toSql(admin::getParam("usr_photo"),"Text");
+$usr_statusA = admin::toSql(admin::getParam("usr_status"),"Text");
 $usr_rolA = admin::toSql(admin::getParam("usr_rol"),"Number");
 if ($usr_passA!=""){ $changepassA = "usr_pass='" . md5($usr_passA) . "',";}
 

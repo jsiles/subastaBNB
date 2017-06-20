@@ -3,10 +3,10 @@ include_once("../../core/admin.php");
 admin::initialize('dpf','dpfList',false);
 
 $ind_uid = admin::toSql(admin::getParam("ind_uid"),"Number");
-$ind_description = admin::toSql(admin::getParam("ind_description2".$ind_uid),"String");
-$ind_por_bol = admin::toSql(admin::getParam("ind_por_bol2".$ind_uid),"String");
-$ind_por_dol = admin::toSql(admin::getParam("ind_por_dol2".$ind_uid),"String");
-$ind_por_ufv = admin::toSql(admin::getParam("ind_por_ufv2".$ind_uid),"String");
+$ind_description = admin::toSql(admin::getParam("ind_description2".$ind_uid),"Text");
+$ind_por_bol = admin::toSql(admin::getParam("ind_por_bol2".$ind_uid),"Text");
+$ind_por_dol = admin::toSql(admin::getParam("ind_por_dol2".$ind_uid),"Text");
+$ind_por_ufv = admin::toSql(admin::getParam("ind_por_ufv2".$ind_uid),"Text");
 $ind_plazo = admin::toSql(admin::getParam("ind_plazo2".$ind_uid),"Number");
 $tipUid=admin::getParam("tipUid");
 

@@ -14,7 +14,7 @@ function verifyImageUpload(){
 }
 </script>
 <?php 
-$sql =  "select distinct mdl_banners.*, mbc_place, mbc_status from mdl_banners, mdl_banners_contents where mbc_ban_uid=ban_uid and ban_uid=".$_REQUEST["ban_uid"]." and mbc_delete=0";
+$sql =  "select distinct mdl_banners.*, mbc_place, mbc_status from mdl_banners, mdl_banners_contents where mbc_ban_uid=ban_uid and ban_uid=".admin::toSql(admin::getParam("ban_uid"),"Number")." and mbc_delete=0";
 $bannerexist = $db->numrows($sql);  
 $db->query($sql);
 $banner = $db->next_record();
@@ -42,7 +42,7 @@ if ($bannerexist==0) echo '<script language="javascript" type="text/javascript">
             <td width="64%">
 <input name="ban_title" type="text" class="input" id="ban_title" size="50" onfocus="setClassInput(this,'ON');document.getElementById('div_ban_title').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_ban_title').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_ban_title').style.display='none';" value="<?=$banner["ban_title"]?>" />
 <br /><span id="div_ban_title" style="display:none; padding-left:5px; padding-right:5px;" class="error"><?=admin::labels('banner','titleerror');?></span><?php 
-			    if($_REQUEST["error"]=='ok') {?><br /><span class="error">Imagen no permitida</span> <?php }
+			    if(admin::getParam("error")=='ok') {?><br /><span class="error">Imagen no permitida</span> <?php }
 			?>
 			</td>
           </tr>

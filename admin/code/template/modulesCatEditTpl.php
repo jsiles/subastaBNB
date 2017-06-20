@@ -1,5 +1,5 @@
 <?php
-$dca_uid = $_REQUEST["dca_uid"];
+$dca_uid = admin::getParam("dca_uid");
 if ($dca_uid=="")
 	echo "<script>document.location.href='teamList.php';</script>";
 $sql= "select *

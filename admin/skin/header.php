@@ -37,8 +37,8 @@ function checkTime(i) {
 		<td width="25%" rowspan="2">
 		<div id="changeDiv" style="display:none;">
 		<form  method="post" id="change_language" method="post" action="code/execute/langChange.php<?=$conParent;?>" > 
-		<?php	if ($_REQUEST["con_uid"]!="")
-		$page_uid = "?con_uid=" . $_REQUEST["con_uid"];
+		<?php $con_uidP=admin::getParam("con_uid");	if ($con_uidP!="")
+		$page_uid = "?con_uid=" . admin::getParam("con_uid");
 		$urlorigin = $_SERVER['PHP_SELF'].$page_uid; ?>
 		<input type="hidden" name="origin" value="<?=$urlorigin?>" />
 		<select name="language" id="language" onchange="document.getElementById('change_language').submit();" class="input">

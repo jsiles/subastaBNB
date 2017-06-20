@@ -4,12 +4,12 @@ include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('subasta','subastaAdd'); 
 // VERIFICAMOS EL SQL INJECTION
-$lin_uid = admin::toSql(admin::getParam("lin_uid"),"String");
-$lin_name = admin::toSql(admin::getParam("lin_name"),"String");
-$lin_status = admin::toSql(admin::getParam("lin_status"),"String");
-$seo_metatitle = admin::toSql(admin::getParam("seo_metatitle"),"String"); 
-$seo_metadescription = admin::toSql(admin::getParam("seo_metadescription"),"String"); 
-$seo_metakeyword = admin::toSql(admin::getParam("seo_metakeyword"),"String");
+$lin_uid = admin::toSql(admin::getParam("lin_uid"),"Text");
+$lin_name = admin::toSql(admin::getParam("lin_name"),"Text");
+$lin_status = admin::toSql(admin::getParam("lin_status"),"Text");
+$seo_metatitle = admin::toSql(admin::getParam("seo_metatitle"),"Text"); 
+$seo_metadescription = admin::toSql(admin::getParam("seo_metadescription"),"Text"); 
+$seo_metakeyword = admin::toSql(admin::getParam("seo_metakeyword"),"Text");
 
 // Verificamos que el codigo no exista
 $existLin=admin::getDBvalue("select COUNT(*) from mdl_line where lin_uid='".$lin_uid."'");

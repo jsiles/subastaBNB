@@ -3,7 +3,7 @@ $categoria = " and cli_delete=0 ";
 if ($lang!='es') $urlLangAux=$lang.'/';
 else $urlLangAux='';
 
-$search = admin::toSql(admin::getParam("search"),"String");
+$search = admin::toSql(admin::getParam("search"),"Text");
 if($search=='')
 {
 $where="";        

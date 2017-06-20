@@ -5,7 +5,7 @@ $order=0;
 //variables para filtros de productos*******************************************
 $queryFilter = admin::toSql(admin::getParam("qfiltro"),"Number");
 
-$search2 = admin::toSql(admin::getParam("search2"),"String");
+$search2 = admin::toSql(admin::getParam("search2"),"Text");
 if ($search2) $searchURL='&search2='.$search2.'&qfiltro=1';
 else $searchURL='';
 $timeNow= date("Y-m-d H:i:s");//sub_finish<>0

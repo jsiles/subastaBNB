@@ -178,8 +178,8 @@ $nivel=admin::getDbValue("select con_level from mdl_contents where con_uid=".adm
     </tr>
 </table>
       <br />
-	  <?
-	if ($_REQUEST["wys"]!="off")
+	  <?php
+	if (admin::getParam("wys")!="off")
 		{
 		?>
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -189,7 +189,7 @@ $nivel=admin::getDbValue("select con_level from mdl_contents where con_uid=".adm
                 <td align="center" valign="top" height="3px;"></td>
               </tr>
               <tr>
-                <td align="center" valign="top"><?
+                <td align="center" valign="top"><?php
 		
 			include("spaw/spaw.inc.php");
 			$spaw1 = new SpawEditor("col_content",$content["col_content"]); 
@@ -202,7 +202,7 @@ $nivel=admin::getDbValue("select con_level from mdl_contents where con_uid=".adm
           </table></td>
         </tr>
       </table>
-  <? } ?>
+  <?php } ?>
 	  </form>
       <br />
       <br />

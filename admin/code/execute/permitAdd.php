@@ -4,11 +4,11 @@ include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('client','permitAdd',false);
  
-$mcc_permit = admin::toSql(safeHtml(admin::getParam("mcc_permit")),"String");
-$mcc_mensual = admin::toSql(safeHtml(admin::getParam("mcc_mensual")),"String");
-$mcc_trimestral = admin::toSql(safeHtml(admin::getParam("mcc_trimestral")),"String");
-$mcc_semestral = admin::toSql(safeHtml(admin::getParam("mcc_semestral")),"String");
-$mcc_anual = admin::toSql(safeHtml(admin::getParam("mcc_anual")),"String");
+$mcc_permit = admin::toSql(safeHtml(admin::getParam("mcc_permit")),"Text");
+$mcc_mensual = admin::toSql(safeHtml(admin::getParam("mcc_mensual")),"Text");
+$mcc_trimestral = admin::toSql(safeHtml(admin::getParam("mcc_trimestral")),"Text");
+$mcc_semestral = admin::toSql(safeHtml(admin::getParam("mcc_semestral")),"Text");
+$mcc_anual = admin::toSql(safeHtml(admin::getParam("mcc_anual")),"Text");
 
 //***********************************************update del nombre de rol***************************************************
 $maxPermit=admin::getDBvalue("select max(mcc_uid) from mdl_client_category");

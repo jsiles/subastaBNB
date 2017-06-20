@@ -17,7 +17,7 @@ $maxLine=20;
 $order=0; 
 //variables para filtros de productos*******************************************
 $rolAplica = false;
-$search2 = admin::toSql(admin::getParam("search2"),"String");
+$search2 = admin::toSql(admin::getParam("search2"),"Text");
 $timeNow= date("Y-m-d H:i:s");//sub_finish<>0
 
 if ($search2!='')

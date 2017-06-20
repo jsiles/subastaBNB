@@ -7,7 +7,7 @@ admin::initialize('banner','bannerList',false);
 $mythumb = new thumb();
 $ban_uid=admin::toSql(admin::getParam("uid"),"Number");
 
-$sql = "update mdl_banners set ban_title='".admin::toSql(admin::getParam("ban_title"),"String")."' where ban_uid=".$ban_uid;
+$sql = "update mdl_banners set ban_title='".admin::toSql(admin::getParam("ban_title"),"Text")."' where ban_uid=".$ban_uid;
 $db->query($sql);
 
 if(admin::getParam("ban_status")=='ACTIVE') {
@@ -15,7 +15,7 @@ if(admin::getParam("ban_status")=='ACTIVE') {
 		    $db2->query($sql);
 		}
 
-$sql = "update mdl_banners_contents set mbc_status='".admin::toSql(admin::getParam("ban_status"),"String")."' where mbc_ban_uid=".$ban_uid;
+$sql = "update mdl_banners_contents set mbc_status='".admin::toSql(admin::getParam("ban_status"),"Text")."' where mbc_ban_uid=".$ban_uid;
 		$db->query($sql);
 
 // SUBIENDO LA IMAGEN DE PUBLICACIONES
@@ -24,7 +24,7 @@ if ($FILES["name"] != '')
 {
 	// DATOS DE ARCHIVO EN SU FORMATO ORIGINAL
 	$extensionFile = admin::getExtension($FILES["name"]);
-	$fileName = admin::imageName(admin::toSql(admin::getParam("ban_title"),"String"))."_".$ban_uid.".".$extensionFile;	
+	$fileName = admin::imageName(admin::toSql(admin::getParam("ban_title"),"Text"))."_".$ban_uid.".".$extensionFile;	
 	
 	// SUBIENDO LA IMAGEN DE TEMP
 
@@ -36,7 +36,7 @@ if ($FILES["name"] != '')
 	$sql = "UPDATE mdl_banners SET ban_file='".$fileName."' WHERE ban_uid=".$ban_uid;
 	$db->query($sql);
 	
-	$gifCode='<img src="'.$domain.'/img/banner/'.$fileName.'" alt="'.admin::toSql(admin::getParam("ban_title"),"String").'" title="'.admin::toSql(admin::getParam("ban_title"),"String").'" />';
+	$gifCode='<img src="'.$domain.'/img/banner/'.$fileName.'" alt="'.admin::toSql(admin::getParam("ban_title"),"Text").'" title="'.admin::toSql(admin::getParam("ban_title"),"Text").'" />';
 	
 	$sql = "UPDATE mdl_banners SET ban_content='".$gifCode."' WHERE ban_uid=".$ban_uid;
 	$db->query($sql);

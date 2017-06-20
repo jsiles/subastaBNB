@@ -1,7 +1,7 @@
 <?php
 include_once("../../core/admin.php");
 admin::initialize('modules','modulesList');
-$dca_uid = $_REQUEST["uid"];
+$dca_uid = admin::getParam("uid");
 $sql = "update sys_modules 
 		set mod_delete=1,
 		mod_status='INACTIVE' 
