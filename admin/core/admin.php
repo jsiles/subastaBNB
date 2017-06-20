@@ -2,7 +2,7 @@
 include_once ("path.php");
 require_once("safeHtml.php");
 //require_once (PATH_DOMAIN.'/admin/csrf-magic/csrf-magic.php');
-define("VERSION","1.2.2");
+define("VERSION","1.3");
 $app_path = ".";
 $labels = array(); 
 $linksLabels = array();
@@ -455,7 +455,7 @@ class admin{
     $tiempoActual = time();
     $tiempoNuevo = $tiempoActual + (60*$tiempoMax);
     $validaSession =  admin::getDBValue("select count(*) from sys_session where (ses_user_uid=" .admin::toSql($uidClient,"Integer"). ") and ses_lastactivity>$tiempoActual and ses_registered='V'");
-    if($validaSession==0)  header("Location: ".$domain."/logout.php");
+    if($validaSession==0)  { header("HTTP/1.0 403 Forbidden");header("Location: ".$domain."/logout.php");}
     else
     {
       $rs = new DBmysql();
@@ -507,8 +507,10 @@ class admin{
 									//die('1');
 									header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 									}
-					        	else 
-					        		header('Location: '.PATH_DOMAIN.'/admin/logout.php');//die('No tiene permisos');
+					        	else{ header("HTTP/1.0 403 Forbidden");exit;
+                                                        header('Location: '.PATH_DOMAIN.'/admin/logout.php');
+                                                        
+                                                        }//die('No tiene permisos');
                                                         }else{
                                                             
                                                             ///ACA DEBEMOS VER Q SE HACE PARA LOS Q NO TIENEN PERMISO
@@ -528,19 +530,23 @@ class admin{
 	        else {
 	        		if($redirect){
 	        			//die('2');
+                                                header("HTTP/1.0 403 Forbidden");exit;
 						header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 						}
-		        	else 
+		        	else {header("HTTP/1.0 403 Forbidden");exit;
 		        		header('Location: '.PATH_DOMAIN.'/admin/logout.php');//die('No tiene permisos');
+                                        }
 	        }
         }
         else {
         	if($redirect){
         		//die('3');
-				header('Location: '.PATH_DOMAIN.'/admin/logout.php');
+				header("HTTP/1.0 403 Forbidden");exit;header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 				}
-        	else 
+        	else {
+                    header("HTTP/1.0 403 Forbidden");exit;
         		header('Location: '.PATH_DOMAIN.'/admin/logout.php');//die('No tiene permisos');
+                }
         }
 	
 	 }
@@ -2032,18 +2038,18 @@ public static function checkToken( $token, $formName )
 }
 public static function getIpAddress() {
     $ipaddress = '';
-    if ($_SERVER['HTTP_CLIENT_IP'])
-        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_X_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-    else if($_SERVER['HTTP_FORWARDED_FOR'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-    else if($_SERVER['HTTP_FORWARDED'])
-        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-    else if($_SERVER['REMOTE_ADDR'])
-        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = self::doFilter ($_SERVER['HTTP_CLIENT_IP']);
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = self::doFilter ($_SERVER['HTTP_X_FORWARDED_FOR']);
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = self::doFilter ($_SERVER['HTTP_X_FORWARDED']);
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = self::doFilter ($_SERVER['HTTP_FORWARDED_FOR']);
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = self::doFilter ($_SERVER['HTTP_FORWARDED']);
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = self::doFilter ($_SERVER['REMOTE_ADDR']);
     else
         $ipaddress = 'UNKNOWN';
  
@@ -2063,16 +2069,25 @@ public static function checkIP()
       break;
     }
   }
-  if(IP_CHECK) {if(!$sw) { header("Location: 403.php");}}
+  $flagIpCheck = IP_CHECK;
+  if (!isset($flagIpCheck)) $flagIpCheck=true;
+  if($flagIpCheck) {if(!$sw) { header("HTTP/1.0 403 Forbidden"); self::setSession("CHECK_IP", true);}else { self::setSession("CHECK_IP", false);}}
 }
 public static function lockUser()
 {
     $timeLock = LOCK_TIME;
     if((!isset($timeLock))||(!is_numeric($timeLock))) $timeLock=10;
     $ipRemota = self::getIpAddress();
-    $lsIp=self::getDbValue("select count(*) from mdl_lock where loc_estado=0 and loc_retry>=3 and loc_ipV4='".$ipRemota."' and GETDATE()<loc_datetime");
-    if($lsIp>0) { header("HTTP/1.0 403 Forbidden"); sleep($timeLock);die;}
-    else { self::getDbValue("delete from mdl_lock where loc_estado=0 and loc_ipV4='".$ipRemota."' and GETDATE()>loc_datetime");}
+    $lsIp=self::getDbValue("select top 1 loc_datetime from mdl_lock where loc_estado=0 and loc_retry>=3 and loc_ipV4='".$ipRemota."' and GETDATE()<loc_datetime");
+    //self::doLog("IP:".$lsIp." ipRemota=".$ipRemota);
+    if($lsIp!="") {header("HTTP/1.0 403 Forbidden"); self::setSession("LOCK_IP", true); self::setSession("LOCK_TIME", $lsIp);}
+    else {self::setSession("LOCK_IP", false);self::setSession("LOCK_TIME", ""); self::getDbValue("delete from mdl_lock where loc_estado=0 and loc_ipV4='".$ipRemota."' and GETDATE()>loc_datetime"); }
+}
+
+public static function unlockIp()
+{
+    $ipRemota = self::getIpAddress();
+    self::getDbValue("delete from mdl_lock where loc_estado=0 and loc_ipV4='".$ipRemota."'"); 
 }
 public static function lockFailed()
 {

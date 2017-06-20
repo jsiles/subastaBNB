@@ -44,6 +44,7 @@ if (strlen($uidClient)>0)
 			$uidPass = admin::getDBValue("SELECT cli_pass_change FROM mdl_client WHERE cli_uid='$uidClient'");
 		    if ($uidPass == 0) header("Location:".$domain."/registro/". $uidClient."/");	
 			else header("Location:". $domain."/categorias/");
+                        admin::unlockIp();
 			}
 		else {
                     header("Location:".$domain."/1/"); 
@@ -51,20 +52,27 @@ if (strlen($uidClient)>0)
 	}
 	else
 	{
+            admin::lockFailed();
 		header("Location:".$domain."/2/". $uidClient."/");	
 	}
 }else
 { 
+    admin::lockFailed();
 	header("Location:".$domain."/1/");
 }
 }else{
-    
+    admin::lockFailed();
     	header("Location:".$domain."/3/");
 }
+}else{
+    admin::lockFailed();
+   //header("Location: 403.php");
+    //echo "Tok:".$sTokenCSRF;
 }
 
 }else{
-   header("Location: 403.php");
+    admin::lockFailed();
+   //header("Location: 403.php");
     //echo "Tok:".$sTokenCSRF;
 }
 ?>

@@ -1,9 +1,12 @@
 <?php
 include ("core/admin.php");
 admin::checkIP();
+admin::lockUser();
+$sFormAction= admin::getParam("sFormAction");
+if($sFormAction!='ingresar') {
 $code=rand(10000,99999);
 $code=  urlencode(SymmetricCrypt::Encrypt($code));
-admin::setSession("code", $code);
+admin::setSession("code", $code);}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -63,7 +66,7 @@ admin::setSession("code", $code);
 	<div style="float:left; margin-left:50px">
             <br/><span class="small">Derechos reservados &copy; SCLE LTDA.</span> <br/>
             <span class="small">Soluciones de Compras y Log&iacute;stica Empresarial</span><br />
-            <span class="small">Versi&oacute;n: <?=VERSION?></span>
+            <span class="small">Versi&oacute;n: <?=VERSION?><?php echo " DB:".admin::getDbValue("select ver_uid from mdl_version");?></span>
     </div>
     <div  style="float:right; margin-right:50px">
     <img src="lib/scle.png" alt="scle">

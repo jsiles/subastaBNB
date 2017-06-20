@@ -2,6 +2,8 @@
 $code=rand(10000,99999);
 $code=  urlencode(SymmetricCrypt::Encrypt($code));
 admin::setSession("code", $code);
+$lockedAccount=admin::getSession("LOCK_IP");
+//echo "SSS".$lockedAccount;
 ?>
 <script language="javascript" type="text/javascript">
 function onSubmit(){
@@ -21,6 +23,9 @@ function onSubmit(){
                                             <p>&nbsp;</p>
 						<!--<p>Para ingresar al sitio de Subastas Online, requiere del usuario y contrase&ntilde;a.</p>-->
 						<p>&nbsp;</p>
+                                                <?php
+                                                if(!$lockedAccount){
+                                                ?>
 						<form name="formLabel" id="formLabel" class="formLabel" autocomplete="off" method="post" action="<?=$domain.'/code/session.php'?>">
 						<p>
                                                     <label>Usuario:</label><input name="usernameClient" autocomplete="off" id="usernameClient" type="text" value="" onkeyup="if (event.keyCode==13) document.getElementById('passwordClient').focus();"  autocomplete="off"/> </p><div class="clear"></div>
@@ -33,7 +38,7 @@ function onSubmit(){
 						<div class="clear"></div>
                                                 
 						</form>
-                        <?php
+                                                <?php
 						$arrayURL = admin::urlArray();
                                                // print_r($arrayURL);echo "WS".$urlPositionTitle;die;
 						$urlSubTitle = $arrayURL[$urlPositionTitle];
@@ -54,6 +59,29 @@ function onSubmit(){
 						?>
                                                     <p>&nbsp;</p>
                                                 <p>Se recomienda que cambie peri&oacute;dicamente su contrase&ntilde;a.</p>
+                                                
+                                                <?php
+                                                }else{
+                                                ?>
+                                                <p></p>
+                                                    <h1><span>Cuenta Bloqueada Hasta horas: <?=admin::getSession("LOCK_TIME")?> espere e <a class="linkBold2" href="<?=PATH_DOMAIN?>/" title="ingresar">ingrese nuevamente</a></span></h1>
+                                                    <div class="clear"></div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+						<div class="clear"></div>
+
+                        <?php
+                                                }
+                                                ?>
                     </div>
 				</div>
 			</div>

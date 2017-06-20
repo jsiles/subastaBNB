@@ -79,10 +79,10 @@ if ($urlTitle!='')
 				";
 		$numpress = $db->numrows($sql1);		
 //echo $uid;die;
-if(!isset($uid)) $uid=0;
+if(!isset($uid)) $uid=66;
 		}
-		else $uid=0;
-	   //echo $uid."####";die;
+		//else $uid=66;
+	  //echo $uid."####";die;
 	  switch($uid){
 		
 		case 0:
@@ -148,7 +148,7 @@ if(!isset($uid)) $uid=0;
 			$con_uid=$uid; 
 			break;		
 		default: 
-                    header("Location: 403.php");
+                    header("HTTP/1.0 403 Forbidden");exit;
 				/*$con_uid=$uid;
 				$page="session.php";
 				if ($urlSubTitle) 
@@ -189,6 +189,6 @@ if(!isset($uid)) $uid=0;
 	}	
 else
 	{
-	echo "Error 404: Página no existente vuelva al principal";
+	header("HTTP/1.0 403 Forbidden");exit;
 	}
 ?>
