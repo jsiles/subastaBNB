@@ -1,5 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
+admin::initializeClient();
 $deadTime = admin::getParam("deadTime");
 
 $deadTime1 = admin::getParam("deadTime1");

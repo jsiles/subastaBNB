@@ -1,5 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
+admin::initializeClient();
 $deadTime = admin::getParam("deadTime");
 $year = substr($deadTime,0,4);
 $month = substr($deadTime,5,2);

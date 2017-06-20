@@ -1,5 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
+admin::initializeClient();
 $sub_uid=admin::getParam("sub_uid");
 $cli_uid=admin::getParam("cli_uid");
 $uid=admin::getParam("uid");

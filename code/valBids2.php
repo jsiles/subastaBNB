@@ -1,5 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
+admin::initializeClient();
 $deadTime = admin::getParam("deadTime");
 $sub_uid = admin::getParam("sub_uid");
 $sql = "SELECT * FROM mdl_product, mdl_subasta, mdl_pro_category WHERE sub_uid=pro_sub_uid and sub_pca_uid=pca_uid and sub_delete=0 and sub_deadTime>'".$deadTime."' and sub_uid=".$sub_uid;

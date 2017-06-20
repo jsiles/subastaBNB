@@ -9,7 +9,7 @@ $db->query($sSQL);
 <table width="100%">
 <tr>
     <td height="35px" align="left">
-CÓDIGO  
+CODIGO  
         </td>
         <td height="35px" align="right">
 OFERTA 

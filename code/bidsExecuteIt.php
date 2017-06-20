@@ -1,6 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
-
+admin::initializeClient();
 $monto_ofertado=admin::getParam("ofert");
 //echo $monto_ofertado."#";//die;
 $cli_uid=admin::getParam("cli_uid");

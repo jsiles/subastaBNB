@@ -1,6 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
-
+admin::initializeClient();
 $pass = admin::getParam("pass");
 $pass2 = admin::getParam("pass2");
 $idUser = admin::getParam("idUser");

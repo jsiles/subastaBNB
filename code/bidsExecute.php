@@ -1,5 +1,6 @@
 <?php
 include_once("../admin/core/admin.php");
+admin::initializeClient();
 $monto_ofertado=admin::getParam("ofert");
 $sub_uid=admin::getParam("uid");
 $pro_uid=admin::getDBvalue("SELECT pro_uid FROM mdl_product where pro_sub_uid='".$sub_uid."'");

@@ -484,7 +484,8 @@ class admin{
 		global $basedatos, $host, $user,$pass,$domain;
                 self::checkIP();
                 $rs = new DBmysql();
-		$sql = "select suv_status from sys_users_verify where suv_cli_uid='".$_SESSION["usr_uid"]."' and suv_token='".admin::getSession("token")."' and suv_ip='".$_SERVER['REMOTE_ADDR']."'";
+                $token =  SymmetricCrypt::Encrypt($_SESSION["usr_uid"].$_SESSION["usr_rol"].date("Ymd")."JS");
+		$sql = "select suv_status from sys_users_verify where suv_cli_uid='".$_SESSION["usr_uid"]."' and suv_token='".$token."' and suv_ip='".$_SERVER['REMOTE_ADDR']."'";
 		//$sql = "select suv_status from sys_users_verify where suv_cli_uid='".$_SESSION["usr_uid"]."' and suv_ip='".$_SERVER['REMOTE_ADDR']."' and suv_status=0";
 		//echo($sql);//die;
 		$rs->query($sql);
@@ -505,6 +506,7 @@ class admin{
 								unset($SESSION["usr_uid"]) ;
 								if($redirect){
 									//die('1');
+                                                                        header("HTTP/1.0 403 Forbidden");exit;
 									header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 									}
 					        	else{ header("HTTP/1.0 403 Forbidden");exit;

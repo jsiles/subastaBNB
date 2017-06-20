@@ -79,6 +79,7 @@ if ($urlTitle!='')
 				";
 		$numpress = $db->numrows($sql1);		
 //echo $uid;die;
+                if(is_numeric($urlTitle)) $uid=0;
 if(!isset($uid)) $uid=66;
 		}
 		//else $uid=66;
