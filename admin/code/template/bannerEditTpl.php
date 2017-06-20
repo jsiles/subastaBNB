@@ -19,11 +19,11 @@ $bannerexist = $db->numrows($sql);
 $db->query($sql);
 $banner = $db->next_record();
 
-if ($bannerexist==0) echo '<script language="javascript" type="text/javascript">document.location.href=\'bannerList.php?token='.admin::getParam("token").'</script>';
+if ($bannerexist==0) echo '<script language="javascript" type="text/javascript">document.location.href=\'bannerList.php</script>';
 
 ?>
 <br />
-<form name="frmBanner" method="post" action="code/execute/bannerUpd.php?token=<?=admin::getParam("token");?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmBanner" method="post" action="code/execute/bannerUpd.php" onsubmit="return false;" enctype="multipart/form-data">
 <input type="hidden" name="uid" value="<?=$banner["ban_uid"]?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -137,7 +137,7 @@ if ($bannerexist==0) echo '<script language="javascript" type="text/javascript">
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		o <a href="bannerList.php?token=<?=admin::getParam("token");?>"><?=admin::labels('cancel');?></a> 
+		  		o <a href="bannerList.php"><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

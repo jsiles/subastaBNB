@@ -1,6 +1,6 @@
 <?php
 include_once("../../core/admin.php");
-
+admin::initialize('subastas','subastasList');
 global $lang;
 $label_table = admin::toSql(admin::getParam("label_table"),"String");
 if($label_table=='tbl_labels'){

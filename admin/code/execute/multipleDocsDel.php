@@ -1,6 +1,6 @@
 <?php
 include_once("../../core/admin.php");
-//admin::initialize('content','contentDocDel'); 
+admin::initialize('content','contentDocDel'); 
 
 $cdo_uid=admin::getParam("uid");
 

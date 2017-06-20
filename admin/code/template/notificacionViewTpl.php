@@ -26,7 +26,7 @@ $notEdit=$db->next_record();
 ?>
 <div id="DIV_WAIT1" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <br>
-<form name="updNot" method="post" action="code/execute/notificacionUpd.php?token=<?=admin::getParam("token")?>" enctype="multipart/form-data">
+<form name="updNot" method="post" action="code/execute/notificacionUpd.php" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
@@ -85,7 +85,7 @@ $notEdit=$db->next_record();
       <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tbl_subasta" >
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="notificacionList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="button">Volver</a></td>
+                                    <a href="notificacionList.php?tipUid=<?=admin::getParam("tipUid")?>" class="button">Volver</a></td>
 		
         </tr>
       </table>

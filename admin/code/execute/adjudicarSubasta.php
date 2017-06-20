@@ -17,5 +17,5 @@ $sql = "insert into mdl_subasta_informe "
         . "($userUID, $sub_uid, '".admin::toSql($elaborado, "Text")."','".admin::toSql($aprobado, "Text")."','".admin::toSql($observaciones, "Text")."',GETDATE(), '$ahorro', '$monto','ACTIVE' )";
 //echo $sql;die;
 $db->query($sql);
-header('Location: ../../informeList.php?token='.$token);
+header('Location: ../../informeList.php');
 ?>

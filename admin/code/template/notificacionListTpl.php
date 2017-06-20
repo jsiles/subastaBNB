@@ -30,7 +30,7 @@ if ($nroReg>0)
         <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>
@@ -41,7 +41,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmbuySearch" action="notificacionList.php" >
+        <form  method="post"  name="frmbuySearch" action="notificacionList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -111,7 +111,7 @@ while ($not = $pagDb->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
             ?>
-    	<a href="notificacionView.php?not_uid=<?=$not_uid?>&token=<?=admin::getParam("token");?>&tipUid=<?=admin::getParam("tipUid")?>">
+    	<a href="notificacionView.php?not_uid=<?=$not_uid?>&tipUid=<?=admin::getParam("tipUid")?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php
@@ -128,7 +128,7 @@ while ($not = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
             if($valuePermit=='ACTIVE'){
             ?>
-            <a href="notificacionEdit.php?not_uid=<?=$not_uid?>&token=<?=admin::getParam("token");?>&tipUid=<?=admin::getParam("tipUid")?>">
+            <a href="notificacionEdit.php?not_uid=<?=$not_uid?>&tipUid=<?=admin::getParam("tipUid")?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 	</a>
             <?php
@@ -260,7 +260,7 @@ else
        <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>

@@ -41,7 +41,7 @@ function removeList(id){
 
 				  $('#'+uid).fadeOut(500, function(){ $(this).remove(); });
 					  $.ajax({
-						url: 'code/execute/bannerDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/bannerDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});

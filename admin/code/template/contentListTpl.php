@@ -25,7 +25,7 @@ $(document).ready(
                     serial = $.SortSerialize('itemList');
                     resetOrder (serial.hash);
                     $.ajax({
-                            url: 'code/execute/contentUpdatePosition.php?token=".admin::getParam('token')."',
+                            url: 'code/execute/contentUpdatePosition.php',
                             type: 'POST',
                             data: serial.hash
                             });
@@ -59,7 +59,7 @@ if ($nroReg>0)
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
       <td width="77%" height="40"><span class="title"><?=admin::labels('contents','title')?></span></td>
-    <td width="23%" height="40" align="right"><a href="contentNew.php?token=<?=admin::getParam("token")?>"><?=admin::labels('contents','create');?></a></td>
+    <td width="23%" height="40" align="right"><a href="contentNew.php"><?=admin::labels('contents','create');?></a></td>
   </tr>
   <tr>
     <td colspan="2" id="contentListing">
@@ -86,7 +86,7 @@ if ($nroReg>0)
 		</a>
 	</td>
 	<td align="center" width="12%" height="5">
-		<a href="contentEdit.php?con_uid=<?=$con_uid?>&wys=off&token=<?=admin::getParam("token");?>">
+		<a href="contentEdit.php?con_uid=<?=$con_uid?>&wys=off">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
 	</td>
@@ -229,7 +229,7 @@ WHERE col_con_uid = con_uid and con_parent =".$nextCon_uid." and col_status='ACT
 		<img src="lib/edit_off_<?=$lang?>.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</span>
 		<span id="div_edit_on_<?=$con_uid?>" style="display:<?=$stylebuttonOn?>;">
-		<a href="contentEdit.php?con_uid=<?=$con_uid?><?=$wys?>&token=<?=admin::getParam("token");?>">
+		<a href="contentEdit.php?con_uid=<?=$con_uid?><?=$wys?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
 		</span>
@@ -283,7 +283,7 @@ if ($nrmreg>1){
                 {
                     serial = $.SortSerialize('subList_$con_uid');
                     $.ajax({
-                            url: 'code/execute/contentUpdatePosition.php?token=".admin::getParam('token')."',
+                            url: 'code/execute/contentUpdatePosition.php',
                             type: 'POST',
                             data: serial.hash
                             }); 
@@ -392,7 +392,7 @@ while ($regSubContent=$db2->next_record()){
         <img src="lib/edit_off_<?=$lang?>.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
         </span>
         <span id="div_edit_on_<?=$con_uid1?>" style="display:<?=$stylebuttonOn?>;">
-        <a href="contentEdit.php?con_uid=<?=$con_uid1?><?=$wys?>&token=<?=admin::getParam("token");?>">
+        <a href="contentEdit.php?con_uid=<?=$con_uid1?><?=$wys?>">
         <img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
         </a>
         </span>
@@ -473,7 +473,7 @@ while ($regSubSubContent=$db3->next_record()){
 	</td><td align="center" width="13%" height="5">
 	<a href="<?=SERVER.$urlLangAux.admin::urlsFriendly($title)."/".admin::urlsFriendly($title1)."/".admin::urlsFriendly($title2)."/"?>" target="_blank"><img src="lib/view_es.gif" border="0" alt="<?=admin::labels('view')?>" title="<?=admin::labels('view')?>"></a></td>
 	<td align="center" width="11%" height="5">
-	<a href="contentEdit.php?con_uid=<?=$con_uid2?>&token=<?=admin::getParam("token");?>"><img src="lib/edit_es.gif" border="0" alt="<?=admin::labels('edit')?>" title="<?=admin::labels('edit')?>"></a></td>            
+	<a href="contentEdit.php?con_uid=<?=$con_uid2?>"><img src="lib/edit_es.gif" border="0" alt="<?=admin::labels('edit')?>" title="<?=admin::labels('edit')?>"></a></td>            
 	<td align="center" width="13%" height="5">
 		<a href="removeList" onclick="removeList(<?=$con_uid2?>,<?=$con_uid1?>,3);return false;">
 		<img src="lib/delete_es.gif" border="0" title="<?=admin::labels('delete')?>" alt="<?=admin::labels('delete')?>">		</a>	</td>

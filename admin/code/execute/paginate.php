@@ -1,11 +1,12 @@
 <?php
 include_once ("../../core/admin.php");
 include_once("../../core/safeHtml.php");
-$search_box = admin::toSql(safeHtml($_GET['search_box']),"Text");
-$by_category = admin::toSql(safeHtml($_GET['by_category']),"Number");
-$new_uid = admin::toSql(safeHtml($_GET['new_uid']),"Number");
-$fecha1 = admin::changeFormatDate($_GET["fecha1"],1);
-$fecha2 = admin::changeFormatDate($_GET["fecha2"],1);
+admin::initialize('subastas','subastasList');
+$search_box = admin::toSql(safeHtml(admin::getParam('search_box')),"Text");
+$by_category = admin::toSql(safeHtml(admin::getParam('by_category')),"Number");
+$new_uid = admin::toSql(safeHtml(admin::getParam('new_uid')),"Number");
+$fecha1 = admin::changeFormatDate(admin::getParam("fecha1"),1);
+$fecha2 = admin::changeFormatDate(admin::getParam("fecha2"),1);
 
 ?>
         <link rel="stylesheet" type="text/css" href="css/jPaginate.css" media="screen"/>

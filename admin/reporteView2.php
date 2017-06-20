@@ -1,7 +1,7 @@
 <?php 
 include_once ("core/admin.php");
 admin::initialize('reportesInformes','reporteView2'); 
-$rol = $_SESSION["usr_rol"];
+$rol = admin::getSession("usr_rol");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>

@@ -4,16 +4,16 @@ include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('subasta','subastaAdd'); 
 // VERIFICAMOS EL SQL INJECTION
-$pca_uid = admin::toSql($_POST["pca_uid"],"Number");
-$pca_product = admin::toSql($_POST["pca_product"],"Number");
-$pca_title = admin::toSql($_POST["pca_title"],"String"); 
-$pca_description1 = admin::toSql($_POST["pca_description1"],"String"); 
-$pca_description2 = admin::toSql($_POST["pca_description2"],"String"); 
-$pca_status = admin::toSql($_POST["pca_status"],"String");
-$seo_metatitle = admin::toSql($_POST["seo_metatitle"],"String"); 
-$seo_metadescription = admin::toSql($_POST["seo_metadescription"],"String"); 
-$seo_metakeyword = admin::toSql($_POST["seo_metakeyword"],"String");
-$pca_selected = admin::toSql($_POST["pca_selected"],"Number");
+$pca_uid = admin::toSql(admin::getParam("pca_uid"),"Number");
+$pca_product = admin::toSql(admin::getParam("pca_product"),"Number");
+$pca_title = admin::toSql(admin::getParam("pca_title"),"String"); 
+$pca_description1 = admin::toSql(admin::getParam("pca_description1"),"String"); 
+$pca_description2 = admin::toSql(admin::getParam("pca_description2"),"String"); 
+$pca_status = admin::toSql(admin::getParam("pca_status"),"String");
+$seo_metatitle = admin::toSql(admin::getParam("seo_metatitle"),"String"); 
+$seo_metadescription = admin::toSql(admin::getParam("seo_metadescription"),"String"); 
+$seo_metakeyword = admin::toSql(admin::getParam("seo_metakeyword"),"String");
+$pca_selected = admin::toSql(admin::getParam("pca_selected"),"Number");
 if ($pca_selected != $pca_product)
 	{
 	// CONTAMOS CUANTAS CATEGORIAS HAY EN LOS PRODUCTOS VINOS O SINGANIS

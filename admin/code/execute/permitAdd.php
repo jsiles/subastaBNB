@@ -16,8 +16,8 @@ $maxPermit++;
 $sqldat = "insert into mdl_client_category set mcc_uid=".$maxPermit.", mcc_permit='".$mcc_permit."', mcc_mensual='".$mcc_mensual."', mcc_trimestral='".$mcc_trimestral."', mcc_semestral='".$mcc_semestral."', mcc_anual='".$mcc_anual."', mcc_delete=0";
 $db->query($sqldat);
 //********************************************update de los permisos************************************************
-$campos = $_POST["con_uid"];
-if (is_array($_POST["con_uid"]))
+$campos = admin::getParam("con_uid");
+if (is_array(admin::getParam("con_uid")))
 {
 	foreach ($campos as $key => $value){
 			$moduleId = is_array($value) ? $key : $value;
@@ -42,5 +42,5 @@ if (is_array($_POST["con_uid"]))
 }
 $token=admin::getParam("token");
 
-header('Location: ../../permitList.php?token='.$token);
+header('Location: ../../permitList.php');
 ?>

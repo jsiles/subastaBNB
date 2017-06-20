@@ -1,5 +1,6 @@
 <?php
 $code=rand(10000,99999);
+$code=  urlencode(SymmetricCrypt::Encrypt($code));
 admin::setSession("code", $code);
 ?>
 <script language="javascript" type="text/javascript">
@@ -34,7 +35,8 @@ function onSubmit(){
 						</form>
                         <?php
 						$arrayURL = admin::urlArray();
-						$urlSubTitle = $arrayURL[$urlPositionSubtitle];
+                                               // print_r($arrayURL);echo "WS".$urlPositionTitle;die;
+						$urlSubTitle = $arrayURL[$urlPositionTitle];
                         if(($urlSubTitle)&&($urlSubTitle==1))
 						{					
                             ?><p style="color: red">Error en la contrase&ntilde;a o usuario no activo</p>

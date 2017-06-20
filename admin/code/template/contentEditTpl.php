@@ -11,7 +11,7 @@ $nivel=admin::getDbValue("select con_level from mdl_contents where con_uid=".adm
 //echo $nivel;
 ?>
 <br />
-<form name="frmContent" method="post" action="code/execute/contentUpd.php?token=<?=admin::getParam("token")?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmContent" method="post" action="code/execute/contentUpd.php" onsubmit="return false;" enctype="multipart/form-data">
 <input type="hidden" name="con_parent_ant" value="<?=$content["con_parent"]?>" />
 <input type="hidden" name="con_position" value="<?=$content["con_position"]?>" />
 <input type="hidden" name="con_uid" value="<?=$content["con_uid"]?>" />
@@ -35,7 +35,7 @@ $nivel=admin::getDbValue("select con_level from mdl_contents where con_uid=".adm
 <br />
 <span id="div_col_title" style="display:none; padding-left:5px; padding-right:5px;" class="error">Nombre del contenido es necesario</span>			</td>
           </tr>
-          <tr style="display:<?=$_GET["wys"]=="off" ? "none":""?>">
+          <tr style="display:<?=admin::getParam("wys")=="off" ? "none":""?>">
             <td><?=admin::labels('contents','in');?>: </td>
             <td>
 			<?php
@@ -215,7 +215,7 @@ $nivel=admin::getDbValue("select con_level from mdl_contents where con_uid=".adm
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="contentList.php?token=<?=admin::getParam("token")?>" tabindex="9"><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="contentList.php" tabindex="9"><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

@@ -102,7 +102,7 @@ function aprobarSubasta(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./autorizacionList.php?token=<?=admin::getParam("token")?>';
+								window.location.href='./autorizacionList.php';
 							}
 					});
 					 
@@ -129,7 +129,7 @@ function rechazarSubasta(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./autorizacionList.php?token=<?=admin::getParam("token")?>';
+								window.location.href='./autorizacionList.php';
 							}
 					});
 					 
@@ -155,7 +155,7 @@ function adjudicarSubasta(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./autorizacionList.php?token=<?=admin::getParam("token")?>';
+								window.location.href='./autorizacionList.php';
 							}
 					});
 					 

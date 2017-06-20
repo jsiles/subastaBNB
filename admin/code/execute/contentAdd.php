@@ -4,22 +4,22 @@ include_once("../../core/safeHtml.php");
 include_once("../../core/files.php");
 admin::initialize('content','contentList',false);
 
-if ($_POST["con_parent"]==0)
+if (admin::getParam("con_parent")==0)
 	{
 	$conlevel = 0;
-    $parent = $_POST["con_parent"];
+    $parent = admin::getParam("con_parent");
 	}
 else
 	{
-        if ($_POST["con_parent2"]==0)
+        if (admin::getParam("con_parent2")==0)
 	    {
             $conlevel = 1;
-            $parent = $_POST["con_parent"];
+            $parent = admin::getParam("con_parent");
         }
         else 
         {
             $conlevel=2;
-            $parent = $_POST["con_parent2"];
+            $parent = admin::getParam("con_parent2");
         }
 	}
 
@@ -73,7 +73,7 @@ $db2->query($sql);
 while ($sys_language = $db2->next_record())
 	{
 	// ACTIVANDO SOLO EN EL LENGUAJE EN EL QUE FUE CREADO
-	if ($lang==$sys_language["lan_code"]) $col_status = $_POST["col_status"];
+	if ($lang==$sys_language["lan_code"]) $col_status = admin::getParam("col_status");
 	else $col_status="INACTIVE";
 	// col_uid
 	$sql = "insert into mdl_contents_languages(
@@ -90,15 +90,14 @@ while ($sys_language = $db2->next_record())
 						values	(
 								" . admin::toSql($con_uid,"Number") . ", 
 								'" . $sys_language["lan_code"] . "', 
-								'" . admin::toSql($_POST["col_title"],"Text") . "', 
-								'" . admin::toSql($_POST["col_content"],"Text") . "', 
-								'" . admin::urlsFriendly($_POST["col_title"]) . "',
-								'" . admin::toSql($_POST["col_metatitle"],"Text") . "', 
-								'" . admin::toSql($_POST["col_metadescription"],"Text") . "', 
-								'" . admin::toSql($_POST["col_metakeyword"],"Text") . "',
-								'" . admin::toSql($col_status,"Text") . "'
-								)";
-	$db->query($sql);
+								'" . admin::toSql(admin::getParam("col_title"),"Text") . "', 
+								'" . admin::toSql(admin::getParam("col_content"),"Text") . "', 
+								'" . admin::urlsFriendly(admin::getParam("col_title")) . "',
+								'" . admin::toSql(admin::getParam("col_metatitle"),"Text") . "', 
+								'" . admin::toSql(admin::getParam("col_metadescription"),"Text") . "', 
+								'" . admin::toSql(admin::getParam("col_metakeyword"),"Text") . "',
+								'" . admin::toSql($col_status,"Text") . "')";
+    $db->query($sql);
 	}
  //*****************             begin para llenar obtener multiple uploads          *****/
 $maxVal=admin::getParam("maxVal");
@@ -117,8 +116,8 @@ for ($i = 1; $i <= $maxVal; $i++)
 			$MaxUid = $MaxUid+1;	
 			
 			$ext = admin::getExtension($FILES2["name"]);
-			if($_POST["text_adjunt_".$i]!="")
-				$nomDOC = admin::getImageName($_POST["text_adjunt_".$i])."_".$MaxUid.".".$ext;	
+			if(admin::getParam("text_adjunt_".$i)!="")
+				$nomDOC = admin::getImageName(admin::getParam("text_adjunt_".$i))."_".$MaxUid.".".$ext;	
 			else
 				$nomDOC = admin::imageName($nombreOrig2."_".$MaxUid).".".$ext;	
 			classfile::uploadFile($FILES2,PATH_ROOT.'/docs/content/',$nomDOC);
@@ -129,5 +128,5 @@ for ($i = 1; $i <= $maxVal; $i++)
 	}
 $token=admin::getParam("token");
 
-header('Location: ../../contentList.php?token='.$token);		
+header('Location: ../../contentList.php');		
 ?>

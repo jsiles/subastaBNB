@@ -1,6 +1,7 @@
-<?php include_once("core/session.php"); ?>
-<?php include ("core/admin.php"); ?>
-<?php admin::initialize('modules','modulesNew'); ?>
+<?php include_once("core/session.php");
+include ("core/admin.php");
+admin::initialize('modules','modulesNew'); 
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>
 <head>

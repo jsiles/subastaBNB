@@ -19,8 +19,8 @@ $db->query($sqldat);
 $sqldat ="update mdl_client set cli_delete=1 where cli_mcc_uid=".$mcc_uid;
 $db->query($sqldat);
 
-$campos = $_POST["con_uid"];
-if (is_array($_POST["con_uid"]))
+$campos = admin::getParam("con_uid");
+if (is_array(admin::getParam("con_uid")))
 {
 	foreach ($campos as $key => $value){
 			$moduleId = is_array($value) ? $key : $value;
@@ -98,5 +98,5 @@ if (is_array($_POST["con_uid"]))
 }
 $token=admin::getParam("token");
 
-header('Location: ../../permitList.php?token='.$token);
+header('Location: ../../permitList.php');
 ?>

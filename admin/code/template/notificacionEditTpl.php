@@ -26,7 +26,7 @@ $notEdit=$db->next_record();
 ?>
 <div id="DIV_WAIT1" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <br>
-<form name="updNot" method="post" action="code/execute/notificacionUpd.php?token=<?=admin::getParam("token")?>" enctype="multipart/form-data">
+<form name="updNot" method="post" action="code/execute/notificacionUpd.php" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
@@ -42,7 +42,7 @@ $notEdit=$db->next_record();
           
 	<tr>
             <td width="5%" >Para:</td>
-            <td width="20%">XXXXXXXXXX<input id="not_uid" name="not_uid" type="hidden" value="<?=$not_uid?>" /></td>
+            <td width="20%">XXXXXXXXXX<input id="not_uid" name="not_uid" type="hidden" value="<?=$not_uid?>" /><input id="tipUid" name="tipUid" type="hidden" value="<?=$tipUid?>" /></td>
             <td width="7%">&nbsp;</td>
         </tr>
       	<tr>
@@ -95,7 +95,7 @@ $notEdit=$db->next_record();
 				<td width="59%" align="center">
                                     <a href="finaliza" onclick="document.updNot.submit();return false;" class="button">Finalizar</a></td>
 		<td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="notificacionList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="notificacionList.php?tipUid=<?=admin::getParam("tipUid")?>" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table>

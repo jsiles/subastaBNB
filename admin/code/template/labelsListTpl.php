@@ -9,7 +9,7 @@ if ($nroReg>0){
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
       <td width="77%" height="40"><span class="title"><?=admin::labels('labels','list')?></span></td>
-    <td width="23%" height="40" align="right"><a href="labelsNew.php?token=<?=admin::getParam('token')?>" ><?=admin::labels('labels','new');?></a></td>
+    <td width="23%" height="40" align="right"><a href="labelsNew.php" ><?=admin::labels('labels','new');?></a></td>
   </tr>
   <tr>
     <td colspan="2" id="contentListing">

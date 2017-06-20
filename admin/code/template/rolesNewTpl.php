@@ -1,5 +1,5 @@
 <br />
-<form name="frmRoles" id="frmRoles" method="post" action="code/execute/rolesAdd.php?token=<?=admin::getParam("token");?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmRoles" id="frmRoles" method="post" action="code/execute/rolesAdd.php" onsubmit="return false;" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
       <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
@@ -203,7 +203,7 @@ while($row = $db->next_record()){
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="userList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="userList.php" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

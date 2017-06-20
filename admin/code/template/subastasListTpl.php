@@ -107,7 +107,7 @@ if ($nroReg>0)
         <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-          <a href="<?=admin::modulesLink($etiquetaCrear)?>?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+          <a href="<?=admin::modulesLink($etiquetaCrear)?>?tipUid=<?=admin::getParam("tipUid")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>
@@ -117,7 +117,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmSubastasSearch" action="subastasList.php" >
+        <form  method="post" name="frmSubastasSearch" action="subastasList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -138,9 +138,9 @@ if ($nroReg>0)
       <td colspan="2" width="100%">
   <table width="100%" border="0">
 	<tr>
-            <td width="10%"><a href="subastasList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
-        <td width="10%"><a href="subastasList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
-        <td width="10%"><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
+            <td width="10%"><a href="subastasList.php?order=<?=$uidOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+        <td width="10%"><a href="subastasList.php?order=<?=$nameOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
+        <td width="10%"><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <td width="10%"><span class="txt11 color2">Estado:</span></td>
         <td width="10%"><span class="txt11 color2">Unidad Solicitante</span></td>
         <td width="5%" align="center"><span class="txt11 color2">Monto</span></td>
@@ -288,7 +288,7 @@ while ($subasta_list = $pagDb->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
             ?>
-        <a href="subastasView.php?pro_uid=<?=$pro_uid?>&token=<?=admin::getParam("token");?>&sub_uid=<?=$sub_uid?>&tipUid=<?=$tipUid?>">
+        <a href="subastasView.php?pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>&tipUid=<?=$tipUid?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php
@@ -312,7 +312,7 @@ while ($subasta_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
             if($valuePermit=='ACTIVE'){
             ?>
-		<a href="subastasEdit.php?token=<?=admin::getParam("token")?>&pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>&tipUid=<?=$tipUid?>">
+		<a href="subastasEdit.php?pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>&tipUid=<?=$tipUid?>">
 		<img src="<?=admin::labels('edit','linkImage')?>" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
                 <?php
@@ -512,7 +512,7 @@ else
         
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-           <a href="<?=admin::modulesLink($etiquetaCrear)?>?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+           <a href="<?=admin::modulesLink($etiquetaCrear)?>?tipUid=<?=admin::getParam("tipUid")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>

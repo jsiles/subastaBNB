@@ -143,7 +143,7 @@ function removeList(id){
 					  $.ajax({
 						url: 'code/execute/incotermDel.php',
 						type: 'POST',
-						data: 'uid='+id+'&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>'
+						data: 'uid='+id+'&tipUid=<?=admin::getParam("tipUid")?>'
 					});
 				   
 				 }

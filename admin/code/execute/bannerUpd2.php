@@ -11,12 +11,12 @@ $til_image=admin::getDBvalue("SELECT ban_file FROM mdl_banners where ban_uid='".
 // DATOS PARA CROPEAR LA IMAGEN
 $thumb_width = "770";						// Width of thumbnail image
 $thumb_height = "150";						// Height of thumbnail image
-$x1 = $_POST["x1"];
-$y1 = $_POST["y1"];
-$x2 = $_POST["x2"];
-$y2 = $_POST["y2"];
-$w = $_POST["w"];
-$h = $_POST["h"];
+$x1 = admin::getParam("x1");
+$y1 = admin::getParam("y1");
+$x2 = admin::getParam("x2");
+$y2 = admin::getParam("y2");
+$w = admin::getParam("w");
+$h = admin::getParam("h");
 $scale = $thumb_width/$w;
 $image_location=PATH_ROOT . '/img/banner/Original_' . $til_image;
 // CROPEANDO............... 
@@ -31,5 +31,5 @@ redimImgWidth($image_location, PATH_ROOT . "/img/banner/". $nomIMG2,60,100);
 unlink($image_location);
 ?>
 <script language="javascript" type="text/javascript">
-document.location.href='../../bannerList.php?token=<?=$token?>'; 
+document.location.href='../../bannerList.php';
 </script>

@@ -79,7 +79,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmSubastasSearch" action="reporteList.php" >
+        <form  method="post" name="frmSubastasSearch" action="reporteList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -100,9 +100,9 @@ if ($nroReg>0)
   <td colspan="2">
   <table width="100%" border="0">
 	<tr>
-		<td width="10%"><a href="reporteList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
-        <td width="25%" ><a href="reporteList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
-        <td width="25%" ><a href="reporteList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
+		<td width="10%"><a href="reporteList.php?order=<?=$uidOrder?><?=$searchURL?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+        <td width="25%" ><a href="reporteList.php?order=<?=$nameOrder?><?=$searchURL?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
+        <td width="25%" ><a href="reporteList.php?order=<?=$linOrder?><?=$searchURL?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <!--<td width="25%" ><span class="txt11 color2">Reporte XLS:</span></td>
         <td width="15%" align="center"><span class="txt11 color2">Reporte PDF:</span></td>		-->
         <td width="40%"></td>
@@ -144,16 +144,16 @@ while ($subasta_list = $pagDb->next_record())
 		<td width="10%" ><span <?=$dest?>><?=admin::toHtml($sub_uid)?></span></td>
         <td width="25%" ><span <?=$dest?>><?=$pro_name?></span></td>
         <td width="25%" ><span <?=$dest?>><?=$pca_name?></span></td>
-    <!--    <td width="25%" ><a href="code/execute/reporteTplXlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=xls">
+    <!--    <td width="25%" ><a href="code/execute/reporteTplXlsPdf.php?pro=<?=$sub_uid?>&type=xls">
         <img src="lib/ext/excel.png" border="0" alt="Excel" title="Excel" /></a></td>
-	<td align="center" width="15%" height="5"> <a href="code/execute/reporteTplXlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>
+	<td align="center" width="15%" height="5"> <a href="code/execute/reporteTplXlsPdf.php?pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>
 	</td>-->
         <td width="40%">
                    <?php
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=25 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
             ?>
-    	<a href="reporteView.php?sub_uid=<?=$sub_uid?>&token=<?=admin::getParam("token");?>">
+    	<a href="reporteView.php?sub_uid=<?=$sub_uid?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php

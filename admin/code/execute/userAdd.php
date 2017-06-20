@@ -5,14 +5,14 @@ include_once("../../core/images.php");
 include_once("../../core/safeHtml.php");
 admin::initialize('users','usersNew',false);
 
-$usr_loginA = admin::toSql(safeHtml($_POST["usr_login"]),"String");
-$usr_passA = admin::toSql(safeHtml($_POST["usr_pass"]),"String");
-$usr_firstnameA = admin::toSql(safeHtml($_POST["usr_firstname"]),"String");
-$usr_lastnameA = admin::toSql(safeHtml($_POST["usr_lastname"]),"String");
-$usr_emailA = admin::toSql(safeHtml($_POST["usr_email"]),"String");
-$usr_photoA = admin::toSql(safeHtml($_POST["usr_photo"]),"String");
-$usr_statusA = admin::toSql(safeHtml($_POST["usr_status"]),"String");
-$usr_rolA = admin::toSql(safeHtml($_POST["usr_rol"]),"Number");
+$usr_loginA = admin::toSql(safeHtml(admin::getParam("usr_login")),"String");
+$usr_passA = admin::toSql(safeHtml(admin::getParam("usr_pass")),"String");
+$usr_firstnameA = admin::toSql(safeHtml(admin::getParam("usr_firstname")),"String");
+$usr_lastnameA = admin::toSql(safeHtml(admin::getParam("usr_lastname")),"String");
+$usr_emailA = admin::toSql(safeHtml(admin::getParam("usr_email")),"String");
+$usr_photoA = admin::toSql(safeHtml(admin::getParam("usr_photo")),"String");
+$usr_statusA = admin::toSql(safeHtml(admin::getParam("usr_status")),"String");
+$usr_rolA = admin::toSql(safeHtml(admin::getParam("usr_rol")),"Number");
 $usr_statusA = ($usr_statusA==1)?'ACTIVE':'INACTIVE';
 //admin::doLog("Usuario:".$usr_loginA."|Pass:".$usr_passA."|");
 if ($usr_passA!="") 
@@ -117,5 +117,5 @@ if ($validFile && $FILES['error']==0)
 }
 $token=admin::getParam("token");		
 	
-header('Location: ../../userList.php?token='.$token);
+header('Location: ../../userList.php');
 ?>

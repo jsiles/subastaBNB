@@ -55,7 +55,7 @@ function removeList(id){
 
 				  $('#sol_'+uid).fadeOut(500, function(){ $(this).remove(); });
 					  $.ajax({
-						url: 'code/execute/solicitudDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/solicitudDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});
@@ -82,7 +82,7 @@ function aprobarSolicitud(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./solicitudList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>';
+								window.location.href='./solicitudList.php?tipUid=<?=admin::getParam("tipUid")?>';
 							}
 					});
 					 
@@ -109,7 +109,7 @@ function rechazarSolicitud(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./solicitudList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>';
+								window.location.href='./solicitudList.php?tipUid=<?=admin::getParam("tipUid")?>';
 							}
 					});
 					 

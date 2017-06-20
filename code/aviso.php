@@ -12,7 +12,7 @@ Para poder ingresar a la subasta debe ser un usuario habilitado<br>
 </tr>
 <tr>
     <td align="left">
-        <form name="formBids" class="formLabel">
+        <form  method="post" name="formBids" class="formLabel">
 		<a href="Cerrar" class="addcart" onclick="$.facebox.close();return false;">Cerrar</a></p></form>
         
          </td>

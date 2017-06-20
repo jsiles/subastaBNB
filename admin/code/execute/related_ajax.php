@@ -1,10 +1,10 @@
 <?php
 include_once ("../../core/admin.php");
 include_once("../../core/safeHtml.php");
-
-$rel_new_uid = admin::toSql(safeHtml($_GET['rel_new_uid']),"Number");
-$rel_new_uid2 = admin::toSql(safeHtml($_GET['rel_new_uid2']),"Number");
-$rel_delete = admin::toSql(safeHtml($_GET['rel_delete']),"Number");
+admin::initialize('subastas','subastasList');
+$rel_new_uid = admin::toSql(safeHtml(admin::getParam('rel_new_uid')),"Number");
+$rel_new_uid2 = admin::toSql(safeHtml(admin::getParam('rel_new_uid2')),"Number");
+$rel_delete = admin::toSql(safeHtml(admin::getParam('rel_delete')),"Number");
 
 $related = admin::getDBValue('select count(*) from mdl_news_relationship where rel_new_uid='.$rel_new_uid.' and rel_new_uid2='.$rel_new_uid2);
 if($related){

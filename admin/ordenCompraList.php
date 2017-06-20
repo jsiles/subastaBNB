@@ -61,7 +61,7 @@ function removeList(id){
 
 				  $('#sub_'+uid).fadeOut(500, function(){ $(this).remove(); });
 					  $.ajax({
-						url: 'code/execute/ordenDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/ordenDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});
@@ -88,7 +88,7 @@ function aprobarOC(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./ordenCompraList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>';
+								window.location.href='./ordenCompraList.php?tipUid=<?=admin::getParam("tipUid")?>';
 							}
 					});
 					 
@@ -115,7 +115,7 @@ function rechazarOC(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./ordenCompraList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>';
+								window.location.href='./ordenCompraList.php?tipUid=<?=admin::getParam("tipUid")?>';
 							}
 					});
 					 

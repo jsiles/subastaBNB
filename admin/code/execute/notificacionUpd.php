@@ -8,7 +8,7 @@ $tipUid=  admin::getParam("tipUid");
 $token= admin::getParam("token");
 $not_uid= admin::getParam("not_uid");
 $not_subject= admin::getParam("not_subject");
-$not_template= admin::getParam("not_template");
+$not_template= admin::getParam("not_template","strip");
 $not_sign= admin::getParam("not_sign");
 
 $sql = "update mdl_notificacion_template set
@@ -23,5 +23,5 @@ $sql = "update mdl_notificacion_template set
 
         
 
-header('Location: ../../notificacionList.php?token='.$token."&not_uid=".$not_uid."&tipUid=".$tipUid);	
+header('Location: ../../notificacionList.php?not_uid='.$not_uid."&tipUid=".$tipUid);	
 ?>

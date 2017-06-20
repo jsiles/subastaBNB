@@ -1,5 +1,5 @@
 <?php
-$new_uid = admin::toSql($_GET["new_uid"],"Number");
+$new_uid = admin::toSql(admin::getParam("new_uid"),"Number");
 //$new_uid = 2;
 $sql = "select * 
 		from mdl_news 
@@ -12,7 +12,7 @@ $images_details = $db->next_record();
 <div id="DIV_WAIT1" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <div id="div_wait_2" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <br />
-<form name="frmPack" method="post" action="code/execute/packImgAdd.php?token=<?=admin::getParam('token');?>" enctype="multipart/form-data" >
+<form name="frmPack" method="post" action="code/execute/packImgAdd.php" enctype="multipart/form-data" >
 <input type="hidden" name="pac_uid" id="pac_uid" value="<?=$images_details["new_uid"]?>" />
 <input type="hidden" name="pal_title" id="pal_title" value="<?=$images_details["nel_title"]?>" />
 
@@ -26,8 +26,8 @@ $images_details = $db->next_record();
         <tr>
 		<td colspan="2">
 		<ul id="flapSubmenu">
-			<li><a href="newsEdit.php?new_uid=<?=$new_uid?>&token=<?=admin::getParam("token");?>" >Noticia</a></li>
-			<li><a href="packImg.php?new_uid=<?=$new_uid?>&token=<?=admin::getParam("token");?>" class="active">Galer&iacute;a</a></li>
+			<li><a href="newsEdit.php?new_uid=<?=$new_uid?>" >Noticia</a></li>
+			<li><a href="packImg.php?new_uid=<?=$new_uid?>" class="active">Galer&iacute;a</a></li>
 		</ul>
 		</td>
 	</tr>
@@ -131,13 +131,11 @@ while ($img_list = $db2->next_record()) {
 	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr>
 		<td width="59%" align="center">
-		<a href="newsList.php?new_public=2&token=<?=admin::getParam('token')?>" class="button" tabindex="15">
+		<a href="newsList.php?new_public=2" class="button" tabindex="15">
 		<?=admin::labels('continue');?>
 		</a> 
 		</td>
-		<!--<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="newsList.php?token=<?=admin::getParam('token')?>" tabindex="16" ><?=admin::labels('cancel');?></a> 
-		</td>-->
+		
 		</tr>
 	</table>
 </div>

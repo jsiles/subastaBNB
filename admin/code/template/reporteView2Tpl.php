@@ -7,8 +7,8 @@ $sub_uid =  admin::getParam("sub_uid");
             
         </td></tr>
   <tr>
-      <td width="77%" height="40"><span class="title">Ver Reporte</span>&nbsp;<a href="code/execute/reporte2TplXlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=xls">
-              <img src="lib/ext/excel.png" border="0" alt="Excel" title="Excel" /></a>&nbsp;<a href="code/execute/reporte2TplXlsPdf.php?token=<?=admin::getParam("token")?>&pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>
+      <td width="77%" height="40"><span class="title">Ver Reporte</span>&nbsp;<a href="code/execute/reporte2TplXlsPdf.php?pro=<?=$sub_uid?>&type=xls">
+              <img src="lib/ext/excel.png" border="0" alt="Excel" title="Excel" /></a>&nbsp;<a href="code/execute/reporte2TplXlsPdf.php?pro=<?=$sub_uid?>&type=pdf"><img src="lib/ext/acrobat.png" border="0" alt="Excel" title="Excel" /></a>
     </td>
     <td width="23%" height="40">&nbsp;</td>
   </tr>
@@ -426,7 +426,7 @@ if($sub_modalidad!="TIEMPO"){
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="reporteList2.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a> 
+                                    <a href="reporteList2.php" class="button" >Volver</a> 
 				</td>
         </tr>
       </table>

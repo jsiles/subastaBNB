@@ -42,7 +42,7 @@ if ($nroReg>0)
         <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>
@@ -53,7 +53,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmbuySearch" action="notificacionEnvList.php" >
+        <form method="post"  name="frmbuySearch" action="notificacionEnvList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -207,7 +207,7 @@ else
        <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>

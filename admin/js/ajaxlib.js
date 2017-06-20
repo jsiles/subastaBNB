@@ -103,7 +103,7 @@ function updateExpireDate()
   									}  
  		 ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
  		 //enviando los valores
-  		ajax.send("dates="+dates.value+"&val="+valE.value+"&token="+token)						
+  		ajax.send("dates="+dates.value+"&val="+valE.value)						
 	}	
 	
 function changeUploadFile(e)
@@ -258,7 +258,7 @@ function contentCS(con_uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("con_uid="+con_uid+"&col_status="+status+"&token="+token)
+  ajax.send("con_uid="+con_uid+"&col_status="+status)
   }
   
 function verifyBanner()
@@ -342,7 +342,7 @@ function bannerCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token);
+  ajax.send("uid="+uid+"&status="+status);
   }
 
 // FUNCIONES PARA EL MODULO DE NOTICIAS
@@ -427,7 +427,7 @@ function cagetogyNewsBuyAdd()
 					}  
 		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		//enviando los valores
-		ajax.send("other_category="+other_category+"&token="+token)	
+		ajax.send("other_category="+other_category)	
 		}
 	}
 function cagetogyOpinionAdd()
@@ -460,7 +460,7 @@ function cagetogyOpinionAdd()
 					}  
 		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		//enviando los valores
-		ajax.send("other_category="+other_category+"&token="+token)	
+		ajax.send("other_category="+other_category)	
 		}
 	}	
 function verifyNews(publish){
@@ -643,7 +643,7 @@ function newsCSC(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 function newsCS(uid,status)
   {
@@ -663,7 +663,7 @@ function newsCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
 function newsBuyCSC(uid,status)
 	{
@@ -683,7 +683,7 @@ function newsBuyCSC(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 function newsBuyCS(uid,status)
   {
@@ -703,7 +703,7 @@ function newsBuyCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }  
 function subastatatus(uid,status)
   {
@@ -723,7 +723,7 @@ function subastatatus(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
   
 function isNumeric(n) {
@@ -1001,7 +1001,7 @@ function opinionCS(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 
 function opinionAutorCS(uid,status)
@@ -1022,7 +1022,7 @@ function opinionAutorCS(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 
 function buyAutorCS(uid,status)
@@ -1043,7 +1043,7 @@ function buyAutorCS(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 // PUBLICACIONES
 function changeOtherCategory()
@@ -1067,7 +1067,7 @@ function cagetogyDocsAdd()
 		//instanciamos el objetoAjax
 				$.ajax({
 				url: 'code/execute/docsCatAdd2.php',
-				data: "pca_name="+other_category+"&token="+token,
+				data: "pca_name="+other_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
@@ -1104,7 +1104,7 @@ function deleteOtherCategory()
 
                                                 $.ajax({
                                                         url: 'code/execute/delCatSubasta.php',
-                                                        data: "pca_uid="+sub_pca_uid+"&token="+token,
+                                                        data: "pca_uid="+sub_pca_uid,
                                                                         error: function(objeto){
                                                                                 alert("Pasó lo siguiente: "+objeto.responseText);
                                                                                 },
@@ -1166,14 +1166,13 @@ function transporteAdd()
 		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
 		$.ajax({
 				url: 'code/execute/transporteAdd.php',
-				data: "tra_name="+other_category+"&token="+token,
+				data: "tra_name="+other_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
 						success: function(datos){
 									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
-        						 }	
+            						 }	
 	 });
 	}
 }
@@ -1195,13 +1194,13 @@ function nivel1Add()
 		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
 		$.ajax({
 				url: 'code/execute/nivel1Add.php',
-				data: "nivel1_desc="+other_category+"&token="+token,
+				data: "nivel1_desc="+other_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
 						success: function(datos){
 									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+            						//reemplazo
         						 }	
 	 });
 	}
@@ -1224,13 +1223,13 @@ function nivel2Add()
 		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
 		$.ajax({
 				url: 'code/execute/nivel2Add.php',
-				data: "ca1_uid="+nivel1+"&nivel2_desc="+other_category+"&token="+token,
+				data: "ca1_uid="+nivel1+"&nivel2_desc="+other_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
 						success: function(datos){
 									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+            						//reemplazo
         						 }	
 	 });
 	}
@@ -1253,13 +1252,13 @@ function nivel3Add()
 		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
 		$.ajax({
 				url: 'code/execute/nivel3Add.php',
-				data: "ca2_uid="+nivel2+"&nivel3_desc="+other_category+"&token="+token,
+				data: "ca2_uid="+nivel2+"&nivel3_desc="+other_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
 						success: function(datos){
 									divx.innerHTML=datos;
-            						//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+            						//reemplazo
         						 }	
 	 });
 	}
@@ -1285,13 +1284,13 @@ function deleteOtherTransporte()
                                     divx.innerHTML = '<img border="0" src="lib/loading.gif">';
                                     $.ajax({
                                                     url: 'code/execute/delCatTransporte.php',
-                                                    data: 'tra_uid='+inc_tra_uid+'&token='+token,
+                                                    data: 'tra_uid='+inc_tra_uid,
                                                     error: function(objeto){
                                                                             alert("Pasó lo siguiente: "+objeto.responseText);
                                                                             },
                                                     success: function(datos){
                                                                                             divx.innerHTML=datos;
-                                                                            //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                            //reemplazo
                                                                              }	
                              });
                             }	
@@ -1325,13 +1324,13 @@ function deleteNivel1()
                                             divx.innerHTML = '<img border="0" src="lib/loading.gif">';
                                             $.ajax({
                                                             url: 'code/execute/delNivel1.php',
-                                                            data: 'ca1_uid='+nivel1_uid+'&token='+token,
+                                                            data: 'ca1_uid='+nivel1_uid,
                                                             error: function(objeto){
                                                                                     alert("Pasó lo siguiente: "+objeto.responseText);
                                                                                     },
                                                             success: function(datos){
                                                                                                     divx.innerHTML=datos;
-                                                                                    //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                                    //reemplazo
                                                                                      }	
                                      });
                                     }	
@@ -1362,13 +1361,13 @@ function deleteNivel2()
                                         divx.innerHTML = '<img border="0" src="lib/loading.gif">';
                                         $.ajax({
                                                         url: 'code/execute/delNivel2.php',
-                                                        data: 'ca1_uid='+sol_ca1_uid+'&ca2_uid='+sol_ca2_uid+'&token='+token,
+                                                        data: 'ca1_uid='+sol_ca1_uid+'&ca2_uid='+sol_ca2_uid,
                                                         error: function(objeto){
                                                                                 alert("Pasó lo siguiente: "+objeto.responseText);
                                                                                 },
                                                         success: function(datos){
                                                                                                 divx.innerHTML=datos;
-                                                                                //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                                //reemplazo
                                                                                  }	
                                  });
                                 }	
@@ -1403,13 +1402,13 @@ function deleteNivel3()
                                         divx.innerHTML = '<img border="0" src="lib/loading.gif">';
                                         $.ajax({
                                                         url: 'code/execute/delNivel3.php',
-                                                        data: 'ca2_uid='+sol_ca2_uid+'&ca3_uid='+sol_ca3_uid+'&token='+token,
+                                                        data: 'ca2_uid='+sol_ca2_uid+'&ca3_uid='+sol_ca3_uid,
                                                         error: function(objeto){
                                                                                 alert("Pasó lo siguiente: "+objeto.responseText);
                                                                                 },
                                                         success: function(datos){
                                                                                                 divx.innerHTML=datos;
-                                                                                //document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+                                                                                //reemplazo
                                                                                  }	
                                  });
                                 }	
@@ -1447,13 +1446,13 @@ function incotermAdd()
 		
 		$.ajax({
 				url: 'code/execute/incotermLanguageAdd.php',
-				data: "inl_name="+other_category+"&token="+token,
+				data: "inl_name="+other_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
 						success: function(datos){
             						divx.innerHTML=datos;
-									//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+									//reemplazo
         						 }	
 	 });
 	}
@@ -1480,13 +1479,13 @@ function deleteOtherIncoterm()
 		divx.innerHTML = '<img border="0" src="lib/loading.gif">';
 		$.ajax({
 				url: 'code/execute/delCatIncoterm.php',
-				data: "inl_uid="+inc_inl_uid+"&token="+token,
+				data: "inl_uid="+inc_inl_uid,
 			 	error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
 				success: function(datos){
             						divx.innerHTML=datos;
-									//document.location.href='incotermList.php?token='+token+"&sub_uid="+sub_uid;
+									//reemplazo
         						 }	
 	 });
 	}
@@ -1520,7 +1519,7 @@ function boletinesCS(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 
 // CONTENIDO MULTIMEDIA
@@ -1617,7 +1616,7 @@ function imageCS(uid,status)
 									}  
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 function multCSC(uid,status)
 	{
@@ -1867,7 +1866,7 @@ function subList(e)
                                             }
                                           }  
       ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-      ajax.send("con_uid="+e.value+"&token="+token);
+      ajax.send("con_uid="+e.value);
     }  
 
 function moreMinusSubList(ID)
@@ -1995,7 +1994,7 @@ function userCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
   
   function autorizacionCS(uid,status)
@@ -2016,7 +2015,7 @@ function userCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
   
 function ravCS(uid,status)
@@ -2037,7 +2036,7 @@ function ravCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
 function clientCS(uid,status)
   {
@@ -2057,7 +2056,7 @@ function clientCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
 function cagetogyCapaAdd()
 	{
@@ -2339,7 +2338,7 @@ function rolesCS(uid,status)
   									}  
   ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   //enviando los valores
-  ajax.send("uid="+uid+"&status="+status+"&token="+token)
+  ajax.send("uid="+uid+"&status="+status)
   }
 function categoryLabelsAdd(){
 	label_table = $("#label_table").val();
@@ -2647,7 +2646,7 @@ function actualizaNiveles(){
     $.ajax({
 		   type: "POST",
 		   url: "code/execute/nivel2Add.php",
-		   data: "ca1_uid="+nivel1+"&token="+token,
+		   data: "ca1_uid="+nivel1,
 		   success: function(msg){
 			 $("#div_nivel2_select").html(msg);
 		   }
@@ -2662,7 +2661,7 @@ function actualizaNiveles2(){
     $.ajax({
 		   type: "POST",
 		   url: "code/execute/nivel3Add.php",
-		   data: "ca2_uid="+nivel2+"&token="+token,
+		   data: "ca2_uid="+nivel2,
 		   success: function(msg){
 			 $("#div_nivel3_select").html(msg);
 		   }
@@ -2700,7 +2699,7 @@ function addCurrencyOption()
 		$.ajax({
 		   type: "POST",
 		   url: "code/execute/addCurrency.php",
-		   data: "currency="+addCurrencyVal+"&token="+token,
+		   data: "currency="+addCurrencyVal,
 		   success: function(msg){
 			 $("#div_sub_moneda").html(msg);
 			 $("#div_add_currency").hide();			 
@@ -2722,7 +2721,7 @@ function addUnidadOption()
 		$.ajax({
 		   type: "POST",
 		   url: "code/execute/addUnidad.php",
-		   data: "unidad="+addCurrencyVal+"&token="+token,
+		   data: "unidad="+addCurrencyVal,
 		   success: function(msg){
 			 $("#div_sub_unidad").html(msg);
                          $("#add_unidad").val('');
@@ -2745,7 +2744,7 @@ function addCurrencyOption1()
 		$.ajax({
 		   type: "POST",
 		   url: "code/execute/addCurrency1.php",
-		   data: "currency="+addCurrencyVal+"&token="+token,
+		   data: "currency="+addCurrencyVal,
 		   success: function(msg){
 			 $("#div_sub_moneda1").html(msg);
 			 $("#div_add_currency1").hide();			 
@@ -2778,7 +2777,7 @@ function delCurrency()
                                     $.ajax({
                                        type: "POST",
                                        url: "code/execute/delCurrency.php",
-                                       data: "sub_moneda="+sub_moneda+"&token="+token,
+                                       data: "sub_moneda="+sub_moneda,
                                        success: function(msg){
                                              $("#div_sub_moneda").html(msg);
                                              $("#div_add_currency").hide();			 
@@ -2828,7 +2827,7 @@ function delUnidad()
                                         $.ajax({
                                            type: "POST",
                                            url: "code/execute/delUnidad.php",
-                                           data: "lista="+lista+"&token="+token,
+                                           data: "lista="+lista,
                                            success: function(msg){
                                                  $("#div_sub_unidad").html(msg);
                                                  $("#div_add_unidad").hide();			 
@@ -2869,7 +2868,7 @@ function delCurrency1()
                                     $.ajax({
                                        type: "POST",
                                        url: "code/execute/delCurrency1.php",
-                                       data: "sub_moneda="+sub_moneda+"&token="+token,
+                                       data: "sub_moneda="+sub_moneda,
                                        success: function(msg){
                                              $("#div_sub_moneda1").html(msg);
                                              $("#div_add_currency1").hide();			 
@@ -2913,7 +2912,7 @@ function cagetogyClientAdd()
 		//instanciamos el objetoAjax
 				$.ajax({
 				url: 'code/execute/clientCatAdd2.php',
-				data: "lec_uid="+client_category+"&token="+token,
+				data: "lec_uid="+client_category,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
@@ -2944,7 +2943,7 @@ function deleteClientCategory()
 
                                                 $.ajax({
                                                         url: 'code/execute/delCatClient.php',
-                                                        data: "lec_uid="+sub_lec_uid+"&token="+token,
+                                                        data: "lec_uid="+sub_lec_uid,
                                                                         error: function(objeto){
                                                                                 alert("Pasó lo siguiente: "+objeto.responseText);
                                                                                 },
@@ -2987,7 +2986,7 @@ function typeClientAdd()
 		//instanciamos el objetoAjax
 				$.ajax({
 				url: 'code/execute/clientTypeAdd2.php',
-				data: "pts_uid="+client_type+"&token="+token,
+				data: "pts_uid="+client_type,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
@@ -3018,7 +3017,7 @@ function deleteClientType()
 
                                             $.ajax({
                                                     url: 'code/execute/delTypeClient.php',
-                                                    data: "pts_uid="+sub_pts_uid+"&token="+token,
+                                                    data: "pts_uid="+sub_pts_uid,
                                                                     error: function(objeto){
                                                                             alert("Pasó lo siguiente: "+objeto.responseText);
                                                                             },
@@ -3062,7 +3061,7 @@ function coverageClientAdd()
 		//instanciamos el objetoAjax
 				$.ajax({
 				url: 'code/execute/clientCovAdd2.php',
-				data: "cov_uid="+client_coverage+"&token="+token,
+				data: "cov_uid="+client_coverage,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
@@ -3093,7 +3092,7 @@ function deleteClientCoverage()
 
                                             $.ajax({
                                                     url: 'code/execute/delCovClient.php',
-                                                    data: "cov_uid="+sub_cov_uid+"&token="+token,
+                                                    data: "cov_uid="+sub_cov_uid,
                                                                     error: function(objeto){
                                                                             alert("Pasó lo siguiente: "+objeto.responseText);
                                                                             },
@@ -3139,7 +3138,7 @@ function itemClientAdd()
 		//instanciamos el objetoAjax
 				$.ajax({
 				url: 'code/execute/clientIteAdd2.php',
-				data: "ite_uid="+client_item+"&item_uid="+item_uid+"&token="+token,
+				data: "ite_uid="+client_item+"&item_uid="+item_uid,
 			 			error: function(objeto){
             						alert("Pasó lo siguiente: "+objeto.responseText);
         						},
@@ -3172,7 +3171,7 @@ function deleteClientItem()
 
                                             $.ajax({
                                                     url: 'code/execute/delIteClient.php',
-                                                    data: "ite_uid="+sub_ite_uid+"&item_uid="+item_uid+"&token="+token,
+                                                    data: "ite_uid="+sub_ite_uid+"&item_uid="+item_uid,
                                                                     error: function(objeto){
                                                                             alert("Pasó lo siguiente: "+objeto.responseText);
                                                                             },
@@ -3213,7 +3212,7 @@ function solicitudCS(uid,status)
                                                                           }  
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     //enviando los valores
-    ajax.send("uid="+uid+"&status="+status+"&token="+token+"&tipUid="+tipUid);
+    ajax.send("uid="+uid+"&status="+status+"&tipUid="+tipUid);
   }
 function ordenCS(uid,status)
   {
@@ -3234,7 +3233,7 @@ function ordenCS(uid,status)
                                                                           }  
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     //enviando los valores
-    ajax.send("uid="+uid+"&status="+status+"&token="+token+"&tipUid="+tipUid);
+    ajax.send("uid="+uid+"&status="+status+"&tipUid="+tipUid);
   }     
 function verifyOC()
 {

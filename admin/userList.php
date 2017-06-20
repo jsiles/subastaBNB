@@ -35,7 +35,7 @@ function removeList(id){
 			if(v){
 				 $('#sub_'+id).fadeOut(500, function(){ $(this).remove(); });
 					  $.ajax({
-						url: 'code/execute/userDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/userDel.php',
 						type: 'POST',
 						data: 'uid='+id
 					});

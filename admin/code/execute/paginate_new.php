@@ -1,13 +1,14 @@
 <?php
 include_once ("../../core/admin.php");
 include_once("../../core/safeHtml.php");
-$search_box = admin::toSql(safeHtml($_GET['search_box']),"Text");
-$by_category = admin::toSql(safeHtml($_GET['by_category']),"Number");
+admin::initialize('subastas','subastasList');
+$search_box = admin::toSql(safeHtml(admin::getParam('search_box')),"Text");
+$by_category = admin::toSql(safeHtml(admin::getParam('by_category')),"Number");
 
-$fecha1 = admin::changeFormatDate($_GET["fecha1"],1);
-$fecha2 = admin::changeFormatDate($_GET["fecha2"],1);
+$fecha1 = admin::changeFormatDate(admin::getParam("fecha1"),1);
+$fecha2 = admin::changeFormatDate(admin::getParam("fecha2"),1);
 
-$rel_list = admin::toSql(safeHtml($_GET['rel_list']),"Text");
+$rel_list = admin::toSql(safeHtml(admin::getParam('rel_list')),"Text");
 
 $sels = explode(',',$rel_list);
 //print_r($sels);					 

@@ -1,7 +1,7 @@
 <?php
 include_once("../../core/admin.php");
 admin::initialize('subasta','subastaCat'); 
-$prd_uid = $_REQUEST["pro_selected"];
+$prd_uid = admin::getParam("pro_selected");
 $sql = "select * 
 		from mdl_subasta_category  
 		left join mdl_subasta_category_languages on (pca_uid=pcl_pca_uid) 

@@ -3,8 +3,8 @@
 include_once("../../core/admin.php");
 admin::initialize('content','contentList',false); 
 // Cambiamos el estado del contenido de activo a inactivo
-$con_uid = $_POST["con_uid"];
-$col_status = $_POST["col_status"];
+$con_uid = admin::getParam("con_uid");
+$col_status = admin::getParam("col_status");
 
 if ($col_status=="ACTIVE")
 	{

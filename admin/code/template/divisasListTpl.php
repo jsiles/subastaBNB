@@ -74,13 +74,13 @@ if ($nroReg>0)
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
       <td width="77%" height="40"><span class="title">Listado de divisas</span></td>
-    <td width="23%" height="40" align="right"><a href="subastasNew.php?token=<?=admin::getParam("token")?>">Crear divisas</a></td>
+    <td width="23%" height="40" align="right"><a href="subastasNew.php">Crear divisas</a></td>
   </tr>
   <tr>
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmSubastasSearch" action="divisasList.php" >
+        <form  method="post" name="frmSubastasSearch" action="divisasList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -101,9 +101,9 @@ if ($nroReg>0)
   <td>
   <table width="100%" border="0">
 	<tr>
-		<td width="8%"><a href="divisasList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
-        <td width="18%" ><a href="divisasList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
-        <td width="13%" ><a href="divisasList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
+		<td width="8%"><a href="divisasList.php?order=<?=$uidOrder?><?=$searchURL?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+        <td width="18%" ><a href="divisasList.php?order=<?=$nameOrder?><?=$searchURL?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
+        <td width="13%" ><a href="divisasList.php?order=<?=$linOrder?><?=$searchURL?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <td width="15%" ><span class="txt11 color2">Estado:</span></td>
 		<td align="center" width="10%" height="5"><span class="txt11 color2">Lista de pujas</span></td>
         <td width="11%"></td>		
@@ -161,11 +161,11 @@ while ($subasta_list = $pagDb->next_record())
 		<?php }?>	
 		</td>
         <td align="center" width="5%" height="5">
-        <a href="divisasView.php?pro_uid=<?=$pro_uid?>&token=<?=admin::getParam("token");?>"><img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
+        <a href="divisasView.php?pro_uid=<?=$pro_uid?>"><img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
         </td>
 	<td align="center" width="12%" height="5">
-    	<a href="divisasEdit.php?token=<?=admin::getParam("token")?>&pro_uid=<?=$pro_uid?>">
+    	<a href="divisasEdit.php?pro_uid=<?=$pro_uid?>">
 		<img src="<?=admin::labels('edit','linkImage')?>" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
     </td>

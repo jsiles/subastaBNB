@@ -7,7 +7,7 @@ $prod = $db->next_record();
 ?>
 <br />
 <div id="div_wait" style="display:none;"><img border="0" src="lib/loading.gif"></div>
-<form name="frmsubasta" method="post" action="code/execute/adjudicarSubasta.php?token=<?=admin::getParam("token")?>&sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
+<form name="frmsubasta" method="post" action="code/execute/adjudicarSubasta.php?sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -354,7 +354,7 @@ while ($list = $db2->next_record())
 	</div>
     </div>
     <div id="Add_<?=$inc_uid?>" class="<?=$class2?>" style="display:none">
-    <form name="frmIncotermUpd<?=$inc_uid?>" id="frmIncotermUpd<?=$inc_uid?>" action="code/execute/IncotermUpd.php"  enctype="multipart/form-data" >
+    <form  method="post" name="frmIncotermUpd<?=$inc_uid?>" id="frmIncotermUpd<?=$inc_uid?>" action="code/execute/IncotermUpd.php"  enctype="multipart/form-data" >
 <table class="list" width="100%">
 	<tr><td width="12%">
     			<input name="cli_name<?=$cli_uid?>" id="cli_name<?=$cli_uid?>" onkeyup="lookup(this.value,<?=$cli_uid?>);" type="text" size="15" value="<?=$cli_name?>" />
@@ -582,7 +582,7 @@ while ($list = $db2->next_record())
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="informeList.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a>
+                                    <a href="informeList.php" class="button" >Volver</a>
 				</td>
                               
         </tr>

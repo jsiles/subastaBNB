@@ -26,7 +26,7 @@ $solEdit=$db->next_record();
 ?>
 <div id="DIV_WAIT1" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <br>
-<form name="updSol" method="post" action="code/execute/solicitudUpd.php?token=<?=admin::getParam("token")?>" enctype="multipart/form-data">
+<form name="updSol" method="post" action="code/execute/solicitudUpd.php" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
@@ -272,7 +272,7 @@ $solEdit=$db->next_record();
 	</table>
     </div>
     <div id="add<?=$ind_uid?>" class="row0">
-    <form name="frmSolicitud" action="code/execute/solAdd2.php" enctype="multipart/form-data" > 
+    <form method="post"  name="frmSolicitud" action="code/execute/solAdd2.php" enctype="multipart/form-data" > 
 	<table class="list" width="100%">
 	<tr>
             

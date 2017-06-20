@@ -16,7 +16,7 @@ $db->query($sqldat);
 admin::getDBvalue("delete from sys_modules_users where mus_rol_uid=".$rol_uid." and mus_place='MODULE'");
 admin::getDbValue("delete from sys_modules_access where moa_rol_uid=$rol_uid");
                         
-$modId = admin::getParam("mod_uid");
+$modId = admin::getParam("mod_uid","strip");
 //print_r($modId);die;
 if(is_array($modId)){
     foreach ($modId as $key => $value) {
@@ -44,5 +44,5 @@ if(is_array($modId)){
 }
 $token=admin::getParam("token");
 
-header('Location: ../../rolesList.php?token='.$token);
+header('Location: ../../rolesList.php');
 ?>

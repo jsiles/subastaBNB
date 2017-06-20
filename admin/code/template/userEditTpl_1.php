@@ -7,7 +7,7 @@ $regusers = $db->next_record();
         
 ?>
 <br />
-<form name="frmUsers" method="post" action="code/execute/userUpd_1.php?token=<?=admin::getParam("token");?>" enctype="multipart/form-data" onsubmit="return false;">
+<form name="frmUsers" method="post" action="code/execute/userUpd_1.php" enctype="multipart/form-data" onsubmit="return false;">
 <input type="hidden" id="use_uidA" name="use_uidA" value="<?=$use_uidA?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -139,7 +139,7 @@ $regusers = $db->next_record();
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="userList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="userList.php" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

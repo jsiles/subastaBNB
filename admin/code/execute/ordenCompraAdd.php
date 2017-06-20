@@ -54,7 +54,7 @@ $sql = "insert into mdl_orden_compra
 //echo $sql;die;	
 $db->query($sql);
 
-$rav_uni_uid=  admin::getParam("rav_uni_uid");
+$rav_uni_uid=  admin::getParam("rav_uni_uid", "strip");
 //if(is_array($rav_uni_uid)){
    admin::getDbValue("delete from mdl_orden_unidad where oru_orc_uid=$orc_uid");
 //   foreach($rav_uni_uid as $value)
@@ -74,5 +74,5 @@ if ($FILES2["name"] != '')
 	$db->query($sql);
 	}
 
-header('Location: ../../ordenCompraList.php?token='.$token."&tipUid=".$tipUid);	
+header('Location: ../../ordenCompraList.php?tipUid='.$tipUid);	
 ?>

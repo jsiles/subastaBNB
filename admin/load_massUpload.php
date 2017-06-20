@@ -1,4 +1,4 @@
-<?
+<?php
 $i=0;
 $cantDocs=admin::getDbValue("select count(*) from mdl_contents_docs where mcd_con_uid='".$con_uid."' and mcd_delete=0 and mcd_status='ACTIVE'");
 
@@ -36,7 +36,7 @@ if ($cantDocs>0)
 		  
                   	<tr>
             			<td colspan="2">
-							<? 
+							<?php 
                             $imgSavedroot2 = PATH_ROOT."/docs/content/".$content3["mcd_ruta"];
                             $imgSaveddomain2 = PATH_ROOT."/docs/content/".$content3["mcd_ruta"];
                             //echo $imgSaveddomain2;die;
@@ -53,9 +53,9 @@ if ($cantDocs>0)
 							
                             <tr>
                                 <td width="18%" rowspan="2" align="center" valign="top">
-                                <? if ($imgextension!="") { ?>
+                                <?php if ($imgextension!="") { ?>
                                     <a href="<?=$imgSaveddomain2?>" target="_blank"><img border="0" src="<?=$imgextension?>" width="16" height="16"/></a>
-                                <? } ?>				</td>
+                                <?php } ?>				</td>
                                 <td width="82%" style="font-size:11px;">
                                 <span class="nameFile"><?=substr($content3["mcd_ruta"],0,20);?>...</span>
                             <br />
@@ -76,17 +76,17 @@ if ($cantDocs>0)
                             </div>
                             </div>
                             <div id="document_add_<?=$content3["mcd_uid"]?>" style="display:none;"></div>
-                            <? } 
+                            <?php } 
                             else
                                 { ?>
                                 <input type="file" name="new_adjunt_<?=$i?>" id="new_adjunt_<?=$i?>" size="31" class="input">
-                            <?	} ?>
+                            <?php	} ?>
 			</td>
           			</tr>
                     </table>
                 	</div>
                       
-            <?	
+            <?php	
 			} ?>        
          <!--   </ul>--> 
             </div>
@@ -95,7 +95,7 @@ if ($cantDocs>0)
             </td>
 			</tr>
          </table><input id="maxVal" name="maxVal" value="<?=$i?>" type="hidden" />
-<?	
+<?php	
 }
 else
 { ?>                 

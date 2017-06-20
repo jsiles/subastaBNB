@@ -1,5 +1,6 @@
-<? include ("core/admin.php"); ?>
-<? admin::initialize('content','contentNew'); ?>
+<?php include ("core/admin.php"); 
+admin::initialize('content','contentNew'); 
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>
 <head>

@@ -94,7 +94,7 @@ $regusers = $db->next_record();
       <br />
       <br />
       <div id="contentButton">
-	  		<a href="userList.php?token=<?=admin::getParam("token");?>" class="button"><?=admin::labels('back');?></a> 
+	  		<a href="userList.php" class="button"><?=admin::labels('back');?></a> 
 		</div>
       <br /><br />
 <br />

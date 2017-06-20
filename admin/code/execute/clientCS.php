@@ -2,8 +2,8 @@
 include_once("../../core/admin.php");
 admin::initialize('users','usersList',false);
 // Cambiamos el estado del contenido de activo a inactivo
-$uid = $_POST["uid"];
-$status = $_POST["status"];
+$uid = admin::getParam("uid");
+$status = admin::getParam("status");
 if ($status==0)
 	{
 	$newStatus = 1;

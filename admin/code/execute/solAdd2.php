@@ -34,5 +34,5 @@ $sSQL="insert into mdl_solicitud_material "
 $db->query($sSQL);
 
 
-header('Location: ../../solicitudNew2.php?token='.$token."&sol_uid=".$solUid."&tipUid=".$tipUid);	
+header('Location: ../../solicitudNew2.php?sol_uid='.$solUid."&tipUid=".$tipUid);	
 ?>

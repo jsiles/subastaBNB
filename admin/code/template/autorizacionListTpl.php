@@ -97,7 +97,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
         <td>
         <div class="boxSearch">
-        <form name="frmSubastasSearch" action="subastasList.php" >
+        <form  method="post" name="frmSubastasSearch" action="subastasList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -118,9 +118,9 @@ if ($nroReg>0)
   <td colspan="2" width="100%" >
   <table width="100%" border="0">
 	<tr>
-	<td width="10%"><a href="subastasList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
-        <td width="10%" ><a href="subastasList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
-        <td width="10%" ><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
+	<td width="10%"><a href="subastasList.php?order=<?=$uidOrder?><?=$searchURL?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+        <td width="10%" ><a href="subastasList.php?order=<?=$nameOrder?><?=$searchURL?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
+        <td width="10%" ><a href="subastasList.php?order=<?=$linOrder?><?=$searchURL?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <td width="10%" ><span class="txt11 color2">Monto Referencial:</span></td>
         <td width="10%" ><span class="txt11 color2">Estado:</span></td>
 	<td align="left" width="10%" height="5"><span class="txt11 color2">Lista de Ofertas</span></td>
@@ -248,7 +248,7 @@ while ($subasta_list = $pagDb->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=20 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
             ?>
-        <a href="autorizacionView.php?pro_uid=<?=$pro_uid?>&token=<?=admin::getParam("token");?>">
+        <a href="autorizacionView.php?pro_uid=<?=$pro_uid?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php
@@ -272,7 +272,7 @@ while ($subasta_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=20 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
             if($valuePermit=='ACTIVE'){
             ?>
-		<a href="autorizacionEdit.php?token=<?=admin::getParam("token")?>&pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>">
+		<a href="autorizacionEdit.php?pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>">
 		<img src="<?=admin::labels('edit','linkImage')?>" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
                 <?php

@@ -1,7 +1,6 @@
 <?php
-//$pro_uid = admin::toSql($_GET["pro_uid"],"String");
 $sub_uid=admin::getParam("sub_uid");
-if (!$sub_uid) header('Location: ../../subastasList.php?token='.$token);
+if (!$sub_uid) header('Location: ../../subastasList.php');
 $sql = "SELECT * FROM mdl_product, mdl_subasta, mdl_pro_category WHERE sub_uid=pro_sub_uid and pca_uid=sub_pca_uid and sub_uid='".$sub_uid."'";
 $db->query($sql);
 $prod = $db->next_record();
@@ -9,7 +8,7 @@ $prod = $db->next_record();
 ?>
 <br />
 <div id="div_wait" style="display:none;"><img border="0" src="lib/loading.gif"></div>
-<form name="frmsubasta" method="post" action="code/execute/subastasUpd.php?token=<?=admin::getParam("token")?>" enctype="multipart/form-data" >
+<form name="frmsubasta" method="post" action="code/execute/subastasUpd.php" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -460,7 +459,7 @@ $prod = $db->next_record();
 	</table>
     </div>
     <div id="add<?=$ind_uid?>" class="row0">
-    <form name="frmIncoterm" action="code/execute/incotermAdd.php" enctype="multipart/form-data" > 
+    <form  method="post" name="frmIncoterm" action="code/execute/incotermAdd.php" enctype="multipart/form-data" > 
 	<table class="list" width="100%">
 	<tr><td width="12%"><!--<input name="cli_name" id="cli_name" onkeyup="lookup(this.value);" type="text" size="15"  onfocus="document.getElementById('div_cli_name_error').style.display='none';" onblur="document.getElementById('div_cli_name_error').style.display='none';" onclick="document.getElementById('div_cli_name_error').style.display='none';" autocomplete='off' />
 					   	
@@ -688,10 +687,10 @@ else
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tbl_subastaxitem" >
 			<tr>
 				<td width="59%" align="center">
-				<!--<a href="subastasEdit2.php?token=<?=admin::getParam("token")?>&pro_uid=<?=admin::getParam("pro_uid")?>&sub_uid=<?=admin::getParam("sub_uid")?>" class="button" >Paso 1 de 2</a></td>-->
+				<!--<a href="subastasEdit2.php?pro_uid=<?=admin::getParam("pro_uid")?>&sub_uid=<?=admin::getParam("sub_uid")?>" class="button" >Paso 1 de 2</a></td>-->
                                     <a href="save" onclick="document.frmsubasta.submit();return false;" class="button" >Paso 1 de 2</a></td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="subastasList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="subastasList.php" ><?=admin::labels('cancel');?></a> 
 		</td>
           
         </tr>
@@ -709,7 +708,7 @@ else
                                                     </a> 
                                                     </td>
                                                     <td width="41%" style="font-size:11px;">
-                                                    <?=admin::labels('or');?> <a href="subastasList.php?token=<?=admin::getParam("token")?>&tipUid=<?=$tipUid?>" ><?=admin::labels('cancel');?></a> 
+                                                    <?=admin::labels('or');?> <a href="subastasList.php?tipUid=<?=$tipUid?>" ><?=admin::labels('cancel');?></a> 
                                                     </td>
         </tr>
      </table>

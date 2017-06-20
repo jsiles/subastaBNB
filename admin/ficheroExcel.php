@@ -1,5 +1,6 @@
 <?php
 include_once("./core/admin.php");
+admin::initialize('subastas','subastasList');
 $sub_uid=admin::getParam("subasta");
 header("Content-type: application/vnd.ms-excel; name='excel'");
 header("Content-Disposition: filename=pujas_de_subasta.xls");

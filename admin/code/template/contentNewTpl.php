@@ -1,5 +1,5 @@
 <br />
-<form name="frmContent" method="post" action="code/execute/contentAdd.php?token=<?=admin::getParam("token")?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmContent" method="post" action="code/execute/contentAdd.php" onsubmit="return false;" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="77%" height="40"><span class="title"><?=admin::labels('contents','create');?></span></td>
@@ -121,7 +121,7 @@
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="contentList.php?token=<?=admin::getParam("token")?>" tabindex="8" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="contentList.php" tabindex="8" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

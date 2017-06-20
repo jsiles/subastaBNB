@@ -2,8 +2,8 @@
 include_once("../../core/admin.php");
 admin::initialize('subastas','subastasList',false); 
 // Cambiamos el estado del contenido de activo a inactivo
-$uid = $_POST["uid"];
-$sub_status = $_POST["status"];
+$uid = admin::getParam("uid");
+$sub_status = admin::getParam("status");
 
 if ($sub_status=="ACTIVE")
 	{

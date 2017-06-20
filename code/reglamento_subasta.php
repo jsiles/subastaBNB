@@ -2,7 +2,6 @@
 include_once("../admin/core/admin.php");
 admin::initializeClient();
 
-$token = SymmetricCrypt::Decrypt(admin::getParam("token"));
 $_keycode = SymmetricCrypt::Decrypt(admin::getParam("_keycode"));
 $uidClient = admin::getSession("uidClient");
 //echo $token."<br>".$_keycode."<br>".$uidClient."<br>";
@@ -53,7 +52,7 @@ Para poder ingresar a la compra debe estar de acuerdo con el siguiente reglament
     <td align="left">
         <form name="formBids" class="formLabel">
         <p><input  type="checkbox" style="border:0" name="aceptar" id="aceptar" onclick="iagree();">Estoy de acuerdo   
-		<br><br></p><p><a href="<?=$token?>" id="continue" style="display:none;" class="addcart">Continuar</a> <!--o <a href="Cerrar" onclick="$.facebox.close();return false;">rechazar</a>--></p></form>
+		<br><br></p><p><a href="" id="continue" style="display:none;" class="addcart">Continuar</a> <!--o <a href="Cerrar" onclick="$.facebox.close();return false;">rechazar</a>--></p></form>
         
          </td>
 </tr>

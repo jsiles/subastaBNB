@@ -1,6 +1,6 @@
 <?php 
 include_once("admin/core/admin.php");
-
+//echo 1; 
 define("SYS_LANG","es");
 $uidClient = admin::getSession("uidClient");
 $con_uid=0;
@@ -52,7 +52,7 @@ if ($urlSearch.'='==$urlSearch2) {$varSearch=str_replace($urlSearch.'=',"",$urlT
 $urlTitle = admin::strip($urlTitle);
 if ($urlTitle!='')
     {
-  	if ($urlTitle!='session') 
+  	if ($urlTitle!='') 
 		{ 
 		$sql = "SELECT TOP 1 con_uid, col_con_uid, col_title
 				FROM mdl_contents 
@@ -78,8 +78,8 @@ if ($urlTitle!='')
 					  col_url='".admin::toSql($urlTitle,"Text")."' 
 				";
 		$numpress = $db->numrows($sql1);		
-
-if(!isset($uid)) $uid=6;
+//echo $uid;die;
+if(!isset($uid)) $uid=0;
 		}
 		else $uid=0;
 	   //echo $uid."####";die;
@@ -87,21 +87,21 @@ if(!isset($uid)) $uid=6;
 		
 		case 0:
 			$urlTitle=''; 
-			$page = "session.php";
+			$page = "index.php";
 			$con_uid=$uid; 
 			break; 
 		case 1: 
 			$urlTitle=''; 
-			$page = "index.php";
+			$page = "categoriasList.php";
 			$con_uid=$uid; 
 			break;
 		case 2:
-                       //echo "categorias";
+                       //echo "categorias".$urlSubTitle.$urlSubTitle2;die;
 				$con_uid=$uid;
 				$page= "subastasList.php";
 				if ($urlSubTitle2) 
 					{
-                                            //echo "@@@" . $urlSubTitle2;
+                                           // echo "@@@" . $urlSubTitle2;die;
 						if (is_numeric($urlSubTitle2))
 						{
 						$page_list = $urlSubTitle2;						
@@ -126,6 +126,11 @@ if(!isset($uid)) $uid=6;
 					$page= "categoriasList.php";
 					$con_uid=$uid;
 					}
+                                else {	{
+					$page= "categoriasList.php";
+					$con_uid=$uid;
+					}
+                                }        
 				$con_uid=$uid;
 				break;
 		case 3: 
@@ -143,7 +148,7 @@ if(!isset($uid)) $uid=6;
 			$con_uid=$uid; 
 			break;		
 		default: 
-                    header("HTTP/1.0 403 Forbidden");
+                    header("Location: 403.php");
 				/*$con_uid=$uid;
 				$page="session.php";
 				if ($urlSubTitle) 
@@ -179,6 +184,7 @@ if(!isset($uid)) $uid=6;
 				$con_uid=$uid;*/
 				break;
 	}
+        //echo $uid." ".$page;die;
  	include_once($page);        
 	}	
 else

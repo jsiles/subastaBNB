@@ -4,12 +4,12 @@ include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('subasta','subastaAdd'); 
 // VERIFICAMOS EL SQL INJECTION
-$lin_uid = admin::toSql($_POST["lin_uid"],"String");
-$lin_name = admin::toSql($_POST["lin_name"],"String");
-$lin_status = admin::toSql($_POST["lin_status"],"String");
-$seo_metatitle = admin::toSql($_POST["seo_metatitle"],"String"); 
-$seo_metadescription = admin::toSql($_POST["seo_metadescription"],"String"); 
-$seo_metakeyword = admin::toSql($_POST["seo_metakeyword"],"String");
+$lin_uid = admin::toSql(admin::getParam("lin_uid"),"String");
+$lin_name = admin::toSql(admin::getParam("lin_name"),"String");
+$lin_status = admin::toSql(admin::getParam("lin_status"),"String");
+$seo_metatitle = admin::toSql(admin::getParam("seo_metatitle"),"String"); 
+$seo_metadescription = admin::toSql(admin::getParam("seo_metadescription"),"String"); 
+$seo_metakeyword = admin::toSql(admin::getParam("seo_metakeyword"),"String");
 
 // Verificamos que el codigo no exista
 $existLin=admin::getDBvalue("select COUNT(*) from mdl_line where lin_uid='".$lin_uid."'");
@@ -70,7 +70,7 @@ $db2->query($sql);
 while ($sys_language = $db2->next_record())
 	{
 	// ACTIVANDO SOLO EN EL LENGUAJE EN EL QUE FUE CREADO
-	if ($lang==$sys_language["lan_code"]) $col_status = $_POST["col_status"];
+	if ($lang==$sys_language["lan_code"]) $col_status = admin::getParam("col_status");
 	else $col_status="INACTIVE";
 	// col_uid
 	$sql = "insert into mdl_contents_languages(

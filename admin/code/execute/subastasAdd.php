@@ -11,23 +11,23 @@ $mythumb = new thumb();
 //die();
 	
 // DATOS QUE EVITAN EL SQL INJECTION
-$sub_pca_uid = admin::toSql($_POST["sub_pca_uid"],"String");
-$sub_description = admin::toSql($_POST["sub_description"],"String");
-$sub_type = admin::toSql($_POST["sub_type"],"String");
-$sub_modalidad = admin::toSql($_POST["sub_modalidad"],"String");
-$sub_date = date("Y-m-d"); //admin::changeFormatDate(admin::toSql($_POST["sub_date"],"String"),1);
-$sub_hour = date("H:i:s");//admin::toSql($_POST["sub_hour"],"String");
-$sub_mount_base = $_POST["sub_mount_base"];
-$sub_moneda = admin::toSql($_POST["sub_moneda"],"String");
-$sub_mount_unidad = $_POST["sub_mount_unidad"];
+$sub_pca_uid = admin::toSql(admin::getParam("sub_pca_uid"),"String");
+$sub_description = admin::toSql(admin::getParam("sub_description"),"String");
+$sub_type = admin::toSql(admin::getParam("sub_type"),"String");
+$sub_modalidad = admin::toSql(admin::getParam("sub_modalidad"),"String");
+$sub_date = date("Y-m-d"); //admin::changeFormatDate(admin::toSql(admin::getParam("sub_date"],"String"),1);
+$sub_hour = date("H:i:s");//admin::toSql(admin::getParam("sub_hour"],"String");
+$sub_mount_base = admin::getParam("sub_mount_base");
+$sub_moneda = admin::toSql(admin::getParam("sub_moneda"),"String");
+$sub_mount_unidad = admin::getParam("sub_mount_unidad");
 if($sub_modalidad!='TIEMPO') $sub_mount_unidad=0;
-$sub_hour_end0 = admin::changeFormatDate(admin::toSql($_POST["sub_hour_end0"],"String"),1);
-$sub_hour_end1 = admin::toSql($_POST["sub_hour_end1"],"String");
+$sub_hour_end0 = admin::changeFormatDate(admin::toSql(admin::getParam("sub_hour_end0"),"String"),1);
+$sub_hour_end1 = admin::toSql(admin::getParam("sub_hour_end1"),"String");
 $sub_hour_end=$sub_hour_end0.' '.$sub_hour_end1;
-$sub_tiempo = admin::toSql($_POST["sub_tiempo"],"Number");
-$sub_status = admin::toSql($_POST["sub_status"],"String");
-$sub_mountdead = admin::toSql($_POST["sub_mountdead"],"Number");
-$sub_wheels = admin::toSql($_POST["sub_wheels"],"Number");
+$sub_tiempo = admin::toSql(admin::getParam("sub_tiempo"),"Number");
+$sub_status = admin::toSql(admin::getParam("sub_status"),"String");
+$sub_mountdead = admin::toSql(admin::getParam("sub_mountdead"),"Number");
+$sub_wheels = admin::toSql(admin::getParam("sub_wheels"),"Number");
 $xhoras = admin::getParam("xhoras");
 if(!is_numeric($xhoras)) $xhoras=0;
 if(!isset($xhoras)) $xhoras=0;
@@ -55,11 +55,11 @@ $timePrevio = date("Y-m-d H:i:s",mktime($tmp_hour - $xhoras, $tmp_min, $tmp_sec,
 $pro_uid = admin::getDBvalue("select max(pro_uid) FROM mdl_product");
 $pro_uid++;
 
-$pro_name = admin::toSql($_POST["pro_name"],"String");
+$pro_name = admin::toSql(admin::getParam("pro_name"),"String");
 $pro_url = admin::urlsFriendly(trim($pro_name.'-'.$pro_uid));
-$pro_quantity = admin::toSql($_POST["pro_quantity"],"String");
-$pro_unidad = admin::toSql($_POST["pro_unidad"],"String");
-$pro_description = admin::toSql($_POST["pro_description"],"String");
+$pro_quantity = admin::toSql(admin::getParam("pro_quantity"),"String");
+$pro_unidad = admin::toSql(admin::getParam("pro_unidad"),"String");
+$pro_description = admin::toSql(admin::getParam("pro_description"),"String");
 
 $sub_uid = admin::getDBvalue("select max(sub_uid) FROM mdl_subasta");
 if(!$sub_uid) $sub_uid=0;
@@ -185,7 +185,7 @@ if($sub_modalidad=="PRECIO")
         $db->query($sql);
         }
 }
-$rav_uni_uid=  admin::getParam("rav_uni_uid");
+$rav_uni_uid=  admin::getParam("rav_uni_uid", "strip");
 //if(is_array($rav_uni_uid)){
        admin::getDbValue("delete from mdl_subasta_unidad where suu_sub_uid=$sub_uid");
 //   foreach($rav_uni_uid as $value)
@@ -252,9 +252,9 @@ if ($FILES2["name"] != '')
 	}
 $token=admin::getParam("token");
 
-header('Location: ../../subastasNew2.php?token='.$token."&pro_uid=".$pro_uid."&sub_uid=".$sub_uid."&tipUid=".admin::getParam("tipUid"));	
+header('Location: ../../subastasNew2.php?pro_uid='.$pro_uid."&sub_uid=".$sub_uid."&tipUid=".admin::getParam("tipUid"));	
 }else{
     $token=admin::getParam("token");
-    header('Location: ../../subastasNew.php?token='.$token."&tipUid=".admin::getParam("tipUid"));	    
+    header('Location: ../../subastasNew.php?tipUid='.admin::getParam("tipUid"));	    
 }
 ?>

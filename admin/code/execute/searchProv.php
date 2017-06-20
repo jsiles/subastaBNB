@@ -1,5 +1,6 @@
 <?php
 include_once("../../core/admin.php");
+admin::initialize('subastas','subastasList');
 $searchTerm = admin::getParam("term");
     
     //get matched data from skills table

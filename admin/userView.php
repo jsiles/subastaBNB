@@ -47,7 +47,7 @@ function removeImg(id){
 				  $('#image_edit_'+uid).fadeOut(1, function(){ $(this).remove(); });
 				  
 					  $.ajax({
-						url: 'code/execute/usersImageDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/usersImageDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});

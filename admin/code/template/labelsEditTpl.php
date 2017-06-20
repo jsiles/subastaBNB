@@ -126,7 +126,7 @@ $row_office = $db->next_record();
 		</a> 
 		</td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="labelsList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="labelsList.php" ><?=admin::labels('cancel');?></a> 
 		</td>
 		</tr>
 	</table>

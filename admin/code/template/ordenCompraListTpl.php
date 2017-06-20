@@ -88,7 +88,7 @@ if ($nroReg>0)
         <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>
@@ -99,7 +99,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmbuySearch" action="ordenCompraList.php" >
+        <form  method="post" name="frmbuySearch" action="ordenCompraList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -121,12 +121,12 @@ if ($nroReg>0)
     <td colspan="2" width="98%">
   <table width="98%" border="0"  style="padding-left:17px;">
 	<tr>
-            <td width="10%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$fecOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$fecClass;?>">Fecha:</a></td>
-            <td width="10%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>">Nro Solicitud:</a></td>
-            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$orcOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$orcClass;?>">Nro Orden de Compra:</a></td>
-            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$uniOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uniClass;?>">Proveedor:</a></td>
+            <td width="10%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$fecOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$fecClass;?>">Fecha:</a></td>
+            <td width="10%" class="list1a" style="color:#16652f;"><a href="ordenCompraList.php?order=<?=$uidOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uidClass;?>">Nro Solicitud:</a></td>
+            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$orcOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$orcClass;?>">Nro Orden de Compra:</a></td>
+            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$uniOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$uniClass;?>">Proveedor:</a></td>
             <td width="10%" style="color:#16652f">Unidad Solicitante:</td>
-            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$estOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$estClass;?>">Estado:</a></td>
+            <td width="10%" style="color:#16652f"><a href="ordenCompraList.php?order=<?=$estOrder?><?=$searchURL?>&tipUid=<?=admin::getParam("tipUid")?>" class="<?=$estClass;?>">Estado:</a></td>
             <td width="5%" align="center" style="color:#16652f">Monto:</td>
             <td align="center" width="5%" height="5"></td>
             <td align="center" width="5%" height="5"></td>
@@ -205,7 +205,7 @@ while ($orden_list = $pagDb->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
             ?>
-    	<a href="ordenCompraView.php?orc_uid=<?=$orc_uid?>&token=<?=admin::getParam("token");?>&tipUid=<?=admin::getParam("tipUid")?>">
+    	<a href="ordenCompraView.php?orc_uid=<?=$orc_uid?>&tipUid=<?=admin::getParam("tipUid")?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php
@@ -222,7 +222,7 @@ while ($orden_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
             if($valuePermit=='ACTIVE'&&$orc_estado_uid==0){
             ?>
-            <a href="ordenCompraEdit.php?orc_uid=<?=$orc_uid?>&token=<?=admin::getParam("token");?>&tipUid=<?=admin::getParam("tipUid")?>">
+            <a href="ordenCompraEdit.php?orc_uid=<?=$orc_uid?>&tipUid=<?=admin::getParam("tipUid")?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 	</a>
             <?php
@@ -357,7 +357,7 @@ else
        <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>

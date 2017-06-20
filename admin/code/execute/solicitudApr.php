@@ -1,7 +1,7 @@
 <?php
 include_once("../../core/admin.php");
-//admin::initialize('autorizacion','autorizacionList',false);
-$sol_uid = $_POST["uid"];
+admin::initialize('autorizacion','autorizacionList',false);
+$sol_uid = admin::getParam("uid");
 $sql = "insert into mdl_solicitud_aprobar (soa_sol_uid, soa_usr_uid, soa_date, soa_status) values($sol_uid, ".admin::getSession("usr_uid").", GETDATE(), 'ACTIVE')";
 $db->query($sql);
 

@@ -4,7 +4,7 @@ include ("core/admin.php");
                 <div style="width:700px;">
                     <form name="searchForm" action="<?=$_SERVER['PHP_SELF']?>" >
                         <input id="search" type="text" class="search"  autocomplete="off" onkeyup="enableSearch()"/>
-                        <input id="submit_button" type="submit" value="search" class="button" onclick="paginate(<?=$_GET['new_uid']?>);return false" disabled="disabled" />
+                        <input id="submit_button" type="submit" value="search" class="button" onclick="paginate(<?=admin::getParam('new_uid')?>);return false" disabled="disabled" />
                         <a href="toggle" id="advanced_link" onclick="javascript:toggleRelated();return false;">Avanzado</a>
                         <div id="advanced_div" style="display:none">
                         <select id="by_category" name="by_category">
@@ -19,9 +19,9 @@ include ("core/admin.php");
 						
 				$db->query($sql);?>
                 <option value="0">--Seleccionar--</option>
-                <? while ($category = $db->next_record()){ ?>
+                <?php while ($category = $db->next_record()){ ?>
 				<option value="<?=$category["nec_uid"]?>" ><?=utf8_encode($category["ncl_category"])?></option>
-				<? } ?>
+				<?php } ?>
                         </select>
                         Desde <input name="fecha1" type="text" class="input"  id="fecha1" value="" size="15" readonly="" /> <a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.searchForm.fecha1);return false;" >
 				<img border="0" src="calendario/icon_calendar.gif">				</a>
@@ -34,7 +34,7 @@ include ("core/admin.php");
                 <table class="box" border="0" cellpadding="5" cellspacing="5"  > 
             <tbody id="news_related2">
           	<?php 
-$new_uid = admin::toSql(safeHtml($_GET['new_uid']),"Number");
+$new_uid = admin::toSql(safeHtml(admin::getParam('new_uid')),"Number");
 
 			$dset = new DBmysql;
 			$sqldat = "select rel_uid,nel_new_uid,nel_title  

@@ -14,7 +14,6 @@ $fldpro_cli_id=admin::getParam("pro_cli_id");
 $fldxitem = admin::getDbValue("select max(xit_uid) from mdl_xitem");
 if(!$fldxitem) $fldxitem=1;
 else $fldxitem++;
-//print_r($_POST);die;
 $sSQL = "insert into mdl_xitem(
 					xit_uid,
 					xit_sub_uid,
@@ -105,5 +104,5 @@ echo $sql;
 $db->query($sql);
 }
 $token=admin::getParam("token");
-header('Location: ../../autorizacionEdit2.php?token='.$token.'&pro_uid='.$pro_uid.'&sub_uid='.$sub_uid);
+header('Location: ../../autorizacionEdit2.php?pro_uid='.$pro_uid.'&sub_uid='.$sub_uid);
 ?>

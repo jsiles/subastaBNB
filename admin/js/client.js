@@ -289,7 +289,7 @@ function ptsClient(token)
   	}  
  	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
  	//enviando los valores
-  	ajax.send("uid="+uid+"&token="+token)	
+  	ajax.send("uid="+uid)	
 }
 
 function gsClient(token)
@@ -309,5 +309,5 @@ function gsClient(token)
   	}  
  	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
  	//enviando los valores
-  	ajax.send("uid="+uid+"&token="+token)	
+  	ajax.send("uid="+uid)	
 }

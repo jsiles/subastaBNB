@@ -1,7 +1,7 @@
 <?php
-$pro_uid = admin::toSql($_GET["pro_uid"],"String");
+$pro_uid = admin::toSql(admin::getParam("pro_uid"),"String");
 $sub_uid=admin::getParam("pro_uid");
-if (!$pro_uid) header('Location: ../../subastasList.php?token='.$token);
+if (!$pro_uid) header('Location: ../../subastasList.php');
 $sql = "SELECT * FROM mdl_product, mdl_subasta, mdl_pro_category WHERE sub_uid=pro_sub_uid and pca_uid=sub_pca_uid and sub_status='ACTIVE' and pro_uid='".$pro_uid."'";
 $db->query($sql);
 $prod = $db->next_record();
@@ -9,7 +9,7 @@ $prod = $db->next_record();
 ?>
 <br />
 <div id="div_wait" style="display:none;"><img border="0" src="lib/loading.gif"></div>
-<form name="frmsubasta" method="post" action="code/execute/divisasUpd.php?token=<?=admin::getParam("token")?>" enctype="multipart/form-data" >
+<form name="frmsubasta" method="post" action="code/execute/divisasUpd.php" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -262,7 +262,7 @@ if($countBids>0) $style=""; else $style="none"
 		</a> 
 		</td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="subastasList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="subastasList.php" ><?=admin::labels('cancel');?></a> 
 		</td>
 		</tr>
      </table>
@@ -292,7 +292,7 @@ if($countBids>0) $style=""; else $style="none"
 	</table>
     </div>
     <div id="add<?=$ind_uid?>" class="row0">
-    <form name="frmIncoterm" action="code/execute/incotermAdd1.php" enctype="multipart/form-data" > 
+    <form  method="post" name="frmIncoterm" action="code/execute/incotermAdd1.php" enctype="multipart/form-data" > 
 	<table class="list" width="100%">
 	<tr><td width="12%"><input name="cli_name" id="cli_name" onkeyup="lookup(this.value);" type="text" size="15"  onfocus="document.getElementById('div_cli_name_error').style.display='none';" onblur="document.getElementById('div_cli_name_error').style.display='none';" onclick="document.getElementById('div_cli_name_error').style.display='none';" autocomplete='off' />
 					   	
@@ -431,7 +431,7 @@ while ($list = $db2->next_record())
 	</div>
     </div>
     <div id="Add_<?=$inc_uid?>" class="<?=$class2?>" style="display:none">
-    <form name="frmIncotermUpd<?=$inc_uid?>" id="frmIncotermUpd<?=$inc_uid?>" action="code/execute/IncotermUpd1.php"  enctype="multipart/form-data" >
+    <form  method="post" name="frmIncotermUpd<?=$inc_uid?>" id="frmIncotermUpd<?=$inc_uid?>" action="code/execute/IncotermUpd1.php"  enctype="multipart/form-data" >
 <table class="list" width="100%">
 	<tr><td width="12%">
     			<input name="cli_name<?=$cli_uid?>" id="cli_name<?=$cli_uid?>" onkeyup="lookup(this.value,<?=$cli_uid?>);" type="text" size="15" value="<?=$cli_name?>" />
@@ -520,7 +520,7 @@ else
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-				<a href="subastasList.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a>
+				<a href="subastasList.php" class="button" >Volver</a>
 				</td>
           
         </tr>

@@ -82,7 +82,7 @@ function goToPag()
 		nPag = '&_pagi_pg='+NumPag;
 	else 
 		nPag='';
-	document.location.href='http://'+window.location.hostname+window.location.pathname+'?token='+token+maxL+nPag;
+	document.location.href='http://'+window.location.hostname+window.location.pathname+'?t='+maxL+nPag;
 	}
 }	
 
@@ -174,5 +174,5 @@ function ResetCounts()
 function RowsF(e)
 {
 	token = $.getUrlVar('token');
-	document.location.href='newsList.php?token='+token+'&maxLineP='+e;
+	document.location.href='newsList.php?maxLineP='+e;
 }

@@ -20,7 +20,7 @@
 	</table>
     </div>
     <div id="add<?=$ind_uid?>" class="row0">
-    <form name="frmIncoterm" action="code/execute/incotermAdd.php" enctype="multipart/form-data" > 
+    <form method="post"  name="frmIncoterm" action="code/execute/incotermAdd.php" enctype="multipart/form-data" > 
 	<table class="list" width="100%">
 	<tr><td width="12%"><input name="cli_name" id="cli_name" onkeyup="lookup(this.value);" type="text" size="15"  onfocus="document.getElementById('div_cli_name_error').style.display='none';" onblur="document.getElementById('div_cli_name_error').style.display='none';" onclick="document.getElementById('div_cli_name_error').style.display='none';" autocomplete='off' />
 					   	
@@ -157,7 +157,7 @@ while ($list = $db2->next_record())
 	</div>
     </div>
     <div id="Add_<?=$inc_uid?>" class="<?=$class2?>" style="display:none">
-    <form name="frmIncotermUpd<?=$inc_uid?>" id="frmIncotermUpd<?=$inc_uid?>" action="code/execute/IncotermUpd.php"  enctype="multipart/form-data" >
+    <form  method="post" name="frmIncotermUpd<?=$inc_uid?>" id="frmIncotermUpd<?=$inc_uid?>" action="code/execute/IncotermUpd.php"  enctype="multipart/form-data" >
 <table class="list" width="100%">
 	<tr><td width="12%">
     			<input name="cli_name<?=$cli_uid?>" id="cli_name<?=$cli_uid?>" onkeyup="lookup(this.value,<?=$cli_uid?>);" type="text" size="15" value="<?=$cli_name?>" />
@@ -245,7 +245,7 @@ else
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-				<a href="subastasList.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a>
+				<a href="subastasList.php" class="button" >Volver</a>
 				</td>
           
         </tr>

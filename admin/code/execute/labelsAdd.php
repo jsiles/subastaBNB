@@ -50,5 +50,5 @@ $nextUrl="labelsList.php";
 
 
 
-header('Location: ../../'.$nextUrl.'?token='.admin::getParam('token'));	
+header('Location: ../../'.$nextUrl);	
 ?>

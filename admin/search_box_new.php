@@ -19,9 +19,9 @@ include ("core/admin.php");
 						
 				$db->query($sql);?>
                 <option value="0">--Seleccionar--</option>
-                <? while ($category = $db->next_record()){ ?>
+                <?php while ($category = $db->next_record()){ ?>
 				<option value="<?=$category["nec_uid"]?>" ><?=utf8_encode($category["ncl_category"])?></option>
-				<? } ?>
+				<?php } ?>
                         </select>
                         Desde <input name="fecha1" type="text" class="input"  id="fecha1" value="" size="15" readonly="" /> <a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.searchForm.fecha1);return false;" >
 				<img border="0" src="calendario/icon_calendar.gif">				</a>

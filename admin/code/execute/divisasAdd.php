@@ -12,23 +12,23 @@ $mythumb = new thumb();
 	
 // DATOS QUE EVITAN EL SQL INJECTION
 $sub_pca_uid = 6;
-$sub_description = admin::toSql($_POST["sub_description"],"String");
-$sub_type = admin::toSql($_POST["sub_type"],"String");
-$sub_modalidad = admin::toSql($_POST["sub_modalidad"],"String");
-$sub_date = date("Y-m-d"); //admin::changeFormatDate(admin::toSql($_POST["sub_date"],"String"),1);
-$sub_hour = date("h:i:s");//admin::toSql($_POST["sub_hour"],"String");
-$sub_mount_base = admin::toSql($_POST["sub_mount_base"],"String");
-$sub_moneda = admin::toSql($_POST["sub_moneda"],"String");
-$sub_moneda = admin::toSql($_POST["sub_moneda1"],"Number");
-$sub_mount_unidad = admin::toSql($_POST["sub_mount_unidad"],"String");
-$sub_hour_end0 = admin::changeFormatDate(admin::toSql($_POST["sub_hour_end0"],"String"),1);
-$sub_hour_end1 = admin::toSql($_POST["sub_hour_end1"],"String");
+$sub_description = admin::toSql(admin::getParam("sub_description"),"String");
+$sub_type = admin::toSql(admin::getParam("sub_type"),"String");
+$sub_modalidad = admin::toSql(admin::getParam("sub_modalidad"),"String");
+$sub_date = date("Y-m-d"); //admin::changeFormatDate(admin::toSql(admin::getParam("sub_date"],"String"),1);
+$sub_hour = date("h:i:s");//admin::toSql(admin::getParam("sub_hour"],"String");
+$sub_mount_base = admin::toSql(admin::getParam("sub_mount_base"),"String");
+$sub_moneda = admin::toSql(admin::getParam("sub_moneda"),"String");
+$sub_moneda = admin::toSql(admin::getParam("sub_moneda1"),"Number");
+$sub_mount_unidad = admin::toSql(admin::getParam("sub_mount_unidad"),"String");
+$sub_hour_end0 = admin::changeFormatDate(admin::toSql(admin::getParam("sub_hour_end0"),"String"),1);
+$sub_hour_end1 = admin::toSql(admin::getParam("sub_hour_end1"),"String");
 $sub_hour_end=$sub_hour_end0.' '.$sub_hour_end1;
-$sub_tiempo = admin::toSql($_POST["sub_tiempo"],"Number");
-$sub_status = admin::toSql($_POST["sub_status"],"String");
+$sub_tiempo = admin::toSql(admin::getParam("sub_tiempo"),"Number");
+$sub_status = admin::toSql(admin::getParam("sub_status"),"String");
 
-$sub_mountdead = admin::toSql($_POST["sub_mountdead"],"Number");
-$sub_wheels = admin::toSql($_POST["sub_wheels"],"Number");
+$sub_mountdead = admin::toSql(admin::getParam("sub_mountdead"),"Number");
+$sub_wheels = admin::toSql(admin::getParam("sub_wheels"),"Number");
 if(!$sub_mountdead) $sub_mountdead=0;
 if(!$sub_wheels) $sub_wheels=0;
 
@@ -44,11 +44,11 @@ $dead_time = date("Y-m-d H:i:s",mktime($tmp_hour,$tmp_min+$sub_tiempo,$tmp_sec,$
 $pro_uid = admin::getDBvalue("select max(pro_uid) FROM mdl_product");
 $pro_uid++;
 
-$pro_name = admin::toSql($_POST["pro_name"],"String");
+$pro_name = admin::toSql(admin::getParam("pro_name"),"String");
 $pro_url = admin::urlsFriendly(trim($pro_name.'-'.$pro_uid));
-$pro_quantity = admin::toSql($_POST["pro_quantity"],"String");
-$pro_unidad = admin::toSql($_POST["pro_unidad"],"String");
-$pro_description = admin::toSql($_POST["pro_description"],"String");
+$pro_quantity = admin::toSql(admin::getParam("pro_quantity"),"String");
+$pro_unidad = admin::toSql(admin::getParam("pro_unidad"),"String");
+$pro_description = admin::toSql(admin::getParam("pro_description"),"String");
 
 $sub_uid = admin::getDBvalue("select max(sub_uid) FROM mdl_subasta");
 $sub_uid++;
@@ -186,5 +186,5 @@ if ($FILES2["name"] != '')
 	}
 $token=admin::getParam("token");
 
-header('Location: ../../divisasList.php?token='.$token);	
+header('Location: ../../divisasList.php');	
 ?>

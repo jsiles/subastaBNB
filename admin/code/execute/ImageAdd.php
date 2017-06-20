@@ -9,9 +9,9 @@ $mythumb = new thumb();
 admin::initialize('image','imageNew');
 
 $token=admin::getParam("token");
-$nextUrl="imageList.php?token=".$token;
+$nextUrl="imageList.php";
 
-$mim_uid=admin::toSql($_POST["mim_uid"],"Number");
+$mim_uid=admin::toSql(admin::getParam("mim_uid"),"Number");
 
 if (!$mim_uid)
 {
@@ -29,27 +29,27 @@ if (!$mim_uid)
 								) 
 						values	(
 								".$maxMim.", 
-								'".admin::toSql($_POST["mim_title"],"String")."', 
-								'".admin::toSql($_POST["mim_metatitle"],"String")."', 
-								'".admin::toSql($_POST["mim_metadescription"],"String")."', 
-								'".admin::toSql($_POST["mim_metakeyword"],"String")."',
-								'".admin::toSql($_POST["mim_status"],"String")."',0)";
+								'".admin::toSql(admin::getParam("mim_title"),"String")."', 
+								'".admin::toSql(admin::getParam("mim_metatitle"),"String")."', 
+								'".admin::toSql(admin::getParam("mim_metadescription"),"String")."', 
+								'".admin::toSql(admin::getParam("mim_metakeyword"),"String")."',
+								'".admin::toSql(admin::getParam("mim_status"),"String")."',0)";
 	$db->query($sql);
 }
 else
 {
 	$sql='update mdl_image set 
-							mim_title="'.admin::toSql($_POST["mim_title"],"String").'",
-							mim_metatitle="'.admin::toSql($_POST["mim_metatitle"],"String").'",
-							mim_metadescription="'.admin::toSql($_POST["mim_metadescription"],"String").'",
-							mim_metakeyword="'.admin::toSql($_POST["mim_metakeyword"],"String").'",
-							mim_status="'.admin::toSql($_POST["mim_status"],"String").'" 
+							mim_title="'.admin::toSql(admin::getParam("mim_title"),"String").'",
+							mim_metatitle="'.admin::toSql(admin::getParam("mim_metatitle"),"String").'",
+							mim_metadescription="'.admin::toSql(admin::getParam("mim_metadescription"),"String").'",
+							mim_metakeyword="'.admin::toSql(admin::getParam("mim_metakeyword"),"String").'",
+							mim_status="'.admin::toSql(admin::getParam("mim_status"),"String").'" 
 		where mim_uid="'.$mim_uid.'"';
 		$db->query($sql);
 }
 
 // DECLARANDO LAS VARIABLES PARA EVITAR SQL INJECTION
-$picName=admin::toSql($_POST["mim_title"],"String");
+$picName=admin::toSql(admin::getParam("mim_title"),"String");
 $pathIMG = PATH_ROOT . "/img/packgallery/";
 $pathIMG2 = PATH_ROOT . "/img/news/";
 $x = 0;
@@ -215,7 +215,7 @@ if($j){
 
 			// pai_uid, pai_status, pai_delete
 			$title = $titleArr[$x];
-			$title = $_POST['title'.($x*2)];
+			$title = admin::getParam('title'.($x*2));
 	//		print($title."<br>");
 			$sql = "insert into mdl_news_images(nei_mim_uid, nei_position, nei_image, nei_description)
 											values(" . $mim_uid . "," . $nro . ",'" . $nomIMG . "','" . $title . "')";

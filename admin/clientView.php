@@ -50,7 +50,7 @@ function removeImg(id){
 				  $('#image_edit_'+uid).fadeOut(1, function(){ $(this).remove(); });
 				  
 					  $.ajax({
-						url: 'code/execute/clientImageDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/clientImageDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});
@@ -74,7 +74,7 @@ function removeImg(id){
 				  $('#image_edit_'+uid).fadeOut(1, function(){ $(this).remove(); });
 				  
 					  $.ajax({
-						url: 'code/execute/clientImageDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/clientImageDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});
@@ -96,7 +96,7 @@ function removeList(id){
 				var uid = m.find('#list').val();
 				  $('#'+id).fadeOut(500, function(){ $(this).remove(); });
 					  $.ajax({
-						url: 'code/execute/clientDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/clientDel.php',
 						type: 'POST',
 						data: 'uid='+id
 					});

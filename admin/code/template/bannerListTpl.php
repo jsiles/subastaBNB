@@ -23,7 +23,7 @@ if ($nroReg>0)
         $moduleId=30;
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-              <a href="<?=admin::modulesLink('bannerNew')?>?token=<?=admin::getParam("token")?>"><?=admin::modulesLabels('bannerNew')?></a>
+              <a href="<?=admin::modulesLink('bannerNew')?>"><?=admin::modulesLabels('bannerNew')?></a>
         <?php
         }
         ?>
@@ -64,7 +64,7 @@ while ($nroReg = $db->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=29 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
                 ?>
-		<a href="bannerView.php?ban_uid=<?=$ban_uid?>&token=<?=admin::getParam("token")?>">
+		<a href="bannerView.php?ban_uid=<?=$ban_uid?>">
                     <img src="<?=admin::labels('view','linkImage')?>" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 		</a>
             <?php
@@ -80,7 +80,7 @@ while ($nroReg = $db->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=29 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
                 ?>
-		<a href="bannerEdit.php?ban_uid=<?=$ban_uid?>&token=<?=admin::getParam("token")?>">
+		<a href="bannerEdit.php?ban_uid=<?=$ban_uid?>">
                     <img src="<?=admin::labels('edit','linkImage')?>" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
             <?php
@@ -179,7 +179,7 @@ else
         $moduleId=30;
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-              <a href="<?=admin::modulesLink('bannerNew')?>?token=<?=admin::getParam("token")?>"><?=admin::modulesLabels('bannerNew')?></a>
+              <a href="<?=admin::modulesLink('bannerNew')?>"><?=admin::modulesLabels('bannerNew')?></a>
         <?php
         }
         ?>          

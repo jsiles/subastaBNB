@@ -1,5 +1,5 @@
 <br />
-<form name="frmModules" method="post" action="code/execute/modulesAdd.php?token=<?=admin::getParam('token')?>" enctype="multipart/form-data" >
+<form name="frmModules" method="post" action="code/execute/modulesAdd.php" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -120,7 +120,7 @@
 		</a> 
 		</td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="modulesList.php?token=<?=admin::getParam('token')?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="modulesList.php"><?=admin::labels('cancel');?></a> 
 		</td>
 		</tr>
 	</table>

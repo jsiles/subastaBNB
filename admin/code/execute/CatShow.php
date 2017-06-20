@@ -1,4 +1,4 @@
-<table width="100%" border="0" cellpadding="5" class="box"><?
+<table width="100%" border="0" cellpadding="5" class="box"><?php
 include_once("../../database/connection.php");  
 include_once("../../core/admin.php");
 admin::initialize('users','usersNew2'); 
@@ -18,7 +18,7 @@ while ($job = $db2->next_record())
                 <td width="84%"><input name="<?=utf8_encode($job['job_subcategory'])?>" type="text" class="input" id="<?=utf8_encode($job['job_subcategory'])?>" onfocus="setClassInput(this,'ON');document.getElementById('div_<?=utf8_encode($job['job_subcategory'])?>').style.display='none';" onblur="setClassInput(this,'OFF');document.getElementById('div_<?=utf8_encode($job['job_subcategory'])?>').style.display='none';" onclick="setClassInput(this,'ON');document.getElementById('div_<?=utf8_encode($job['job_subcategory'])?>').style.display='none';" size="40" />
 <br /><span id="div_<?=utf8_encode($job['job_subcategory'])?>" style="display:none;" class="error"><?=admin::labels('users','passreq');?></span> </td>
            </tr>
-<?
+<?php
 	}
 }
 ?>       

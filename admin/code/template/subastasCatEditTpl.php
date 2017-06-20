@@ -1,5 +1,5 @@
-<?
-$pca_uid = admin::toSql($_GET["pca_uid"],"Number");
+<?php
+$pca_uid = admin::toSql(admin::getParam("pca_uid"),"Number");
 $sql = "select * 
 		from mdl_subasta_category 
 		left join mdl_subasta_category_languages on (pca_uid=pcl_pca_uid)

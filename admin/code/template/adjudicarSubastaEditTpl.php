@@ -63,7 +63,7 @@ function valForm(){
 </script>
 <br />
 <div id="div_wait" style="display:none;"><img border="0" src="lib/loading.gif"></div>
-<form name="frmsubasta" method="post" action="code/execute/adjudicarSubastaUpd.php?token=<?=admin::getParam("token")?>&sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
+<form name="frmsubasta" method="post" action="code/execute/adjudicarSubastaUpd.php?sub_uid=<?=$prod["sub_uid"]?>" enctype="multipart/form-data" >
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -621,7 +621,7 @@ while ($list = $db2->next_record())
                                     <a href="#" class="button" onclick="valForm();" >Actualizar</a>
 				</td>
                                 <td width="41%" style="font-size:11px;">
-                                    o <a href="informeList.php?token=<?=admin::getParam("token")?>" >Cancelar</a> 
+                                    o <a href="informeList.php" >Cancelar</a> 
                                 </td>
         </tr>
       </table>

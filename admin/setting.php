@@ -20,7 +20,7 @@ admin::initialize('setting','setting');
 </head>
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<?
+<?php
     include_once("skin/header.php");
   ?>
   
@@ -66,7 +66,7 @@ admin::initialize('setting','setting');
 
    
 </script> 
-<? include("skin/footer.php"); ?>
+<?php include("skin/footer.php"); ?>
 </table>
 </body>
 </html>

@@ -1,13 +1,13 @@
 <?
 $mod_uid=admin::toSql(admin::getParam("mod_uid"),"Number");
-if (!$mod_uid) header('Location: ../modulesList.php?token='.$token);
+if (!$mod_uid) header('Location: ../modulesList.php);
 $sql="select * from sys_modules where mod_language='".$lang."' AND mod_uid=".admin::toSql(admin::getParam("mod_uid"),"Number");
 $db->query($sql);
 $modules = $db->next_record();
 $parent = admin::getDbValue("select mod_parent from sys_modules where mod_uid=".$modules["mod_parent"]);
 ?>
 <br />
-<form name="frmModules" method="post" action="code/execute/modulesUpd.php?token=<?=admin::getParam('token')?>" enctype="multipart/form-data" >
+<form name="frmModules" method="post" action="code/execute/modulesUpd.php" enctype="multipart/form-data" >
 <input type="hidden" name="mod_uid" id="mod_uid" value="<?=$modules["mod_uid"]?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
@@ -120,7 +120,7 @@ $parent = admin::getDbValue("select mod_parent from sys_modules where mod_uid=".
 		</a> 
 		</td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="modulesList.php?token=<?=admin::getParam('token')?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="modulesList.php" ><?=admin::labels('cancel');?></a> 
 		</td>
 		</tr>
 	</table>

@@ -102,7 +102,7 @@ function aprobarInf(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./informeList.php?token=<?=admin::getParam("token")?>';
+								window.location.href='./informeList.php';
 							}
 					});
 					 
@@ -129,7 +129,7 @@ function rechazarInf(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./informeList.php?token=<?=admin::getParam("token")?>';
+								window.location.href='./informeList.php';
 							}
 					});
 					 
@@ -155,7 +155,7 @@ function adjudicarSubasta(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./informeList.php?token=<?=admin::getParam("token")?>';
+								window.location.href='./informeList.php';
 							}
 					});
 					 

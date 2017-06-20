@@ -16,7 +16,7 @@ function removeList(id){
 					  $.ajax({
 						url: 'code/execute/modulesDel.php',
 						type: 'POST',
-						data: 'uid='+uid+'&token='+token
+						data: 'uid='+uid
 					});
 		 
 			}
@@ -40,7 +40,7 @@ function removeListCat(id){
 					  $.ajax({
 						url: 'code/execute/modulesCatDel.php',
 						type: 'POST',
-						data: 'uid='+id+'&token='+token
+						data: 'uid='+id
 					});
 				 /********BeginResetColorDelete*************/  
 				 //resetOrderRemove(id);  
@@ -69,7 +69,7 @@ function modulesCS(uid,status){
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
 	token = $.getUrlVar('token');
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}
 	
 function modulesCSC(uid,status){
@@ -88,5 +88,5 @@ function modulesCSC(uid,status){
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores
 	token = $.getUrlVar('token');
-	ajax.send("uid="+uid+"&status="+status+"&token="+token)
+	ajax.send("uid="+uid+"&status="+status)
 	}

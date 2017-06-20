@@ -1,6 +1,6 @@
-<? include ("core/admin.php"); ?>
-<? include ("core/safeHtml.php"); ?>
-<? admin::initialize('offices','officesEdit'); ?>
+<?php include ("core/admin.php"); 
+include ("core/safeHtml.php"); 
+admin::initialize('offices','officesEdit'); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>
 <head>

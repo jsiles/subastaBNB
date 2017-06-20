@@ -27,18 +27,13 @@ $db->query($sql);
             $modAccess = admin::getDBvalue("select top 1 a.mus_mod_uid from sys_modules_users a, sys_modules b where a.mus_rol_uid=".$_SESSION["usr_rol"]." and a.mus_mod_uid=b.mod_uid and b.mod_status='ACTIVE' and b.mod_parent=0 order by b.mod_position");
             $urlSite = admin::getDBValue("select mod_index from sys_modules where mod_uid=". $modAccess ." and mod_status='ACTIVE'");
             if($urlSite){
-                 if(strpos($urlSite, '?')!==FALSE){
-                                                $urlSite.="&token=".$token;
-                                            }else{
-                                                $urlSite.="?token=".$token;
-                                            }
-                                           // echo $urlSite;die;
+             
             header("Location: ".PATH_DOMAIN."/admin/".$urlSite);
             }else { //echo "@@";die;
-                header("Location: ".PATH_DOMAIN."/admin/index.php?token=".$token);
+                header("Location: ".PATH_DOMAIN."/admin/index.php");
             }
         }
         else {
             //echo "##";die;
-            header("Location: ".PATH_DOMAIN."/admin/userList.php?token=".$token);		
+            header("Location: ".PATH_DOMAIN."/admin/userList.php");		
         }

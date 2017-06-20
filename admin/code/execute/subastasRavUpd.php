@@ -12,7 +12,7 @@ $rav_monto1 =admin::getParam("rav_monto1");
 $rav_tipo =admin::getParam("rav_tipo");
 $rav_status =(admin::getParam("rav_status")==1)?"ACTIVE":"INACTIVE";
 $rav_moneda = admin::getParam("rav_moneda");
-$rav_uni_uid =admin::getParam("rav_uni_uid");
+$rav_uni_uid =admin::getParam("rav_uni_uid", "strip");
 
     $sql="update mdl_rav set ".
          "rav_rol_uid= ". $rav_rol.
@@ -34,5 +34,5 @@ $rav_uni_uid =admin::getParam("rav_uni_uid");
    }
    }
    //die;
-header("Location: ../../subastasRavList.php?token=$token&tipUid=$rav_tipo");	
+header("Location: ../../subastasRavList.php?tipUid=".$rav_tipo);	
 ?>

@@ -1,6 +1,4 @@
 <?php
-/*if(isset($_GET['PHPSESSID'])){@session_start();$_GET['PHPSESSID']=false;@session_destroy();}
-unset($_GET['PHPSESSID']);*/
 include_once ("path.php");
 require_once("safeHtml.php");
 //require_once (PATH_DOMAIN.'/admin/csrf-magic/csrf-magic.php');
@@ -23,8 +21,13 @@ $nivel=0;
 
 $array_temporal =array(); // used for getFullUr
 
-class admin
-	{
+if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
+    $redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: ' . $redirect);
+    exit();
+}
+class admin{
     function  __construct()
     {
         $path = PATH_ROOT."/img/banner/";
@@ -459,7 +462,7 @@ class admin
       $rs->query("update sys_session set ses_lastactivity=$tiempoNuevo where (ses_user_uid=" .admin::toSql($uidClient,"Integer"). ")");
     }
 
-		if(!$uidClient) header("Location: ".$domain."/session/");
+		if(!$uidClient) header("Location: ".$domain."/1/");
 		}
 	/*********************************
 	function: initialize                     
@@ -479,10 +482,13 @@ class admin
 		//@session_start();
 //		Verifying token
 		global $basedatos, $host, $user,$pass,$domain;
-        $rs = new DBmysql();
-		$sql = "select suv_status from sys_users_verify where suv_cli_uid='".$_SESSION["usr_uid"]."' and suv_token='".admin::getParam("token")."' and suv_ip='".$_SERVER['REMOTE_ADDR']."'";
-		//print_r($sql);
+                self::checkIP();
+                $rs = new DBmysql();
+		$sql = "select suv_status from sys_users_verify where suv_cli_uid='".$_SESSION["usr_uid"]."' and suv_token='".admin::getSession("token")."' and suv_ip='".$_SERVER['REMOTE_ADDR']."'";
+		//$sql = "select suv_status from sys_users_verify where suv_cli_uid='".$_SESSION["usr_uid"]."' and suv_ip='".$_SERVER['REMOTE_ADDR']."' and suv_status=0";
+		//echo($sql);//die;
 		$rs->query($sql);
+                //print_r($rs);die;
         if ($row = $rs->next_record()){
         	if ( $row["suv_status"] === "0") {
         		/*begin autenticated */
@@ -499,10 +505,10 @@ class admin
 								unset($SESSION["usr_uid"]) ;
 								if($redirect){
 									//die('1');
-									header('Location: '.PATH_DOMAIN.'/admin/logout.php?token='.admin::getParam('token') );
+									header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 									}
 					        	else 
-					        		die('No tiene permisos');
+					        		header('Location: '.PATH_DOMAIN.'/admin/logout.php');//die('No tiene permisos');
                                                         }else{
                                                             
                                                             ///ACA DEBEMOS VER Q SE HACE PARA LOS Q NO TIENEN PERMISO
@@ -511,11 +517,7 @@ class admin
                                                                 $modAccess = admin::getDBvalue("select top 1 a.mus_mod_uid from sys_modules_users a, sys_modules b where a.mus_rol_uid=".$_SESSION["usr_rol"]." and a.mus_mod_uid=b.mod_uid and b.mod_status='ACTIVE' and b.mod_parent=0 order by b.mod_position");
                                                                 $urlSite = admin::getDBValue("select mod_index from sys_modules where mod_uid=". $modAccess ." and mod_status='ACTIVE'");
                                                                 if($urlSite){
-                                                                     if(strpos($urlSite, '?')!==FALSE){
-                                                                                                    $urlSite.="&token=".$token;
-                                                                                                }else{
-                                                                                                    $urlSite.="?token=".$token;
-                                                                                                }
+                                                                    
                                                                 //header("Location: ".PATH_DOMAIN."/admin/".$urlSite);
                                                                 }//else header("Location: ".PATH_DOMAIN."/index.php");
                                                             }*/
@@ -526,19 +528,19 @@ class admin
 	        else {
 	        		if($redirect){
 	        			//die('2');
-						header('Location: '.PATH_DOMAIN.'/admin/logout.php?token='.admin::getParam('token'));
+						header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 						}
 		        	else 
-		        		die('No tiene permisos');
+		        		header('Location: '.PATH_DOMAIN.'/admin/logout.php');//die('No tiene permisos');
 	        }
         }
         else {
         	if($redirect){
         		//die('3');
-				header('Location: '.PATH_DOMAIN.'/admin/logout.php?token='.admin::getParam('token'));
+				header('Location: '.PATH_DOMAIN.'/admin/logout.php');
 				}
         	else 
-        		die('No tiene permisos');
+        		header('Location: '.PATH_DOMAIN.'/admin/logout.php');//die('No tiene permisos');
         }
 	
 	 }
@@ -666,11 +668,11 @@ class admin
                                                     $urlModule=$urlModule."?";
                                                 }
 					 if ($row['mod_uid']==$indexMenu) {
-					  	$labelsMenu .= '<li><a id="first" title="'.$row['mod_name'].'" href="'.$urlModule.'token='.$_GET["token"].'&mod_uid='.$mod_uid.'">'.$row['mod_name'].'</a></li>'; 
+					  	$labelsMenu .= '<li><a id="first" title="'.$row['mod_name'].'" href="'.$urlModule.'mod_uid='.$mod_uid.'">'.$row['mod_name'].'</a></li>'; 
                                          }
                                          else
                                          {
-					  	$labelsMenu .= '<li><a title="'.$row['mod_name'].'" href="'.$urlModule.'token='.$_GET["token"].'&mod_uid='.$mod_uid.'">'.$row['mod_name'].'</a></li>';						
+					  	$labelsMenu .= '<li><a title="'.$row['mod_name'].'" href="'.$urlModule.'mod_uid='.$mod_uid.'">'.$row['mod_name'].'</a></li>';						
                                          }
 					}
         }
@@ -695,15 +697,13 @@ class admin
 		global $labelsSubMenu;
 		global $indexMenu, $indexSubMenu;
 		if ($lang=='') $lang=$lang_default;
-		
-		 
           $rs = new DBmysql();
-       if($indexMenu){
+          if($indexMenu){
 	        $sqldat = "select mod_uid, mod_name, mod_index from sys_modules, sys_modules_users where mus_mod_uid=mod_uid and mod_status='ACTIVE' and mod_parent=".$indexMenu." and mod_language='".$lang."' and mus_rol_uid='".$_SESSION["usr_rol"]."' and mus_delete=0 and mus_place='MODULE' group by mod_uid, mod_name, mod_index order by mod_uid";
-                //echo $sqldat;
+                //echo $sqldat;die;
 	        $rs->query($sqldat);
 	        while ($row = $rs->next_record()){
-					$params = (isset($_GET["con_parent"]) ? "con_parent=".admin::toSql(safeHtml($_GET["con_parent"]),"Number")."&token=".$_GET['token'] ."&mod_uid=".$row['mod_uid'] : "token=".$_GET['token']."&mod_uid=".$row['mod_uid']);
+					$params = (!empty(self::getParam("con_parent")) ? "con_parent=".admin::toSql(safeHtml(self::getParam("con_parent")),"Number")."&mod_uid=".$row['mod_uid'] : "mod_uid=".$row['mod_uid']);
                                         $urlSubModule =$row['mod_index'];
                                                 if(strpos($urlSubModule, '?')!==FALSE){
                                                     $urlSubModule=$urlSubModule."&";
@@ -712,8 +712,8 @@ class admin
                                                 }
 						if ($row['mod_uid']==$indexSubMenu) $labelsSubMenu .= $row['mod_name'];
 						else $labelsSubMenu .= "<a title=\"".$row['mod_name']."\" href=\"".$urlSubModule.$params."\" class=\"submenu\">".$row['mod_name']."</a>";
-	        }
-       }
+                        }
+                    }
 
 		return $labelsSubMenu;
 		}
@@ -799,7 +799,7 @@ class admin
          sin importar el método de transferencia,
          ni la versión de PHP que se utiliza
     *********************************/       
-	public static function getParam($param_name)
+	public static function getParam($param_name,$type="")
 		{
 		global $HTTP_POST_VARS;
 		global $HTTP_GET_VARS;
@@ -814,7 +814,10 @@ class admin
 		$param_value = $_POST[$param_name];
 		else if(isset($_GET[$param_name]))
 		$param_value = $_GET[$param_name];
+                if($type=="strip")
 		return self::strip($param_value);
+                else
+		return self::doFilter($param_value);
 		}
     /*********************************
      function: getSession                     
@@ -913,7 +916,7 @@ public static function setSession($param_name, $param_value)
          un texto comenta los caracteres no validos
          ' \ evitando que se realice un SQLInjection
     *********************************/          
-	public static function toSql($value, $type)
+	public static function toSql($value, $type="")
 		{
 		if(!strlen($value))
 			if($type == "Number") return 0;
@@ -926,9 +929,39 @@ public static function setSession($param_name, $param_value)
 			}
 			else
 				{
-				return admin::strip($value);	
+                                    if($type=="strip")
+                                        return self::doFilter($value,"sql");
+                                    else 
+                                        return self::strip($value);
 				}
 		}
+        /*********************************
+     function: doFilter                
+     @paramIn: 
+                $value
+     @paramOut:  
+                $value   
+     description:   
+         función para eliminar valores introducidos 
+         y no validos en base de datos ejemplo /.    
+         * 
+         **********************************/    
+        public static function doFilter($value, $mode="html") {
+        switch ($mode) {
+            case 'html':
+                $value = stripslashes($value);
+                $value = strip_tags($value);
+                $value = addslashes($value);
+                $value = htmlspecialchars($value);
+                break;
+            case 'sql':
+                $value = stripslashes($value);
+                $value = preg_replace(sql_regcase('/(from|select|insert|delete|where|drop table|show tables|#|\*| |\\\\)/'),'',$value);
+                $value = trim($value);                
+                break;
+        }
+        return $value;
+    }
     /*********************************
      function: strip                
      @paramIn: 
@@ -1923,12 +1956,12 @@ public static function validaRav($uid, $rol, $tipologia, $moneda, $monto, $unida
                 $montoMenor = $montoL["rav_monto_inf"];
                 $montoMayor = $montoL["rav_monto_sup"];
                 //echo $monto."##".$montoMenor.">>".$montoMayor;
-                self::doLog("OK- UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." MONTO:".$monto." UNIDAD:".$unidadUid." MONTO MENOR:".$montoMenor." MONTO MAYOR:".$montoMayor, "RAV", $debug);
+                self::doLog("OK- UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." MONTO:".$monto." UNIDAD:".$unidadUid." MONTO MENOR:".$montoMenor." MONTO MAYOR:".$montoMayor, "RAV", SAVELOG);
                 if(($montoMayor!=0)&&(is_numeric($montoMayor))){
                     if(($montoBase>=$montoMenor)&&($montoBase<=$montoMayor)) {$rolAplica=1;}
                 }else{if(($montoBase>=$montoMenor)&&(is_numeric($montoMenor))) {$rolAplica=1;}}                
             }else {
-                   self::doLog("FAILED- UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." MONTO:".$monto." UNIDAD:".$unidadUid,"RAV",$debug);
+                   self::doLog("FAILED- UID:". $uid." Rol:".$rol." TIPO:".$tipologia." MONEDA:".$moneda." MONTO:".$monto." UNIDAD:".$unidadUid,"RAV",SAVELOG);
             }
             return $rolAplica;
 }
@@ -1943,7 +1976,7 @@ public static function insertMail($cli_uid,$nti_uid, $attach, $cli_email, $sol_u
     //self::doLog($sSQL);
     $mailDB->query($sSQL);    
 }
-public static function doLog($text, $file="ULOG", $debug=false)
+public static function doLog($text, $file="ULOG", $debug=SAVELOG)
 {
       // open log file
     if($debug){
@@ -1980,17 +2013,77 @@ public static function checkPassword($pwd, &$errors) {
 public static function generateToken( $formName ) 
 {
     $secretKey = 'gsfhs154aergz2#33';
-    /*if ( !session_id() ) {
+    if ( !session_id() ) {
         session_start();
-    }*/
+    }
     $sessionId = session_id();
- 
+              
     return sha1( $formName.$sessionId.$secretKey );
  
 }
 public static function checkToken( $token, $formName ) 
+{   
+   // echo "@@".$token.":";
+    $tToken=self::generateToken( $formName );
+    self::doLog("Token1=".$tToken." Token2=".$token,"CHECKTOKEN", SAVELOG);
+    if($token!=$tToken) return false;
+    else return true;
+
+}
+public static function getIpAddress() {
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+ 
+    return $ipaddress;
+}
+public static function checkIP() 
+{ 
+  $sw=false;
+  $ipRemota = self::getIpAddress();
+  $lsIp = new DBmysql();
+  $lsIp->query("select lis_ip from mdl_listIp where lis_delete=0");
+  while($lIp=$lsIp->next_record()){
+      $lista= $lIp["lis_ip"];
+      self::doLog("ipRemota: ".$ipRemota." IpLista: ".$lista." REMOTE_ADDR: ".$_SERVER['REMOTE_ADDR'],"IPLOG");
+  if(strstr($ipRemota, $lista)){       
+      $sw=true;
+      break;
+    }
+  }
+  if(IP_CHECK) {if(!$sw) { header("Location: 403.php");}}
+}
+public static function lockUser()
 {
-    return $token === self::generateToken( $formName );
+    $timeLock = LOCK_TIME;
+    if((!isset($timeLock))||(!is_numeric($timeLock))) $timeLock=10;
+    $ipRemota = self::getIpAddress();
+    $lsIp=self::getDbValue("select count(*) from mdl_lock where loc_estado=0 and loc_retry>=3 and loc_ipV4='".$ipRemota."' and GETDATE()<loc_datetime");
+    if($lsIp>0) { header("HTTP/1.0 403 Forbidden"); sleep($timeLock);die;}
+    else { self::getDbValue("delete from mdl_lock where loc_estado=0 and loc_ipV4='".$ipRemota."' and GETDATE()>loc_datetime");}
+}
+public static function lockFailed()
+{
+    $timeLock = LOCK_TIME;
+    if((!isset($timeLock))||(!is_numeric($timeLock))) $timeLock=10;
+    $dateTime = new DateTime;
+    $dateTime->modify("+{$timeLock} minutes");
+    $ipRemota = self::getIpAddress();
+    $lsIp=self::getDbValue("select count(*) from mdl_lock where loc_ipV4='".$ipRemota."' and loc_estado=0");
+    if($lsIp>0) self::getDbValue ("update mdl_lock set loc_retry+=1, loc_datetime='". $dateTime->format ("Y-m-d H:i:s") ."'");
+    else  self::getDbValue ("insert into mdl_lock (loc_ipV4, loc_datetime, loc_retry, loc_estado) values ( '".$ipRemota."','". $dateTime->format ("Y-m-d H:i:s") ."',1,0)");
 }
 }// LLAVE FINAL DE LA CLASE	
 ?>

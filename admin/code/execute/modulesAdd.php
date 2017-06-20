@@ -2,14 +2,14 @@
 include_once("../../core/admin.php");
 admin::initialize('modules','modulesList',false);
 
-$mod_name	=	admin::toSql(safeHtml($_POST["mod_name"]),"Text");
-$mod_alias	=	admin::toSql(safeHtml($_POST["mod_alias"]),"Text");
-$mod_index	=	admin::toSql(safeHtml($_POST["mod_index"]),"Text");
-$mod_status =	admin::toSql(safeHtml($_POST["dol_status"]),"Text");
-$mod_parent =	admin::toSql(safeHtml($_POST["doc_dca_uid"]),"Number");
+$mod_name	=	admin::toSql(safeHtml(admin::getParam("mod_name")),"Text");
+$mod_alias	=	admin::toSql(safeHtml(admin::getParam("mod_alias")),"Text");
+$mod_index	=	admin::toSql(safeHtml(admin::getParam("mod_index")),"Text");
+$mod_status =	admin::toSql(safeHtml(admin::getParam("dol_status")),"Text");
+$mod_parent =	admin::toSql(safeHtml(admin::getParam("doc_dca_uid")),"Number");
 
 $token = admin::getParam('token');
-$nextUrl ='modulesList.php?token='.$token;
+$nextUrl ='modulesList.php';
 
 $mod_max = admin::getDBValue("select ifnull(max(mod_uid),0)+1 AS mod_max from sys_modules");
 

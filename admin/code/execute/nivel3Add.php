@@ -1,5 +1,6 @@
 <?php
 include_once("../../core/admin.php");
+admin::initialize('subastas','subastasList');
 $ca3_description =  admin::getParam("nivel3_desc");
 $ca2_uid=  admin::getParam("ca2_uid");
 if(strlen($ca3_description)>0&&$ca2_uid!=''){
@@ -10,7 +11,7 @@ $sql = "insert into mdl_categoria3(
 					)
 				values
 					(
-                                                $ca2_uid,
+                                                ".admin::toSql($ca2_uid, "Number").",
 						'".admin::toSql($ca3_description, "Text")."', 
 						0
 					)";
@@ -21,7 +22,7 @@ $db->query($sql);
 <select name="nivel3_uid" id="nivel3_uid" class="input">
     <option value="" selected="selected" >Seleccionar</option>
                	<?php
-                    $sql = "select ca3_uid, ca3_description from mdl_categoria3 where ca3_delete=0 and ca3_ca2_uid=$ca2_uid";
+                    $sql = "select ca3_uid, ca3_description from mdl_categoria3 where ca3_delete=0 and ca3_ca2_uid=".admin::toSql($ca2_uid, "Number");
 					$db2->query($sql);
 					while ($content=$db2->next_record())
 					{	

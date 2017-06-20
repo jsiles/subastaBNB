@@ -7,6 +7,7 @@ admin::initialize('users','createRoles',false);
 $rol_uid =admin::toSql(admin::getParam("rol_uid"),"Number");
 $rol_name = admin::toSql(safeHtml(admin::getParam("rol_name")),"String");
 $sqldat = "update mdl_roles set rol_description='".$rol_name."' where rol_uid= ".$rol_uid;
+//echo $sqldat;
 $db->query($sqldat);
 /*
 admin::getDBvalue("delete from sys_modules_users where mus_rol_uid=".$rol_uid." and mus_place='MODULE'");
@@ -40,14 +41,13 @@ if(is_array($modId)){
     }
 }
 */
-$modId = admin::getParam("mod_uid");
-/*echo "Sal";
-print_r($modId);die;*/
-admin::getDBvalue("delete from sys_modules_users where mus_rol_uid=".$rol_uid." and mus_place='MODULE'");
-admin::getDbValue("delete from sys_modules_access where moa_rol_uid=$rol_uid");
+$modId = admin::getParam("mod_uid","strip");
+
                         
 
 if(is_array($modId)){
+admin::getDBvalue("delete from sys_modules_users where mus_rol_uid=".$rol_uid." and mus_place='MODULE'");
+admin::getDbValue("delete from sys_modules_access where moa_rol_uid=$rol_uid");
     foreach ($modId as $key => $value) {
         $sql = "insert into sys_modules_users (mus_rol_uid,mus_mod_uid,mus_place,mus_delete) values (".$rol_uid.", ".$key.", 'MODULE', 0)";
         $db->query($sql);
@@ -74,5 +74,5 @@ if(is_array($modId)){
 
 $token=admin::getParam("token");
 
-header('Location: ../../rolesList.php?token='.$token);
+header('Location: ../../rolesList.php');
 ?>

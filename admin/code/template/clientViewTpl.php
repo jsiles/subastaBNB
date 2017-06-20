@@ -5,7 +5,7 @@ $db->query($sql);
 $regusers = $db->next_record();
 ?>
 <br />
-<form name="frmClient" method="post" action="code/execute/clientUpd.php?token=<?=admin::getParam("token");?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmClient" method="post" action="code/execute/clientUpd.php" onsubmit="return false;" enctype="multipart/form-data">
 <input type="hidden" name="cli_uid" value="<?=$regusers["cli_uid"]?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -228,7 +228,7 @@ $regusers = $db->next_record();
 				
 				</td>
           <td width="75%" style="font-size:11px;">
-		  		<a href="clientList.php?token=<?=admin::getParam("token")?>" class="button">Volver</a> 
+		  		<a href="clientList.php" class="button">Volver</a> 
 		  </td>
         </tr>
       </table></div>

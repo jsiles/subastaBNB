@@ -7,7 +7,7 @@ admin::initialize('solicitud','solicitudAdd');
 $tipUid=  admin::getParam("tipUid");
 $token= admin::getParam("token");
 $solObservaciones=  admin::getParam("sol_observaciones");
-$rav_uni_uid =admin::getParam("rav_uni_uid");
+$rav_uni_uid =admin::getParam("rav_uni_uid", "strip");
 $cli_uid =  admin::getParam("sol_cli_uid");
 //print_r($cli_uid);die;
 $sol_status =  admin::getParam("sol_status");
@@ -79,5 +79,5 @@ if(is_array($cli_uid)){
    }
 }
 //die;
-header('Location: ../../solicitudNew2.php?token='.$token."&sol_uid=".$solUid."&tipUid=".$tipUid);	
+header('Location: ../../solicitudNew2.php?sol_uid='.$solUid."&tipUid=".$tipUid);	
 ?>

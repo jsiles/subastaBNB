@@ -36,5 +36,5 @@ $db->query($sql);
 // CONSTRUIMOS EL NUEVO SELECT	
 $token=admin::getParam("token");
 
-header('Location: ../../divisasEdit.php?token='.$token.'&pro_uid='.$pro_uid.'&sub_uid='.$sub_uid);
+header('Location: ../../divisasEdit.php?pro_uid='.$pro_uid.'&sub_uid='.$sub_uid);
 ?>

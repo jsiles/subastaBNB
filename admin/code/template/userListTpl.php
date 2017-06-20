@@ -56,7 +56,7 @@ if ($nroReg>0){
         $moduleId=6;
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink('usersNew')?>?token=<?=admin::getParam("token")?>"><?=admin::modulesLabels('usersNew')?></a>
+            <a href="<?=admin::modulesLink('usersNew')?>"><?=admin::modulesLabels('usersNew')?></a>
         <?php
         }
         ?>
@@ -67,7 +67,7 @@ if ($nroReg>0){
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmbuySearch" action="userList.php" >
+        <form  method="post" name="frmbuySearch" action="userList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -89,17 +89,17 @@ if ($nroReg>0){
   <table width="100%" border="0">
 	<tr>
     	<td width="14%" class="list1a" style="color:#16652f">
-         	<a href="userList.php?order=<?=$titOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$titClass;?>">
+         	<a href="userList.php?order=<?=$titOrder?><?=$searchURL?>" class="<?=$titClass;?>">
 		 		<?=admin::labels('firstname');?>:
             </a>
         </td>
 		<td width="14%" class="list1a" style="color:#16652f">
-        	<a href="userList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>">
+        	<a href="userList.php?order=<?=$nameOrder?><?=$searchURL?>" class="<?=$nameClass;?>">
 				<?=admin::labels('lastname');?>:
             </a>
         </td>
 		<td width="14%">
-        	<a href="userList.php?order=<?=$dateOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$dateClass;?>">
+        	<a href="userList.php?order=<?=$dateOrder?><?=$searchURL?>" class="<?=$dateClass;?>">
 				<?=admin::labels('user','userrol');?>:
             </a>
         </td>
@@ -162,7 +162,7 @@ if ($nroReg>0){
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=5 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){
             ?>
-		   <a href="userView.php?usr_uidA=<?=$usr_uidA?>&token=<?=admin::getParam("token");?>">
+		   <a href="userView.php?usr_uidA=<?=$usr_uidA?>">
 		<img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 		</a>
             <?php 
@@ -179,7 +179,7 @@ if ($nroReg>0){
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=5 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){
             ?>
-		<a href="userEdit.php?usr_uidA=<?=$usr_uidA?>&token=<?=admin::getParam("token");?>">
+		<a href="userEdit.php?usr_uidA=<?=$usr_uidA?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
             <?php 

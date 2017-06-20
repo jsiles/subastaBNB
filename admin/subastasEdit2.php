@@ -106,7 +106,7 @@ function removeList(id){
 					  $.ajax({
 						url: 'code/execute/productDel.php',
 						type: 'POST',
-						data: 'uid='+id+'&token=<?=admin::getParam("token")?>'
+						data: 'uid='+id+''
 					});
 				   
 				 }

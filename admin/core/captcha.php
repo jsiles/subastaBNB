@@ -1,6 +1,7 @@
 <?php
 require_once 'admin.php';
-$code=admin::getParam("t");
+$code=admin::getParam("t","strip");
+$code=SymmetricCrypt::Decrypt($code);
 $im = imagecreatetruecolor(100, 40);
 $bg = imagecolorallocate($im, 22, 86, 165); //background color blue
 $fg = imagecolorallocate($im, 255, 255, 255);//text color white

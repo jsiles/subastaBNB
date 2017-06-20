@@ -25,6 +25,31 @@ function verifyUsers()
 			sw=false;
 		}
         
+        re = /[0-9]/;
+        if(!re.test(document.getElementById('usr_pass').value)) {
+          //alert("Error: password must contain at least one number (0-9)!");
+            document.getElementById('usr_pass').className='inputError';
+            document.getElementById('div_usr_pass').innerHTML="Debe contener por lo menos un numero(0-9)"
+            document.getElementById('div_usr_pass').style.display='';
+            sw=false;
+        }
+        re = /[a-z]/;
+        if(!re.test(document.getElementById('usr_pass').value)) {
+          //alert("Error: password must contain at least one lowercase letter (a-z)!");
+            document.getElementById('usr_pass').className='inputError';
+            document.getElementById('div_usr_pass').innerHTML="Debe contener por lo menos una letra(a-z)"
+            document.getElementById('div_usr_pass').style.display='';
+            sw=false;
+        }
+        re = /[A-Z]/;
+        if(!re.test(document.getElementById('usr_pass').value)) {
+          //alert("Error: password must contain at least one uppercase letter (A-Z)!");
+            document.getElementById('usr_pass').className='inputError';
+            document.getElementById('div_usr_pass').innerHTML="Debe contener por lo menos una letra mayuscula(A-Z)"
+            document.getElementById('div_usr_pass').style.display='';
+            sw=false;
+        }
+        
 	if (document.getElementById('usr_email').value==''){
 		document.getElementById('usr_email').className='inputError';
 		document.getElementById('div_usr_email').style.display='';
@@ -57,7 +82,31 @@ function verifyUsersEdit()
                     document.getElementById('div_usr_pass').innerHTML="Cantidad de caracteres minimo es de 8"
 			document.getElementById('div_usr_pass').style.display='';
 			sw=false;
-		}         
+		}
+                re = /[0-9]/;
+                if(!re.test(document.getElementById('usr_pass').value)) {
+                  //alert("Error: password must contain at least one number (0-9)!");
+                    document.getElementById('usr_pass').className='inputError';
+                    document.getElementById('div_usr_pass').innerHTML="Debe contener por lo menos un numero(0-9)"
+                    document.getElementById('div_usr_pass').style.display='';
+                    sw=false;
+                }
+                re = /[a-z]/;
+                if(!re.test(document.getElementById('usr_pass').value)) {
+                  //alert("Error: password must contain at least one lowercase letter (a-z)!");
+                    document.getElementById('usr_pass').className='inputError';
+                    document.getElementById('div_usr_pass').innerHTML="Debe contener por lo menos una letra(a-z)"
+                    document.getElementById('div_usr_pass').style.display='';
+                    sw=false;
+                }
+                re = /[A-Z]/;
+                if(!re.test(document.getElementById('usr_pass').value)) {
+                  //alert("Error: password must contain at least one uppercase letter (A-Z)!");
+                    document.getElementById('usr_pass').className='inputError';
+                    document.getElementById('div_usr_pass').innerHTML="Debe contener por lo menos una letra mayuscula(A-Z)"
+                    document.getElementById('div_usr_pass').style.display='';
+                    sw=false;
+                }
             }
        
 	if (sw){

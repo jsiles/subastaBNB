@@ -1,5 +1,6 @@
 <?php
 include_once("../../core/admin.php");
+admin::initialize('subastas','subastasList');
 $searchA = admin::getParam("searchA");
 $sub_uid = admin::getParam("sub_uid");
 if ($searchA)

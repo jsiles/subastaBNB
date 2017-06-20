@@ -1,6 +1,6 @@
 <?php
 $ban_uid = admin::getParam("ban_uid");
-if(!$ban_uid) header('Location: bannerList.php?token='.admin::getParam("token"));
+if(!$ban_uid) header('Location: bannerList.php');
 	
 	$sql= "SELECT ban_file FROM mdl_banners where ban_uid='".$ban_uid."'";
 	$db->query($sql);
@@ -113,7 +113,7 @@ $(window).load(function () {
 		</div>
 			<br style="clear:both;"/>			
 			<!-- POSICIONES DE LA IMAGEN -->
-			<form name="thumbnail" method="post" action="code/execute/bannerUpd2.php?token=<?=admin::getParam("token").$skip;?>" enctype="multipart/form-data" >
+			<form name="thumbnail" method="post" action="code/execute/bannerUpd2.php" enctype="multipart/form-data" >
 			<input type="hidden" name="ban_uid" value="<?=$ban_uid?>" />
        
 			<input type="hidden" name="x1" value="" id="x1" />

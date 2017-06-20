@@ -37,7 +37,7 @@ function removeList(id){
 				var uid = m.find('#list').val();
 				  $('#'+id).fadeOut(500, function(){ $(this).remove(); });
 					  $.ajax({
-						url: 'code/execute/rolesDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/rolesDel.php',
 						type: 'POST',
 						data: 'uid='+id
 					});

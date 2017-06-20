@@ -6,7 +6,7 @@ admin::initialize('banners','bannerNew');
 $token=admin::getParam("token");
 $ban_uid=admin::getParam("ban_uid");
 
-if ($ban_uid=="") echo "<script>document.location.href='bannerList.php?token=".$token."';</script>";
+if ($ban_uid=="") echo "<script>document.location.href='bannerList.php';</script>";
 $til_image=admin::getDBvalue("SELECT ban_file FROM mdl_banners where ban_uid='".$ban_uid."'");
 
 //el crop se hara a los siguientes valores

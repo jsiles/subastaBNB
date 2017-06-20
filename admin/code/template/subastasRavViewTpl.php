@@ -25,7 +25,7 @@ $rav = $db->next_record();
 ?>
 <div id="DIV_WAIT1" style="display:none;"><img border="0" src="lib/loading.gif"></div>
 <br>
-    <form name="addRav" method="post" action="code/execute/subastasRavUpd.php?token=<?=admin::getParam("token")?>" enctype="multipart/form-data">
+    <form name="addRav" method="post" action="code/execute/subastasRavUpd.php" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
@@ -161,7 +161,7 @@ $rav = $db->next_record();
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-				    <a href="subastasRavList.php?token=<?=admin::getParam("token")?>&tipUid=<?=$tipUid?>" class="button">Volver</a>
+				    <a href="subastasRavList.php?tipUid=<?=$tipUid?>" class="button">Volver</a>
 				</td>
          
         </tr>

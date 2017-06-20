@@ -37,7 +37,7 @@ admin::initialize($opcionMenu, $opocionSubMenu);
 <script type="text/javascript" src="js/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="js/ajaxlib.js?version=<?=VERSION?>"></script>
 <script type="text/javascript" src="js/interface.js"></script>
-<script type="text/javascript" src="ckeditor/ckeditor.js">
+<script type="text/javascript" src="ck3d1tor/ckeditor.js">
 <!--BEGINIMPROMTU-->
 <link rel="stylesheet" type="text/css" href="css/impromptu.css">
 <script type="text/javascript" src="js/jquery.Impromptu.js"></script>

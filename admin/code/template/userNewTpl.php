@@ -1,5 +1,5 @@
 <br />
-<form name="frmUsers" method="post" action="code/execute/userAdd.php?token=<?=admin::getParam("token");?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmUsers" method="post" action="code/execute/userAdd.php" onsubmit="return false;" enctype="multipart/form-data">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
@@ -108,7 +108,7 @@
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="userList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="userList.php" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

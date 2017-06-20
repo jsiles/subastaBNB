@@ -53,7 +53,7 @@ if ($nroReg>0)
         $moduleId=15;
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink('clientNew')?>?token=<?=admin::getParam("token")?>"><?=admin::modulesLabels('clientNew')?></a>
+            <a href="<?=admin::modulesLink('clientNew')?>"><?=admin::modulesLabels('clientNew')?></a>
         <?php
         }
         ?>
@@ -64,7 +64,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmbuySearch" action="clientList.php" >
+        <form  method="post"  name="frmbuySearch" action="clientList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -85,8 +85,8 @@ if ($nroReg>0)
     <td colspan="2" width="98%">
   <table width="98%" border="0"  style="padding-left:17px;">
 	<tr>
-            <td width="15%" class="list1a" style="color:#16652f;"><a href="clientList.php?order=<?=$titOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$titClass;?>">NIT o CI:</a></td>
-            <td width="15%" class="list1a" style="color:#16652f;"><a href="clientList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>">Raz&oacute;n social:</a></td>
+            <td width="15%" class="list1a" style="color:#16652f;"><a href="clientList.php?order=<?=$titOrder?><?=$searchURL?>" class="<?=$titClass;?>">NIT o CI:</a></td>
+            <td width="15%" class="list1a" style="color:#16652f;"><a href="clientList.php?order=<?=$nameOrder?><?=$searchURL?>" class="<?=$nameClass;?>">Raz&oacute;n social:</a></td>
 	    <td width="15%" style="color:#16652f">Correo electr&oacute;nico:</td>
         <td width="15%" style="color:#16652f">Usuario:</td>
         <td width="10%" style="color:#16652f">Estado:</td>
@@ -144,7 +144,7 @@ while ($user_list = $pagDb->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if($valuePermit=='ACTIVE'){
             ?>
-    	<a href="clientView.php?cli_uid=<?=$cli_uid?>&token=<?=admin::getParam("token");?>">
+    	<a href="clientView.php?cli_uid=<?=$cli_uid?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php
@@ -161,7 +161,7 @@ while ($user_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=14 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
             if(($valuePermit=='ACTIVE')){
             ?>
-    	<a href="clientEdit.php?cli_uid=<?=$cli_uid?>&token=<?=admin::getParam("token");?>">
+    	<a href="clientEdit.php?cli_uid=<?=$cli_uid?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 	</a>
             <?php
@@ -296,7 +296,7 @@ else
         $moduleId=15;
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink('clientNew')?>?token=<?=admin::getParam("token")?>"><?=admin::modulesLabels('clientNew')?></a>
+            <a href="<?=admin::modulesLink('clientNew')?>"><?=admin::modulesLabels('clientNew')?></a>
         <?php
         }
         ?>
@@ -307,7 +307,7 @@ else
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmbuySearch" action="clientList.php" >
+        <form method="post"  name="frmbuySearch" action="clientList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>

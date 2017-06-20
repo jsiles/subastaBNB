@@ -18,5 +18,5 @@ $sql = "update mdl_subasta_informe set "
         . " where sua_uid=$sua_uid";
 //echo $sql;die;        
 $db->query($sql);
-header('Location: ../../informeList.php?token='.$token);
+header('Location: ../../informeList.php');
 ?>

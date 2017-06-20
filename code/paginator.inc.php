@@ -21,7 +21,7 @@
  * Establecimiento de la página actual.
  *------------------------------------------------------------------------
  */
- if (empty($_GET['_pagi_pg'])){
+ if (empty(admin::getParam('_pagi_pg'))){
 	//Si no se ha hecho click a ninguna página específica
 	//O sea si es la primera vez que se ejecuta el script
     //$_pagi_actual es la pagina actual-->será por defecto la primera.
@@ -29,7 +29,7 @@
  }else{
 	//Si se "pidió" una página específica:
 	//La página actual será la que se pidió.
-    $_pagi_actual = $_GET['_pagi_pg'];
+    $_pagi_actual = admin::getParam('_pagi_pg');
  }
 //------------------------------------------------------------------------
 

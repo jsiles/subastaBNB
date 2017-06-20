@@ -361,7 +361,7 @@ This is a list of all the values from the <code><b>$_REQUEST</b></code> array.
 		}
 
 	/**
-	* Prints a list of all the values from the <i>$_GET</i> array.
+	* Prints a list of all the values from the <i>GET</i> array.
 	*
 	* @access public
 	* @static
@@ -378,14 +378,14 @@ This is a list of all the values from the <code><b>$_REQUEST</b></code> array.
 		//
 		?>
 <div class="krumo-title">
-This is a list of all the values from the <code><b>$_GET</b></code> array.
+This is a list of all the values from the <code><b>GET</b></code> array.
 </div>
 		<?php
 		return krumo::dump($_GET);
 		}
 
 	/**
-	* Prints a list of all the values from the <i>$_POST</i> array.
+	* Prints a list of all the values from the <i>POST</i> array.
 	*
 	* @access public
 	* @static
@@ -402,7 +402,7 @@ This is a list of all the values from the <code><b>$_GET</b></code> array.
 		//
 		?>
 <div class="krumo-title">
-This is a list of all the values from the <code><b>$_POST</b></code> array.
+This is a list of all the values from the <code><b>POST</b></code> array.
 </div>
 		<?php
 		return krumo::dump($_POST);

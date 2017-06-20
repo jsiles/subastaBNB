@@ -1,5 +1,6 @@
-<? include_once ("core/admin.php"); ?>
-<? admin::initialize('labels','labelsList'); ?>
+<?php
+include_once ("core/admin.php"); 
+admin::initialize('labels','labelsList'); ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>

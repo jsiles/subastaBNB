@@ -2,6 +2,7 @@
 include_once("../../core/admin.php");
 include_once("../../core/files.php");
 include_once("../../core/images.php");
+admin::initialize('subastas','subastasList');
 $category=admin::getParam("unidad");
 
 // REGISTRAMOS LA CATEGORIA

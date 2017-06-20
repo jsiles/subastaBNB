@@ -1,6 +1,6 @@
 <?php
 include_once ("../../core/admin.php"); 
-
+admin::initialize('subastas','subastasList');
 $mcp_exp_day = admin::toSql(admin::getParam("dates"),"String");
 $mcl_cost= admin::toSql(admin::getParam("val"),"Number");
 

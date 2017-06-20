@@ -2,25 +2,25 @@
 //error_reporting(E_ALL^E_NOTICE);
 include ("../../core/admin.php");
 include('../../core/paginator.class.php');
-
+admin::initialize('subastas','subastasList');
 // instantiate mysqli connection
 $conn = new mysqli('localhost', DBUSER, DBPASSWORD,DATABASE) ; //DBHOST
 
 //$query = "SELECT * FROM customers WHERE id > 1";
 //$query = "SELECT * FROM customers";
 
-if($_GET['by_category'])
+if(admin::getParam('by_category'))
 	$query = "SELECT nel_new_uid,nel_title FROM mdl_news left join mdl_news_languages on new_uid=nel_new_uid WHERE nel_language='es'";
 else 
 	$query = "SELECT nel_new_uid,nel_title FROM mdl_news_languages WHERE nel_language='es'";
 
 
 // set the searching query
-if(!empty($_GET['search'])){
-	$searchQuery = $_GET['search'];
+if(!empty(admin::getParam('search'))){
+	$searchQuery = admin::getParam('search');
 }
 
-$pageId= intval($_GET['page']);
+$pageId= intval(admin::getParam('page'));
 if (empty($pageId)) {
 	$pageId = 1;
 }else{
@@ -38,7 +38,7 @@ $paginator = new Paginator($pageId,$recPerPage,$query,$conn);
 // string or array of fields
 //$paginator->fields = 'name';
 $paginator->fields = 'nel_title';
-$paginator->by_category = $_GET['by_category'];
+$paginator->by_category = admin::getParam('by_category');
 
 $paginator->searchQuery = $searchQuery;
 

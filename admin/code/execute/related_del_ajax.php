@@ -1,9 +1,9 @@
 <?php
 include_once ("../../core/admin.php");
 include_once("../../core/safeHtml.php");
-
-$rel_new_uid = admin::toSql(safeHtml($_GET['rel_new_uid']),"Number");
-$rel_new_uid2 = admin::toSql(safeHtml($_GET['rel_new_uid2']),"Number");
+admin::initialize('subastas','subastasList');
+$rel_new_uid = admin::toSql(safeHtml(admin::getParam('rel_new_uid')),"Number");
+$rel_new_uid2 = admin::toSql(safeHtml(admin::getParam('rel_new_uid2')),"Number");
 
 		$sql='update mdl_news_relationship set rel_delete=1 where rel_new_uid='.$rel_new_uid.' and rel_new_uid2='.$rel_new_uid2;	
 		$db->query($sql);

@@ -3,7 +3,7 @@ $rol_uid = admin::toSql(admin::getParam("rol_uid"),"Number");
 $titleRol=admin::getDBvalue("SELECT rol_description FROM mdl_roles where rol_uid=".$rol_uid);
 ?>
 <br />
-<form name="frmRoles" method="post" action="code/execute/rolesUpd.php?token=<?=admin::getParam("token");?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmRoles" method="post" action="code/execute/rolesUpd.php" onsubmit="return false;" enctype="multipart/form-data">
 <input name="rol_uid" type="hidden" value="<?=$rol_uid?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -205,7 +205,7 @@ while($row = $db->next_record()){
 	  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 			<tr>
 				<td width="59%" align="center">
-                                    <a href="rolesList.php?token=<?=admin::getParam("token")?>" class="button" >Volver</a> 
+                                    <a href="rolesList.php" class="button" >Volver</a> 
 				</td>
         </tr>
       </table></div>

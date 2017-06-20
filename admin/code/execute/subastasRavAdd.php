@@ -11,7 +11,7 @@ $rav_uid++;
 $rav_rol =admin::getParam("rav_rol");
 $rav_monto =admin::getParam("rav_monto"); 
 $rav_monto1 =admin::getParam("rav_monto1");
-$rav_uni_uid =admin::getParam("rav_uni_uid");
+$rav_uni_uid =admin::getParam("rav_uni_uid", "strip");
 $rav_tipo =admin::getParam("rav_tipo");
 $rav_status =(admin::getParam("rav_status")==1)?'ACTIVE':'INACTIVE';
 $rav_moneda = admin::getParam("rav_moneda");
@@ -35,5 +35,5 @@ $rav_moneda = admin::getParam("rav_moneda");
   }
    }
 //die;
-header("Location: ../../subastasRavList.php?tipUid=$rav_tipo&token=$token");	    
+header("Location: ../../subastasRavList.php?tipUid=$rav_tipo");	    
 ?>

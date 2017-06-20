@@ -22,7 +22,7 @@ if ($con_parent2!=$con_parentant)
     $position = $position + 1;
 }else
 {
- $position = $_POST["con_position"];
+ $position = admin::getParam("con_position");
 }
 
 if ($con_parent==0&&$con_parent2==0)
@@ -45,19 +45,19 @@ $sql = "update mdl_contents set
 							con_level=" . $conlevel . ", 							
 							con_updateuser=" . $_SESSION["usr_uid"] . ", 
 							con_updatedate=GETDATE()
-		where con_uid='" . $_POST["con_uid"]."'";
+		where con_uid='" . admin::getParam("con_uid")."'";
         //echo $sql;die;
         $db->query($sql);
 
 $sql = "update mdl_contents_languages set 
-							col_title='" . admin::toSql($_POST["col_title"],"Text") . "',
-							col_content='" . admin::toSql($_POST["col_content"],"Text") . "',
-							col_url='" . admin::urlsFriendly($_POST["col_title"]) . "', 
-							col_metatitle='" . admin::toSql($_POST["col_metatitle"],"Text") . "',
-							col_metadescription='" . admin::toSql($_POST["col_metadescription"],"Text") . "',
-							col_metakeyword='" . admin::toSql($_POST["col_metakeyword"],"Text") . "',
-							col_status='" . $_POST["col_status"] . "'   
-		where col_con_uid='" . $_POST["con_uid"] . "' and col_language='" . $lang . "'";
+							col_title='" . admin::toSql(admin::getParam("col_title"),"Text") . "',
+							col_content='" . admin::toSql(admin::getParam("col_content"),"Text") . "',
+							col_url='" . admin::urlsFriendly(admin::getParam("col_title")) . "', 
+							col_metatitle='" . admin::toSql(admin::getParam("col_metatitle"),"Text") . "',
+							col_metadescription='" . admin::toSql(admin::getParam("col_metadescription"),"Text") . "',
+							col_metakeyword='" . admin::toSql(admin::getParam("col_metakeyword"),"Text") . "',
+							col_status='" . admin::getParam("col_status") . "'   
+		where col_con_uid='" . admin::getParam("con_uid") . "' and col_language='" . $lang . "'";
 $db->query($sql);
 
  //*****************             begin para llenar obtener multiple uploads          *****/
@@ -89,8 +89,8 @@ foreach( $_FILES as $key => $FILES2){
 		$MaxUid = admin::getDbValue("SELECT max(mcd_uid) FROM mdl_contents_docs");
 		$MaxUid = $MaxUid+1;	
 
-		if($_POST["text_adjunt_".$uid]!="")
-			$nomDOC = admin::getImageName($_POST["text_adjunt_".$uid])."_".$MaxUid.".".$new_extension;	
+		if(admin::getParam("text_adjunt_".$uid)!="")
+			$nomDOC = admin::getImageName(admin::getParam("text_adjunt_".$uid))."_".$MaxUid.".".$new_extension;	
 		else
 			$nomDOC = admin::imageName($new_name)."_".$MaxUid.".".$new_extension;
 		classfile::uploadFile($FILES2,PATH_ROOT.'/docs/content/',$nomDOC);
@@ -102,5 +102,5 @@ foreach( $_FILES as $key => $FILES2){
 }
 $token=admin::getParam("token");
 
-header('Location: ../../contentList.php?token='.$token);
+header('Location: ../../contentList.php');
 ?>

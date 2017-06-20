@@ -30,7 +30,7 @@ $sol_uid=  admin::getParam("sol_uid");
 	</table>
     </div>
     <div id="add<?=$ind_uid?>" class="row0">
-    <form name="frmSolicitud" action="code/execute/solAdd2.php" enctype="multipart/form-data" > 
+    <form method="post"  name="frmSolicitud" action="code/execute/solAdd2.php" enctype="multipart/form-data" > 
 	<table class="list" width="100%">
 	<tr>
             
@@ -235,7 +235,7 @@ else
       <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="tbl_subasta" >
 			<tr>
 				<td width="59%" align="center">
-				<a href="solicitudList.php?tipUid=<?=$tipUid?>&token=<?=admin::getParam("token")?>" class="button">Finalizar</a></td>
+				<a href="solicitudList.php?tipUid=<?=$tipUid?>" class="button">Finalizar</a></td>
 		
 		</td>
           

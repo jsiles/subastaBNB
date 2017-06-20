@@ -35,5 +35,5 @@ $sql = "insert into mdl_incoterm(
 $db->query($sql);	
 // CONSTRUIMOS EL NUEVO SELECT	
 $token=admin::getParam("token");
-header('Location: ../../subastasEdit.php?token='.$token.'&pro_uid='.$pro_uid.'&sub_uid='.$sub_uid.'&tipUid='.admin::getParam("tipUid"));
+header('Location: ../../subastasEdit.php?pro_uid='.$pro_uid.'&sub_uid='.$sub_uid.'&tipUid='.admin::getParam("tipUid"));
 ?>

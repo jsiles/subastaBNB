@@ -38,5 +38,5 @@ $db->query($sql);
 // CONSTRUIMOS EL NUEVO SELECT	
 $token=admin::getParam("token");
 
-header('Location: ../../subastasNew2.php?token='.$token.'&pro_uid='.$pro_uid.'&sub_uid='.$sub_uid."&tipUid=".$tipUid);
+header('Location: ../../subastasNew2.php?pro_uid='.$pro_uid.'&sub_uid='.$sub_uid."&tipUid=".$tipUid);
 ?>

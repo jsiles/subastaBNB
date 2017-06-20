@@ -1,4 +1,4 @@
-<?
+<?php
 include_once("../../core/admin.php");
 include_once("../../core/files.php");
 include_once("../../core/images.php");
@@ -20,7 +20,7 @@ $sql = "insert into mdl_banners(
 								ban_file
 								)
 						values (							
-							'".admin::toSql($_POST["ban_title"],"String")."',
+							'".admin::toSql(admin::getParam("ban_title"),"String")."',
 							'',  
 							'".$randomString."',
 							''
@@ -28,7 +28,7 @@ $sql = "insert into mdl_banners(
 $db->query($sql);
 
 
-$sql="SELECT ban_uid from mdl_banners where ban_title='".$_POST["ban_title"]."' and ban_content='".$randomString."';";
+$sql="SELECT ban_uid from mdl_banners where ban_title='".admin::getParam("ban_title")."' and ban_content='".$randomString."';";
 $db2->query($sql);
 $content = $db2->next_record();
 $ban_uid = $content["ban_uid"];
@@ -39,7 +39,7 @@ if ($FILES["name"] != '')
 {
 	// DATOS DE ARCHIVO EN SU FORMATO ORIGINAL
 	$extensionFile = admin::getExtension($FILES["name"]);
-	$fileName = admin::imageName(admin::toSql($_POST["ban_title"],"String"))."_".$ban_uid.".".$extensionFile;
+	$fileName = admin::imageName(admin::toSql(admin::getParam("ban_title"),"String"))."_".$ban_uid.".".$extensionFile;
 
 	// DATOS DE ARCHIVO EN SU FORMATO ORIGINAL
 	$image1 = PATH_ROOT.'/img/banner/Original_'.$fileName;
@@ -49,7 +49,7 @@ if ($FILES["name"] != '')
 	$db->query($sql);
 
 	// Subimos el archivo con el nombre original
-	$gifCode='<img src="'.$domain.'/img/banner/'.$fileName.'" alt="'.admin::toSql($_POST["ban_title"],"String").'" title="'.admin::toSql($_POST["ban_title"],"String").'" />';
+	$gifCode='<img src="'.$domain.'/img/banner/'.$fileName.'" alt="'.admin::toSql(admin::getParam("ban_title"),"String").'" title="'.admin::toSql(admin::getParam("ban_title"),"String").'" />';
 	
 	$sql = "UPDATE mdl_banners SET ban_content='".$gifCode."' WHERE ban_uid=".$ban_uid;
 	$db->query($sql);
@@ -61,7 +61,7 @@ if ($FILES["name"] != '')
 		$mbc_position=admin::getDBvalue("select max(mbc_position) from mdl_banners_contents where mbc_place=2 and mbc_ban_uid=".$ban_uid);
 		$mbc_position++;
 		
-		if($_POST["ban_status"]=='ACTIVE') {
+		if(admin::getParam("ban_status")=='ACTIVE') {
 		    $sql = "UPDATE mdl_banners_contents set mbc_status='INACTIVE'";
 		    $db2->query($sql);
 		}
@@ -81,10 +81,10 @@ if ($FILES["name"] != '')
 									2,  
 									'".$mbc_position."',
 									0,
-									'".admin::toSql($_POST["ban_status"],"String")."' 
+									'".admin::toSql(admin::getParam("ban_status"),"String")."' 
 									)";
 		$db2->query($sql);
 		
 	
-header('Location: ../../bannerNew2.php?token='.admin::getParam("token").'&ban_uid='.$ban_uid);
+header('Location: ../../bannerNew2.php?ban_uid='.$ban_uid);
 ?>

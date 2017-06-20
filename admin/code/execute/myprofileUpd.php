@@ -3,31 +3,29 @@
 include_once("../../core/admin.php");
 include_once("../../core/files.php");
 include_once("../../core/images.php");
-admin::initialize('myprofile','myprofileUpd'); 
-// ban_uid
-// usr_uid=" . $_POST["usr_uid"] . ", 
-if ($_POST["usr_pass"]!="")
+admin::initialize('myprofile','myprofileUpd');  
+if (admin::getParam("usr_pass")!="")
 	{
-	$passwordChg = "usr_pass='" . $_POST["usr_pass"] . "', ";
+	$passwordChg = "usr_pass='" . admin::getParam("usr_pass") . "', ";
 	}
 
 $sql = "update sys_users set 
-				usr_login='" . $_POST["usr_login"] . "', 
+				usr_login='" . admin::getParam("usr_login") . "', 
 				" . $passwordChg . "
-				usr_firstname='" . $_POST["usr_firstname"] . "', 
-				usr_lastname='" . $_POST["usr_lastname"] . "', 
-				usr_email='" . $_POST["usr_email"] . "', 
-				usr_phone='" . $_POST["usr_phone"] . "', 
-				usr_fax='" . $_POST["usr_fax"] . "', 
-				usr_cellular='" . $_POST["usr_cellular"] . "', 
-				usr_address='" . $_POST["usr_address"] . "', 
-				usr_type='" . $_POST["usr_type"] . "', 
-				usr_status='" . $_POST["usr_status"] . "', 
-				usr_country='" . $_POST["usr_country"] . "', 
-				usr_state='" . $_POST["usr_state"] . "', 
-				usr_city='" . $_POST["usr_city"] . "'				
+				usr_firstname='" . admin::getParam("usr_firstname") . "', 
+				usr_lastname='" . admin::getParam("usr_lastname") . "', 
+				usr_email='" . admin::getParam("usr_email") . "', 
+				usr_phone='" . admin::getParam("usr_phone") . "', 
+				usr_fax='" . admin::getParam("usr_fax") . "', 
+				usr_cellular='" . admin::getParam("usr_cellular") . "', 
+				usr_address='" . admin::getParam("usr_address") . "', 
+				usr_type='" . admin::getParam("usr_type") . "', 
+				usr_status='" . admin::getParam("usr_status") . "', 
+				usr_country='" . admin::getParam("usr_country") . "', 
+				usr_state='" . admin::getParam("usr_state") . "', 
+				usr_city='" . admin::getParam("usr_city") . "'				
 		where usr_uid=" . $_SESSION["usr_uid"];
-// usr_photo='" . $_POST["usr_photo"] . "'
+// usr_photo='" . admin::getParam("usr_photo"] . "'
 //echo $sql;die;
 $db->query($sql);
 
@@ -37,9 +35,9 @@ if ($FILES["name"] != '')
 	{	
 	// DATOS DE ARCHIVO EN SU FORMATO ORIGINAL
 	$extensionFile = admin::getExtension($FILES["name"]);
-	$fileName = admin::imageName($_POST["usr_login"]) . "_". $_SESSION["usr_uid"] . "." . $extensionFile;
+	$fileName = admin::imageName(admin::getParam("usr_login")) . "_". $_SESSION["usr_uid"] . "." . $extensionFile;
 	// CONVIRTIENDO FORMATOS
-	$nomIMGStd = admin::imageName($_POST["usr_login"]) . "_". $_SESSION["usr_uid"] .".jpg";
+	$nomIMGStd = admin::imageName(admin::getParam("usr_login")) . "_". $_SESSION["usr_uid"] .".jpg";
 	$nomIMG = "img_" . $nomIMGStd;
 	$nomIMG2 = "thumb_" . $nomIMGStd;
 	classfile::uploadFile($FILES,PATH_ROOT . '/admin/upload/profile/',$fileName);		
@@ -54,8 +52,8 @@ if ($FILES["name"] != '')
 	$db->query($sql);
 	$_SESSION["usr_photo"] = $nomIMGStd;
 	}
-$_SESSION["usr_firstname"]=$_POST["usr_firstname"];
-$_SESSION["usr_lastname"]=$_POST["usr_lastname"];
+$_SESSION["usr_firstname"]=admin::getParam("usr_firstname");
+$_SESSION["usr_lastname"]=admin::getParam("usr_lastname");
 ?>
 <script language="javascript" type="text/javascript">
 document.location.href='../../<?=admin::getFirstModule($_SESSION["usr_uid"]);?>'; 

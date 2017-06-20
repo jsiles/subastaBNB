@@ -4,15 +4,15 @@ include_once("../../core/files.php");
 include_once("../../core/images.php");
 admin::initialize('modules','modulesList',false);
 
-$mod_uid	=	admin::toSql(safeHtml($_POST["mod_uid"]),"Text");
-$mod_name	=	admin::toSql(safeHtml($_POST["mod_name"]),"Text");
-$mod_alias	=	admin::toSql(safeHtml($_POST["mod_alias"]),"Text");
-$mod_index	=	admin::toSql(safeHtml($_POST["mod_index"]),"Text");
-$mod_status =	admin::toSql(safeHtml($_POST["mod_status"]),"Text");
-$mod_parent =	admin::toSql(safeHtml($_POST["mod_parent"]),"Number");
+$mod_uid	=	admin::toSql(safeHtml(admin::getParam("mod_uid")),"Text");
+$mod_name	=	admin::toSql(safeHtml(admin::getParam("mod_name")),"Text");
+$mod_alias	=	admin::toSql(safeHtml(admin::getParam("mod_alias")),"Text");
+$mod_index	=	admin::toSql(safeHtml(admin::getParam("mod_index")),"Text");
+$mod_status =	admin::toSql(safeHtml(admin::getParam("mod_status")),"Text");
+$mod_parent =	admin::toSql(safeHtml(admin::getParam("mod_parent")),"Number");
 
 $token = admin::getParam('token');
-$nextUrl ='modulesList.php?token='.$token;
+$nextUrl ='modulesList.php';
 
 	$sql = "update sys_modules set 
 	mod_alias='".$mod_alias."',

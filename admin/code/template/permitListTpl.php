@@ -30,7 +30,7 @@ while ($user_list = $db->next_record())
 		<img src="lib/view_off_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</td>
 	<td align="center" width="12%" height="5">
-		<a href="permitEdit.php?mcc_uid=<?=$mcc_uid?>&token=<?=admin::getParam("token");?>">
+		<a href="permitEdit.php?mcc_uid=<?=$mcc_uid?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
 	</td>

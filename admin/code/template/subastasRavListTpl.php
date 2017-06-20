@@ -46,7 +46,7 @@ if ($nroReg>0)
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
           
-          <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+          <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>
@@ -126,7 +126,7 @@ while ($subasta_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){
             ?>
-                    <a href="subastasRavView.php?rav_uid=<?=$rav_uid?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>">
+                    <a href="subastasRavView.php?rav_uid=<?=$rav_uid?>&tipUid=<?=admin::getParam("tipUid")?>">
 		<img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 		</a>
             <?php 
@@ -143,7 +143,7 @@ while ($subasta_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleListId and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){
             ?>
-		<a href="subastasRavEdit.php?rav_uid=<?=$rav_uid?>&token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>">
+		<a href="subastasRavEdit.php?rav_uid=<?=$rav_uid?>&tipUid=<?=admin::getParam("tipUid")?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
             <?php 
@@ -248,7 +248,7 @@ else
         <?php
         $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=$moduleCrearId and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol']."");
 	if($valuePermit=='ACTIVE'){?>
-            <a href="<?=admin::modulesLink($etiquetaCrear)?>&token=<?=admin::getParam("token")?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
+            <a href="<?=admin::modulesLink($etiquetaCrear)?>"><?=admin::modulesLabels($etiquetaCrear)?></a>
         <?php
         }
         ?>

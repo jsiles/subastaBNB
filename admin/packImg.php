@@ -1,5 +1,5 @@
-<?php include_once ("core/admin.php"); ?>
-<?php  admin::initialize('news','packImg'); ?>
+<?php include_once ("core/admin.php"); 
+admin::initialize('news','packImg'); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>
 <head>
@@ -96,7 +96,7 @@ $("textarea.textarea","#listImg").keyup(function(){
 		{
 			type: "POST",
 			url: "code/execute/packImgUpd.php",
-			data: "uid="+$obj +"&title="+title+"&token="+token,
+			data: "uid="+$obj +"&title="+title,
 			success: function(datos)
 			{
 			  //alert( "La hora actual es:" + datos);
@@ -131,7 +131,7 @@ $("textarea.textarea","#listImg").keyup(function(){
 									{
 											type: "POST",
 											url: "code/execute/packImgDel.php",
-											data: "uid="+uid+"&token="+token,
+											data: "uid="+uid,
 											success: function(datos)
 											{
 											  //alert( "La hora actual es:" + datos);
@@ -178,7 +178,7 @@ $("textarea.textarea","#listImg").keyup(function(){
 				{
 				        type: "POST",
 				        url: "code/execute/packImgPosition.php",
-				        data: "uid="+uid+"&list="+iuds+"&token="+token,
+				        data: "uid="+uid+"&list="+iuds,
 				        success: function(datos)
 						{
 				          //alert( "La hora actual es:" + datos);
@@ -195,7 +195,7 @@ function updateGallery(elem,new_uid){
 	 	value =0;
 		  $.ajax({
 				url: 'code/execute/updateGallery.php',
-				data: 'value='+value+'&new_uid='+new_uid+'&token='+token,
+				data: 'value='+value+'&new_uid='+new_uid,
 				complete : function(ob){
 								//$("#check_gallery").html(ob.responseText);
 							}/*,

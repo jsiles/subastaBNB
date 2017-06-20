@@ -1,6 +1,6 @@
 <?php
 include_once("../../core/admin.php");
-
+admin::initialize('subastas','subastasList');
 // OBTENEMOS LA ULTIMA POSICION EN LA CUAL SERA COLOCADA LA CATEGORIA
 $sql = "select count(*) as POSITION
 		from mdl_team_category 
@@ -10,7 +10,7 @@ $catPosition = $db->next_record();
 $position =  $catPosition["POSITION"] + 1;
 
 // REGISTRAMOS LA CATEGORIA
-	$categoryName = admin::toSql(utf8_decode($_POST["other_category"]),"String");
+	$categoryName = admin::toSql(utf8_decode(admin::getParam("other_category")),"String");
 $sql = "insert into mdl_team_category(
 							tca_position, 
 							tca_delete ,

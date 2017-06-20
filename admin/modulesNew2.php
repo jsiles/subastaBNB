@@ -1,5 +1,5 @@
-<? include ("core/admin.php"); ?>
-<? admin::initialize('team','teamNew'); ?>
+<?php include ("core/admin.php"); 
+admin::initialize('team','teamNew'); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">    
 <html>
 <head>

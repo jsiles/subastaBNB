@@ -41,7 +41,7 @@ function removeDoc(id){
 				  $('#document_edit_'+uid).fadeOut(1, function(){ $(this).remove(); });
 				  
 					  $.ajax({
-						url: 'code/execute/contentDocsDel.php?token=<?=admin::getParam("token");?>',
+						url: 'code/execute/contentDocsDel.php',
 						type: 'POST',
 						data: 'uid='+uid
 					});

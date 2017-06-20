@@ -54,7 +54,7 @@ admin::initialize('content','contentList');
                               {
                               $('#'+uid).fadeOut(500, function(){ $(this).remove(); });
                                   $.ajax({
-                                    url: 'code/execute/contentDel.php?token=<?=admin::getParam("token");?>',
+                                    url: 'code/execute/contentDel.php',
                                     type: 'POST',
                                     data: 'con_uid='+uid
                                 });
@@ -66,7 +66,7 @@ admin::initialize('content','contentList');
                                   moreOffContent(parent);
                                   $('#'+uid).fadeOut(500, function(){ $(this).remove(); });
                                       $.ajax({
-                                        url: 'code/execute/contentDel.php?token=<?=admin::getParam("token");?>',
+                                        url: 'code/execute/contentDel.php',
                                         type: 'POST',
                                         data: 'con_uid='+uid
                                     });                              

@@ -62,7 +62,7 @@ $i++;
 </ul>
 			</div>
 			<div id="search">
-				<form method="get" action="">
+				<form method="post" action="">
 					<fieldset>
 						<input type="text" name="query" value="" class="input-text" />
 					</fieldset>

@@ -1,6 +1,6 @@
 <?php
 include_once("../../core/admin.php");
-admin::initialize('subastas','docsCatAdd2',false); 
+admin::initialize('subastas','subastasList'); 
 $ca1_description =  admin::getParam("nivel1_desc");
 $sql = "insert into mdl_categoria1(
 					ca1_description,

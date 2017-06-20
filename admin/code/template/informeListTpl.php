@@ -108,7 +108,7 @@ if ($nroReg>0)
 	<td width="90%" height="40"></td>
     <td>
         <div class="boxSearch">
-        <form name="frmSubastasSearch" action="informeList.php" >
+        <form method="post"  name="frmSubastasSearch" action="informeList.php" >
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
          <tr>
           <td>
@@ -130,9 +130,9 @@ if ($nroReg>0)
       <td width="100%" colspan="2">
   <table width="100%" border="0">
 	<tr>
-		<td width="10%"><a href="informeList.php?order=<?=$uidOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
-        <td width="10%" ><a href="informeList.php?order=<?=$nameOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
-        <td width="10%" ><a href="informeList.php?order=<?=$linOrder?><?=$searchURL?>&token=<?=admin::getParam("token")?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
+		<td width="10%"><a href="informeList.php?order=<?=$uidOrder?><?=$searchURL?>" class="<?=$uidClass;?>"><?=admin::labels('code');?>:</a></td>
+        <td width="10%" ><a href="informeList.php?order=<?=$nameOrder?><?=$searchURL?>" class="<?=$nameClass;?>"><?=admin::labels('name');?>:</a></td>
+        <td width="10%" ><a href="informeList.php?order=<?=$linOrder?><?=$searchURL?>" class="<?=$linClass;?>"><?=admin::labels('category');?>:</a></td>
         <td width="10%" ><span class="txt11 color2">Monto Referencial:</span></td>
         <td width="10%" ><span class="txt11 color2">Estado:</span></td>
 	<td width="10%" ><span class="txt11 color2">Unidad solicitante:</span></td>
@@ -265,7 +265,7 @@ while ($subasta_list = $pagDb->next_record())
                 $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=22 and mop_lab_category='Ver' and moa_rol_uid=".$_SESSION['usr_rol']."");
                 if(($valuePermit=='ACTIVE')&&($existInf!=null)){
             ?>
-        <a href="adjudicarSubastaView.php?sub_uid=<?=$sub_uid?>&token=<?=admin::getParam("token");?>&sua_uid=<?=$existInf?>">
+        <a href="adjudicarSubastaView.php?sub_uid=<?=$sub_uid?>&sua_uid=<?=$existInf?>">
             <img src="lib/view_es.gif" border="0" title="<?=admin::labels('view')?>" alt="<?=admin::labels('view')?>">
 	</a>
             <?php
@@ -281,7 +281,7 @@ while ($subasta_list = $pagDb->next_record())
             $valuePermit=admin::getDBvalue("select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=22 and mop_lab_category='Editar' and moa_rol_uid=".$_SESSION['usr_rol']."");
             if(($valuePermit=='ACTIVE')&&($existInf!=null)){
             ?>
-		<a href="adjudicarSubastaEdit.php?token=<?=admin::getParam("token")?>&sub_uid=<?=$sub_uid?>&sua_uid=<?=$existInf?>">
+		<a href="adjudicarSubastaEdit.php?sub_uid=<?=$sub_uid?>&sua_uid=<?=$existInf?>">
 		<img src="<?=admin::labels('edit','linkImage')?>" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
                 <?php
@@ -302,7 +302,7 @@ while ($subasta_list = $pagDb->next_record())
                 //echo "<br>"."select moa_status from sys_modules_options,sys_modules_access where mop_uid=moa_mop_uid and mop_status='ACTIVE'and mop_mod_uid=2 and mop_lab_category='Crear' and moa_rol_uid=".$_SESSION['usr_rol'];
                 if(($valuePermit=='ACTIVE')&&($existInf==null)){
                 ?>
-                    <a href="adjudicarSubasta.php?token=<?=admin::getParam("token")?>&pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>">
+                    <a href="adjudicarSubasta.php?pro_uid=<?=$pro_uid?>&sub_uid=<?=$sub_uid?>">
                         <img src="lib/crear_on_es.png" border="0" title="Crear" alt="Crear">
                     </a>
                 <?php
@@ -317,9 +317,9 @@ while ($subasta_list = $pagDb->next_record())
         
 	<td align="center" width="5%" height="5">
 	<?php
-         if(strlen(admin::getParam("debug"))>0) $debug=true; else $debug=false;
+        // if(strlen(admin::getParam("debug"))>0) $debug=true; else $debug=false;
          //echo "DEBUG:".$debug;
-        $rolAplica =admin::validaRav($sub_uid,admin::getSession("usr_rol"),2,$sub_moneda, $sub_monto, $unidadUid, $debug);
+        $rolAplica =admin::validaRav($sub_uid,admin::getSession("usr_rol"),2,$sub_moneda, $sub_monto, $unidadUid);
          
             if($rolAplica)
             {

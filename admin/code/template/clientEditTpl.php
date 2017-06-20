@@ -21,7 +21,7 @@ $db->query($sql);
 $regusers = $db->next_record();
 ?>
 <br />
-<form name="frmClient" method="post" action="code/execute/clientUpd.php?token=<?=admin::getParam("token");?>" onsubmit="return false;" enctype="multipart/form-data">
+<form name="frmClient" method="post" action="code/execute/clientUpd.php" onsubmit="return false;" enctype="multipart/form-data">
 <input type="hidden" name="cli_uid" value="<?=$regusers["cli_uid"]?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -469,7 +469,7 @@ $sql2 = "select w.wtp_uid, w.wtp_name,  d.wde_description from mdl_waytopay w, m
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="clientList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="clientList.php" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

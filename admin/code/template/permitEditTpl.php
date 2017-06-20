@@ -5,7 +5,7 @@ $db->query($sql);
 $regusers = $db->next_record();
 ?>
 <br />
-<form name="frmPermit" method="post" action="code/execute/permitUpd.php?token=<?=admin::getParam("token");?>" enctype="multipart/form-data" onsubmit="return false;">
+<form name="frmPermit" method="post" action="code/execute/permitUpd.php" enctype="multipart/form-data" onsubmit="return false;">
 <input type="hidden" id="mcc_uid" name="mcc_uid" value="<?=$mcc_uid?>" />
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -114,7 +114,7 @@ if ($check==4) $check='checked="checked"';
 				</a> 
 				</td>
           <td width="41%" style="font-size:11px;">
-		  		<?=admin::labels('or');?> <a href="permitList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		  		<?=admin::labels('or');?> <a href="permitList.php" ><?=admin::labels('cancel');?></a> 
 		  </td>
         </tr>
       </table></div>

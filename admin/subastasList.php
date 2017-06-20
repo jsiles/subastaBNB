@@ -116,7 +116,7 @@ function aprobarSubasta(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function(msg) { 
-							    if (msg=='OK') window.location.href='./subastasList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>';
+							    if (msg=='OK') window.location.href='./subastasList.php?tipUid=<?=admin::getParam("tipUid")?>';
 							}
 					});
 					 
@@ -143,7 +143,7 @@ function rechazarSubasta(id){
 						type: 'POST',
 						data: 'uid='+id,
 						 success: function() { 
-								window.location.href='./subastasList.php?token=<?=admin::getParam("token")?>&tipUid=<?=admin::getParam("tipUid")?>';
+								window.location.href='./subastasList.php?tipUid=<?=admin::getParam("tipUid")?>';
 							}
 					});
 					 

@@ -15,7 +15,7 @@ $sqldat = "update mdl_indicadores set ind_description='".$ind_description."', in
 $db->query($sqldat);
 
 $token=admin::getParam("token");
-$nextUrl='dpfList.php?token='.admin::getParam("token");
+$nextUrl='dpfList.php';
 
 header('Location: ../../'.$nextUrl);
 ?>

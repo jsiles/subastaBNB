@@ -83,7 +83,7 @@
                                                                                             //echo (SymmetricCrypt::Encrypt($test));
 											$token = SymmetricCrypt::Encrypt($domain.'/'.$CategoryUrl.'/'.$content["pca_url"].'/'.$content["pro_url"].'/');
 											$_keycode = SymmetricCrypt::encrypt($content["sub_uid"]);
-											$urlLink = $domain.'/code/reglamento_subasta.php?token='.urlencode($token).'&_keycode='.urlencode($_keycode).'&" rel="facebox';
+											$urlLink = $domain.'/code/reglamento_subasta.php?_keycode='.urlencode($_keycode).'&" rel="facebox';
 											}else
 											{
 											$urlLink = $domain.'/'.$CategoryUrl.'/'.$content["pca_url"].'/'.$content["pro_url"].'/';										

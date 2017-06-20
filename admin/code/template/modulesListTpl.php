@@ -23,7 +23,7 @@ $(document).ready(
                     serial = $.SortSerialize('itemList');
                     resetOrder (serial.hash);
                     $.ajax({
-                            url: 'code/execute/modulesUpdatePosition.php?token=".admin::getParam('token')."',
+                            url: 'code/execute/modulesUpdatePosition.php',
                             type: 'POST',
                             data: serial.hash
                             });
@@ -56,7 +56,7 @@ if ($nroReg>0)
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
       <td width="77%" height="40"><span class="title"><?=admin::modulesLabels()?></span></td>
-    <td width="23%" height="40" align="right"><a href="modulesNew.php?token=<?=admin::getParam('token')?>"><?=admin::modulesLabels('modulesNew');?></a></td>
+    <td width="23%" height="40" align="right"><a href="modulesNew.php"><?=admin::modulesLabels('modulesNew');?></a></td>
   </tr>
   <tr>
     <td colspan="2" id="contentListing">
@@ -172,7 +172,7 @@ else { ?>
 		<img src="lib/edit_off_<?=$lang?>.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</span>
 		<span id="div_edit_on_<?=$con_uid?>" style="display:<?=$stylebuttonOn?>;">
-		<a href="modulesEdit.php?mod_uid=<?=$con_uid?>&token=<?=admin::getParam("token")?>">
+		<a href="modulesEdit.php?mod_uid=<?=$con_uid?>">
 		<img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
 		</a>
 		</span>
@@ -227,7 +227,7 @@ if ($nrmreg>1){
                 { 
                     serial = $.SortSerialize('subList_$con_uid');
                     $.ajax({
-                            url: 'code/execute/modulesUpdatePosition.php?token=".admin::getParam('token')."',
+                            url: 'code/execute/modulesUpdatePosition.php',
                             type: 'POST',
                             data: serial.hash
                             }); 
@@ -336,7 +336,7 @@ $sSQL = "select * from sys_modules
         <img src="lib/edit_off_<?=$lang?>.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
         </span>
         <span id="div_edit_on_<?=$con_uid1?>" style="display:<?=$stylebuttonOn?>;">
-        <a href="modulesEdit.php?mod_uid=<?=$con_uid1?>&token=<?=admin::getParam("token")?>">
+        <a href="modulesEdit.php?mod_uid=<?=$con_uid1?>">
         <img src="lib/edit_es.gif" border="0" title="<?=admin::labels('edit')?>" alt="<?=admin::labels('edit')?>">
         </a>
         </span>

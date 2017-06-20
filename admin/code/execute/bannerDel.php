@@ -1,4 +1,4 @@
-<?  
+<?php  
 include_once("../../core/admin.php");
 admin::initialize('banner','bannerList',false);
 $mbc_uid = $_REQUEST["uid"];

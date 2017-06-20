@@ -3,7 +3,7 @@ include_once("../admin/core/admin.php");
 $usernameClient = admin::getParam("usernameClient");
 $passwordClient = admin::getParam("passwordClient");
 $captcha = admin::getParam("captcha");
-$sCaptcha=  admin::getSession("code");
+$sCaptcha=  SymmetricCrypt::Decrypt(urldecode(admin::getSession("code")));
 
 $sTokenCSRF=admin::getParam('csrf_token');
 
@@ -43,28 +43,28 @@ if (strlen($uidClient)>0)
 		if(admin::getSession("uidClient")) {
 			$uidPass = admin::getDBValue("SELECT cli_pass_change FROM mdl_client WHERE cli_uid='$uidClient'");
 		    if ($uidPass == 0) header("Location:".$domain."/registro/". $uidClient."/");	
-			else header("Location:". $domain."/");
+			else header("Location:". $domain."/categorias/");
 			}
 		else {
-                    header("Location:".$domain."/session/1/"); 
+                    header("Location:".$domain."/1/"); 
                 }
 	}
 	else
 	{
-		header("Location:".$domain."/session/2/". $uidClient."/");	
+		header("Location:".$domain."/2/". $uidClient."/");	
 	}
 }else
 { 
-	header("Location:".$domain."/session/1/");
+	header("Location:".$domain."/1/");
 }
 }else{
     
-    	header("Location:".$domain."/session/3/");
+    	header("Location:".$domain."/3/");
 }
 }
 
 }else{
-   header("HTTP/1.0 403 Forbidden");
+   header("Location: 403.php");
     //echo "Tok:".$sTokenCSRF;
 }
 ?>

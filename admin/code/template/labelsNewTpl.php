@@ -2,7 +2,7 @@
 $label_table = 'tbl_labels';
 ?>
 <br />
-<form name="frmLabels" id="frmLabels" method="post" action="code/execute/labelsAdd.php?token=<?=admin::getParam('token')?>" enctype="multipart/form-data" onsubmit="return false;">
+<form name="frmLabels" id="frmLabels" method="post" action="code/execute/labelsAdd.php" enctype="multipart/form-data" onsubmit="return false;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="77%" height="40">
@@ -120,7 +120,7 @@ $label_table = 'tbl_labels';
 		</a> 
 		</td>
 		<td width="41%" style="font-size:11px;">
-		<?=admin::labels('or');?> <a href="labelsList.php?token=<?=admin::getParam("token")?>" ><?=admin::labels('cancel');?></a> 
+		<?=admin::labels('or');?> <a href="labelsList.php" ><?=admin::labels('cancel');?></a> 
 		</td>
 		</tr>
 	</table>

@@ -1,6 +1,6 @@
 <?php
 include_once ("../../core/admin.php"); 
-
+admin::initialize('subastas','subastasList');
 $lin_uid = admin::toSql(admin::getParam("lin_uid"),"String");
 
 $Exists = admin::getDbValue("SELECT count(distinct prc_family) FROM mdl_subasta_categories where prc_lin_uid='".$lin_uid."'");
