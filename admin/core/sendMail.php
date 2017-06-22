@@ -43,6 +43,8 @@
                 $mail->addAttachment(PATH_ROOT.$noe["noe_attach"]);
               }
             }
+/*          $mail->AddBCC("ERios@bnb.com.bo","Rios Rios, Enrique");
+          $mail->AddBCC("RCastro@bnb.com.bo", "Castro Lizarraga, Rosario");*/
 	  $mail->CharSet = 'UTF-8';
         $exito = $mail->Send();
         $intentos=1; 
