@@ -63,7 +63,7 @@ $sql = "update mdl_client set
 		where cli_uid=".$cli_uid;
 $db->query($sql);
 
-	$cli_doc_uid = admin::getParam("cli_doc_uid");
+	$cli_doc_uid = admin::getParam("cli_doc_uid","strip");
    	if (is_array($cli_doc_uid)){
              $sql = "delete from mdl_documentsclient where dcl_cli_uid='".$cli_uid."'";
     $db->query($sql);
@@ -104,10 +104,15 @@ if ($validFile && $FILES['error']==0)
 	$nomIMG2="thumb_".$nomIMG;
 	// Subimos el archivo con el nombre original
 	classfile::uploadFile($FILES,PATH_ROOT.'/img/client/',$fileName);
-	// redimencionamos al mismo pero con extencion jpg en el mismo tamaño
 	redimImgPercent(PATH_ROOT."/img/client/".$fileName, PATH_ROOT."/img/client/".$nomIMG,100,100);
-	// Redimencionamos el nuevo jpg por el ancho definido
 	redimImgWH(PATH_ROOT."/img/client/".$nomIMG, PATH_ROOT."/img/client/".$nomIMG2,60,100);
+        copy(PATH_ROOT."/img/client/".$nomIMG,PATH_PUBLIC."/img/client/".$nomIMG);
+        copy(PATH_ROOT."/img/client/".$nomIMG2,PATH_PUBLIC."/img/client/".$nomIMG2);
+        unlink(PATH_ROOT."/img/client/".$fileName);
+        
+        /*
+	redimImgPercent(PATH_PUBLIC."/img/client/".$fileName, PATH_ROOT."/img/client/".$nomIMG,100,100);
+	redimImgWH(PATH_PUBLIC."/img/client/".$nomIMG, PATH_ROOT."/img/client/".$nomIMG2,60,100);*/
 	// Redimencionamos el nuevo jpg por el ancho definido
 	$sql = "UPDATE mdl_client SET cli_logo='".$nomIMG."' WHERE cli_uid=".$cli_uid;
 	$db->query($sql);

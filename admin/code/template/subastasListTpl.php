@@ -270,7 +270,7 @@ while ($subasta_list = $pagDb->next_record())
         <td width="10%" ><span <?=$dest?>><?=$pca_name?></span></td>
         <td width="10%" ><span><?=$sub_estado?></span></td>
 	<td align="left" width="10%" height="5"><span><?=$rav_unidad?></span>
-        <td width="5%" align="right"><span><?=$sub_monto." ".$monedaLit?></span></td>
+        <td width="5%" align="right"><span><?=admin::numberFormat($sub_monto)." ".$monedaLit?></span></td>
          <?php
 		 
 		/* if ($countBids>0){
